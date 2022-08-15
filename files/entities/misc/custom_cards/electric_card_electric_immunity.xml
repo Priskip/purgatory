@@ -1,0 +1,19 @@
+<Entity>
+    <LifetimeComponent
+        lifetime=90
+    >
+    </LifetimeComponent>
+
+    <GameEffectComponent 
+        _tags="enabled_in_hand"
+        effect="PROTECTION_ELECTRICITY"
+        frames="90">
+    </GameEffectComponent>
+
+     <GameEffectComponent 
+        _tags="enabled_in_hand"
+        effect="FRIEND_THUNDERMAGE"
+        frames="90"
+     ></GameEffectComponent>
+
+</Entity>

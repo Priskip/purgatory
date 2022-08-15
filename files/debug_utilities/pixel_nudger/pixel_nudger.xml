@@ -1,0 +1,31 @@
+<Entity tags="pixel_nudger">
+
+    <LuaComponent
+        _enabled="1"
+        script_source_file="mods/purgatory/files/debug_utilities/pixel_nudger/pixel_nudger.lua"
+        execute_every_n_frame="1"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+        name="delta_x"
+        value_float="0"
+        ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="delta_y"
+        value_float="0"
+        ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="scale"
+        value_float="1"
+        ></VariableStorageComponent>
+
+</Entity>
+
+<!-- 
+    To assign to and entity, attach this as a child entity
+    <Entity>
+        <Base file="mods/purgatory/files/debug_utilities/pixel_nudger/pixel_nudger.xml"></Base>
+    </Entity>
+-->

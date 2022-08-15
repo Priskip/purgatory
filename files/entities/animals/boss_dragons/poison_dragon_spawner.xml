@@ -1,0 +1,13 @@
+<Entity tags="boss_dragon">
+	<LifetimeComponent
+		lifetime="420" 
+	>
+	</LifetimeComponent>
+
+	<LuaComponent 
+		script_source_file = "mods/purgatory/files/scripts/entities/boss_dragons/spawn_poison_dragon.lua"
+		execute_every_n_frame="120"
+		>
+	</LuaComponent>
+
+</Entity>

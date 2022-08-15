@@ -1,0 +1,30 @@
+Thank you's for everyone who helped with this mod.
+Strophox    - "World Eater" and "Spark Bolt with Trigger and Expiration Trigger" sprites
+            -  Spatial Awareness Art
+            -  Alchemist Arena Art
+
+Letaali     - All of the Finnish things that I don't understand (that covers a lot of ground...)
+
+[REDACTED]  - For doing [REDACTED] with [REDACTED] to allow for cool stuff
+
+Twitch Chat - For the ocasional suggestions that are actually good
+
+The Noita Modders of the Noita Discord for their help
+    - Horscht
+    - Evaisa
+    - and anyone else I might have missed
+
+Streamers who played during mod's beta
+    - LetsSufferTogether
+    - ArganVain
+    - TerribleArt
+    - Smickles
+    - Aliasbot
+    - BestBardTopNA
+    - JShiba
+    - Wcasey
+
+
+
+Libraries Used:
+Zatherz' XML parser library: https://github.com/zatherz/luanxml

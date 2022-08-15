@@ -1,0 +1,25 @@
+<Entity tags="goal">
+
+	<CollisionTriggerComponent
+		_enabled="1"
+		width="25"
+		height="9"
+		radius="25"
+		destroy_this_entity_when_triggered="0"
+		required_tag="football">
+	</CollisionTriggerComponent>
+
+	<LuaComponent
+		_enabled="1"
+		script_collision_trigger_hit="mods/purgatory/files/scripts/entities/skully_game/goal.lua"
+		execute_every_n_frame="-1">
+	</LuaComponent>
+
+	<!-- This comp is to be initialized by mods/purgatory/files/scripts/biomes/skully_game.lua -->
+	<VariableStorageComponent
+		name="goal_level"
+		value_int="0"
+		>
+	</VariableStorageComponent>
+
+</Entity>

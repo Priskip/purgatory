@@ -1,0 +1,17 @@
+<Entity name="purgatory_faster_speed">
+    <InheritTransformComponent>
+    </InheritTransformComponent>    
+    
+    <GameEffectComponent 
+        effect="MOVEMENT_FASTER_2X"
+        frames="-1"
+    >
+    </GameEffectComponent >
+
+    <GameEffectComponent 
+        effect="FASTER_LEVITATION"
+        frames="-1"
+    >
+    </GameEffectComponent >
+    
+</Entity>

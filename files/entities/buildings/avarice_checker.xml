@@ -1,0 +1,24 @@
+<Entity tags="moon_energy">
+
+	<LuaComponent
+		script_source_file="mods/purgatory/files/scripts/magic/avarice_checker.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+
+	<MaterialAreaCheckerComponent
+		area_aabb.min_x="-2" 
+		area_aabb.min_y="-2"		
+		area_aabb.max_x="2" 
+		area_aabb.max_y="2"		
+		material="diamond"
+		kill_after_message="0"
+		look_for_failure="0"
+		>
+	</MaterialAreaCheckerComponent>
+
+	<LuaComponent
+		script_material_area_checker_success="mods/purgatory/files/scripts/magic/avarice_material_checker_success.lua" >
+	</LuaComponent>
+
+</Entity>

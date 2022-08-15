@@ -1,0 +1,29 @@
+<Entity>
+	
+	<Base file="data/entities/base_custom_card.xml" > 
+		<SpriteComponent 
+			image_file="mods/purgatory/files/ui_gfx/gun_actions/personal_plasma_beam.png" >
+		</SpriteComponent>
+		
+		<ItemActionComponent 
+			_tags="enabled_in_world"
+			action_id="PERSONAL_PLASMA_BEAM" >
+		</ItemActionComponent>
+	</Base>
+
+	<InheritTransformComponent
+		_tags="enabled_in_world,enabled_in_hand" >
+	  <Transform 
+		position.x="40" 
+		position.y="0" >
+	  </Transform>
+	</InheritTransformComponent>
+
+    <LuaComponent
+        _tags="enabled_in_hand"
+		script_source_file="mods/purgatory/files/scripts/projectiles/personal_plasma_beam_aim.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+
+</Entity>

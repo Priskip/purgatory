@@ -1,0 +1,12 @@
+<Entity 
+  name="$projectile_default" 
+  tags=""
+   >
+	<LuaComponent
+		script_source_file="mods/purgatory/files/entities/parallel_bosses/wizard/debuff_init.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+	
+	
+</Entity>

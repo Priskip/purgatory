@@ -1,0 +1,19 @@
+<Entity tags="rocket_player_homing_target">
+    <LifetimeComponent
+        lifetime = 3
+        >
+    </LifetimeComponent>
+
+    <SpriteComponent 
+    _enabled="1" 
+    alpha="1" 
+    image_file="mods/purgatory/files/projectiles_gfx/missile_target.xml" 
+    next_rect_animation="" 
+    offset_x="0" 
+    offset_y="0" 
+    rect_animation="fireball"
+	additive="1"
+	emissive="1"
+     >
+  </SpriteComponent>
+</Entity>

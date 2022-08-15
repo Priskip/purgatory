@@ -1,0 +1,267 @@
+<Materials>
+
+	<CellDataChild
+		_parent="spark"
+		_inherit_reactions="1"
+		name="spark_invis"
+		ui_name="$mat_spark_invis"
+		wang_color="ffFFFFAD"
+		gfx_glow="0"
+		>
+		<Graphics
+			color="00ffffff"
+			fire_colors_index="0"
+			></Graphics>
+	</CellDataChild>
+
+	<CellDataChild
+		_parent="spark"
+		_inherit_reactions="1"
+		name="spark_black"
+		ui_name="$mat_spark_black"
+		wang_color="ffFEFFFF"
+		gfx_glow="90"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/black_glimmer.png"
+			color="80FFA2CD"
+			fire_colors_index="2"
+			></Graphics>
+		<ParticleEffect
+			vel.y="2.86"
+			vel_random.min_x="-6"
+			vel_random.max_x="6"
+			vel_random.min_y="-2.9"
+			vel_random.max_y="3.2"
+			render_on_grid="1"
+			probability="0.6"
+			count.min="0"
+			count.max="1"
+			></ParticleEffect>
+
+	</CellDataChild>
+
+	<CellDataChild
+		_parent="gem_box2d"
+		_inherit_reactions="1"
+		name="gem_box2d_bright_green"
+		ui_name="$mat_gem_box2d_bright_green"
+		gfx_glow_color="0xFF00FF00"
+		wang_color="fffd2daf"
+		show_in_creative_mode="1"
+		>
+		<Graphics color="ff70FF4F"></Graphics>
+	</CellDataChild>
+
+	<!--Orignial: wang_color="80a1f18c" -->
+	<CellData
+		name="purgatory_lively_concoction"
+		ui_name="$mat_magic_liquid_hp_regeneration_unstable"
+		tags="[liquid],[water],[magic_liquid],[regenerative]"
+		burnable="0"
+		density="5.74"
+		cell_type="liquid"
+		wang_color="80a1f18d"
+		generates_smoke="0"
+		liquid_gravity="0.8"
+		liquid_sand="0"
+		gfx_glow="150"
+		on_fire="0"
+		requires_oxygen="0"
+		liquid_stains="1"
+		liquid_sprite_stain_shaken_drop_chance="5"
+		status_effects="HP_REGENERATION"
+		audio_materialaudio_type="MAGICAL"
+		lifetime="900"
+		show_in_creative_mode="1"
+		>
+		<ParticleEffect
+			vel.y="-14.28"
+			vel_random.min_x="-0.285"
+			vel_random.max_x="0.285"
+			vel_random.min_y="-11.43"
+			vel_random.max_y="11.43"
+			lifetime.min="0"
+			lifetime.max="20"
+			gravity.y="0"
+			render_on_grid="1"
+			airflow_force="0.1146"
+			airflow_scale="-0.028"
+			probability="0.018"
+			count.min="0"
+			></ParticleEffect>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect
+					type="HP_REGENERATION"
+					amount="0.075"
+					 />
+			</Ingestion>
+		</StatusEffects>
+	</CellData>
+
+	<!--Orignial: wang_color="e1243CFF" -->
+	<CellDataChild
+		_parent="alcohol"
+		tags="[liquid],[burnable],[water]"
+		name="purgatory_alchemic_precursor"
+		ui_name="$mat_midas_precursor"
+		liquid_gravity="0.5"
+		wang_color="e1243CE"
+		>
+		<Graphics
+			texture_file="data/materials_gfx/midas_precursor.png"
+			color="e1243CFF"
+			></Graphics>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect
+					type="POISONED"
+					amount="0.1"
+					 />
+				<StatusEffect
+					type="FOOD_POISONING"
+					amount="0.1"
+					 />
+			</Ingestion>
+		</StatusEffects>
+	</CellDataChild>
+
+	<!-- plasma orange -->
+	<CellDataChild
+		_parent="plasma_fading"
+		name="plasma_fading_orange"
+		ui_name="$mat_plasma_fading_orange"
+		fire_hp="100"
+		wang_color="ffFFAB00"
+		requires_oxygen="0"
+		liquid_viscosity="10"
+		liquid_sticks_to_ceiling="100"
+		liquid_flow_speed="0.25"
+		temperature_of_fire="150"
+		liquid_gravity="0.2"
+		liquid_sand="1"
+		on_fire="1"
+		>
+		<Graphics color="ffFFAB00"></Graphics>
+	</CellDataChild>
+
+	<!-- freezing vapour mist -->
+	<CellDataChild
+		_parent="blood_cold_vapour"
+		name="cloud_blood_cold_vapour"
+		ui_name="$cloud_blood_cold_vapour"
+		wang_color="7f5C98CE"
+		lifetime="50"
+		></CellDataChild>
+
+	<!-- Hardened Glass for HM cauldrons -->
+	<CellData
+		name="hardened_glass_static"
+		ui_name="$mat_glass_hardened_static"
+		tags="[static],[solid]"
+		burnable="0"
+		density="10"
+		cell_type="solid"
+		wang_color="d5e5ae"
+		generates_smoke="0"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		solid_restitution="0"
+		gfx_glow="6"
+		hp="100000"
+		platform_type="1"
+		durability="14"
+		solid_static_type="1"
+		>
+		<Graphics
+			texture_file="data/materials_gfx/glass.png"
+			color="d5e5ae"
+			></Graphics>
+	</CellData>
+
+	<!-- Alchemy Recipes -->
+	<Reaction
+		probability="100"
+		input_cell1="purgatory_alchemic_precursor"
+		input_cell2="[meat]"
+		output_cell1="midas"
+		output_cell2="midas"
+		fast_reaction="1"
+		></Reaction>
+
+	<Reaction
+		probability="100"
+		input_cell1="purgatory_alchemic_precursor"
+		input_cell2="midas"
+		output_cell1="midas"
+		output_cell2="midas"
+		fast_reaction="1"
+		></Reaction>
+
+	<Reaction
+		probability="100"
+		input_cell1="magic_liquid_polymorph"
+		input_cell2="magic_liquid_random_polymorph"
+		input_cell3="magic_liquid_unstable_polymorph"
+		output_cell1="purgatory_lively_concoction"
+		output_cell2="purgatory_lively_concoction"
+		output_cell3="purgatory_lively_concoction"
+		></Reaction>
+
+	<Reaction
+		probability="100"
+		input_cell1="magic_liquid_protection_all"
+		input_cell2="magic_liquid_berserk"
+		input_cell3="magic_liquid_invisibility"
+		output_cell1="purgatory_alchemic_precursor"
+		output_cell2="purgatory_alchemic_precursor"
+		output_cell3="purgatory_alchemic_precursor"
+		></Reaction>
+
+	<!-- New Alchemy Stuff -->
+	<Reaction
+		probability="100"
+		input_cell1="magic_liquid_charm"
+		input_cell2="[blood]"
+		input_cell3="[magic_polymorph]"
+		output_cell1="magic_liquid_hp_regeneration"
+		output_cell2="magic_liquid_hp_regeneration"
+		output_cell3="magic_liquid_hp_regeneration"
+		blob_radius2="20"
+		></Reaction>
+
+	<Reaction
+		probability="15"
+		input_cell1="magic_liquid_random_polymorph"
+		input_cell2="alcohol"
+		output_cell1="magic_liquid_unstable_polymorph"
+		output_cell2="alcohol"
+		></Reaction>
+
+	<Reaction
+		probability="15"
+		input_cell1="magic_liquid_unstable_polymorph"
+		input_cell2="slime"
+		output_cell1="magic_liquid_polymorph"
+		output_cell2="slime"
+		></Reaction>
+
+	<Reaction
+		probability="50"
+		input_cell1="magic_liquid_protection_all"
+		input_cell2="silver"
+		output_cell1="magic_liquid_invisibility"
+		output_cell2="magic_liquid_invisibility"
+		></Reaction>
+
+	<Reaction
+		probability="50"
+		input_cell1="rotten_meat"
+		input_cell2="fungisoil"
+		output_cell1="fungi_green"
+		output_cell2="fungi_green"
+		></Reaction>
+
+</Materials>

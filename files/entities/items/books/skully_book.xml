@@ -1,0 +1,39 @@
+<Entity tags="scroll">
+	<Base file="data/entities/items/books/base_book.xml">
+		<BookComponent
+			_enabled="0"
+			>
+		</BookComponent>
+
+		<ParticleEmitterComponent 
+		    emitted_material_name="spark_purple"
+		>
+	    </ParticleEmitterComponent>
+		
+		<PhysicsImageShapeComponent 
+			image_file="mods/purgatory/files/props_gfx/skully_book_shape.png"
+		></PhysicsImageShapeComponent>
+
+		<UIInfoComponent
+			name="$booktitle_skully_game"
+			>
+		</UIInfoComponent>
+		
+		<ItemComponent
+			ui_sprite="mods/purgatory/files/props_gfx/skully_book.png"
+			item_name="$booktitle_skully_game"
+			ui_description="$bookdesc_skully_game"
+			>
+		</ItemComponent>
+
+		<SpriteComponent
+			image_file="mods/purgatory/files/props_gfx/skully_book_inhand.png"
+		></SpriteComponent>
+		
+		<AbilityComponent
+			ui_name="$booktitle_skully_game"
+			>
+		</AbilityComponent>
+
+	</Base>
+</Entity>

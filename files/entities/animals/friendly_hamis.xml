@@ -1,0 +1,42 @@
+<Entity tags="mortal,human,hittable,teleportable_NOT,destruction_target">
+
+	<Base file="data/entities/animals/longleg.xml">
+		<LuaComponent 
+			execute_every_n_frame="-1"
+			script_death=""
+			remove_after_executed="1">
+		</LuaComponent>
+
+		<GenomeDataComponent 
+            herd_id="minion">
+        </GenomeDataComponent>
+
+		<AnimalAIComponent 
+			_enabled="1"
+			escape_if_damaged_probability="100"
+			sense_creatures="1"
+			attack_melee_max_distance="10"
+			attack_dash_enabled="1"
+			eating_area_radius_x="8"
+			eating_area_radius_y="8"
+			mouth_offset_x="0"
+			mouth_offset_y="6">
+		</AnimalAIComponent>
+
+		<DamageModelComponent 
+			hp="4">
+		</DamageModelComponent>
+
+		<CameraBoundComponent
+			max_count="1000"
+			distance="160000">
+		</CameraBoundComponent>
+	</Base>
+
+	<LuaComponent 
+		_enabled="1"
+		remove_after_executed="1"
+		script_source_file="mods/purgatory/files/scripts/projectiles/friendly_hamis.lua">
+	</LuaComponent>
+	
+</Entity>

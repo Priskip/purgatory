@@ -1,0 +1,17 @@
+<Entity >
+	<InheritTransformComponent>
+    </InheritTransformComponent>
+	
+	<LuaComponent
+		script_source_file="mods/purgatory/files/scripts/perks/map/map_lvl_3.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+	
+	<VariableStorageComponent
+		name="map_timer"
+		value_int="0"
+		>
+	</VariableStorageComponent>
+  
+</Entity>

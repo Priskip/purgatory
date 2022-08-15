@@ -1,0 +1,25 @@
+<Sprite 
+  default_animation="float_left" 
+  filename="mods/purgatory/files/entities/animals/boss_pit/wand_of_shielding/sprite.png" 
+  offset_x="5" 
+  offset_y="0" >
+
+  <RectAnimation 
+    name="float_left" 
+	  frame_width="25" 
+    frame_height="11" 
+    pos_x="0" 
+	  pos_y="0" >
+  </RectAnimation>
+
+  <RectAnimation 
+    name="float_right" 
+	  frame_width="25" 
+    frame_height="11" 
+    pos_x="27" 
+    pos_y="0" >
+  </RectAnimation>
+
+
+</Sprite>
+

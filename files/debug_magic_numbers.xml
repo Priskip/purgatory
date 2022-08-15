@@ -1,0 +1,23 @@
+<MagicNumbers
+  DESIGN_PLAYER_START_POS_X="-900"
+  DESIGN_PLAYER_START_POS_Y="1890"
+  BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
+  DAMAGE_BLOOD_AMOUNT_MIN="5"
+  DAMAGE_BLOOD_AMOUNT_MAX="10"
+  RAGDOLL_BLOOD_MULTIPLIER="1"
+  VIRTUAL_RESOLUTION_X="427"
+  VIRTUAL_RESOLUTION_Y="242"
+  ></MagicNumbers>
+
+  <!--
+  <MagicNumbers
+  DESIGN_PLAYER_START_POS_X="742" -900 for holy mountain
+  DESIGN_PLAYER_START_POS_Y="-670" 1890 for holy mountain
+  BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
+  DAMAGE_BLOOD_AMOUNT_MIN="5"
+  DAMAGE_BLOOD_AMOUNT_MAX="10"
+  RAGDOLL_BLOOD_MULTIPLIER="1"
+  VIRTUAL_RESOLUTION_X="427" 214
+  VIRTUAL_RESOLUTION_Y="242" 121
+  ></MagicNumbers>
+  -->

@@ -1,0 +1,17 @@
+<Entity>
+	<InheritTransformComponent />
+	
+	<LuaComponent 
+		_enabled="1" 
+		script_source_file="mods/purgatory/files/scripts/projectiles/money_multiplier_enemy.lua" 
+		execute_every_n_frame="1"
+        remove_after_executed="1">
+   </LuaComponent>
+
+   <LifetimeComponent
+		lifetime="2"
+		>
+	</LifetimeComponent>
+	
+</Entity>
+

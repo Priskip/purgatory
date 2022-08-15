@@ -1,0 +1,13 @@
+<Entity tags="">
+	<LifetimeComponent
+		lifetime="69" 
+	>
+	</LifetimeComponent>
+
+	<LuaComponent 
+		script_source_file = "mods/purgatory/files/scripts/entities/boss_alchemist/spawn_attack.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+
+</Entity>

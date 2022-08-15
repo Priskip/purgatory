@@ -1,0 +1,7 @@
+<Entity>
+	<Base file="data/entities/items/pickup/potion.xml" >
+		<LuaComponent 
+			script_source_file="mods/purgatory/files/scripts/items/potion_starting_regular.lua"
+		></LuaComponent>
+	</Base>
+</Entity>

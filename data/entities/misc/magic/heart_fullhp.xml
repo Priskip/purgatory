@@ -1,0 +1,8 @@
+<Entity >
+  <Base file="mods/purgatory/files/entities/parallel_bosses/pit/bos_pit_parallel.xml" include_children="1">
+    <DamageModelComponent 
+      hp="1000"
+      max_hp="1000"
+     ></DamageModelComponent >
+  </Base>
+</Entity>

@@ -1,0 +1,39 @@
+<Entity>
+
+    <InteractableComponent
+        radius="6"
+        ui_text="$bottle_filler_interact_placing"
+        ></InteractableComponent>
+
+    <LuaComponent
+        script_interacting="mods/purgatory/files/scripts/buildings/temple_alchemy_station/potion_storage_interact.lua"
+        execute_every_n_frame="-1"
+        ></LuaComponent>
+
+    <CollisionTriggerComponent
+        _enabled="1"
+        width="12"
+        height="12"
+        radius="6"
+        destroy_this_entity_when_triggered="0"
+        required_tag="player_unit"
+        ></CollisionTriggerComponent>
+
+    <LuaComponent
+        _enabled="1"
+        script_collision_trigger_hit="mods/purgatory/files/scripts/buildings/temple_alchemy_station/potion_storage_collision_trigger.lua"
+        execute_every_n_frame="-1"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+        name="mode"
+        value_string="place"
+        ></VariableStorageComponent>
+
+    <LuaComponent
+        _enabled="0"
+        script_source_file="mods/purgatory/files/scripts/buildings/temple_alchemy_station/potion_storage_debug_display.lua"
+        execute_every_n_frame="1"
+        ></LuaComponent>
+
+</Entity>

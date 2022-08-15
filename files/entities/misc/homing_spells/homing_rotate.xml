@@ -1,0 +1,16 @@
+<Entity>
+    <HomingComponent
+        _tags="homing_rotate"
+        just_rotate_towards_target="1"
+        max_turn_rate="0.2"
+        >
+    </HomingComponent>
+
+    <LuaComponent
+        _enabled="1"
+        execute_on_added="1"
+        remove_after_executed="1"
+        script_source_file="mods/purgatory/files/scripts/projectiles/homing_spells/homing_rotate.lua"
+        >
+    </LuaComponent>
+</Entity>

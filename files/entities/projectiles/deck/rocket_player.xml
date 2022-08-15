@@ -1,0 +1,43 @@
+<Entity name="$projectile_default" tags="projectile_player" >
+	<Base file="data/entities/projectiles/rocket_tank.xml">
+		<HomingComponent
+			target_tag="rocket_player_homing_target"
+			detect_distance="300"
+			homing_targeting_coeff="135.0"
+    		homing_velocity_multiplier="0.74"
+			max_turn_rate="0.10"
+			just_rotate_towards_target="1"
+			>
+		</HomingComponent>
+		
+		<ProjectileComponent
+			damage="2"
+			lifetime="240"
+			speed_min="420"
+    		speed_max="420"
+			>
+			<config_explosion
+				damage="1"
+				>
+			</config_explosion>
+		</ProjectileComponent>
+		
+		<AudioComponent
+			file="data/audio/Desktop/projectiles.bank"
+			event_root="player_projectiles/rocket">
+		</AudioComponent>
+	</Base>
+
+	<LuaComponent
+		script_source_file="mods/purgatory/files/scripts/projectiles/rocket_player.lua"
+		execute_every_n_frame="1">
+	</LuaComponent>
+
+	<VariableStorageComponent
+		name="base_speed"
+		value_float="69.0"
+		>
+	</VariableStorageComponent>
+
+</Entity>
+

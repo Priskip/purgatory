@@ -1,0 +1,113 @@
+<Entity tags="wand_of_healing,enemy,mortal,hittable,homing_target,teleportable_NOT,glue_NOT,touchmagic_immunity,polymorphable_NOT,necrobot_NOT" >
+
+	<Base file="data/entities/base_enemy_flying.xml" >
+		<AnimalAIComponent 
+			_enabled="1" 
+			preferred_job="JobDefault"
+			attack_ranged_min_distance="0"
+			attack_ranged_max_distance="50"
+			creature_detection_range_x="300"
+			creature_detection_range_y="300"
+			attack_ranged_action_frame="3"
+			attack_melee_action_frame="3"
+			sense_creatures="1"
+			attack_ranged_enabled="0"
+			attack_melee_enabled="0"
+			can_fly="1"  
+			attack_ranged_entity_file=""
+			attack_ranged_frames_between="10" 
+			eye_offset_y="-5"
+			attack_ranged_offset_y="-5"
+			>
+		</AnimalAIComponent>
+		
+		<DamageModelComponent 
+            hp="40"
+			max_hp="40"
+            ragdoll_material="crystal"
+			ragdoll_filenames_file="" 
+			blood_material="plasma_fading"
+			fire_probability_of_ignition="0" 
+			air_needed="0" 
+			>
+			<damage_multipliers
+				melee="1.0"
+				projectile="1.0"
+				explosion="1.0"
+				electricity="0.1"
+				fire="0" >
+			</damage_multipliers>
+		</DamageModelComponent>
+
+		<SpriteComponent 
+			image_file="mods/purgatory/files/entities/animals/boss_pit/wand_of_healing/sprite.xml" 
+			offset_x="14.25"
+			offset_y="4.4">
+		</SpriteComponent>
+
+		<!--
+			Gonna try some custom path finding via lua components
+		<PathFindingGridMarkerComponent
+			marker_work_flag="16" >
+		</PathFindingGridMarkerComponent>
+		
+		<PathFindingComponent
+		    distance_to_reach_node_x="20"
+		    distance_to_reach_node_y="20"
+			frames_to_get_stuck="120"
+			can_jump="0" 
+			can_fly="1"
+			jump_speed="0"
+			>
+		</PathFindingComponent>
+
+		-->
+
+		<GenomeDataComponent 
+			herd_id="ghost"
+			food_chain_rank="7"
+			is_predator="1" >
+		</GenomeDataComponent>
+		
+		<CharacterPlatformingComponent 
+			jump_velocity_y="0" 
+			run_velocity="24"  >
+		</CharacterPlatformingComponent>
+		
+		<HitboxComponent 
+			_enabled="1" 
+			aabb_min_x="-15" 
+			aabb_max_x="15" 
+			aabb_min_y="-3.6" 
+			aabb_max_y="6.8" 
+			>
+		</HitboxComponent>
+	
+		<CameraBoundComponent
+			_enabled="0"
+			max_count="30"
+			distance="160000">
+		</CameraBoundComponent>
+		
+		<CharacterDataComponent 
+			collision_aabb_min_x="-3"
+			collision_aabb_max_x="3"  
+			collision_aabb_min_y="-3"
+			collision_aabb_max_y="3"
+			>
+		</CharacterDataComponent>
+	</Base>
+
+	<LuaComponent 
+		script_source_file="mods/purgatory/files/entities/animals/boss_pit/wand_of_healing/move.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+
+	<LuaComponent 
+		script_source_file="mods/purgatory/files/entities/animals/boss_pit/wand_of_healing/shoot.lua"
+		execute_every_n_frame="30"
+		>
+	</LuaComponent>
+    
+</Entity>

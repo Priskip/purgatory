@@ -1,0 +1,17 @@
+<Entity tags="foul_line">
+    <CollisionTriggerComponent
+	  _enabled="1"
+      width="147"
+      height="281"
+      radius="281"
+      destroy_this_entity_when_triggered="0"
+      required_tag="player_unit" >
+  	</CollisionTriggerComponent>
+
+    <!-- this kills goals -->
+    <LuaComponent
+	  _enabled="1"
+      script_collision_trigger_hit="mods/purgatory/files/scripts/entities/skully_game/foul_line.lua"
+      execute_every_n_frame="-1" >
+    </LuaComponent>
+</Entity>

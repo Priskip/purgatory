@@ -1,0 +1,329 @@
+Beta 0.4.0
+ - Future Releases will be made on GitHub as I want to get away from this version number system
+ - Skully Kick Minigame!
+ - Fixed a bug where perks in the laboratory (the HM before Kolmi) were not being properly positioned to new perk positioning.
+ - Ukko in a box ;)
+ - Changes to the biome map
+    * Fixed some stuff in the clouds
+    * Tweaked the location of something in hell
+    * Added the Mines back
+    * Gourd room totally exists
+    * Karl renovated his house to feel more at home in its surroundings
+ - Blacklisted Omega Nuke in Random Spell and Random Projectile Spell
+ - Added Recoil Dampener to the tower spell shop
+ - Wands in Overgrown Caverns have been reduced in both quality and quanity
+ - Wands in Frozen Vault have been increased in both quality and quanity
+ - Wands in Powerplant have been increased in quality
+ - Shadow Wizard King and Shadow Mecha Kolmi
+ - Suur Ukko has been exploring
+ - Removed Peace with Gods perk form starting perk pools
+ - Moved Extra Shop Item perk from 2nd group to 3rd group of starting perks
+ - Faster Wands gives more of a reduction for cast delay and recharge times over one second
+ - Faster Wands bonus to mana recharge speed is now proportional to the amount of cast delay and recharge time it reduces
+ - High Mana Low Capacity is nows give more mana based on how much capacity it removes
+ - (Hopefully) Fixed a bug in base nightmare mode where enemies with perks did not have their health scale with the biomes
+ - Enemies with "Extra Health" perk now gain 5 times hp instead of 1.5 times
+ - New Runestone: Death Crosses
+ - Overstock Scroll can be found and returned to the holy mountain for a reward
+ - New area in the holy mountain
+ - Made more spells work with bombs materialized (with more to come in future patches)
+ - New alchemy recipes
+    * Unstable Poly + Slime = Poly
+    * Chaotic Poly + Whiskey = Unstable Poly
+    * Ambrosia + Silver = Invis
+    * Rotten Meat + Fungal Soil = Green Fungus
+ - New Spells!
+    - Projectiles
+        -Freezing Vapour Mist
+        -Pollen with expiration trigger
+        -Spark bolt with expiration trigger
+        -Spark bolt with timer and expiration trigger 
+        -Spark bolt with double timer
+        -Spark bolt with double expiration trigger
+        -Summon Sausage
+    -Modifiers
+        -White Glimmer
+        -Black Glimmer
+    - Static Projectiles
+        - Polymorphine Cloud
+        - Circle of Unstable Metamorphosis (Renames previous "Circle of Unstable Metamorphosis" to "Circle of chaotic metamorphosis")
+ - Balance Changes to Spells
+    Spark bolt: mana 5 --> 10
+    Spark bolt with trigger: mana 10 --> 20
+    Spark bolt with double trigger: mana 15 --> 25, double trigger now creates two separate cast states instead of a single cast state with two draw
+    Spark bolt with trigger and timer: mana 10 --> 20
+    Spark bolt with trigger and expiration trigger: mana 10 --> 20
+    Magic arrow with trigger: mana 35 --> 25
+    Magic arrow with timer: mana 35 --> 20
+    Magic bolt: mana 35 --> 25
+    Magic bolt with trigger: mana 40 --> 30
+    Magic bolt with timer: mana 40 --> 25
+    Energy orb with trigger: mana 50 --> 35
+    Energy orb with timer: mana 50 --> 35
+    Spitter bolt with timer: mana 10 --> 5
+    Large spitter bolt: mana 25 --> 15
+    Large spitter bolt with timer: mana 30 --> 15
+    Giant spitter bolt: mana 40 --> 20, damage 15 --> 20
+    Giant spitter bolt with timer: mana 45 --> 20, damage 15 --> 20
+    Bubble spark with trigger: mana 16 --> 10
+    Energy sphere: mana 20 --> 15
+    Energy sphere with timer: mana 50 --> 15
+    Bouncing burst: mana 5 --> 1
+    Arrow: mana 15 --> 5
+    Glowing Lance: mana 30 --> 20
+    Concentrated light: mana 30 --> 25
+    Intense concentrated light: mana 110 --> 50
+    Luminous drill with timer: mana 30 --> 10
+    Chain bolt: mana 80 --> 20
+    Fireball: mana 70 --> 30
+    Flamethrower: mana 20 --> 5, unlimited by default w/o perk, cast delay 0 --> -15, recharge time 0 --> -6
+    Iceball: mana 90 --> 35
+    Path of the dark flame: mana 90 --> 50
+    Summon missile, mana 60 --> 60, recharge 30 --> 15, smarter custom homing
+    Freezing gaze: mana 45 --> 30
+    Pinpoint of light: mana 65 --> 45, spread +6 --> -6
+    Glue ball: mana 25 --> 5
+    Expanding sphere: mana 70 --> 45, pierces by default, changed damage algorithm to multiply base damage and actually work with damage modifiers
+    Death cross: mana 80 --> 30
+    Giga death cross: mana 150 --> 80
+    Glittering field: mana 90 --> 50
+    Toxic mist: mana 40 --> 25
+    Mist of spirits: mana 40 --> 15
+    Slime mist: mana 40 --> 30
+    Blood mist: mana 40 --> 30
+    Fireworks: mana 70 --> 35
+    Reduce recharge time: mana 12 --> 8
+    Increase lifetime: mana 40 --> 20
+    Phasing Arc: mana 2 --> 10
+    Drilling shot: mana 160 --> 30, cast delay +50 --> +15, recharge time +40 --> +6
+    Damage field: mana 30 --> 15
+    Charm on toxic sludge: mana 70 --> 5
+    Giant explosion on slimy enemies: mana 200 --> 40
+    Giant explosion on drunk enemies: mana 200 --> 40
+    Larpa bounce: mana 80 --> 50
+    Fireball thrower: mana 110 --> 20
+    Lightning thrower: mana 110 --> 20
+    Tentacler: mana 110 --> 20
+    Plasma beam thrower: mana 110 --> 20
+    Two way fireball thrower: mana 130 --> 25
+    Sawblade orbit: mana 70 --> 40
+    Orbit larpa: mana 90 --> 75
+    Chain spell: mana 70 --> 35
+    Chaos larpa: mana 100 --> 60
+    Downwards larpa: mana 120 --> 70
+    Upwards larpa: mana 120 --> 70
+    Copy trail: mana 150 --> 75
+    Larpa explosion: mana 90 --> 50
+
+Beta 0.3.4
+ - Fixed a bug where you piss lava instead of urine
+ - Fixed a bug where Hamis could turn into a taikasauva
+ - Hiisi Base anvil will now always returns a no shuffle wand when reforging broken wands
+ - The more broken wands you reforge, the better they will become
+
+Beta 0.3.3
+ - Fixed a bug with powder sack and potion spells turning into summon taikasauva under certain conditions (yeah this game is weird)
+ - Fixed a bug with Dark Beam not accepting Add Trigger/Timer/Expiration Trigger spells
+ - Material Urine spells applies jarate to spells like Material Water/Oil/Blood applies their stain effects to spells
+ - Added the new material spells to the Ylialkemisti's drop pool
+ - Added Golden Vacuum Field, Gold Multiplier, and Omega Propane to Tower's spell shop pool
+
+Beta 0.3.2
+ - Fixed a bug where my custom AP and LC recipes were not being initialized upon continuing a run
+ - Reduced amount of Hastium required for Kiirikivi from 5000 to 3000
+ - Renamed the large potions Ylialkemisti throws to "Comically Large Potions"
+
+Beta 0.3.1
+ - Tweaked the Alchemist Fight (Made him harder)
+ - Tweaked the Sauvojen Fight (Made him much harder)
+ - Fixed Haste being in default perk pool
+ - Friendly Hamis are no longer homing targets
+ - Added the sun attracting note back to the magic temple (My apologies to anyone who tried to do omega nuke quest without it)
+ - Fixed the Kantele and Ocarina note portals not taking you to the mountain
+ - Fixed a bug causing boss music to play for Shadow Alchemist
+ - Updated some sprites and stuff
+ - New Spell "Urine"
+ - New Spell "Random Glimmer" (does what rainbow glimmer used to do)
+ - Changed Rainbow Glimmer to be more rainbowy
+ - Cauldrons in alch arena don't spawn with stuff outside them now
+ - Paint spells now work on laser beams
+ - Enemies learnt how to use homing spells
+ - Vampirism now has no HP penalty
+ - New Perk "Heart Eater" added to starter perk pool in the middle section
+ - New Perk "Cryo Blood" 
+ - Fixed a bug with Heretic Moon's pit bosses
+ - Fixed a bug with ice dragon freezing through freeze immunity
+ - Added a hint to get hints at Avarice
+ - Made Omega Nuke's regular explosion more damaging to terrain
+ - Tweeked Giga Propane
+ - Tweeked Omega Propane 
+
+Beta 0.3.0
+ - Hopefully fixed some biome disappearing bugs - but mod restart is broken... 
+    I'd recomend NOT USING MOD RESTART.
+    Instead, close the game with SAVE AND QUIT and reload from main menu
+ - Fixed a bug from 0.2.2 where Tower enemies weren't getting buffed
+ - Extra Lives will eventually realize when they've been spent
+ - Updated Spacial Awareness Tier 3 to reflect a change in location of a secret
+ - Changed the starting potion pools a bit
+ - Fixed No Edit Start tree achievement getting assigned when not doing a no edit run
+ - Added a setting to reset Purgatory Tree Achievements
+ - Healthium Recipe (Pheremone + Blood + Any Polymorph)
+ - Enabling No Wand Editting Start in Purgatory's Options now removes Edit Wands Everywhere from the perk pool
+ - Removed Personal Plasma Beam Perk (replaced it with a passive spell)
+ - New Wand and Spell Generation system for the starting wands
+    Wands found in the world are not affected
+    You should be guarenteed one non-shuffle wand at the start (if this doesn't happen, yell at me)
+ - New Alchemist Fight and arena
+ - Moved a gold pile somewhere else
+ - Perks in Holy Mountains organize themselves better
+ - Max amount of Extra Perk perks the player can take increased from 5 to 11
+ - All Death trigger spells now have death trigger icons
+ - Toxic Immunity removed from starting perk immunity pool
+ - Added Freeze Immunity
+ - Freeze Field grants Freeze Immunity in addition to Fire Immunity
+ - Taking one form of an immunity should remove the other from the perk pool
+ - Taking Glass Cannon should remove Extra HP and Stronger Hearts from the perk pool
+ - Karl is a thing that exists
+ - All "Spells to X" spells become unlimited with Unlimited Spells perk
+ - Extra Slots perk now always gives 3 extra slots
+ - Added Shadow Dragon (Once I change a boss, (except Kolmi), I will make their vanilla counterpart into a shadow boss)
+ - Multiple events can happen at Avarice, unless the player messes it up
+ - Mastarian now drops the crystal key instead of Alchemist (he'll get his rework next update)
+ - Combined Faster Lev and Faster Movement into Haste
+ - New Sauvojen Tuntija fight
+ - No More Knockback gains damage flash removal
+ - New Spells!
+    * Projectiles
+        Giga Propane Tank
+        Omega Propane Tank
+        Dark Beam
+        Omega Nuke
+    * Static Projectiles
+        Golden Vacuum Field
+    * Modifiers
+        Chaotic Trail
+        Increase Gold
+    * Multicasts
+        Formation - cross
+    * Materials
+        Lava
+        Explosive Gunpowder
+        Dirt
+    * Others
+        Requirement - Mana
+    * Utilities
+        Summon Potion Flask
+        Summon Powder Sack
+        Summon Hamis
+        Spells to Propane
+        Spells to Ducks
+    * Passives
+        Personal Plasma Beam
+    
+Beta 0.2.2
+Brought enemies in Tower to nightmare hp and attack speed (between nightmare Art and Hell difficulty)
+Glass Cannon hp floor buffed (50 --> 100)
+The altar now knows the difference between a normal chest and a great chest
+
+Beta 0.2.1
+Fixed a weird bug where restarting near cursed rock in the bottom of the world summons the void
+Fixed Low and High Gravity not being in the default perk pool
+Last Dragon drops a full hp on death 
+
+Beta 0.2.0
+Upgraded Dragon Fight
+    3x the fun!
+Kolmi's HP starts at 11 orbs and increases with orbs/ng+ as usual
+    This can result in a max hp "75 orb" Kolmi of 2,325,566,045,260,890,000,000,000 hp
+    Kolmi's abilities are unaffected by the hp increase (aka 0 orb Kolmi has the health of 11 orb Kolmi, but no shield or anything)
+Improved randomness of starting wands
+Changes to starting immunity perks spawn
+    The first choice is always an immunity with a side effect (ie exploding corpses)
+    The second choice is always an immunity as is (like explosion immunity)
+    The two immunities perks should not offer the same immunity
+Changes to LC and AP
+    Changed vanilla LC and AP so that they evaporate quickly to make way for modded version of them.
+    Added a modded version of LC and AP.
+    Modded LC and AP are both made from 3 random materials that can be found in potions and flasks around the world.
+    Modded LC and AP are made from 1 "regular" potion material, 1 "magical" potion material, and 1 pouch material.
+    Modded LC and AP will quickly convert any of their base ingrediants into more AP/LC
+
+Beta 0.1.1
+Fixed an attack speed bug
+Fixed a bug preventing tier 10 wands in Heaven
+Fixed a bug with World Eater preventing you from casting other spells in the same spell block as it
+Adjusted stats on World Eater
+
+Beta 0.1.0
+Strophox made me some really nice icons for Spatial Awareness (Many Thanks!)
+Player starts with 3 sparks bolts and 1 bomb spell in their inventory in case wand RNG is a bitch
+A new pillar has grown on the tree
+Sun Quest Hints are back (in different spots of course)
+Spell for sale in Tower (with custom pool of spells it draws from)
+Potion Pool revamped:
+    - Alchemic Precursor
+    + Poison
+    + Glue
+    + Ominous Liquic
+    + Urine
+    + Worm Blood
+Updated item spawn list (There are more runestones than Runestone of Edges)
+Tier 10 wands should now be found in Heaven instead of Hell
+
+Alpha 0.0.4
+Improved randomness of the starting wands
+Fixed a typo in that resulted in the Snowy Eye teleporting you to Overgrown Caverns
+Fixed a bug with the green starting wand that could cause it to become a dud
+Starting perks float a bit more
+New Perk: Roll Again (Make Sac Great Chest event later)
+Made Power Plant bigger
+Avarice Diamond is back (and in parallels)
+Made Leviathan only shift water once
+Made Leviathan spawn a platform on death to catch his drops
+Better icon for game mode menu (Thank you Strophox!)
+Fixed a bug causing you to take insane amounts of damage by reloading a save
+Healthium no longer causes stains
+Fixed a bug where mod restarting would revert the biome generation to normal mode
+Spatial Awareness can count better than Priskip
+Spatial Awareness now makes you spatially aware
+Spatial Awareness comes in 4 tiers now (Kill Mecha Kolmi multiple times for higher tiers)
+
+Alpha 0.0.3
+New Spells are in good spots in Progress list
+Buffed Matter Eater (20 shots, 50 Mana, Becomes unlimited with Unlimited Spells perk)
+Added High and Low Gravity back into the game
+Granted Melee Immunity to Contact Damage - making Melee Immunity have an alternate perk like the other four immunities
+New logic for starting perks. There are 3 groups of perks and the player gets to choose 1 from each group. First group is immunities, 2nd is "good" perks, 3rd is "meh" perks.
+You start with 4 starting wands of various tiers
+You start with 2 potions - one of "normal" materials and one of "magical" materials
+Lake Island is back... but only in center world (might be extra ducks)
+Pit Boss has renovated his home
+
+Alpha 0.0.2
+Potion Pool revamped {
+    Potions that can now be found:
+    Ambrosia
+    Invisibily
+    Rainbow
+    Healthium
+    Alchemic Precursor
+}
+Ukkoskivi and Kiuskivi are no longer the only elemental stones found in the wild
+Leviathan's Portal Room is working now
+Hiisi Base Anvil now exists in this world and the next one and the next one and the next one...
+Hiis Base Hourglass Room teleporter works
+Snowy Depths Eye Room teleporter works
+Coal Pits Meditation Cube teleporter works
+
+Alpha 0.0.11
+Fixed an issue with terrain gen drawing from regular nightmare's map
+
+Alpha 0.0.1
+All mini bosses spawn in parallel worlds
+Gate Boss is mirrored
+Tower Wands Buffed
+New Spell: World Eater (Exclusive find in Tower)
+Tower layers start at coal pits
+Tower portals will keep you in parallel worlds
+Player starts with Edit Wands Everywhere

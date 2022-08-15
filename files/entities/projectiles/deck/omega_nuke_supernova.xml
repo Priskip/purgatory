@@ -1,0 +1,14 @@
+<Entity tags="projectile_player" >
+	<LuaComponent
+		script_source_file="mods/purgatory/files/scripts/projectiles/omega_nuke_supernova.lua"
+		execute_every_n_frame="-1"
+		execute_on_added="1"
+		>
+	</LuaComponent>
+	
+	<LifetimeComponent
+		lifetime="2"
+		>
+	</LifetimeComponent>
+	
+</Entity>

@@ -1,0 +1,16 @@
+<Entity tags="test_target,homing_target">
+
+    <SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="mods/purgatory/notes/test_sprite.png" 
+		next_rect_animation="" 
+		offset_x="5" 
+		offset_y="5" 
+		rect_animation="spawn"
+		z_index="1.1"
+		never_ragdollify_on_death="1"
+		>
+	</SpriteComponent>
+
+</Entity>

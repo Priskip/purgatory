@@ -1,0 +1,43 @@
+<Entity tags="teleportable_NOT,temple_alchemy_station,temple_alchemy_bottle_stand">
+    <UIInfoComponent name="$bottle_filler"></UIInfoComponent>
+
+    <InteractableComponent
+        radius="14"
+        ui_text="$bottle_filler_interact_placing"
+        ></InteractableComponent>
+
+    <LuaComponent
+        script_interacting="mods/purgatory/files/scripts/buildings/temple_alchemy_station/bottle_stand_interact.lua"
+        execute_every_n_frame="-1"
+        ></LuaComponent>
+
+    <CollisionTriggerComponent
+        _enabled="1"
+        width="28"
+        height="28"
+        radius="14"
+        destroy_this_entity_when_triggered="0"
+        required_tag="player_unit"
+        ></CollisionTriggerComponent>
+
+    <LuaComponent
+        _enabled="1"
+        script_collision_trigger_hit="mods/purgatory/files/scripts/buildings/temple_alchemy_station/bottle_stand_collision_trigger.lua"
+        execute_every_n_frame="-1"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+        name="mode"
+        value_string="place"
+        ></VariableStorageComponent>
+
+    <LightComponent
+        _tags="enabled_in_world"
+        r="255"
+        g="255"
+        b="255"
+        radius="64"
+        fade_out_time="0.75"
+        ></LightComponent>
+
+</Entity>
