@@ -48,6 +48,7 @@ Zatherz' XML parser library: https://github.com/zatherz/luanxml
 Change Log
 
 Next update
+ - This mod is now on Github! Thank you for downloading and reading this. ^-^
  - Updated omega nuke tree achievement icon
 
 Beta 0.4.0
