@@ -18,7 +18,7 @@ Strophox    - "World Eater" and "Spark Bolt with Trigger and Expiration Trigger"
             -  Spatial Awareness Art
             -  Alchemist Arena Art
 
-Letaali     - All of the Finnish things that I don't understand (that covers a lot of ground...)
+Letaali     - All of the Finnish things that I don't understand
 
 Twitch Chat - For the ocasional suggestions that are actually good
 
