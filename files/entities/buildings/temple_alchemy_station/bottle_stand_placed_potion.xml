@@ -19,12 +19,11 @@
 
   <PotionComponent></PotionComponent>
 
-  <!--
   <LuaComponent
-    _enabled="1"
+    _enabled="0"
     script_source_file="mods/purgatory/files/scripts/buildings/temple_alchemy_station/debug_display.lua"
     execute_every_n_frame="1"
     ></LuaComponent>
-  -->
+  
 
 </Entity>

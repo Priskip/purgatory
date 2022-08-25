@@ -12,17 +12,16 @@ GuiStartFrame(gui)
 
 local ent_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform(ent_id)
-local players = EntityGetInRadiusWithTag(x, y, 20, "player_unit")
 
-GuiText(gui, 40, 40, "#players: " .. tostring(#players))
 
-local output = "player ids: "
-if players ~= nil then
-    for i, v in ipairs(players) do
-        output = output .. "#" .. tostring(i) .. "-id:" .. tostring(v) .. " "
-    end
-end
+v = GuiSlider(gui, new_id(), 10, 70, "", v, 0, 100, 0, 1, " ", 100)
+v = math.floor(v)
+GuiText(gui, 10, 90, tostring(v))
 
-GuiText(gui, 40, 50, output)
 
-GuiText(gui, 40, 60, tostring(type(players)))
+-- v is a value between 0 and 100
+local particle_emitter_comp = EntityGetFirstComponentIncludingDisabled( ent_id, "ParticleEmitterComponent")
+
+ComponentSetValue2(particle_emitter_comp, "y_pos_offset_max", -v)
+ComponentSetValue2(particle_emitter_comp, "count_min", v )
+ComponentSetValue2(particle_emitter_comp, "count_max", v)

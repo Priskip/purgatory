@@ -2,8 +2,12 @@
 
 	<MaterialSuckerComponent
 		_enabled="0"
-		barrel_size="0"
-		num_cells_sucked_per_frame="5"
+		barrel_size="2000"
+		num_cells_sucked_per_frame="10"
+		randomized_position.min_x="-4"
+		randomized_position.max_x="4"
+		randomized_position.min_y="-2"
+		randomized_position.max_y="7"
 		></MaterialSuckerComponent>
 
 	<MaterialInventoryComponent

@@ -281,20 +281,6 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
 
             EntitySetTransform(player_id, -900, 5465)
         end
-
-        if GuiImageButton(gui, new_id(), 250, 0, "Test Pixel Scene", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            local player_id = getPlayerEntity()
-            local x, y = EntityGetTransform(player_id)
-
-            LoadPixelScene(
-                "mods/purgatory/files/biome_impl/test/test_material.png",
-                "mods/purgatory/files/biome_impl/test/test_visual.png",
-                x,
-                y,
-                "mods/purgatory/files/biome_impl/test/test_background.png",
-                true
-            )
-        end
     end
 end
 

@@ -32,7 +32,7 @@ if bottle_stand_placed_potion.id ~= 0 then
 
     --Set barrel size of cauldorn sucker to amount of empty space inside placed bottle and enable sucker
     cauldron_sucker.mat_suck_comp = EntityGetFirstComponentIncludingDisabled(cauldron_sucker.id, "MaterialSuckerComponent")
-    ComponentSetValue2(cauldron_sucker.mat_suck_comp, "barrel_size", max_bottle_capacity - bottle_stand_placed_potion.total_volume)
+    --ComponentSetValue2(cauldron_sucker.mat_suck_comp, "barrel_size", max_bottle_capacity - bottle_stand_placed_potion.total_volume) Disabled because with the changes to the drain this is no longer needed
     EntitySetComponentIsEnabled(cauldron_sucker.id, cauldron_sucker.mat_suck_comp, true)
 
     --Count Materials from cauldron sucker's inventory and add them to the queue to push

@@ -1,7 +1,7 @@
 <Entity>
 
     <InteractableComponent
-        radius="6"
+        radius="4"
         ui_text="$bottle_filler_interact_placing"
         ></InteractableComponent>
 
