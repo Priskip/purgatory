@@ -2,6 +2,9 @@
     "folders": [
         {
             "path": "..\\.."
+        },
+        {
+            "path": "..\\..\\..\\..\\..\\..\\..\\..\\..\\Users\\aidan\\AppData\\LocalLow\\Nolla_Games_Noita\\data"
         }
     ]
 }
