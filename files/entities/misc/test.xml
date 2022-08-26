@@ -15,6 +15,8 @@
         gravity.y="0.0"
         lifetime_min="1.25"
         lifetime_max="1.25"
+        x_pos_offset_min="-2"
+        x_pos_offset_max="2"
         count_min="1"
         count_max="1"
         render_on_grid="0"
@@ -29,6 +31,7 @@
         emission_interval_max_frames="0"
         emit_cosmetic_particles="1"
         is_emitting="1"
+        collide_with_grid="0"
         ></ParticleEmitterComponent>
 
 </Entity>

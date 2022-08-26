@@ -1,0 +1,19 @@
+<Sprite filename="mods/purgatory/files/particles/image_emitters/test4.png" >
+	
+    <!-- handgun -->
+    <RectAnimation 
+      name="default" 
+      pos_x="1" 
+      pos_y="1" 
+      offset_x="0" 
+      offset_y="0" 
+      frame_width="100" 
+      frame_height="100" 
+      has_offset="1"
+      frame_count="1" 
+      frame_wait="0.2" 
+      frames_per_row="1" 
+      loop="0"  >
+    </RectAnimation>
+    
+  </Sprite>

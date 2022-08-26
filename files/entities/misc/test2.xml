@@ -1,0 +1,7 @@
+<Entity>
+
+    <SpriteParticleEmitterComponent 
+        sprite_file="mods/purgatory/files/entities/misc/test2_sprite.xml"
+        ></SpriteParticleEmitterComponent>
+
+</Entity>

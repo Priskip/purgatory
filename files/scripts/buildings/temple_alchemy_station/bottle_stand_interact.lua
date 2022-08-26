@@ -44,6 +44,9 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
                 --Summon a new cauldron sucker
                 EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/cauldron_sucker.xml", x + 16, y - 40)
             end
+
+            --Summon fill gauge ent
+            EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/fill_gauge.xml", x - 18, y + 4)
         else
             --GamePrint("Please be holding a potion bottle.")
         end
@@ -125,6 +128,10 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             local interact_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "InteractableComponent")
             ComponentSetValue2(interact_comp, "ui_text", "$bottle_filler_interact_placing")
             variable_storage_set_value(entity_id, "STRING", "mode", "place")
+
+            --Kill Fill Gauge Ent
+            local fill_gauge_ent = EntityGetClosestWithTag(x, y, "temple_alchemy_fill_gauge")
+            EntityKill(fill_gauge_ent)
         else
             --GamePrint("Please make an empty spot in your inventory.")
         end

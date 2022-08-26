@@ -108,7 +108,8 @@ if bottle_stand_placed_potion.id ~= 0 then
     end
 else
     --Summon new drain ent
-    summon_new_drain_ent(drain.x, drain.y, material_to_emit, amount_of_material)
+    --summon_new_drain_ent(drain.x, drain.y, material_to_emit, amount_of_material)
+    --Moving this to the cauldron sucker so as long as it exists it attempts to push instead of having this potentially double up on stuff
 end
 
 --Kill Drain Ent

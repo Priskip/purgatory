@@ -80,7 +80,7 @@ if bottle_stand_placed_potion.id ~= 0 then
                 execute_on_added = false,
                 script_source_file = "mods/purgatory/files/scripts/buildings/temple_alchemy_station/cauldron_sucker_push_to_drain.lua.",
                 execute_every_n_frame = 60,
-                remove_after_executed = true
+                remove_after_executed = false
             }
         )
         ComponentAddTag(push_comp, "push_to_drain_script")

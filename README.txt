@@ -50,6 +50,9 @@ Change Log
 Next update
  - This mod is now on Github! Thank you for downloading and reading this. ^-^
  - Updated omega nuke tree achievement icon
+ - Fixed a bug where you could duplicate potions in the alchemy room
+ - Fixed a bug where you could bottle a potion above 100%
+ - Fixed a bug where the drain particle effect could spawn half a pixel out of position
 
 Beta 0.4.0
  - Future Releases will be made on GitHub as I want to get away from this version number system
