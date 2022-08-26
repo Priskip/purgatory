@@ -1,2 +1,0 @@
-These files in the notes folder do not do anything in the mod.
-They are simply notes and/or work in progress files.
