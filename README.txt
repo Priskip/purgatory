@@ -47,12 +47,13 @@ Zatherz' XML parser library: https://github.com/zatherz/luanxml
 
 Change Log
 
-Next update
+Beta Build 25 Aug 2022
  - This mod is now on Github! Thank you for downloading and reading this. ^-^
  - Updated omega nuke tree achievement icon
  - Fixed a bug where you could duplicate potions in the alchemy room
  - Fixed a bug where you could bottle a potion above 100%
  - Fixed a bug where the drain particle effect could spawn half a pixel out of position
+ - Added a fill gauge to the alchemy lab
 
 Beta 0.4.0
  - Future Releases will be made on GitHub as I want to get away from this version number system
