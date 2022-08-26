@@ -2,7 +2,7 @@
 	name="Purgatory"
 	description="Damnation be apon thee."
 	ui_newgame_name="Purgatory"
-	ui_newgame_description="Damnation be apon thee. Beta v0.4.0"
+	ui_newgame_description="Damnation be apon thee. Beta Build 25 Aug 2022"
 	ui_newgame_gfx_banner_bg="mods/purgatory/files/menu_banners/menu_banner_background.png"
 	ui_newgame_gfx_banner_fg="mods/purgatory/files/menu_banners/menu_banner_overlay.png"
 	request_no_api_restrictions="0" 

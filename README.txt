@@ -11,7 +11,11 @@ Main Features include:
 -- New spells, perks, and items.
 -- New quests and secrets to find. 
 
-
+Installing Instructions:
+-- Download the zip file
+-- Extract it to "C:\Program Files (x86)\Steam\steamapps\common\Noita\mods"
+-- Rename folder to just "purgatory"
+-- If init.lua is in the position "C:\Program Files (x86)\Steam\steamapps\common\Noita\mods\purgatory\init.lua", then you are good to go!
 
 Thank you's for everyone who helped with this mod.
 Strophox    - "World Eater" and "Spark Bolt with Trigger and Expiration Trigger" sprites
@@ -39,11 +43,8 @@ Streamers who played during mod's beta
     - Wcasey
     - Liberatetheforks
 
-
-
 Libraries Used:
 Zatherz' XML parser library: https://github.com/zatherz/luanxml
-
 
 Change Log
 
