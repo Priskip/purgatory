@@ -11,8 +11,8 @@ if entity_id ~= player_id then
 
     local found_greed_multiplier_variable_storage_comp = false
 
-    local greed_spell_multiplier_amount = 1.2 --how much gold value is increased per hit of this on an enemy
-    local greed_spell_mutliplier_maximum = 2048 --how big can the multiplier go
+    local greed_spell_multiplier_amount = 2 --how much gold value is increased per hit of this on an enemy
+    local greed_spell_mutliplier_maximum = 16 --how big can the multiplier go
 
     local var_storage_comp = EntityGetComponent(entity_id, "VariableStorageComponent")
     if (var_storage_comp ~= nil) then

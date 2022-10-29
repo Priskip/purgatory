@@ -30,6 +30,7 @@ The Noita Modders of the Noita Discord for their help
     - Horscht
     - Evaisa
     - Copi
+    - Keith
     - and anyone else I might have missed
 
 Streamers who played during mod's beta
@@ -42,11 +43,28 @@ Streamers who played during mod's beta
     - JShiba
     - Wcasey
     - Liberatetheforks
+    - Nymphspyre
 
 Libraries Used:
 Zatherz' XML parser library: https://github.com/zatherz/luanxml
 
 Change Log
+
+Beta Build 28 Oct 2022
+ - Mecha Kolmi Revamp 
+ - Added Runestone of Polymorph
+ - Made it so that runestones can now spawn pre-activated once again
+ - Nerfed some strong alchemic recipes
+ - Nerfed Increase Gold Spell
+ - Fixed Entity Vacuum Field's related projectile (it's set as liquid vacuum field in the vanilla game)
+ - Made it so that if the player walks near a wand, the wand stops sparkling (will change to custom particle effect if negative feedback is recieved)
+ - Burnt a bridge
+ - Added a custom description to Perk Lottery when it spawns in the starting perk selection to clear up some confusion on how it (doesn't) work
+ - New Spells:
+    - Pollen Ball
+    - Bubble Spark with Expiration Trigger
+    - Blackhole Shot
+- Boss HP Bars on Alchemist, Sauvojen, and Mecha Kolmi (Dragon and Kolmi's hp bars are in the works)
 
 Beta Build 25 Aug 2022
  - This mod is now on Github! Thank you for downloading and reading this. ^-^

@@ -123,7 +123,7 @@
 		<PixelScene pos_x="-33652" pos_y="-150" just_load_an_entity="data/entities/props/music_machines/music_machine_03.xml" />
 
 		<!-- these need to be spawned with a delay for the attachments to work, because the pixel scenes take their time -->
-		<PixelScene pos_x="3608" pos_y="934" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
+		<!--<PixelScene pos_x="3608" pos_y="934" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" /> -->
 		<PixelScene pos_x="-9980" pos_y="-30" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
 
 		<PixelScene pos_x="-6883" pos_y="-170" just_load_an_entity="data/entities/buildings/essence_eater.xml" />
@@ -144,4 +144,3 @@
 
 	</mBufferedPixelScenes>
 </PixelScenes>
-

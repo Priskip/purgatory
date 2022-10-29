@@ -156,8 +156,6 @@ function OnPlayerSpawned(player_entity)
 
         --Give Player Edit Wands Everywhere
         if start_with_edit then
-            --addPerkToPlayer("TELEKINESIS")
-            --addPerkToPlayer("ABILITY_ACTIONS_MATERIALIZED")
             addPerkToPlayer("EDIT_WANDS_EVERYWHERE")
         else
             GameAddFlagRun("purgatory_no_edit_run")
@@ -256,33 +254,15 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
         gui = gui or GuiCreate()
         GuiStartFrame(gui)
 
-        local screen_size_x, screen_size_y = GuiGetScreenDimensions(gui)
-
-        if GuiImageButton(gui, new_id(), 50, 0, "Spawn Platform", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
+        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
             local player_id = getPlayerEntity()
             local x, y = EntityGetTransform(player_id)
 
-            EntitySetTransform(player_id, 742, -670)
-
-        --EntitySetTransform(player_id, -2077, 800) --Skully
-        --EntitySetTransform(player_id, -14114, 5395) --Tower Wands
+            EntityLoad("mods/purgatory/files/entities/boss_bars/boss_bar.xml", x, y - 20)
         end
 
-        if GuiImageButton(gui, new_id(), 150, 0, "HM 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            local player_id = getPlayerEntity()
-            local x, y = EntityGetTransform(player_id)
 
-            EntitySetTransform(player_id, -900, 1890)
-        end
-
-        --[[
-        if GuiImageButton(gui, new_id(), 200, 0, "HM 2", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            local player_id = getPlayerEntity()
-            local x, y = EntityGetTransform(player_id)
-
-            EntitySetTransform(player_id, -900, 5465)
-        end
-        ]]
+        --GlobalsSetValue("HP_BOSS_BAR_TEST", tostring(slider_hp))
     end
 end
 

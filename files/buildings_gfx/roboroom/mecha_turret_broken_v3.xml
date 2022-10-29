@@ -1,0 +1,22 @@
+<Sprite
+    filename="mods/purgatory/files/buildings_gfx/roboroom/mecha_turret_broken_v3.png"
+    offset_x="6.5"
+    offset_y="9.5"
+    default_animation="idle"
+    >
+
+    <!-- animation -->
+
+        <RectAnimation
+        name="idle"
+        pos_x="0"
+        pos_y="0"
+        frame_count="8"
+        frame_width="13"
+        frame_height="19"
+        frame_wait="0.1"
+        frames_per_row="8"
+        loop="1"
+        ></RectAnimation>
+
+</Sprite>

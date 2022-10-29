@@ -422,6 +422,11 @@ function get_r_and_phi(x1, y1, x2, y2)
 
     local phi = -2 * math.atan((dy / r) / (1 - dx / r)) + math.pi
 
+    if dx / r == 1 then
+        phi = 0 --freakin' edge cases man
+    --lim atan(x) x --> inf = pi/2 thus phi = 0
+    end
+
     return r, phi
 end
 
@@ -440,7 +445,7 @@ end
 --Split a string separated by a specific character into a table
 function split_string_on_char_into_table(string, char)
     local list = {}
-    for w in (string .. char):gmatch("([^"..char.."]*)"..char) do
+    for w in (string .. char):gmatch("([^" .. char .. "]*)" .. char) do
         table.insert(list, w)
     end
     return list
@@ -456,4 +461,15 @@ function table_to_char_separated_string(list, char)
         end
     end
     return string
+end
+
+--Applies a polar shift to an entity
+--phi must be between -pi to pi
+function EntityApplyPolarTransform(entity_id, r, phi)
+    local dx = r * math.cos(phi)
+    local dy = r * math.sin(phi)
+
+    local x, y = EntityGetTransform(entity_id)
+
+    EntitySetTransform(entity_id, x + dx, y + dy)
 end

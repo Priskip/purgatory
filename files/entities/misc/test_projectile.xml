@@ -24,7 +24,7 @@
 		explosion_dont_damage_shooter="1"
 		damage="0.8"
 		on_collision_die="0"
-		lifetime="-1"
+		lifetime="5"
 		knockback_force="1.3"
 		></ProjectileComponent>
 
@@ -107,6 +107,7 @@
 	<LuaComponent
 		_enabled="1"
 		execute_on_added="1"
+		remove_after_executed="1"
 		script_source_file="mods/purgatory/files/scripts/projectiles/test_projectile.lua"
 		></LuaComponent>
 

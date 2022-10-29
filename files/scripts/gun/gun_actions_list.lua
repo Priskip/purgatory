@@ -33,6 +33,7 @@ gun_actions_order = {
     "SPITTER_TIER_3_TIMER",
     "BUBBLESHOT",
     "BUBBLESHOT_TRIGGER",
+    "BUBBLESHOT_DEATH_TRIGGER", --Modded
     "DISC_BULLET",
     "DISC_BULLET_BIG",
     "DISC_BULLET_BIGGER",
@@ -42,6 +43,7 @@ gun_actions_order = {
     "ARROW",
     "POLLEN",
     "POLLEN_DEATH_TRIGGER", --Modded
+    "POLLEN_BALL", --Modded
     "LANCE",
     "ROCKET",
     "ROCKET_TIER_2",
@@ -235,6 +237,7 @@ gun_actions_order = {
     "DAMAGE_FOREVER",
     "CRITICAL_HIT",
     "AREA_DAMAGE",
+    "BLACKHOLE_SHOT", --Modded
     "SPELLS_TO_POWER",
     "ESSENCE_TO_POWER",
     "HEAVY_SHOT",

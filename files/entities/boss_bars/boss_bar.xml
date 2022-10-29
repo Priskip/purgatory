@@ -1,0 +1,32 @@
+<Entity tags="boss_bar">
+
+    <LuaComponent
+        script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar.lua"
+        execute_every_n_frame="1"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_outline"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/mecha.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_fill"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/test.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_type"
+		value_string="SINGLE"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_name"
+		value_string="$animal_boss_robot"
+		>
+	</VariableStorageComponent>
+
+</Entity>

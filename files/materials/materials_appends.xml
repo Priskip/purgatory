@@ -227,7 +227,7 @@
 		input_cell2="[blood]"
 		input_cell3="[magic_polymorph]"
 		output_cell1="magic_liquid_hp_regeneration"
-		output_cell2="magic_liquid_hp_regeneration"
+		output_cell2="magic_gas_hp_regeneration"
 		output_cell3="magic_liquid_hp_regeneration"
 		blob_radius2="20"
 		></Reaction>
@@ -237,7 +237,7 @@
 		input_cell1="magic_liquid_random_polymorph"
 		input_cell2="alcohol"
 		output_cell1="magic_liquid_unstable_polymorph"
-		output_cell2="alcohol"
+		output_cell2="magic_liquid_unstable_polymorph"
 		></Reaction>
 
 	<Reaction
@@ -245,7 +245,7 @@
 		input_cell1="magic_liquid_unstable_polymorph"
 		input_cell2="slime"
 		output_cell1="magic_liquid_polymorph"
-		output_cell2="slime"
+		output_cell2="magic_liquid_polymorph"
 		></Reaction>
 
 	<Reaction

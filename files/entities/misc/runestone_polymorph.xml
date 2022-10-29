@@ -1,0 +1,15 @@
+<Entity>
+    <MagicConvertMaterialComponent
+        kill_when_finished="1"
+        from_material=""
+        from_material_tag="[liquid_common]"
+        steps_per_frame="8"
+        to_material="magic_liquid_polymorph"
+        clean_stains="0"
+        is_circle="1"
+        radius="160"
+        loop="0"
+        ></MagicConvertMaterialComponent>
+
+    <LifetimeComponent lifetime="25"></LifetimeComponent>
+</Entity>

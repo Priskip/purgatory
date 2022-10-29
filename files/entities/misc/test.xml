@@ -1,37 +1,81 @@
 <Entity>
 
   <LuaComponent
-    _enabled="1"
-    script_source_file="mods/purgatory/files/scripts/test.lua"
+    _enabled="0"
     execute_every_n_frame="1"
+    script_source_file="mods/purgatory/files/scripts/test.lua"
     ></LuaComponent>
 
-    <ParticleEmitterComponent
-        emitted_material_name="magic_liquid_polymorph"
-        x_vel_min="0"
-        x_vel_max="0"
-        y_vel_min="0"
-        y_vel_max="0"
-        gravity.y="0.0"
-        lifetime_min="1.25"
-        lifetime_max="1.25"
-        x_pos_offset_min="-2"
-        x_pos_offset_max="2"
-        count_min="1"
-        count_max="1"
-        render_on_grid="0"
-        fade_based_on_lifetime="1"
-        area_circle_radius.min="0"
-        area_circle_radius.max="0"
-        cosmetic_force_create="0"
-        airflow_force="0.0"
-        airflow_time="0.0"
-        airflow_scale="0.0"
-        emission_interval_min_frames="0"
-        emission_interval_max_frames="0"
-        emit_cosmetic_particles="1"
-        is_emitting="1"
-        collide_with_grid="0"
-        ></ParticleEmitterComponent>
+  <LifetimeComponent lifetime="69"></LifetimeComponent>
 
-</Entity>
+  <ParticleEmitterComponent
+    _tags="boss_robot_spell_eater,inner_particles"
+    emitted_material_name="spark_red"
+    gravity.y="0.0"
+    lifetime_min="0.1"
+    lifetime_max="0.5"
+    count_min="4"
+    count_max="5"
+    render_on_grid="1"
+    fade_based_on_lifetime="1"
+    area_circle_radius.max="16"
+    cosmetic_force_create="0"
+    airflow_force="0.5"
+    airflow_time="0.1"
+    airflow_scale="0.5"
+    emission_interval_min_frames="1"
+    emission_interval_max_frames="1"
+    emit_cosmetic_particles="1"
+    is_emitting="1"
+    area_circle_sector_degrees="360"
+    ></ParticleEmitterComponent>
+
+  <ParticleEmitterComponent
+    _tags="boss_robot_spell_eater,outer_wall"
+    emitted_material_name="spark_red"
+    gravity.y="0.0"
+    lifetime_min="0.2"
+    lifetime_max="1"
+    count_min="40"
+    count_max="60"
+    render_on_grid="1"
+    fade_based_on_lifetime="1"
+    area_circle_radius.min="16"
+    area_circle_radius.max="16"
+    cosmetic_force_create="0"
+    airflow_force="2.8"
+    airflow_time="0.03"
+    airflow_scale="0.8"
+    emission_interval_min_frames="0"
+    emission_interval_max_frames="0"
+    emit_cosmetic_particles="1"
+    is_emitting="1"
+    area_circle_sector_degrees="360"
+    ></ParticleEmitterComponent>
+
+</Entity> <!--
+<InheritTransformComponent 
+      _enabled="1" 
+      always_use_immediate_parent_rotation="0" 
+      only_position="1" 
+      parent_hotspot_tag="" 
+      parent_sprite_id="-1" 
+      rotate_based_on_x_scale="0" 
+      use_root_parent="0" >
+
+      <Transform 
+        position.x="0" 
+        position.y="0" 
+        rotation="0" 
+        scale.x="1" 
+        scale.y="1" >
+
+      </Transform>
+
+    </InheritTransformComponent>
+    
+    <LuaComponent
+    execute_every_n_frame="1"
+    script_source_file="mods/purgatory/files/scripts/test.lua"
+    ></LuaComponent>
+-->

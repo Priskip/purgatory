@@ -360,6 +360,9 @@ modify_existing_spell("LARPA_UPWARDS", "mana", 70) --upwards larpa
 modify_existing_spell("LARPA_CHAOS_2", "mana", 75) --copy trail
 modify_existing_spell("LARPA_DEATH", "mana", 50) --larpa explosion
 
+--Bug Fixes in vanilla spells
+modify_existing_spell("VACUUM_ENTITIES", "related_projectiles", {"data/entities/projectiles/deck/vacuum_entities.xml"})
+
 --ADD NEW SPELLS
 spells_to_add = {
 	--[[
@@ -390,6 +393,7 @@ spells_to_add = {
 		end,
 	},
 	
+
 	{
 		id = "TEST_SPELL",
 		name = "$action_test_spell",
@@ -400,12 +404,15 @@ spells_to_add = {
 		spawn_level = "10",
 		spawn_probability = "0",
 		price = 420,
-		mana = 1,
-		action = function()
-			add_projectile("mods/purgatory/files/entities/misc/test_projectile.xml")
-		end
+		mana = 0,
+		action 		= function()
+			add_projectile("mods/purgatory/files/entities/animals/boss_robot/activation_bolt.xml")
+			--c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/test.xml,"
+			draw_actions( 1, true )
+		end,
 	},
 	]]
+	
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
 		name = "$action_light_bullet_death_trigger",
@@ -1219,6 +1226,60 @@ spells_to_add = {
 			add_projectile_trigger_timer("data/entities/projectiles/deck/luminous_drill.xml", 4, 1)
 			c.fire_rate_wait = c.fire_rate_wait - 35
 			current_reload_time = current_reload_time - ACTION_DRAW_RELOAD_TIME_INCREASE - 10 -- this is a hack to get the digger reload time back to 0
+		end
+	},
+	{
+		id = "POLLEN_BALL",
+		name = "$action_pollen_ball",
+		description = "$actiondesc_pollen_ball",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/pollen_ball.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/pollen_ball.xml"},
+		type = ACTION_TYPE_PROJECTILE,
+		spawn_level = "4,5",
+		spawn_probability = "0.2,0.3",
+		price = 150,
+		mana = 50,
+		action = function()
+			add_projectile("mods/purgatory/files/entities/projectiles/deck/pollen_ball.xml")
+		end
+	},
+	{
+		id = "BUBBLESHOT_DEATH_TRIGGER",
+		name = "$action_bubbleshot_death_trigger",
+		description = "$actiondesc_bubbleshot_trigger",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/bubbleshot_death_trigger.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles = {"data/entities/projectiles/deck/bubbleshot.xml"},
+		type = ACTION_TYPE_PROJECTILE,
+		spawn_level = "1,2,3", -- BUBBLESHOT
+		spawn_probability = "0.6,0.6,0.2", -- BUBBLESHOT
+		price = 120,
+		mana = 10,
+		--max_uses = 120,
+		action = function()
+			add_projectile_trigger_death("data/entities/projectiles/deck/bubbleshot.xml", 1)
+			-- damage = 0.1
+			c.fire_rate_wait = c.fire_rate_wait - 5
+			c.dampening = 0.1
+		end
+	},
+	{
+		id = "BLACKHOLE_SHOT",
+		name = "$action_blackhole_shot",
+		description = "$actiondesc_blackhole_shot",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/blackhole_shot.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_extra_entities = {"mods/purgatory/files/entities/misc/blackhole_shot.xml"},
+		type = ACTION_TYPE_MODIFIER,
+		spawn_level = "6,10", -- BLACKHOLE_SHOT
+		spawn_probability = "0.2,0.2", -- BLACKHOLE_SHOT
+		price = 300,
+		mana = 100,
+		max_uses = 20,
+		action = function()
+			c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/blackhole_shot.xml,"
+			draw_actions(1, true)
 		end
 	}
 }

@@ -1,5 +1,35 @@
 <Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT,glue_NOT,curse_NOT,boss_alchemist">
   
+	<!-- Custom Boss HP Bar -->
+	<LuaComponent
+        script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar.lua"
+        execute_every_n_frame="1"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_outline"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_alchemist_outline.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_fill"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_alchemist_fill.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_type"
+		value_string="SINGLE"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_name"
+		value_string="$animal_boss_alchemist"
+		>
+	</VariableStorageComponent>
+
 	<Base file="data/entities/base_enemy_basic.xml" >
 		<ItemChestComponent level="2" > </ItemChestComponent>
 		
@@ -251,4 +281,3 @@
 	</HealthBarComponent>
 	
 </Entity>
-

@@ -1034,7 +1034,7 @@
 	<Biome
 		biome_filename="mods/purgatory/files/biome/potion_stand_test.xml"
 		height_index="0"
-		color="ff000000">
+		color="ffaaaaaa">
 	</Biome>
 
 	<!-- NEW BIOME-->
@@ -1154,6 +1154,13 @@
 		biome_filename="mods/purgatory/files/biome/wang_tile_testing.xml"
 		height_index="0"
 		color="ffffffff">
+	</Biome>
+
+	<!-- Test Biome -->
+	<Biome
+		biome_filename="mods/purgatory/files/biome/test_biome.xml"
+		height_index="0"
+		color="ff000000">
 	</Biome>
 
 </BiomesToLoad>

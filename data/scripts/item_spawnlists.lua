@@ -35,43 +35,138 @@ spawnlists = {
 				spawn_requires_flag = "card_unlocked_duplicate"
 			},
 			{
-				weight = 6,
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_laser.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_laser.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_fireball.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_fireball.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_lava.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_lava.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_slow.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_slow.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_null.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_null.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_disc.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_disc.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "data/entities/items/pickup/runestones/runestone_metal.xml",
 				offset_y = -10
 			},
 			{
-				weight = 6,
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("data/entities/items/pickup/runestones/runestone_metal.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
 				load_entity = "mods/purgatory/files/entities/items/pickup/runestones/runestone_crosses.xml",
+				offset_y = -10
+			},
+			{
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("mods/purgatory/files/entities/items/pickup/runestones/runestone_crosses.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
+				offset_y = -10
+			},
+			{
+				weight = 5,
+				load_entity = "mods/purgatory/files/entities/items/pickup/runestones/runestone_polymorph.xml",
+				offset_y = -10
+			},
+			{
+				weight = 1,
+				load_entity_func = function(data, x, y)
+					local ox = data.offset_x or 0
+					local oy = data.offset_y or 0
+					local entity_id = EntityLoad("mods/purgatory/files/entities/items/pickup/runestones/runestone_polymorph.xml", x + ox, y + oy)
+					runestone_activate(entity_id)
+				end,
 				offset_y = -10
 			},
 			{
@@ -137,7 +232,7 @@ spawnlists = {
 				weight = 2,
 				load_entity = "mods/purgatory/files/entities/items/books/overstock_scroll.xml",
 				offset_y = -10
-			},
+			}
 		}
 	},
 	potion_spawnlist_liquidcave = potion_spawnlist

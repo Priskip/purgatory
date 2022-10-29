@@ -1,0 +1,99 @@
+<Entity>
+
+  <LifetimeComponent lifetime="260"></LifetimeComponent>
+
+  <LuaComponent
+    _enabled="1"
+    execute_every_n_frame="60"
+    script_source_file="mods/purgatory/files/entities/animals/boss_robot/tesla_turret_fire.lua"
+    ></LuaComponent>
+
+  <LuaComponent
+    _enabled="1"
+    execute_every_n_frame="1"
+    script_source_file="mods/purgatory/files/entities/animals/boss_robot/tesla_turret_aiming.lua"
+    ></LuaComponent>
+
+  <VariableStorageComponent
+    name="state"
+    value_int="0"
+    ></VariableStorageComponent>
+
+  <ParticleEmitterComponent
+    emitted_material_name="spark_blue"
+    gravity.y="0.0"
+    lifetime_min="0.1"
+    lifetime_max="0.5"
+    count_min="4"
+    count_max="5"
+    render_on_grid="1"
+    fade_based_on_lifetime="1"
+    area_circle_radius.max="16"
+    cosmetic_force_create="0"
+    airflow_force="0.5"
+    airflow_time="0.1"
+    airflow_scale="0.5"
+    emission_interval_min_frames="1"
+    emission_interval_max_frames="1"
+    emit_cosmetic_particles="1"
+    is_emitting="1"
+    area_circle_sector_degrees="360"
+    ></ParticleEmitterComponent>
+
+  <ParticleEmitterComponent
+    emitted_material_name="spark_blue"
+    gravity.y="0.0"
+    lifetime_min="0.2"
+    lifetime_max="1"
+    count_min="20"
+    count_max="30"
+    render_on_grid="1"
+    fade_based_on_lifetime="1"
+    area_circle_radius.min="16"
+    area_circle_radius.max="16"
+    cosmetic_force_create="0"
+    airflow_force="2.8"
+    airflow_time="0.03"
+    airflow_scale="0.8"
+    emission_interval_min_frames="0"
+    emission_interval_max_frames="0"
+    emit_cosmetic_particles="1"
+    is_emitting="1"
+    area_circle_sector_degrees="360"
+    ></ParticleEmitterComponent>
+
+  <LaserEmitterComponent
+    is_emitting="0"
+    laser_angle_add_rad="0"
+    >
+    <laser
+      damage_to_entities="0.8"
+      max_cell_durability_to_destroy="0"
+      damage_to_cells="0"
+      max_length="180"
+      beam_radius="10.5"
+      hit_particle_chance="20"
+      beam_particle_chance="100"
+      beam_particle_type="spark_blue"
+      audio_enabled="1"
+      ></laser>
+  </LaserEmitterComponent>
+
+  <LaserEmitterComponent
+    is_emitting="0"
+    laser_angle_add_rad="0"
+    >
+    <laser
+      damage_to_entities="0.8"
+      max_cell_durability_to_destroy="0"
+      damage_to_cells="0"
+      max_length="180"
+      beam_radius="10.5"
+      hit_particle_chance="20"
+      beam_particle_chance="100"
+      beam_particle_type="spark_blue"
+      audio_enabled="1"
+      ></laser>
+  </LaserEmitterComponent>
+
+</Entity> 

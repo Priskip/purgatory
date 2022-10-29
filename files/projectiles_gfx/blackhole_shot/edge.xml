@@ -1,0 +1,33 @@
+<Sprite
+    filename="mods/purgatory/files/projectiles_gfx/blackhole_shot/edge.png"
+    offset_x="22.5"
+    offset_y="22.5"
+    default_animation="spawn"
+    >
+
+    <!-- animation -->
+    <RectAnimation
+        name="loop"
+        pos_x="0"
+        pos_y="0"
+        frame_count="22"
+        frame_width="45"
+        frame_height="45"
+        frame_wait="0.0667"
+        frames_per_row="22"
+        loop="1"
+        ></RectAnimation>
+
+    <RectAnimation
+        name="spawn"
+        pos_x="0"
+        pos_y="45"
+        frame_count="22"
+        frame_width="45"
+        frame_height="45"
+        frame_wait="0.0667"
+        frames_per_row="22"
+        next_animation="loop"
+        loop="0"
+        ></RectAnimation>
+</Sprite>

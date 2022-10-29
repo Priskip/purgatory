@@ -21,16 +21,6 @@ function create_AP_LC_recipes()
         LC_recipe[1] = getRandominListwithoutWorldSeed(normal_liquids_reagents)
         LC_recipe[2] = getRandominListwithoutWorldSeed(magical_liquids_reagents)
         LC_recipe[3] = getRandominListwithoutWorldSeed(powder_reagents)
-
-        --[[
-        AP_recipe[1] = "water"
-        AP_recipe[2] = "magic_liquid_polymorph"
-        AP_recipe[3] = "sand"
-
-        LC_recipe[1] = "blood"
-        LC_recipe[2] = "magic_liquid_movement_faster"
-        LC_recipe[3] = "silver"
-        ]]
         
         if AP_recipe[1] == LC_recipe[1] and AP_recipe[2] == LC_recipe[2] and AP_recipe[3] == LC_recipe[3] then
             cond = true
@@ -55,6 +45,7 @@ function set_AP_LC_recipes(AP_recipe, LC_recipe)
         AP_recipe[2] ..
         [[" input_cell3="]] ..
         AP_recipe[3] ..
+
         [[" output_cell1="purgatory_alchemic_precursor" output_cell2="purgatory_alchemic_precursor" output_cell3="purgatory_alchemic_precursor"> </Reaction> ]] ..
         [[<Reaction probability="100" ]] ..
         [[input_cell1="]] ..
@@ -63,6 +54,9 @@ function set_AP_LC_recipes(AP_recipe, LC_recipe)
         LC_recipe[2] ..
         [[" input_cell3="]] ..
         LC_recipe[3] ..
+
+    --[===[ 
+        --too op
         [["output_cell1="purgatory_lively_concoction" output_cell2="purgatory_lively_concoction" output_cell3="purgatory_lively_concoction"> </Reaction> ]] ..
         [[<Reaction probability="100" ]] ..
         [[input_cell1="purgatory_alchemic_precursor" ]] ..
@@ -94,6 +88,8 @@ function set_AP_LC_recipes(AP_recipe, LC_recipe)
         [[input_cell2="]] ..
         LC_recipe[3] ..
         [["output_cell1="purgatory_lively_concoction" output_cell2="purgatory_lively_concoction"> </Reaction> ]] ..
+--]===]
+
         [[</Materials>]]
     )
     ModMaterialsFileAdd("mods/purgatory/files/materials/LC_AP_recipes.xml")
