@@ -1,0 +1,17 @@
+<Entity tags="mecha_activation_trigger">
+    <CollisionTriggerComponent
+        _enabled="1"
+        width="500"
+        height="500"
+        radius="247"
+        destroy_this_entity_when_triggered="1"
+        required_tag="player_unit"
+        ></CollisionTriggerComponent>
+
+    <!-- this activates the boss and kills the triggers -->
+    <LuaComponent
+        _enabled="1"
+        script_collision_trigger_hit="mods/purgatory/files/scripts/buildings/roboroom/activation_trigger.lua"
+        execute_every_n_frame="-1"
+        ></LuaComponent>
+</Entity>

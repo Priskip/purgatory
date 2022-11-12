@@ -33,6 +33,7 @@
     <LuaComponent script_death="mods/purgatory/files/scripts/buildings/roboroom/mecha_turret_death.lua"></LuaComponent>
 
     <HitboxComponent
+        _enabled="0"
         _tags="hitbox_default"
         aabb_min_x="-6.5"
         aabb_max_x="6.5"
@@ -74,6 +75,7 @@
     </DamageModelComponent>
 
     <Entity tags="mecha_turret_laser_spot">
+        <!-- Light Source -->
         <SpriteComponent
             alpha="0.2"
             image_file="mods/purgatory/files/buildings_gfx/roboroom/mecha_turret_light_blue.xml"
@@ -82,6 +84,105 @@
             emissive="1"
             additive="0"
             ></SpriteComponent>
+
+        <!-- Scripts for Turret to Fire -->
+        <LuaComponent
+            _enabled="0"
+            execute_every_n_frame="60"
+            script_source_file="mods/purgatory/files/entities/animals/boss_robot/mecha_turret_fire.lua"
+            ></LuaComponent>
+
+        <LuaComponent
+            _enabled="0"
+            execute_every_n_frame="1"
+            script_source_file="mods/purgatory/files/entities/animals/boss_robot/mecha_turret_aiming.lua"
+            ></LuaComponent>
+
+        <VariableStorageComponent
+            name="state"
+            value_int="0"
+            ></VariableStorageComponent>
+
+        <!-- Circle Particle Emitter -->
+        <ParticleEmitterComponent
+            _enabled="0"
+            emitted_material_name="spark_blue"
+            gravity.y="0.0"
+            lifetime_min="0.1"
+            lifetime_max="0.5"
+            count_min="4"
+            count_max="5"
+            render_on_grid="1"
+            fade_based_on_lifetime="1"
+            area_circle_radius.max="16"
+            cosmetic_force_create="0"
+            airflow_force="0.5"
+            airflow_time="0.1"
+            airflow_scale="0.5"
+            emission_interval_min_frames="1"
+            emission_interval_max_frames="1"
+            emit_cosmetic_particles="1"
+            is_emitting="1"
+            area_circle_sector_degrees="360"
+            ></ParticleEmitterComponent>
+
+        <ParticleEmitterComponent
+            _enabled="0"
+            emitted_material_name="spark_blue"
+            gravity.y="0.0"
+            lifetime_min="0.2"
+            lifetime_max="1"
+            count_min="20"
+            count_max="30"
+            render_on_grid="1"
+            fade_based_on_lifetime="1"
+            area_circle_radius.min="16"
+            area_circle_radius.max="16"
+            cosmetic_force_create="0"
+            airflow_force="2.8"
+            airflow_time="0.03"
+            airflow_scale="0.8"
+            emission_interval_min_frames="0"
+            emission_interval_max_frames="0"
+            emit_cosmetic_particles="1"
+            is_emitting="1"
+            area_circle_sector_degrees="360"
+            ></ParticleEmitterComponent>
+
+        <!-- THE LASER BEAMS -->
+        <LaserEmitterComponent
+            is_emitting="0"
+            laser_angle_add_rad="0"
+            >
+            <laser
+                damage_to_entities="0.8"
+                max_cell_durability_to_destroy="0"
+                damage_to_cells="0"
+                max_length="180"
+                beam_radius="10.5"
+                hit_particle_chance="20"
+                beam_particle_chance="100"
+                beam_particle_type="spark_blue"
+                audio_enabled="1"
+                ></laser>
+        </LaserEmitterComponent>
+
+        <LaserEmitterComponent
+            is_emitting="0"
+            laser_angle_add_rad="0"
+            >
+            <laser
+                damage_to_entities="0.8"
+                max_cell_durability_to_destroy="0"
+                damage_to_cells="0"
+                max_length="180"
+                beam_radius="10.5"
+                hit_particle_chance="20"
+                beam_particle_chance="100"
+                beam_particle_type="spark_blue"
+                audio_enabled="1"
+                ></laser>
+        </LaserEmitterComponent>
     </Entity>
 
     <SpriteComponent
@@ -128,61 +229,4 @@
 
     <HealthBarComponent></HealthBarComponent>
 
-</Entity> <!-- Particle Emitter for showing a single pixel location for testing purposes
-
-    <ParticleEmitterComponent
-            emitted_material_name="magic_liquid_polymorph"
-            x_vel_min="0"
-            x_vel_max="0"
-            y_vel_min="0"
-            y_vel_max="0"
-            lifetime_min="1.25"
-            lifetime_max="1.25"
-            x_pos_offset_min="0"
-            x_pos_offset_max="0"
-            y_pos_offset_min="0"
-            y_pos_offset_max="0"
-            gravity.x="0"
-            gravity.y="0"
-            render_on_grid="false"
-            fade_based_on_lifetime="true"
-            cosmetic_force_create="false"
-            airflow_force="0.0"
-            airflow_time="0.0"
-            airflow_scale="0.0"
-            emission_interval_min_frames="0"
-            emission_interval_max_frames="0"
-            emit_cosmetic_particles="true"
-            is_emitting="true"
-            collide_with_grid="false"
-            ></ParticleEmitterComponent>
-
-
--->
-
-<!--
-    <LaserEmitterComponent
-        _enabled="1"
-        emit_until_frame="-1"
-        is_emitting="1"
-        laser_angle_add_rad="1.5707"
-        >
-
-        <laser
-            audio_enabled="0"
-            audio_hit_always_enabled="0"
-            beam_particle_chance="100"
-            beam_particle_fade="0"
-            beam_particle_fade_reverse="0"
-            beam_particle_type="spark_blue"
-            beam_radius="0.5"
-            damage_to_cells="0"
-            damage_to_entities="0"
-            hit_particle_chance="0"
-            max_cell_durability_to_destroy="0"
-            max_length="100"
-            root_entity_is_responsible_for_damage="0"
-            ></laser>
-
-    </LaserEmitterComponent>
--->
+</Entity>

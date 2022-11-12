@@ -1,5 +1,3 @@
---Append Utils for Death Wand
-
 --Taken from Goki's Things
 function append_translations( filepath, translation_file )
     if translation_file == nil then

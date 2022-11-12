@@ -10,7 +10,6 @@ state = state + 1
 
 if state == 1 then
     --Start the Laser Beam Tracking
-
     if (laser_comps ~= nil) then
         for a, lcomp in ipairs(laser_comps) do
             local p = getPlayerEntity()
@@ -24,17 +23,13 @@ if state == 1 then
                 ComponentObjectSetValue2(lcomp, "laser", "damage_to_entities", 0)
                 ComponentObjectSetValue2(lcomp, "laser", "audio_enabled", false)
                 ComponentSetValue2(lcomp, "is_emitting", true)
+                ComponentObjectSetValue2(lcomp, "laser", "beam_particle_type", CellFactory_GetType("spark_blue"))
             end
         end
     end
 end
 
 if state == 2 then
-    --Disable the hitbox of the turret it's in as to not destroy it
-    local turret_id = EntityGetInRadiusWithTag(x, y, 10, "roboroom_mecha_turret_alive")[1]
-    local hitbox_comp = EntityGetFirstComponentIncludingDisabled(turret_id, "HitboxComponent")
-    EntitySetComponentIsEnabled(turret_id, hitbox_comp, false)
-
     --Fire Death Laser
     if (laser_comps ~= nil) then
         for a, lcomp in ipairs(laser_comps) do
@@ -53,8 +48,9 @@ if state == 2 then
     end
 
     --Change Tesla Turret to red sprite
-    local sprite_comps = EntityGetComponent(turret_id, "SpriteComponent")
-    for i, comp in ipairs(sprite_comps) do
+    local turret_id = EntityGetParent(entity_id)
+    local sprite_comps_parent = EntityGetComponent(turret_id, "SpriteComponent")
+    for i, comp in ipairs(sprite_comps_parent) do
         if ComponentGetValue2(comp, "image_file") == "mods/purgatory/files/buildings_gfx/roboroom/mecha_turret.xml" then
             --if == blue sprite
             ComponentSetValue2(comp, "alpha", 0)
@@ -64,6 +60,12 @@ if state == 2 then
             --if == red sprite
             ComponentSetValue2(comp, "alpha", 1)
         end
+    end
+
+    --Change light aura to red
+    local sprite_comps = EntityGetComponent(entity_id, "SpriteComponent")
+    for i, comp in ipairs(sprite_comps) do
+        ComponentSetValue2(comp, "image_file", "mods/purgatory/files/buildings_gfx/roboroom/mecha_turret_light_red.xml")
     end
 end
 
@@ -83,12 +85,8 @@ if state == 3 then
         ComponentSetValue2(comp, "emitted_material_name", "spark_blue")
     end
 
-    --Re-enable the hitbox of the turret
-    local turret_id = EntityGetInRadiusWithTag(x, y, 10, "roboroom_mecha_turret_alive")[1]
-    local hitbox_comp = EntityGetFirstComponentIncludingDisabled(turret_id, "HitboxComponent")
-    EntitySetComponentIsEnabled(turret_id, hitbox_comp, false)
-
     --Change Tesla Turret back to blue sprite
+    local turret_id = EntityGetParent(entity_id)
     local sprite_comps = EntityGetComponentIncludingDisabled(turret_id, "SpriteComponent")
     for i, comp in ipairs(sprite_comps) do
         if ComponentGetValue2(comp, "image_file") == "mods/purgatory/files/buildings_gfx/roboroom/mecha_turret.xml" then
@@ -100,6 +98,25 @@ if state == 3 then
             --if == red sprite
             ComponentSetValue2(comp, "alpha", 0)
         end
+    end
+
+    --Change light aura to red
+    local sprite_comps = EntityGetComponent(entity_id, "SpriteComponent")
+    for i, comp in ipairs(sprite_comps) do
+        ComponentSetValue2(comp, "image_file", "mods/purgatory/files/buildings_gfx/roboroom/mecha_turret_light_blue.xml")
+    end
+
+    --Stop rendering blue shieldy type thing
+    local particle_emitter_comps = EntityGetComponentIncludingDisabled(entity_id, "ParticleEmitterComponent")
+    for i, particle_emitter_comp in ipairs(particle_emitter_comps) do
+        EntitySetComponentIsEnabled(entity_id, particle_emitter_comp, false)
+    end
+
+    --Disable turret in wait for next activation
+    state = 0
+    local lua_comps = EntityGetComponentIncludingDisabled(entity_id, "LuaComponent")
+    for i, lua_comp in ipairs(lua_comps) do
+        EntitySetComponentIsEnabled(entity_id, lua_comp, false)
     end
 end
 

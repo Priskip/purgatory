@@ -9,6 +9,34 @@
 		scale.y="1" >
 	</_Transform>
 
+	<!-- Custom Boss HP Bar -->
+	<LuaComponent
+		_enabled="1"
+		script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar.lua"
+		execute_every_n_frame="1"
+		></LuaComponent>
+
+	<VariableStorageComponent
+		name="boss_bar_outline"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/fire_dragon_outline.png"
+		></VariableStorageComponent>
+
+	<VariableStorageComponent
+		name="boss_bar_fill"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/fire_dragon_fill.png"
+		></VariableStorageComponent>
+
+	<VariableStorageComponent
+		name="boss_bar_position"
+		value_string="CENTER"
+		></VariableStorageComponent>
+
+	<VariableStorageComponent
+		name="boss_name"
+		value_string="$animal_boss_dragon_fire"
+		></VariableStorageComponent>
+	<!-- /Custom Boss HP Bar -->
+
 	<BossDragonComponent
 		speed="3"
 		speed_hunt="4"
@@ -200,53 +228,10 @@
 		image_file="mods/purgatory/files/enemies_gfx/boss_dragons/fire_dragon_tail.xml" 
 		rect_animation="eat" 
 		next_rect_animation="eat" 
-		next_rect_animation="" 
 		offset_x="17" 
 		offset_y="15"  
 		update_transform="0"
 		 >
-	</SpriteComponent>
-
-	<SpriteComponent 
-		_tags="health_bar_back,ui,no_hitbox"
-		_enabled="1" 
-		alpha="1" 
-		has_special_scale="1" 
-		image_file="data/ui_gfx/health_slider_back.png" 
-		is_text_sprite="0" 
-		next_rect_animation="" 
-		offset_x="12" 
-		offset_y="42" 
-		rect_animation="" 
-		special_scale_x="1" 
-		special_scale_y="1" 
-		ui_is_parent="0" 
-		update_transform="1" 
-		visible="1" 
-		emissive="1"
-		never_ragdollify_on_death="1"
-		z_index="-9000" >
-	</SpriteComponent>
-
-	<SpriteComponent 
-		_tags="health_bar,ui,no_hitbox" 
-		_enabled="1" 
-		alpha="1" 
-		has_special_scale="1" 
-		image_file="data/ui_gfx/health_slider_front.png" 
-		is_text_sprite="0" 
-		next_rect_animation="" 
-		offset_x="11" 
-		offset_y="42" 
-		rect_animation="" 
-		special_scale_x="1" 
-		special_scale_y="1" 
-		ui_is_parent="0" 
-		update_transform="1" 
-		visible="1" 
-		emissive="1"
-		never_ragdollify_on_death="1"
-		z_index="-9000" >
 	</SpriteComponent>
 		
 	<LightComponent 
@@ -257,9 +242,6 @@
 		b="0" >
 	</LightComponent>
 
-	<HealthBarComponent>
-	</HealthBarComponent>
-	
     <MusicEnergyAffectorComponent
     	energy_target="1">
     </MusicEnergyAffectorComponent>

@@ -3,6 +3,7 @@ dofile_once("data/scripts/director_helpers.lua")
 dofile_once("data/scripts/biome_scripts.lua")
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/alchemy_predictor.lua")
 
 RegisterSpawnFunction( 0xffffeedd, "init" )
 RegisterSpawnFunction( 0xff4cff03, "spawn_regular_potions" )
@@ -52,11 +53,11 @@ end
 function spawn_cauldron_liquid(x, y)
     local liquid_ent = EntityCreateNew()
     EntitySetTransform(liquid_ent, x, y)
-    local AP_recipe, LC_recipe = get_AP_LC_RECIPE()
+    local lc_combo, ap_combo, lc_prob, ap_prob = get_alchemy()
     
     SetRandomSeed(x, y)
     local rand_num = Random(1,3)
-    local cauldron_material = LC_recipe[rand_num]
+    local cauldron_material = lc_combo[rand_num]
 
     --print("cauldron_material = "  .. tostring(cauldron_material))
 

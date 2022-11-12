@@ -25,11 +25,11 @@ if player_in_radius then
     local bar_filling = {}
 
     --Get Variable Storage Component Values
-    local damage_model_comp = EntityGetFirstComponentIncludingDisabled( entity_id, "DamageModelComponent")
-    local max_hp = 25 * ComponentGetValue2( damage_model_comp, "max_hp" )
-    local current_hp = 25 * ComponentGetValue2( damage_model_comp, "hp" ) --Note Priskip: multiply hp numbers by 25 here because Nolla stores hp numbers at 1/25 size internally for some reason
+    local damage_model_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
+    local max_hp = 25 * ComponentGetValue2(damage_model_comp, "max_hp")
+    local current_hp = 25 * ComponentGetValue2(damage_model_comp, "hp") --Note Priskip: multiply hp numbers by 25 here because Nolla stores hp numbers at 1/25 size internally for some reason
 
-    local boss_bar_type = variable_storage_get_value(entity_id, "STRING", "boss_bar_type")
+    local boss_bar_position = variable_storage_get_value(entity_id, "STRING", "boss_bar_position")
     local boss_name = variable_storage_get_value(entity_id, "STRING", "boss_name")
     bar_outline.image = variable_storage_get_value(entity_id, "STRING", "boss_bar_outline")
     bar_filling.image = variable_storage_get_value(entity_id, "STRING", "boss_bar_fill")
@@ -37,6 +37,14 @@ if player_in_radius then
     --Screen Size Dimensions
     local screen_size = {}
     screen_size.x, screen_size.y = GuiGetScreenDimensions(gui)
+
+    local bar_offset = 0
+    if boss_bar_position == "LEFT" then
+        bar_offset = -screen_size.x / 4
+    end
+    if boss_bar_position == "RIGHT" then
+        bar_offset = screen_size.x / 4
+    end
 
     --Image Dimensions
     bar_outline.size_x, bar_outline.size_y = GuiGetImageDimensions(gui, bar_outline.image)
@@ -59,11 +67,11 @@ if player_in_radius then
 
     --Draw Bar Outline
     GuiZSet(gui, 1) --Bigger Z = Renders Deeper
-    GuiImage(gui, new_gui_id(), bar_outline.pos_x, bar_outline.pos_y, bar_outline.image, bar_outline.alpha, bar_outline.scale, bar_outline.scale_y, bar_outline.rot)
+    GuiImage(gui, new_gui_id(), bar_outline.pos_x + bar_offset, bar_outline.pos_y, bar_outline.image, bar_outline.alpha, bar_outline.scale, bar_outline.scale_y, bar_outline.rot)
 
     --Draw Bar Filling
     GuiZSet(gui, 2)
-    GuiImage(gui, new_gui_id(), bar_filling.pos_x, bar_filling.pos_y, bar_filling.image, bar_filling.alpha, bar_filling.scale, bar_filling.scale_y, bar_filling.rot)
+    GuiImage(gui, new_gui_id(), bar_filling.pos_x + bar_offset, bar_filling.pos_y, bar_filling.image, bar_filling.alpha, bar_filling.scale, bar_filling.scale_y, bar_filling.rot)
 
     --Draw Boss Name
     local boss_name_text = {}
@@ -72,7 +80,7 @@ if player_in_radius then
     boss_name_text.pos_y = screen_size.y - bar_outline.size_y - screen_size.y / 16
 
     GuiZSet(gui, 0)
-    GuiText(gui, boss_name_text.pos_x, boss_name_text.pos_y, boss_name)
+    GuiText(gui, boss_name_text.pos_x + bar_offset, boss_name_text.pos_y, boss_name)
 
     --Draw Boss Name
     local boss_health_text = {}
@@ -81,7 +89,7 @@ if player_in_radius then
     boss_health_text.pos_x = screen_size.x / 2 - boss_health_text.size_x / 2
     boss_health_text.pos_y = bar_outline.pos_y + bar_outline.size_y / 2 - boss_health_text.size_y / 2
 
-    GuiText(gui, boss_health_text.pos_x, boss_health_text.pos_y, boss_health_text.text)
+    GuiText(gui, boss_health_text.pos_x + bar_offset, boss_health_text.pos_y, boss_health_text.text)
 end
 --[[
 

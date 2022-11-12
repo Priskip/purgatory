@@ -6,10 +6,6 @@ local ascension_level = ModSettingGet("purgatory.ascension_level")
 local reset_tree_achievements = ModSettingGet("purgatory.reset_tree_achievements")
 local debug_mode = ModSettingGet("purgatory.debug_mode")
 
---Vars needed
-local AP_recipe = {}
-local LC_recipe = {}
-
 --Load Files
 dofile_once("mods/purgatory/files/scripts/utils.lua")
 dofile_once("mods/purgatory/files/translations/translations_utils.lua")
@@ -19,8 +15,8 @@ dofile_once("mods/purgatory/files/materials/add_void_recipes.lua") --makes recip
 dofile_once("mods/purgatory/files/scripts/gun/initialize_starting_wands.lua") --temp
 dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua") --for debugging
 
---Append Translations
-append_translations("mods/purgatory/files/translations/common.csv") --Adds all the descriptors
+--Append and Modify Translations
+append_translations("mods/purgatory/files/translations/common.csv") --Adds all the descriptors for Purgatory
 
 --Append Files
 ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua") --For adding custom trigger types
@@ -59,7 +55,6 @@ function OnModPreInit()
 
     --Modify Materials List
     --  Make Healthium Drink Only
-    --  Regualar LC and AP evaporate quickly
     --  Hastium have its own tag for hastium stone to absorb
     local nxml = dofile_once("mods/purgatory/libraries/nxml.lua")
     local content = ModTextFileGetContent("data/materials.xml")
@@ -69,27 +64,11 @@ function OnModPreInit()
             element.attr.liquid_stains = 0
         end
 
-        if element.attr.name == "magic_liquid_hp_regeneration_unstable" then
-            element.attr.tags = "[liquid],[water],[magic_liquid],[regenerative],[corrodible],[soluble],[evaporable]"
-            element.attr.lifetime = "1"
-        end
-
-        if element.attr.name == "midas_precursor" then
-            element.attr.tags = "[liquid],[burnable],[water],[corrodible],[soluble],[evaporable]"
-            element.attr.lifetime = "1"
-        end
-
         if element.attr.name == "magic_liquid_faster_levitation_and_movement" then
             element.attr.tags = "[liquid],[water],[magic_liquid],[impure],[magic_faster],[magic_haste]"
         end
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
-
-    --Create AP and LC recipes based off of time & date (world seed not available when material creation needs to be called)
-    --Create Alchemic Recipes
-    AP_recipe, LC_recipe = create_AP_LC_recipes()
-    --Set Alchemic Recipes
-    set_AP_LC_recipes(AP_recipe, LC_recipe)
 
     --ceaseless void
     add_ceaseless_void_recipes(true)
@@ -232,14 +211,6 @@ function OnWorldInitialized() -- This is called once the game world is initializ
         local biome_name = "tower/solid_wall_tower_" .. tostring(i)
         set_biome_to_purgatory(biome_name, 25, 0.2, ascension_level)
     end
-
-    --Write AP and LC to global values for alchemist arena to call
-    GlobalsSetValue("AP_PART_1", AP_recipe[1])
-    GlobalsSetValue("AP_PART_2", AP_recipe[2])
-    GlobalsSetValue("AP_PART_3", AP_recipe[3])
-    GlobalsSetValue("LC_PART_1", LC_recipe[1])
-    GlobalsSetValue("LC_PART_2", LC_recipe[2])
-    GlobalsSetValue("LC_PART_3", LC_recipe[3])
 end
 
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
@@ -254,18 +225,67 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
         gui = gui or GuiCreate()
         GuiStartFrame(gui)
 
-        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            local player_id = getPlayerEntity()
-            local x, y = EntityGetTransform(player_id)
-
-            EntityLoad("mods/purgatory/files/entities/boss_bars/boss_bar.xml", x, y - 20)
-        end
+        local player_id = getPlayerEntity()
+        local x, y = EntityGetTransform(player_id)
 
 
-        --GlobalsSetValue("HP_BOSS_BAR_TEST", tostring(slider_hp))
     end
 end
 
 function OnWorldPostUpdate() -- This is called every time the game has finished updating the world
     --GamePrint( "Purgatory - OnWorldPostUpdate()" .. tostring(GameGetFrameNum()) )
 end
+
+--[[
+GuiSlider( gui:obj, id:int, x:number, y:number, text:string, value:number, value_min:number, value_max:number, value_default:number, value_display_multiplier:number, value_formatting:string, width:number ) -> new_value:number [This is not intended to be outside mod settings menu, and might bug elsewhere.]
+
+<PlatformShooterPlayerComponent
+    center_camera_on_this_entity="1"
+    aiming_reticle_distance_from_character="60"
+    camera_max_distance_from_character="50"
+    move_camera_with_aim="1"
+    eating_area_min.x="-6"
+    eating_area_max.x="6"
+    eating_area_min.y="-4"
+    eating_area_max.y="6"
+    eating_cells_per_frame="2"
+  ></PlatformShooterPlayerComponent>
+
+GameGetCameraPos() -> x:number,y:number
+GameSetCameraPos( x:number, y:number )
+GameSetCameraFree( is_free:bool )
+GameGetCameraBounds() -> x:number,y:number,w:number,h:number [Returns the camera rectangle. This may not be 100% pixel perfect with regards to what you see on the screen. 'x','y' = top left corner of the rectangle.]
+
+        local plaform_shooter_player_comp = EntityGetFirstComponentIncludingDisabled(player_id, "PlatformShooterPlayerComponent")
+        local camera_centered = ComponentGetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity")
+
+        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
+            if camera_centered == true then
+                ComponentSetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity", false)
+                GamePrint("camera_centered set to false")
+            elseif camera_centered == false then
+                ComponentSetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity", true)
+                GamePrint("camera_centered set to true")
+            end
+        end
+
+distance = distance or 50
+        distance = GuiSlider(gui, new_id(), 25, 50, "distance", distance, 0, 200, 0, 1, "", 100)
+
+        local controls_comp = EntityGetFirstComponentIncludingDisabled(player_id, "ControlsComponent")
+        local cursor_x, cursor_y = ComponentGetValue2(controls_comp, "mMousePosition")
+        local x_raw, y_raw = ComponentGetValue2(controls_comp, "mMousePositionRaw")
+
+        local left, up, w, h = GameGetCameraBounds()
+
+        GuiText(gui, 25, 70, tostring(cursor_x))
+        GuiText(gui, 25, 80, tostring(cursor_y))
+
+        GuiText(gui, 25, 100, tostring(x_raw))
+        GuiText(gui, 25, 110, tostring(y_raw))
+
+        GuiText(gui, 25, 130, tostring(left))
+        GuiText(gui, 25, 140, tostring(up))
+        GuiText(gui, 25, 150, tostring(w))
+        GuiText(gui, 25, 160, tostring(h))
+]]

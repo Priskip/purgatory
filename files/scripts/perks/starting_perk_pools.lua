@@ -35,7 +35,8 @@ good_perks = {
     "EXTRA_PERK",
     "PERKS_LOTTERY",
     "GAMBLE",
-    "HEART_STEALER"
+    "HEART_STEALER",
+    "WAND_EXPERIMENTER"
 }
 
 --Get choice of four of these
@@ -54,7 +55,6 @@ meh_perks = {
     "IRON_STOMACH",
     "TELEPORTITIS",
     "STAINLESS_ARMOUR",
-    "WAND_EXPERIMENTER",
     "ABILITY_ACTIONS_MATERIALIZED", --Bombs Materialized
     "PROJECTILE_HOMING",
     "PROJECTILE_HOMING_SHOOTER", --Boomerang

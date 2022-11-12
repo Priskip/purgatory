@@ -411,7 +411,7 @@ spells_to_add = {
 			draw_actions( 1, true )
 		end,
 	},
-	]]
+]]
 	
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
@@ -590,9 +590,10 @@ spells_to_add = {
 		spawn_requires_flag = "purgatory_alchemist_spells",
 		type = ACTION_TYPE_MODIFIER,
 		spawn_level = "1,2,3,4", -- WATER_TRAIL
-		spawn_probability = "0.3,0.3,0.3,0.3", -- WATER_TRAIL
+		spawn_probability = "0.1,0.2,0.2,0.25", -- WATER_TRAIL
 		price = 160,
 		mana = 50,
+		max_uses = 8,
 		custom_xml_file = "data/entities/misc/custom_cards/water_trail.xml",
 		action = function()
 			local material_options = {

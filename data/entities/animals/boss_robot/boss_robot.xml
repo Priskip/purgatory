@@ -1,10 +1,11 @@
 <Entity
-	tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100,necrobot_NOT,glue_NOT"
+	tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,necrobot_NOT,glue_NOT"
 	name="$animal_boss_robot"
 	>
 
 	<!-- Custom Boss HP Bar -->
 	<LuaComponent
+		_enabled="0"
 		script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar.lua"
 		execute_every_n_frame="1"
 		></LuaComponent>
@@ -20,8 +21,8 @@
 		></VariableStorageComponent>
 
 	<VariableStorageComponent
-		name="boss_bar_type"
-		value_string="SINGLE"
+		name="boss_bar_position"
+		value_string="CENTER"
 		></VariableStorageComponent>
 
 	<VariableStorageComponent
@@ -53,6 +54,7 @@
 	<LimbBossComponent state="1"></LimbBossComponent>
 
 	<PathFindingComponent
+		_enabled="0"
 		can_dive="1"
 		can_fly="1"
 		can_jump="0"
@@ -76,7 +78,7 @@
 		></PathFindingComponent>
 
 	<PathFindingGridMarkerComponent
-		_enabled="1"
+		_enabled="0"
 		marker_offset_x="0"
 		marker_offset_y="-6"
 		marker_work_flag="16"
@@ -85,6 +87,7 @@
 
 	<!-- physics -->
 	<PhysicsAIComponent
+		_enabled="0"
 		target_vec_max_len="15.0"
 		force_coeff="10.0"
 		force_balancing_coeff="0.8"
@@ -118,11 +121,12 @@
 	<!-- damage models -->
 	<!-- Note Priskip: 
 		Mecha Kolmi has 50 (aka 1250) hp in normal mode
-		I'm giving him only 12500 hp here because of his damage multipliers plus the fact that he has the shield generators
+		I'm giving him only 25000 hp here because of his damage multipliers plus the fact that he has the shield generators
+		In addition, he'll take 0.1 to proj when all turrets are down
 	-->
 	<DamageModelComponent
-		hp="500"
-		max_hp="500"
+		hp="1000"
+		max_hp="1000"
 		air_needed="0"
 		falling_damages="0"
 		fire_damage_amount="0.2"
@@ -139,13 +143,15 @@
 		blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_oil_$[1-3].xml"
 		blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_oil_$[1-3].xml"
 		>
+		<!-- Mecha Kolmi's damage multipliers will update with the amount of turrets destroyed -->
 		<damage_multipliers
-			melee="0"
-			projectile="0"
+			electricity="0"
 			explosion="0"
-			electricity="0.8"
 			fire="0"
-			slice="0.6"
+			melee="0"
+			overeating="0"
+			projectile="0"
+			slice="0"
 			></damage_multipliers>
 	</DamageModelComponent>
 
@@ -156,6 +162,7 @@
 		></GenomeDataComponent>
 
 	<HitboxComponent
+		_enabled="0"
 		_tags="hitbox_default"
 		aabb_min_x="-18"
 		aabb_max_x="18"
@@ -163,6 +170,15 @@
 		aabb_max_y="18"
 		damage_multiplier="1.0"
 		></HitboxComponent>
+
+	<Entity>
+		<InheritTransformComponent />
+
+		<GameEffectComponent
+			effect="STUN_PROTECTION_FREEZE"
+			frames="-1"
+			></GameEffectComponent>
+	</Entity>
 	<!-- /damage models -->
 
 	<!-- etc -->
@@ -176,13 +192,6 @@
 		rotate_to_surface_normal="0"
 		target_sprite_comp_name="character"
 		></SpriteAnimatorComponent>
-
-	<CellEaterComponent
-		_enabled="0"
-		radius="30"
-		ignored_material="aluminium_robot"
-		eat_probability="100"
-		></CellEaterComponent>
 
 	<AudioComponent
 		file="data/audio/Desktop/animals.bank"
@@ -232,11 +241,12 @@
 		<InheritTransformComponent only_position="1"></InheritTransformComponent>
 
 		<LuaComponent
+			_enabled="1"
 			script_source_file="data/entities/animals/boss_robot/spell_eater.lua"
 			execute_every_n_frame="1"
 			></LuaComponent>
 
-			<ParticleEmitterComponent
+		<ParticleEmitterComponent
 			_tags="boss_robot_spell_eater,inner_particles"
 			emitted_material_name="spark_red"
 			gravity.y="0.0"
@@ -246,7 +256,7 @@
 			count_max="5"
 			render_on_grid="1"
 			fade_based_on_lifetime="1"
-			area_circle_radius.max="36"
+			area_circle_radius.max="52"
 			cosmetic_force_create="0"
 			airflow_force="0.5"
 			airflow_time="0.1"
@@ -257,8 +267,8 @@
 			is_emitting="1"
 			area_circle_sector_degrees="45"
 			></ParticleEmitterComponent>
-		
-		  <ParticleEmitterComponent
+
+		<ParticleEmitterComponent
 			_tags="boss_robot_spell_eater,outer_wall"
 			emitted_material_name="spark_red"
 			gravity.y="0.0"
@@ -268,8 +278,8 @@
 			count_max="60"
 			render_on_grid="1"
 			fade_based_on_lifetime="1"
-			area_circle_radius.min="36"
-			area_circle_radius.max="36"
+			area_circle_radius.min="52"
+			area_circle_radius.max="52"
 			cosmetic_force_create="0"
 			airflow_force="2.8"
 			airflow_time="0.03"
@@ -344,8 +354,13 @@
 		value_float="0"
 		></VariableStorageComponent>
 
+	<VariableStorageComponent
+		name="alive_turrets"
+		value_int="8"
+		></VariableStorageComponent>
+
 	<LuaComponent
-		_enabled="1"
+		_enabled="0"
 		script_source_file="data/entities/animals/boss_robot/state.lua"
 		execute_every_n_frame="40"
 		></LuaComponent>
@@ -356,15 +371,11 @@
 		execute_every_n_frame="1"
 		></LuaComponent>
 
-	<VariableStorageComponent
-		name="last_pos_x"
-		value_float="0"
-		></VariableStorageComponent>
-
-	<VariableStorageComponent
-		name="last_pos_y"
-		value_float="0"
-		></VariableStorageComponent>
+	<LuaComponent
+		_enabled="1"
+		script_source_file="mods/purgatory/files/entities/animals/boss_robot/damage_multipliers_manipulation.lua"
+		execute_every_n_frame="1"
+		></LuaComponent>
 
 	<LuaComponent script_death="data/entities/animals/boss_robot/death.lua"></LuaComponent>
 	<!-- /Custom AI Scripts -->

@@ -7,6 +7,7 @@ RegisterSpawnFunction(0xffffeedd, "init")
 RegisterSpawnFunction(0xff31d0b4, "spawn_boss")
 RegisterSpawnFunction(0xfffffe00, "spawn_center_point")
 RegisterSpawnFunction(0xfffffd00, "spawn_outer_ring_point")
+RegisterSpawnFunction(0xfffffc00, "spawn_activation_trigger")
 
 function spawn_small_enemies(x, y)
 end
@@ -57,4 +58,8 @@ end
 
 function spawn_outer_ring_point(x, y)
 	EntityLoad("mods/purgatory/files/entities/buildings/roboroom/mecha_turret.xml", x, y)
+end
+
+function spawn_activation_trigger(x, y)
+	EntityLoad("mods/purgatory/files/entities/buildings/roboroom/activation_trigger.xml", x, y)
 end

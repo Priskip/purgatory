@@ -1,44 +1,23 @@
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/scripts/utils.lua")
 
-local ent = {}
-ent.id = GetUpdatedEntityID()
-ent.x, ent.y, ent.phi = EntityGetTransform(ent.id)
+function damage_about_to_be_received(damage, x, y, entity_thats_responsible, critical_hit_chance)
+    GamePrint("damage: \"" .. tostring(damage) .. "\"")
+    GamePrint("x: \"" .. tostring(x) .. "\"")
+    GamePrint("y: \"" .. tostring(y) .. "\"")
+    GamePrint("entity_thats_responsible: \"" .. tostring(entity_thats_responsible) .. "\"")
+    GamePrint("critical_hit_chance: \"" .. tostring(critical_hit_chance) .. "\"")
+    GamePrint("player: \"" .. tostring(getPlayerEntity()) .. "\"")
 
---Gui Starters
-local gui_id = 1
-local function new_gui_id()
-    gui_id = gui_id + 1
-    return gui_id
-end
-gui = gui or GuiCreate()
-GuiStartFrame(gui)
-
---GuiText(gui, 20, 50, "ent.phi: " .. string.format("%.2f", tostring(ent.phi)))
-phi = phi or 0
-phi = GuiSlider(gui, new_gui_id(), 25, 50, "phi", phi, -3.14, 3.14, 0, 100, "", 100)
-
---Wedge
-EntitySetTransform(ent.id, ent.x, ent.y, phi)
-
-local particle_comps = EntityGetComponent(ent.id, "ParticleEmitterComponent")
-local alive_turrets = EntityGetInRadiusWithTag(ent.x, ent.y, 300, "roboroom_mecha_turret_alive")
-local number_of_alive_turrets = math.min(#alive_turrets, 8)
-
-for i, comp in ipairs(particle_comps) do
-    ComponentSetValue2(comp, "area_circle_sector_degrees", 45 * number_of_alive_turrets)
-
-    if number_of_alive_turrets == 0 then
-        ComponentSetValue2(comp, "is_emitting", false)
-    elseif number_of_alive_turrets ~= 0 and ComponentGetValue2(comp, "is_emitting") == false then
-        ComponentSetValue2(comp, "is_emitting", true)
-    end
+    return damage, critical_hit_chance
 end
 
-local inner_particles = EntityGetFirstComponentIncludingDisabled(ent.id, "ParticleEmitterComponent", "inner_particles")
-ComponentSetValue2(inner_particles, "count_min", 4 * number_of_alive_turrets)
-ComponentSetValue2(inner_particles, "count_max", 5 * number_of_alive_turrets)
 
-local outer_wall = EntityGetFirstComponentIncludingDisabled(ent.id, "ParticleEmitterComponent", "outer_wall")
-ComponentSetValue2(outer_wall, "count_min", 40 * number_of_alive_turrets)
-ComponentSetValue2(outer_wall, "count_max", 60 * number_of_alive_turrets)
+
+--[[
+EntityInflictDamage( entity:int, amount:number, damage_type:string, description:string, ragdoll_fx:string, 
+    impulse_x:number, impulse_y:number, entity_who_is_responsible:int = 0, world_pos_x:number = entity_x, world_pos_y:number = entity_y, knockback_force:number = 0 )
+
+
+
+]]

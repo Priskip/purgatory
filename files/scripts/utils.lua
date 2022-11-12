@@ -2,8 +2,6 @@
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/perks/perk.lua")
 dofile_once("data/scripts/perks/perk_list.lua")
-dofile_once("mods/purgatory/files/materials/LP_AC_reagents.lua")
-dofile_once("mods/purgatory/files/scripts/ap_lc_recipe_gen.lua")
 
 --Returns a random number in a list without using Nolla's randomness functions
 --Only use in situations where the world seed isn't available yet
@@ -92,18 +90,6 @@ function set_biome_to_purgatory(biome_name, hp_scale, attack_speed, ascension_le
 
     BiomeSetValue(biome_filename, "game_enemy_hp_scale", adjusted_hp_scale)
     BiomeSetValue(biome_filename, "game_enemy_attack_speed", adjusted_attack_speed_scale)
-end
-
-function get_AP_LC_RECIPE()
-    local AP_recipe = {}
-    local LC_recipe = {}
-
-    for i = 1, 3, 1 do
-        AP_recipe[i] = GlobalsGetValue("AP_PART_" .. tostring(i), "not initialized")
-        LC_recipe[i] = GlobalsGetValue("LC_PART_" .. tostring(i), "not initialized")
-    end
-
-    return AP_recipe, LC_recipe
 end
 
 function in_range(num, lower, upper)

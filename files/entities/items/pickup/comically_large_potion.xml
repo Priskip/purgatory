@@ -59,12 +59,18 @@
     _tags="enabled_in_hand,enabled_in_world"
     spray_velocity_coeff="150"
     spray_velocity_normalized_min="1.5"
+    throw_bunch="1"
+    throw_how_many="50"
   ></PotionComponent>
 
   <MaterialSuckerComponent 
     _tags="enabled_in_world,enabled_in_hand"
     barrel_size="5000"
     num_cells_sucked_per_frame="25"
+    randomized_position.min_x="-10"
+		randomized_position.max_x="10"
+		randomized_position.min_y="-10"
+		randomized_position.max_y="10"
   ></MaterialSuckerComponent>
 
   <MaterialInventoryComponent 

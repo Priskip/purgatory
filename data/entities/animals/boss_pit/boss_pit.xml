@@ -19,8 +19,8 @@
 	</VariableStorageComponent>
 
     <VariableStorageComponent
-		name="boss_bar_type"
-		value_string="SINGLE"
+		name="boss_bar_position"
+		value_string="CENTER"
 		>
 	</VariableStorageComponent>
 
@@ -29,6 +29,7 @@
 		value_string="$animal_boss_pit"
 		>
 	</VariableStorageComponent>
+	<!-- /Custom Boss HP Bar -->
 
 	<!-- art - main body -->
 	<LightComponent

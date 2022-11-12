@@ -3,7 +3,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 local entity_id = GetUpdatedEntityID()
 local boss_id = EntityGetRootEntity(entity_id)
 local x, y = EntityGetTransform(boss_id)
-local distance_full = 36
+local distance_full = 52
 local ax, ay = 0
 
 --Set Size based on number of alive turrets in area

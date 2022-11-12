@@ -57,7 +57,6 @@ end
 
 if state == 6 then
 	--Start the Laser Beam Tracking
-
 	if (lcomps ~= nil) then
 		for a, lcomp in ipairs(lcomps) do
 			local players = EntityGetWithTag("player_unit")
