@@ -13,7 +13,7 @@ Main Features include:
 -- New quests and secrets to find. 
 
 Installing Instructions:
--- Download the zip file
+-- Download the zip file (click the green "Code" button above, and "Download ZIP")
 -- Extract it to "C:\Program Files (x86)\Steam\steamapps\common\Noita\mods"
 -- Rename folder to just "purgatory"
 -- If init.lua is in the position "C:\Program Files (x86)\Steam\steamapps\common\Noita\mods\purgatory\init.lua", then you are good to go!
