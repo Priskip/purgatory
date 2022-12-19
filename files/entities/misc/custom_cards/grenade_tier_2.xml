@@ -32,7 +32,7 @@
 		></InheritTransformComponent>
 
 	<ParticleEmitterComponent
-		_tags="enabled_in_hand,item_identified,not_enabled_in_wand"
+		_tags="enabled_in_hand,item_identified"
 		emitted_material_name="spark_green"
 		offset.x="0"
 		offset.y="0"

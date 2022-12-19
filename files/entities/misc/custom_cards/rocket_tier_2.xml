@@ -1,0 +1,165 @@
+<Entity>
+
+	<Base file="data/entities/base_custom_card.xml">
+		<!-- Item Component here allows for it to work with bombs materialized -->
+		<ItemComponent
+			_tags="enabled_in_world,enabled_in_hand,enabled_in_world"
+			is_equipable_forced="1"
+			></ItemComponent>
+
+		<SpriteComponent image_file="data/ui_gfx/gun_actions/rocket_tier_2.png"></SpriteComponent>
+
+		<ItemActionComponent
+			_tags="enabled_in_world"
+			action_id="ROCKET_TIER_2"
+			></ItemActionComponent>
+	</Base>
+
+	<!-- Ability Component here defines the gun action for with bombs materialized -->
+	<AbilityComponent
+		_tags="enabled_in_hand"
+		ui_name="$action_rocket_tier_2"
+		entity_file="data/entities/projectiles/deck/rocket_tier_2.xml"
+		rotate_hand_amount="0.05"
+		throw_as_item="1"
+		simulate_throw_as_item="1"
+		use_entity_file_as_projectile_info_proxy="1"
+		>
+		<gun_config deck_capacity="0"></gun_config>
+	</AbilityComponent>
+
+	<!-- Particles this spell makes in wand -->
+	<InheritTransformComponent
+		_tags="enabled_in_world,enabled_in_hand"
+		parent_hotspot_tag="shoot_pos"
+		></InheritTransformComponent>
+
+	<ParticleEmitterComponent
+		_tags="enabled_in_hand,item_identified"
+		emitted_material_name="spark_green"
+		offset.x="0"
+		offset.y="0"
+		x_pos_offset_min="-2"
+		x_pos_offset_max="2"
+		y_pos_offset_min="2"
+		y_pos_offset_max="-2"
+		x_vel_min="-2"
+		x_vel_max="2"
+		y_vel_min="-20"
+		y_vel_max="-10"
+		count_min="1"
+		count_max="2"
+		lifetime_min="0.2"
+		lifetime_max="0.3"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="8"
+		emission_interval_max_frames="15"
+		is_emitting="1"
+		></ParticleEmitterComponent>
+
+	<LightComponent
+		_tags="enabled_in_hand,item_identified"
+		_enabled="1"
+		radius="30"
+		fade_out_time="1.5"
+		r="70"
+		g="120"
+		b="5"
+		></LightComponent>
+
+	<!-- Particles this spell makes when in hand -->
+	<AudioComponent
+		_tags="enabled_in_hand,not_enabled_in_wand"
+		file="data/audio/Desktop/projectiles.bank"
+		event_root="player_projectiles/torch"
+		set_latest_event_position="1"
+		></AudioComponent>
+
+	<AudioLoopComponent
+		_tags="enabled_in_hand,not_enabled_in_wand"
+		file="data/audio/Desktop/projectiles.bank"
+		event_name="player_projectiles/torch/loop"
+		auto_play_if_enabled="1"
+		play_on_component_enable="1"
+		></AudioLoopComponent>
+
+	<SpriteComponent
+		_tags="enabled_in_hand,not_enabled_in_wand"
+		alpha="1"
+		image_file="data/projectiles_gfx/grenade_green.xml"
+		next_rect_animation=""
+		offset_x="4"
+		offset_y="4"
+		rect_animation=""
+		additive="1"
+		></SpriteComponent>
+
+	<ParticleEmitterComponent
+		_enabled="1"
+		_tags="enabled_in_hand,not_enabled_in_wand"
+		airflow_force="0"
+		airflow_scale="1"
+		airflow_time="1"
+		area_circle_radius.max="0"
+		area_circle_radius.min="0"
+		area_circle_sector_degrees="360"
+		attractor_force="0"
+		b2_force="0"
+		collide_with_gas_and_fire="1"
+		collide_with_grid="1"
+		color="0"
+		color_is_based_on_pos="0"
+		cosmetic_force_create="1"
+		count_max="6"
+		count_min="4"
+		create_real_particles="0"
+		custom_style="NONE"
+		delay_frames="0"
+		direction_random_deg="0"
+		draw_as_long="0"
+		emission_chance="60"
+		emission_interval_max_frames="3"
+		emission_interval_min_frames="1"
+		emit_cosmetic_particles="1"
+		emit_real_particles="0"
+		emitted_material_name="spark_green"
+		emitter_lifetime_frames="-1"
+		fade_based_on_lifetime="0"
+		fire_cells_dont_ignite_damagemodel="1"
+		friction="0"
+		gravity.x="0"
+		gravity.y="-100"
+		image_animation_colors_file=""
+		image_animation_emission_probability="1"
+		image_animation_file=""
+		image_animation_loop="1"
+		image_animation_phase="0"
+		image_animation_raytrace_from_center="0"
+		image_animation_speed="1"
+		image_animation_use_entity_rotation="0"
+		is_emitting="1"
+		is_trail="0"
+		lifetime_max="0.34"
+		lifetime_min="0.24"
+		offset.x="0"
+		offset.y="0"
+		particle_single_width="1"
+		render_back="1"
+		render_on_grid="0"
+		render_ultrabright="1"
+		set_magic_creation="0"
+		trail_gap="0"
+		use_material_inventory="0"
+		velocity_always_away_from_center="0"
+		x_pos_offset_max="0.09"
+		x_pos_offset_min="-0.09"
+		x_vel_max="-0.28"
+		x_vel_min="0.28"
+		y_pos_offset_max="5.0"
+		y_pos_offset_min="-0.51"
+		y_vel_max="-72.5"
+		y_vel_min="100"
+		></ParticleEmitterComponent>
+
+</Entity>

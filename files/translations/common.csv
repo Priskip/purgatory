@@ -147,4 +147,7 @@ actiondesc_blackhole_shot,"Attaches a small but powerful black hole to a project
 perkdesc_perks_lottery_start,"When you pick a perk, there's a 50% chance the others won't disappear. Does NOT affect perks found here at the start of the game.",,,,,,,,,,,,
 menu_mods_restart_tooltip,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=-=-=-=-=-=-=-=-=-=- USING MOD RESTART WILL BREAK PURGATORY - DO NOT USE -=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-",,,,,,,,,,,,
 biome_robobase_core,"Reactor Core",,,,,,,,,,,,
+animal_mimic_cactus,"Piikikäs Kaktuksen Matkija",,,,,,,,,,,,
+action_remove_gravity,"Remove Gravity",,,,,,,,,,,,
+actiondesc_remove_gravity,"Removes gravity from a projectile",,,,,,,,,,,,
 ,"",,,,,,,,,,,,

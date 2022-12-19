@@ -1,21 +1,74 @@
 <Entity>
 
 	<Base file="data/entities/base_custom_card.xml">
+		<!-- Item Component here allows for it to work with bombs materialized -->
 		<ItemComponent
 			_tags="enabled_in_world,enabled_in_hand,enabled_in_world"
 			is_equipable_forced="1"
 			></ItemComponent>
 
-		<SpriteComponent image_file="data/ui_gfx/gun_actions/grenade_large.png"></SpriteComponent>
+		<SpriteComponent image_file="data/ui_gfx/gun_actions/rocket.png"></SpriteComponent>
 
 		<ItemActionComponent
 			_tags="enabled_in_world"
-			action_id="GRENADE_LARGE"
+			action_id="ROCKET"
 			></ItemActionComponent>
 	</Base>
 
-	<Base file="data/entities/misc/custom_cards/base_explosive.xml"></Base>
+	<!-- Ability Component here defines the gun action for with bombs materialized -->
+	<AbilityComponent
+		_tags="enabled_in_hand"
+		ui_name="$action_rocket"
+		entity_file="data/entities/projectiles/deck/rocket.xml"
+		rotate_hand_amount="0.05"
+		throw_as_item="1"
+		simulate_throw_as_item="1"
+		use_entity_file_as_projectile_info_proxy="1"
+		>
+		<gun_config deck_capacity="0"></gun_config>
+	</AbilityComponent>
 
+	<!-- Particles this spell makes in wand -->
+	<InheritTransformComponent
+		_tags="enabled_in_world,enabled_in_hand"
+		parent_hotspot_tag="shoot_pos"
+		></InheritTransformComponent>
+
+	<ParticleEmitterComponent
+		_tags="enabled_in_hand,item_identified"
+		emitted_material_name="spark"
+		offset.x="0"
+		offset.y="0"
+		x_pos_offset_min="-2"
+		x_pos_offset_max="2"
+		y_pos_offset_min="2"
+		y_pos_offset_max="-2"
+		x_vel_min="-2"
+		x_vel_max="2"
+		y_vel_min="-20"
+		y_vel_max="-10"
+		count_min="1"
+		count_max="2"
+		lifetime_min="0.2"
+		lifetime_max="0.3"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="8"
+		emission_interval_max_frames="15"
+		is_emitting="1"
+		></ParticleEmitterComponent>
+
+	<LightComponent
+		_tags="enabled_in_hand,item_identified"
+		_enabled="1"
+		radius="30"
+		fade_out_time="1.5"
+		r="120"
+		g="70"
+		b="5"
+		></LightComponent>
+
+	<!-- Particles this spell makes when in hand -->
 	<ParticleEmitterComponent
 		_tags="enabled_in_hand,item_identified,not_enabled_in_wand"
 		emitted_material_name="spark"
@@ -192,6 +245,21 @@
 		special_scale_y="4"
 		></SpriteComponent>
 
+	<Entity>
+		<MagicConvertMaterialComponent
+			_tags="enabled_in_hand,not_enabled_in_wand"
+			temperature_reaction_temp="10"
+			steps_per_frame="1"
+			loop="1"
+			is_circle="1"
+			radius="7"
+			></MagicConvertMaterialComponent>
+
+		<InheritTransformComponent _tags="enabled_in_hand,not_enabled_in_wand">
+			<Transform position.y="-3"></Transform>
+		</InheritTransformComponent>
+	</Entity>
+
 	<AudioComponent
 		_tags="enabled_in_hand,not_enabled_in_wand"
 		file="data/audio/Desktop/projectiles.bank"
@@ -206,17 +274,5 @@
 		auto_play_if_enabled="1"
 		play_on_component_enable="1"
 		></AudioLoopComponent>
-
-	<AbilityComponent
-		_tags="enabled_in_hand,not_enabled_in_wand"
-		ui_name="$action_grenade_large"
-		entity_file="mods/purgatory/files/entities/projectiles/actions_materialized/grenade_large_held.xml"
-		rotate_hand_amount="0.05"
-		throw_as_item="1"
-		simulate_throw_as_item="1"
-		use_entity_file_as_projectile_info_proxy="1"
-		>
-		<gun_config deck_capacity="0"></gun_config>
-	</AbilityComponent>
 
 </Entity>

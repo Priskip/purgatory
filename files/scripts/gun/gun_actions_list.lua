@@ -206,6 +206,7 @@ gun_actions_order = {
     "QUANTUM_SPLIT",
     "GRAVITY",
     "GRAVITY_ANTI",
+    "REMOVE_GRAVITY", --Moddede
     "SINEWAVE",
     "CHAOTIC_ARC",
     "PINGPONG_PATH",

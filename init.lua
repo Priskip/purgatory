@@ -1,11 +1,5 @@
 --Init file for Purgatory Game Mode
 
---Load Mod Settings
-local start_with_edit = ModSettingGet("purgatory.start_with_edit")
-local ascension_level = ModSettingGet("purgatory.ascension_level")
-local reset_tree_achievements = ModSettingGet("purgatory.reset_tree_achievements")
-local debug_mode = ModSettingGet("purgatory.debug_mode")
-
 --Load Files
 dofile_once("mods/purgatory/files/scripts/utils.lua")
 dofile_once("mods/purgatory/files/translations/translations_utils.lua")
@@ -14,6 +8,13 @@ dofile_once("mods/purgatory/files/scripts/perks/perk_spawn_purgatory.lua") --tem
 dofile_once("mods/purgatory/files/materials/add_void_recipes.lua") --makes recipes for endless void
 dofile_once("mods/purgatory/files/scripts/gun/initialize_starting_wands.lua") --temp
 dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua") --for debugging
+
+--Load Mod Settings
+local ascension_level = ModSettingGet("purgatory.ascension_level")
+local reset_tree_achievements = ModSettingGet("purgatory.reset_tree_achievements")
+local debug_mode = ModSettingGet("purgatory.debug_mode")
+local input_seed = ModSettingGet("purgatory.seed_changer") --used for detecting secret seeds
+local seed_to_set = ModSettingGet("purgatory.seed_setter")
 
 --Append and Modify Translations
 append_translations("mods/purgatory/files/translations/common.csv") --Adds all the descriptors for Purgatory
@@ -30,6 +31,20 @@ if not debug_mode then
     ModMagicNumbersFileAdd("mods/purgatory/files/magic_numbers.xml") --Sets the biome map
 else
     ModMagicNumbersFileAdd("mods/purgatory/files/debug_magic_numbers.xml") --Sets the biome map to debug mode
+end
+
+--Custom Seed Parameters
+local start_with_edit = true
+if input_seed == "noedit" then
+    start_with_edit = false
+    seed_to_set = 0
+end
+
+--Set Custom Seed
+if seed_to_set ~= 0 then
+    local set_seed_xml = '<MagicNumbers WORLD_SEED="' .. tostring(seed_to_set) .. '" _DEBUG_DONT_SAVE_MAGIC_NUMBERS="1"/>'
+    ModTextFileSetContent("mods/purgatory/files/set_seed.xml", set_seed_xml)
+    ModMagicNumbersFileAdd("mods/purgatory/files/set_seed.xml")
 end
 
 function OnModPreInit()
@@ -135,6 +150,7 @@ function OnPlayerSpawned(player_entity)
 
         --Give Player Edit Wands Everywhere
         if start_with_edit then
+            --addPerkToPlayer("ABILITY_ACTIONS_MATERIALIZED")
             addPerkToPlayer("EDIT_WANDS_EVERYWHERE")
         else
             GameAddFlagRun("purgatory_no_edit_run")
@@ -228,7 +244,20 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
         local player_id = getPlayerEntity()
         local x, y = EntityGetTransform(player_id)
 
+        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
+            local string_to_convert = "ABCDE.FG"
+            local converted_string = ""
 
+            for char in string_to_convert:gmatch "." do
+                converted_string = converted_string .. string.byte(char)
+            end
+
+            --Seeds 1-4,294,967,295
+
+            converted_string = tonumber(converted_string) % 4294967295
+
+            print(converted_string)
+        end
     end
 end
 

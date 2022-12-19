@@ -1,5 +1,16 @@
 Change Log
 
+Beta Build 19 Dec 2022
+    - And then I said something about a cactus
+    - Fixed a bug with larpa not working on expanding sphere (thank you Human#6606 for posting about it in my discord <3)
+    - Potions drawn from the normal potion pool will now vary in the amount of liquid they contain
+        - Each material in the pool will spawn in with its own unique range of amount of material
+        - For Example: Water can spawn in 80-100% full while Ambrosia only spawns with 15-45%
+        - For a full list of material amounts, see "mods/purgatory/files/potion_appends.lua"
+    - Fixed a few bugs with firebolt particles not rendering when they were placed on wands
+    - Added a seed changer to the mod options menu
+    - New Spell: Remove Gravity (modifier)
+
 Beta Build 12 Nov 2022
     - Tweaked some secrets at Ylialkemisti's
     - Reduced the amount of shields Ylialkemisti can spam to improve performance during his fight

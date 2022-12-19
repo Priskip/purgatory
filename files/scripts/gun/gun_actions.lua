@@ -204,9 +204,15 @@ modify_existing_spell("BALL_LIGHTNING", "custom_xml_file", "mods/purgatory/files
 modify_existing_spell("THUNDERBALL", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/thunderball.xml") --thundercharge
 modify_existing_spell("METEOR", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/meteor.xml") --meteor
 modify_existing_spell("GRENADE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade.xml") --firebolt
+modify_existing_spell("GRENADE_ANTI", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_anti.xml") --odd firebolt
 modify_existing_spell("GRENADE_TRIGGER", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_trigger.xml") --firebolt w trigger
 modify_existing_spell("GRENADE_TIER_2", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_tier_2.xml") --firebolt large (green)
 modify_existing_spell("GRENADE_TIER_3", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_tier_3.xml") --firebolt giant (purple)
+modify_existing_spell("ROCKET", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket.xml") --magic missile
+modify_existing_spell("ROCKET_TIER_2", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket_tier_2.xml") --magic missile (green)
+modify_existing_spell("ROCKET_TIER_3", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket_tier_3.xml") --magic missile (purple)
+modify_existing_spell("PIPE_BOMB", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/pipe_bomb.xml") --dormant crystal
+modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/pipe_bomb_death_trigger.xml") --dormant crystal death trigger
 
 --balance changes
 modify_existing_spell("LIGHT_BULLET", "mana", 10)
@@ -412,7 +418,6 @@ spells_to_add = {
 		end,
 	},
 ]]
-	
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
 		name = "$action_light_bullet_death_trigger",
@@ -1280,6 +1285,23 @@ spells_to_add = {
 		max_uses = 20,
 		action = function()
 			c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/blackhole_shot.xml,"
+			draw_actions(1, true)
+		end
+	},
+	{
+		id = "REMOVE_GRAVITY",
+		name = "$action_remove_gravity",
+		description = "$actiondesc_remove_gravity",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/remove_gravity.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_extra_entities = {"mods/purgatory/files/entities/misc/remove_gravity.xml"},
+		type = ACTION_TYPE_MODIFIER,
+		spawn_level = "2,3,4", -- REMOVE_GRAVITY
+		spawn_probability = "0.2,0.25,0.1", -- REMOVE_GRAVITY
+		price = 300,
+		mana = 2,
+		action = function()
+			c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/remove_gravity.xml,"
 			draw_actions(1, true)
 		end
 	}

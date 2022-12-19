@@ -230,8 +230,7 @@
 	
 	<VariableStorageComponent
 		name="projectile_file"
-		value_string="mods/purgatory/files/scripts/projectiles/orb_expanding.lua"
+		value_string="mods/purgatory/files/entities/projectiles/deck/orb_expanding.xml"
 		>
 	</VariableStorageComponent>
 </Entity>
-

@@ -1,0 +1,88 @@
+<Entity name="$animal_mimic_cactus"> 
+	<Base file="data/entities/base_enemy_basic.xml" >		
+		<AnimalAIComponent 
+			_enabled="1" 
+			preferred_job="JobDefault"
+			escape_if_damaged_probability="0"
+			creature_detection_range_x="700"
+			creature_detection_range_y="10"
+			food_material="meat"
+			needs_food="0"
+			sense_creatures="1"
+			attack_ranged_enabled="0"
+			attack_melee_enabled="1"
+			can_fly="0" 
+			attack_melee_action_frame="5"
+			aggressiveness_min="5"
+			aggressiveness_max="10"
+			is_static_turret="1"
+			attack_melee_max_distance="10"
+			attack_melee_damage_min="1.0"
+			attack_melee_damage_max="1.0"
+		>
+		</AnimalAIComponent>
+		
+		<DamageModelComponent 
+            hp="3"
+            ragdoll_material="wood_prop"
+			ragdoll_filenames_file="" 
+			blood_material="water"
+			fire_probability_of_ignition="20"
+			>
+		</DamageModelComponent>
+
+		<SpriteComponent 
+			image_file="mods/purgatory/files/enemies_gfx/mimic_cactus.xml" 
+			offset_x="22"
+			offset_y="76"
+			>
+		</SpriteComponent>
+
+		<PathFindingGridMarkerComponent
+			marker_work_flag="16" >
+		</PathFindingGridMarkerComponent>
+		
+		<GenomeDataComponent 
+			herd_id="ghost"
+			food_chain_rank="5"
+			is_predator="1" >
+		</GenomeDataComponent>
+		
+		<CharacterPlatformingComponent 
+			jump_velocity_y="0" 
+			run_velocity="0"  >
+		</CharacterPlatformingComponent>
+		
+		<PathFindingComponent
+			can_jump="0"
+			can_fly="0" 
+			can_walk="0"
+			>
+		</PathFindingComponent>
+
+		<CameraBoundComponent
+			max_count="30"
+			distance="160000">
+		</CameraBoundComponent>
+		
+		<HitboxComponent 
+            _enabled="1" 
+            aabb_max_x="10" 
+			aabb_min_x="0" 
+			aabb_min_y="-70" 
+            aabb_max_y="0" 
+			>
+        </HitboxComponent>
+		
+		<CharacterDataComponent 
+			collision_aabb_min_x="-11.0" 
+			collision_aabb_max_x="1.0" 
+			collision_aabb_min_y="-10" 
+			collision_aabb_max_y="0" 
+			mass="5.2"
+			>
+	    </CharacterDataComponent>
+
+	</Base>
+
+</Entity>
