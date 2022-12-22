@@ -170,18 +170,18 @@ function init(entity_id)
 				break
 			end
 		end
-	end
-
-	--if not, then is a random potion
-	local potion = {}
-	local max_amount_of_material = 1000 --in case I bring back more potion capacity perk, which I doubt I will -priskip
-
-	if (Random(0, 100) <= 50) then
-		-- 50% chance of magic_liquid_
-		potion = random_from_array(materials_magic)
 	else
-		potion = random_from_array(materials_standard)
-	end
+		--if not, then is a random potion
+		local potion = {}
+		local max_amount_of_material = 1000 --in case I bring back more potion capacity perk, which I doubt I will -priskip
 
-	AddMaterialInventoryMaterial(entity_id, potion.material, max_amount_of_material * 0.01 * Random(potion.min_percent, potion.max_percent))
+		if (Random(0, 100) <= 50) then
+			-- 50% chance of magic_liquid_
+			potion = random_from_array(materials_magic)
+		else
+			potion = random_from_array(materials_standard)
+		end
+
+		AddMaterialInventoryMaterial(entity_id, potion.material, max_amount_of_material * 0.01 * Random(potion.min_percent, potion.max_percent))
+	end
 end

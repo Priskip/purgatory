@@ -92,6 +92,7 @@ function damage_received(damage, desc, entity_who_caused, is_fatal)
         ComponentSetValue2(hitbox_comp, "aabb_max_x", aabb_max_x)
         ComponentSetValue2(hitbox_comp, "aabb_min_y", aabb_min_y)
         ComponentSetValue2(hitbox_comp, "aabb_max_y", aabb_max_y)
+        EntitySetComponentIsEnabled(turret.id, hitbox_comp, true)
 
         --Child Entity Position
         local children = EntityGetAllChildren(turret.id)

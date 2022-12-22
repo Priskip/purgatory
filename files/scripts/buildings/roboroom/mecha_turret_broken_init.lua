@@ -74,6 +74,7 @@ function init(entity_id)
     ComponentSetValue2(hitbox_comp, "aabb_max_x", aabb_max_x)
     ComponentSetValue2(hitbox_comp, "aabb_min_y", aabb_min_y)
     ComponentSetValue2(hitbox_comp, "aabb_max_y", aabb_max_y)
+    EntitySetComponentIsEnabled(turret.id, hitbox_comp, true)
 
     --Choose a Broken Animation version at random
     local sprite_comp = EntityGetFirstComponentIncludingDisabled(turret.id, "SpriteComponent")

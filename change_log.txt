@@ -1,5 +1,11 @@
 Change Log
 
+Beta Build 21 Dec 2022
+    - Fixed a bug with Mecha Kolmi's turrets (tbh surprised no one has noticed it yet)
+    - Fixed a bug where preset potions we being spawned with their preset material and an additional random material (ie Hiisi Bar having whiskey + urine potions)
+    - Fixed a bug where enemies in the chunk with the hiisi anvil were not scaled to hiisi base's nightmare scaling
+    - Found the funny dragon pixel and hopefully removed it (thank you Rynthera <3)
+
 Beta Build 19 Dec 2022
     - And then I said something about a cactus
     - Fixed a bug with larpa not working on expanding sphere (thank you Human#6606 for posting about it in my discord <3)

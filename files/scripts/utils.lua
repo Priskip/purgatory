@@ -83,13 +83,12 @@ end
 
 --Set Biomes to Purgatory
 function set_biome_to_purgatory(biome_name, hp_scale, attack_speed, ascension_level)
-    local biome_filename = "data/biome/" .. biome_name .. ".xml"
     local ascension_scale_hp = 0.1
     local adjusted_hp_scale = hp_scale + ascension_scale_hp * ascension_level
     local adjusted_attack_speed_scale = attack_speed / (ascension_level + 1)
 
-    BiomeSetValue(biome_filename, "game_enemy_hp_scale", adjusted_hp_scale)
-    BiomeSetValue(biome_filename, "game_enemy_attack_speed", adjusted_attack_speed_scale)
+    BiomeSetValue(biome_name, "game_enemy_hp_scale", adjusted_hp_scale)
+    BiomeSetValue(biome_name, "game_enemy_attack_speed", adjusted_attack_speed_scale)
 end
 
 function in_range(num, lower, upper)
