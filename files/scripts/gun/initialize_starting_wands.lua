@@ -98,7 +98,7 @@ end
 function initialize_starting_wands(player_entity)
     --Get World Seed for seeding Randomness
     local x, y = EntityGetTransform(player_entity)
-    SetRandomSeed(x, y)
+    SetRandomSeed(x + GameGetFrameNum(), y)
 
     --Get Wand IDs
     local blue_wand_id = EntityGetInRadiusWithTag(x, y, 24, "starting_wand_blue")[1]
@@ -153,14 +153,13 @@ function initialize_starting_wands(player_entity)
     local blue_deck, red_deck, yellow_deck, green_deck = {}, {}, {}, {}
 
     blue_deck, black_listed_projectiles, black_listed_modifiers =
-        generate_deck(blue_tier, gun_blue.shuffle_deck_when_empty, math.floor(gun_blue.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 5, y + 5)
-
+        generate_deck(blue_tier, gun_blue.shuffle_deck_when_empty, math.floor(gun_blue.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 5, y + 5, "blue")
     red_deck, black_listed_projectiles, black_listed_modifiers =
-        generate_deck(red_tier, gun_red.shuffle_deck_when_empty, math.floor(gun_red.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 10, y + 10)
+        generate_deck(red_tier, gun_red.shuffle_deck_when_empty, math.floor(gun_red.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 10, y + 10, "red")
     yellow_deck, black_listed_projectiles, black_listed_modifiers =
-        generate_deck(yellow_tier, gun_yellow.shuffle_deck_when_empty, math.floor(gun_yellow.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 15, y + 15)
+        generate_deck(yellow_tier, gun_yellow.shuffle_deck_when_empty, math.floor(gun_yellow.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 15, y + 15, "yellow")
     green_deck, black_listed_projectiles, black_listed_modifiers =
-        generate_deck(green_tier, gun_green.shuffle_deck_when_empty, math.floor(gun_green.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 20, y + 20)
+        generate_deck(green_tier, gun_green.shuffle_deck_when_empty, math.floor(gun_green.deck_capacity * 0.75), black_listed_projectiles, black_listed_modifiers, trigger_spells, x + 20, y + 20, "green")
 
     --Place decks on guns
     put_deck_on_wand(blue_wand_id, blue_deck, gun_blue)

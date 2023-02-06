@@ -599,6 +599,162 @@ perks_to_add = {
 			EntitySetDamageFromMaterial(entity_who_picked, "blood_cold", 0.0009)
 		end
 	},
+	{
+		id = "EXTRA_POTION_AND_SACK_CAPACITY",
+		ui_name = "$perk_extra_potion_and_sack_capacity",
+		ui_description = "$perkdesc_extra_potion_and_sack_capacity",
+		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/extra_potion_and_sack_capacity.png",
+		perk_icon = "mods/purgatory/files/items_gfx/perks/extra_potion_and_sack_capacity.png",
+		stackable = STACKABLE_YES,
+		func = function(entity_perk_item, entity_who_picked, item_name)
+			--Update Global
+			--barrel size = 1000 * (1 + #stacks)
+			local multiplier = tonumber(GlobalsGetValue("EXTRA_POTION_AND_SACK_CAPACITY_MULTIPLIER", "1"))
+			multiplier = multiplier + 1
+			GlobalsSetValue("EXTRA_POTION_AND_SACK_CAPACITY_MULTIPLIER", tostring(multiplier))
+
+			--Affect player's potions
+			local inventory = {}
+			local items = {}
+
+			for i, child in ipairs(EntityGetAllChildren(entity_who_picked)) do
+				if EntityGetName(child) == "inventory_quick" then
+					inventory = child
+					break
+				end
+			end
+
+			for i, item in ipairs(EntityGetAllChildren(inventory)) do
+				local ability_component = EntityGetFirstComponentIncludingDisabled(item, "AbilityComponent")
+				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item, "EndingMcGuffinComponent")
+
+				if (not ability_component) or ending_mc_guffin_component or ComponentGetValue2(ability_component, "use_gun_script") == false then
+					table.insert(items, item)
+				end
+			end
+
+			for i, item in ipairs(items) do
+				local is_potion = EntityHasTag(item, "potion")
+				local is_sack = EntityHasTag(item, "powder_stash")
+
+				if is_potion then
+					local comp = EntityGetFirstComponentIncludingDisabled(item, "MaterialSuckerComponent")
+					ComponentSetValue(comp, "barrel_size", multiplier * 1000)
+
+					--Make description reflect barrel size change.
+					EntityAddComponent2(
+						item,
+						"LuaComponent",
+						{
+							_tags = "enabled_in_hand,enabled_in_world,enabled_in_inventory",
+							execute_on_added = false,
+							execute_every_n_frame = 5,
+							remove_after_executed = true,
+							script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+						}
+					)
+				end
+
+				if is_sack then
+					local comp = EntityGetFirstComponentIncludingDisabled(item, "MaterialSuckerComponent")
+					ComponentSetValue(comp, "barrel_size", multiplier * 1500)
+
+					--Make description reflect barrel size change.
+					EntityAddComponent2(
+						item,
+						"LuaComponent",
+						{
+							_tags = "enabled_in_hand,enabled_in_world,enabled_in_inventory",
+							execute_on_added = false,
+							execute_every_n_frame = 5,
+							remove_after_executed = true,
+							script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+						}
+					)
+				end
+			end
+		end,
+		func_remove = function(entity_who_picked)
+			--Update Global
+			local multiplier = 1
+			GlobalsSetValue("EXTRA_POTION_AND_SACK_CAPACITY_MULTIPLIER", tostring(multiplier))
+
+			--Affect player's potions
+			local inventory = {}
+			local items = {}
+
+			for i, child in ipairs(EntityGetAllChildren(entity_who_picked)) do
+				if EntityGetName(child) == "inventory_quick" then
+					inventory = child
+					break
+				end
+			end
+
+			for i, item in ipairs(EntityGetAllChildren(inventory)) do
+				local ability_component = EntityGetFirstComponentIncludingDisabled(item, "AbilityComponent")
+				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item, "EndingMcGuffinComponent")
+
+				if (not ability_component) or ending_mc_guffin_component or ComponentGetValue2(ability_component, "use_gun_script") == false then
+					table.insert(items, item)
+				end
+			end
+
+			for i, item in ipairs(items) do
+				local is_potion = EntityHasTag(item, "potion")
+				local is_sack = EntityHasTag(item, "powder_stash")
+
+				if is_potion then
+					local comp = EntityGetFirstComponentIncludingDisabled(item, "MaterialSuckerComponent")
+					ComponentSetValue(comp, "barrel_size", multiplier * 1000)
+
+					--Make description reflect barrel size change.
+					EntityAddComponent2(
+						item,
+						"LuaComponent",
+						{
+							_tags = "enabled_in_hand,enabled_in_world,enabled_in_inventory",
+							execute_on_added = false,
+							execute_every_n_frame = 5,
+							remove_after_executed = true,
+							script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+						}
+					)
+				end
+
+				if is_sack then
+					local comp = EntityGetFirstComponentIncludingDisabled(item, "MaterialSuckerComponent")
+					ComponentSetValue(comp, "barrel_size", multiplier * 1500)
+
+					--Make description reflect barrel size change.
+					EntityAddComponent2(
+						item,
+						"LuaComponent",
+						{
+							_tags = "enabled_in_hand,enabled_in_world,enabled_in_inventory",
+							execute_on_added = false,
+							execute_every_n_frame = 5,
+							remove_after_executed = true,
+							script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+						}
+					)
+				end
+			end
+		end
+	},
+	--[[
+	{
+		id = "STRONGER_BOTTLES",
+		ui_name = "$perk_stronger_bottles",
+		ui_description = "$perkdesc_stronger_bottles",
+		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/stronger_bottles.png",
+		perk_icon = "mods/purgatory/files/items_gfx/perks/stronger_bottles.png",
+		stackable = STACKABLE_NO,
+		func = function(entity_perk_item, entity_who_picked, item_name)
+		end,
+		func_remove = function(entity_who_picked)
+		end
+	}
+	]]
 }
 
 --Add the Perks

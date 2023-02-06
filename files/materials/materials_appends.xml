@@ -53,80 +53,6 @@
 		<Graphics color="ff70FF4F"></Graphics>
 	</CellDataChild>
 
-	<!--Orignial: wang_color="80a1f18c" -->
-	<CellData
-		name="purgatory_lively_concoction"
-		ui_name="$mat_magic_liquid_hp_regeneration_unstable"
-		tags="[liquid],[water],[magic_liquid],[regenerative]"
-		burnable="0"
-		density="5.74"
-		cell_type="liquid"
-		wang_color="80a1f18d"
-		generates_smoke="0"
-		liquid_gravity="0.8"
-		liquid_sand="0"
-		gfx_glow="150"
-		on_fire="0"
-		requires_oxygen="0"
-		liquid_stains="1"
-		liquid_sprite_stain_shaken_drop_chance="5"
-		status_effects="HP_REGENERATION"
-		audio_materialaudio_type="MAGICAL"
-		lifetime="900"
-		show_in_creative_mode="1"
-		>
-		<ParticleEffect
-			vel.y="-14.28"
-			vel_random.min_x="-0.285"
-			vel_random.max_x="0.285"
-			vel_random.min_y="-11.43"
-			vel_random.max_y="11.43"
-			lifetime.min="0"
-			lifetime.max="20"
-			gravity.y="0"
-			render_on_grid="1"
-			airflow_force="0.1146"
-			airflow_scale="-0.028"
-			probability="0.018"
-			count.min="0"
-			></ParticleEffect>
-		<StatusEffects>
-			<Ingestion>
-				<StatusEffect
-					type="HP_REGENERATION"
-					amount="0.075"
-					 />
-			</Ingestion>
-		</StatusEffects>
-	</CellData>
-
-	<!--Orignial: wang_color="e1243CFF" -->
-	<CellDataChild
-		_parent="alcohol"
-		tags="[liquid],[burnable],[water]"
-		name="purgatory_alchemic_precursor"
-		ui_name="$mat_midas_precursor"
-		liquid_gravity="0.5"
-		wang_color="e1243CE"
-		>
-		<Graphics
-			texture_file="data/materials_gfx/midas_precursor.png"
-			color="e1243CFF"
-			></Graphics>
-		<StatusEffects>
-			<Ingestion>
-				<StatusEffect
-					type="POISONED"
-					amount="0.1"
-					 />
-				<StatusEffect
-					type="FOOD_POISONING"
-					amount="0.1"
-					 />
-			</Ingestion>
-		</StatusEffects>
-	</CellDataChild>
-
 	<!-- plasma orange -->
 	<CellDataChild
 		_parent="plasma_fading"
@@ -150,7 +76,7 @@
 	<CellDataChild
 		_parent="blood_cold_vapour"
 		name="cloud_blood_cold_vapour"
-		ui_name="$cloud_blood_cold_vapour"
+		ui_name="$mat_cloud_blood_cold_vapour"
 		wang_color="7f5C98CE"
 		lifetime="50"
 		></CellDataChild>
@@ -159,7 +85,7 @@
 	<CellData
 		name="hardened_glass_static"
 		ui_name="$mat_glass_hardened_static"
-		tags="[static],[solid]"
+		tags="[static],[solid],[indestructible]"
 		burnable="0"
 		density="10"
 		cell_type="solid"
@@ -172,7 +98,7 @@
 		gfx_glow="6"
 		hp="100000"
 		platform_type="1"
-		durability="14"
+		durability="20"
 		solid_static_type="1"
 		>
 		<Graphics
@@ -181,44 +107,156 @@
 			></Graphics>
 	</CellData>
 
-	<!-- Alchemy Recipes -->
-	<Reaction
-		probability="100"
-		input_cell1="purgatory_alchemic_precursor"
-		input_cell2="[meat]"
-		output_cell1="midas"
-		output_cell2="midas"
-		fast_reaction="1"
-		></Reaction>
+	<!-- Colored Smokes -->
+	<CellData
+		name="smoke_red"
+		ui_name="$mat_smoke_red"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA1"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_red.png"
+			color="7fAAAAB1"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
 
-	<Reaction
-		probability="100"
-		input_cell1="purgatory_alchemic_precursor"
-		input_cell2="midas"
-		output_cell1="midas"
-		output_cell2="midas"
-		fast_reaction="1"
-		></Reaction>
+	<CellData
+		name="smoke_orange"
+		ui_name="$mat_smoke_orange"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA2"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_orange.png"
+			color="7fAAAAB2"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
 
-	<Reaction
-		probability="100"
-		input_cell1="magic_liquid_polymorph"
-		input_cell2="magic_liquid_random_polymorph"
-		input_cell3="magic_liquid_unstable_polymorph"
-		output_cell1="purgatory_lively_concoction"
-		output_cell2="purgatory_lively_concoction"
-		output_cell3="purgatory_lively_concoction"
-		></Reaction>
+	<CellData
+		name="smoke_yellow"
+		ui_name="$mat_smoke_yellow"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA3"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_yellow.png"
+			color="7fAAAAB3"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
 
-	<Reaction
-		probability="100"
-		input_cell1="magic_liquid_protection_all"
-		input_cell2="magic_liquid_berserk"
-		input_cell3="magic_liquid_invisibility"
-		output_cell1="purgatory_alchemic_precursor"
-		output_cell2="purgatory_alchemic_precursor"
-		output_cell3="purgatory_alchemic_precursor"
-		></Reaction>
+	<CellData
+		name="smoke_green"
+		ui_name="$mat_smoke_green"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA4"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_green.png"
+			color="7fAAAAB4"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
+
+	<CellData
+		name="smoke_blue"
+		ui_name="$mat_smoke_blue"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA5"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_blue.png"
+			color="7fAAAAB5"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
+
+	<CellData
+		name="smoke_purple"
+		ui_name="$mat_smoke_purple"
+		tags="[gas],[smoke]"
+		wang_color="7fAAAAA6"
+		burnable="0"
+		density="1"
+		lifetime="350"
+		cell_type="gas"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="0"
+		on_fire="0"
+		requires_oxygen="0"
+		temperature_of_fire="60"
+		show_in_creative_mode="1"
+		>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_purple.png"
+			color="7fAAAAB6"
+			fire_colors_index="2"
+			>
+		</Graphics>
+	</CellData>
 
 	<!-- New Alchemy Stuff -->
 	<Reaction
@@ -227,7 +265,7 @@
 		input_cell2="[blood]"
 		input_cell3="[magic_polymorph]"
 		output_cell1="magic_liquid_hp_regeneration"
-		output_cell2="magic_gas_hp_regeneration"
+		output_cell2="smoke_green"
 		output_cell3="magic_liquid_hp_regeneration"
 		blob_radius2="20"
 		></Reaction>
@@ -264,4 +302,32 @@
 		output_cell2="fungi_green"
 		></Reaction>
 
+	<Reaction
+		probability="100"
+		input_cell1="blood"
+		input_cell2="bone"
+		input_cell3="water_salt"
+		output_cell1="smoke_red"
+		output_cell2="magic_liquid_berserk"
+		output_cell3="smoke"
+		></Reaction>
+
+	<Reaction
+		probability="50"
+		input_cell1="rotten_meat"
+		input_cell2="honey"
+		output_cell1="magic_liquid_worm_attractor"
+		output_cell2="poison"
+		></Reaction>
+
 </Materials>
+
+<!-- New Alchemy Recipes in a nutshell -->
+<!-- Pheremone + Blood + Any Poly = Healthium + Smoke Green + Healthium -->
+<!-- Chaotic Poly + Whiskey = Unstable Poly -->
+<!-- Unstable Poly + Slime = Regular Poly -->
+<!-- Ambrosia + Silver = Invis -->
+<!-- Rotten Meat + Fungi Soil = Green Fungus -->
+
+<!-- Blood + Bone Dust + Brine = Smoke Red + Berserkium + Smoke -->
+<!-- Rotten Meat + Honey =  Worm Pheremone + Poison -->

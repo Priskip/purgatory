@@ -155,7 +155,7 @@
     is_pickable="1"
     is_equipable_forced="1"
     ui_sprite="mods/purgatory/files/ui_gfx/items/comically_large_potion.png"
-    ui_description="$item_description_potion"
+    ui_description="$item_description_comically_large_potion"
     preferred_inventory="QUICK"
   ></ItemComponent>
 

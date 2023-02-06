@@ -1,9 +1,0 @@
-<Entity tags="temple_alchemy_station,temple_alchemy_potion_storage_initalizer">
-
-    <LuaComponent
-        execute_on_added="1"
-        call_init_function="1"
-        script_source_file="mods/purgatory/files/scripts/buildings/temple_alchemy_station/potion_storage_initializer_delay.lua"
-        ></LuaComponent>
-
-</Entity>

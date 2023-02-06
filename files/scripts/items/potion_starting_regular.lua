@@ -79,4 +79,24 @@ function init(entity_id)
 
     local starting_amount = {750, 1000}
     init_potion_with_amount(entity_id, potion_material, get_random_between_range(starting_amount))
+
+    --Make description reflect barrel size.
+	EntityAddComponent2(
+		entity_id,
+		"LuaComponent",
+		{
+			_tags="enabled_in_hand,enabled_in_world,enabled_in_inventory",
+			execute_on_added = false,
+			execute_every_n_frame = 5,
+			remove_after_executed = true,
+			script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+		}
+	)
+
+    local mat_sucker_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "MaterialSuckerComponent")
+    EntitySetComponentIsEnabled(entity_id, mat_sucker_comp, true)
+    ComponentAddTag(mat_sucker_comp, "enabled_in_world")
+    ComponentAddTag(mat_sucker_comp, "enabled_in_hand")
 end
+
+--TODO: clean up this mess with my new logic

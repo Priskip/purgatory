@@ -19,11 +19,14 @@ local seed_to_set = ModSettingGet("purgatory.seed_setter")
 --Append and Modify Translations
 append_translations("mods/purgatory/files/translations/common.csv") --Adds all the descriptors for Purgatory
 
+--Hacking Nolla's systems (I don't get it but it works)
+get_content = ModTextFileGetContent
+set_content = ModTextFileSetContent
+
 --Append Files
 ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua") --For adding custom trigger types
 ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/purgatory/files/scripts/gun/gun_actions.lua") --Custom Spells
 ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/purgatory/files/scripts/perks/perk_list_appends.lua") --Custom Perks
-ModLuaFileAppend("data/scripts/items/potion.lua", "mods/purgatory/files/potion_appends.lua") --Custom Potion List
 ModLuaFileAppend("data/scripts/director_helpers.lua", "mods/purgatory/files/director_helpers_appends.lua") --Nightmare perks and wands to enemies
 ModLuaFileAppend("data/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua", "mods/purgatory/files/sampo_ending_appends.lua") --Special Sampo Endings for tree chieves
 ModMaterialsFileAdd("mods/purgatory/files/materials/materials_appends.xml") --Adds materials
@@ -48,8 +51,6 @@ if seed_to_set ~= 0 then
 end
 
 function OnModPreInit()
-    print("Purgatory - OnModPreInit()")
-
     --Change Biomes Data (Calling it this way to hopefully avoid mod restart glitches)
     ModTextFileSetContent("data/biome/_biomes_all.xml", ModTextFileGetContent("mods/purgatory/files/biome/_biomes_all.xml")) --Overwrites the biome data with purgatory's scenes
     ModTextFileSetContent("data/biome/_pixel_scenes.xml", ModTextFileGetContent("mods/purgatory/files/biome/_pixel_scenes.xml")) --Overwrites the pixel scenes with purgatory's pixel scenes
@@ -82,6 +83,10 @@ function OnModPreInit()
         if element.attr.name == "magic_liquid_faster_levitation_and_movement" then
             element.attr.tags = "[liquid],[water],[magic_liquid],[impure],[magic_faster],[magic_haste]"
         end
+
+        if element.attr.name == "smoke" then
+            element.attr.tags = "[gas],[smoke]" --Adding colored smokes and want to have all smokes have a smoke tag
+        end
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
 
@@ -90,16 +95,12 @@ function OnModPreInit()
 end
 
 function OnModInit()
-    print("Purgatory - OnModInit()") -- After that this is called for all mods
 end
 
 function OnModPostInit()
-    print("Purgatory - OnModPostInit()") -- Then this is called for all mods
 end
 
---On Player Spawning
 function OnPlayerSpawned(player_entity)
-    --GamePrint( "Purgatory - OnPlayerSpawned()")
     local purgatory_initiated = GameHasFlagRun("run_purgatory")
 
     if not purgatory_initiated then
@@ -196,11 +197,9 @@ function OnPlayerSpawned(player_entity)
 end -- function OnPlayerSpawned(player_entity)
 
 function OnMagicNumbersAndWorldSeedInitialized() -- this is the last point where the Mod* API is available. after this materials.xml will be loaded.
-    --GamePrint( "Purgatory - OnMagicNumbersAndWorldSeedInitialized()")
 end
 
 function OnWorldInitialized() -- This is called once the game world is initialized. Doesn't ensure any world chunks actually exist. Use OnPlayerSpawned to ensure the chunks around player have been loaded or created.
-    --GamePrint( "Purgatory - OnWorldInitialized()")
     set_biome_to_purgatory("data/biome/clouds.xml", 15, 0.5, ascension_level)
     set_biome_to_purgatory("data/biome/coalmine.xml", 3, 0.5, ascension_level)
     set_biome_to_purgatory("data/biome/coalmine_alt.xml", 3, 0.5, ascension_level)
@@ -231,91 +230,8 @@ function OnWorldInitialized() -- This is called once the game world is initializ
 end
 
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
-    --GamePrint( "Purgatory - OnWorldPreUpdate()")
 
-    if debug_mode then
-        local id = 1
-        local function new_id()
-            id = id + 1
-            return id
-        end
-        gui = gui or GuiCreate()
-        GuiStartFrame(gui)
-
-        local player_id = getPlayerEntity()
-        local x, y = EntityGetTransform(player_id)
-
-        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            local string_to_convert = "ABCDE.FG"
-            local converted_string = ""
-
-            for char in string_to_convert:gmatch "." do
-                converted_string = converted_string .. string.byte(char)
-            end
-
-            --Seeds 1-4,294,967,295
-
-            converted_string = tonumber(converted_string) % 4294967295
-
-            print(converted_string)
-        end
-    end
 end
 
 function OnWorldPostUpdate() -- This is called every time the game has finished updating the world
-    --GamePrint( "Purgatory - OnWorldPostUpdate()" .. tostring(GameGetFrameNum()) )
 end
-
---[[
-GuiSlider( gui:obj, id:int, x:number, y:number, text:string, value:number, value_min:number, value_max:number, value_default:number, value_display_multiplier:number, value_formatting:string, width:number ) -> new_value:number [This is not intended to be outside mod settings menu, and might bug elsewhere.]
-
-<PlatformShooterPlayerComponent
-    center_camera_on_this_entity="1"
-    aiming_reticle_distance_from_character="60"
-    camera_max_distance_from_character="50"
-    move_camera_with_aim="1"
-    eating_area_min.x="-6"
-    eating_area_max.x="6"
-    eating_area_min.y="-4"
-    eating_area_max.y="6"
-    eating_cells_per_frame="2"
-  ></PlatformShooterPlayerComponent>
-
-GameGetCameraPos() -> x:number,y:number
-GameSetCameraPos( x:number, y:number )
-GameSetCameraFree( is_free:bool )
-GameGetCameraBounds() -> x:number,y:number,w:number,h:number [Returns the camera rectangle. This may not be 100% pixel perfect with regards to what you see on the screen. 'x','y' = top left corner of the rectangle.]
-
-        local plaform_shooter_player_comp = EntityGetFirstComponentIncludingDisabled(player_id, "PlatformShooterPlayerComponent")
-        local camera_centered = ComponentGetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity")
-
-        if GuiImageButton(gui, new_id(), 50, 0, "DB 1", "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png") then
-            if camera_centered == true then
-                ComponentSetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity", false)
-                GamePrint("camera_centered set to false")
-            elseif camera_centered == false then
-                ComponentSetValue2(plaform_shooter_player_comp, "center_camera_on_this_entity", true)
-                GamePrint("camera_centered set to true")
-            end
-        end
-
-distance = distance or 50
-        distance = GuiSlider(gui, new_id(), 25, 50, "distance", distance, 0, 200, 0, 1, "", 100)
-
-        local controls_comp = EntityGetFirstComponentIncludingDisabled(player_id, "ControlsComponent")
-        local cursor_x, cursor_y = ComponentGetValue2(controls_comp, "mMousePosition")
-        local x_raw, y_raw = ComponentGetValue2(controls_comp, "mMousePositionRaw")
-
-        local left, up, w, h = GameGetCameraBounds()
-
-        GuiText(gui, 25, 70, tostring(cursor_x))
-        GuiText(gui, 25, 80, tostring(cursor_y))
-
-        GuiText(gui, 25, 100, tostring(x_raw))
-        GuiText(gui, 25, 110, tostring(y_raw))
-
-        GuiText(gui, 25, 130, tostring(left))
-        GuiText(gui, 25, 140, tostring(up))
-        GuiText(gui, 25, 150, tostring(w))
-        GuiText(gui, 25, 160, tostring(h))
-]]

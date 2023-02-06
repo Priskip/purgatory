@@ -1,0 +1,10 @@
+<Entity>
+    <Base file="data/entities/items/pickup/potion.xml" />
+
+    <VariableStorageComponent
+    name="material_string"
+    value_string="blood,855-magic_liquid_mana_regeneration,82" 
+    value_int="1"
+    ></VariableStorageComponent>
+
+</Entity>

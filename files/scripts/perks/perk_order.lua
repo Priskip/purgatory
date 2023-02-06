@@ -116,11 +116,14 @@ perk_order = {
     "ROLL_AGAIN", --Modded
 
     "EXTRA_SHOP_ITEM",
+
+    "EXTRA_POTION_AND_SACK_CAPACITY", --Modded
+
     "GENOME_MORE_HATRED",
     "GENOME_MORE_LOVE",
     "PEACE_WITH_GODS",
     "MANA_FROM_KILLS",
     "ANGRY_LEVITATION",
     "LASER_AIM",
-    "MEGA_BEAM_STONE",
+    "MEGA_BEAM_STONE"
 }

@@ -1,5 +1,22 @@
 Change Log
 
+Beta Build 06 Feb 2023
+    - Holy Mountain's Alchemy Station now works with powder sacks
+    - Changed Add Mana spell/s to hopefully improve balance 
+    - Removed "Chainsaw" and "Add Mana" from tower spell shop
+    - Added "Spark bolt with timer and expiration trigger", "Black Hole Shot", and "Summon Hämis" to tower spell shop
+    - Tweaked rarities/spawn rates of tower spell shop spells
+    - Organized my translation file so it's not a complete mess like my terraria chests
+    - Potions and Powder Sacks now display their maximum capacity in their item's description
+    - Hardened glass is now even harder
+    - New Perk "Extra Potion and Powder Sack Capacity"
+    - Potions and Sacks will not ingest materials until picked up by the player
+    - Added colored smoke materials
+    - Changed the healthium recipe to off-gas green smoke instead of healium
+    - New alchemy recipes
+        - Blood + Bone Dust + Brine = Smoke + Berserkium
+        - Rotten Meat + Honey =  Worm Pheremone + Poison
+
 Beta Build 21 Dec 2022
     - Fixed a bug with Mecha Kolmi's turrets (tbh surprised no one has noticed it yet)
     - Fixed a bug where preset potions we being spawned with their preset material and an additional random material (ie Hiisi Bar having whiskey + urine potions)

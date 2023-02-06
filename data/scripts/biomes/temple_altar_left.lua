@@ -21,9 +21,11 @@ RegisterSpawnFunction(0xffc128ff, "spawn_rubble")
 RegisterSpawnFunction(0xffa7a707, "spawn_lamp_long")
 RegisterSpawnFunction(0xff80FF5A, "spawn_vines")
 RegisterSpawnFunction(0xff9f2a00, "spawn_statue")
-RegisterSpawnFunction(0xff42ff00, "load_bottle_stand_ent")
-RegisterSpawnFunction(0xff42ff01, "load_potion_storare")
-RegisterSpawnFunction(0xff42ff02, "load_potion_storare_initializer")
+RegisterSpawnFunction(0xff42ff00, "load_bottle_filler")
+RegisterSpawnFunction(0xff42ff01, "load_storage")
+RegisterSpawnFunction(0xff42ff02, "load_storage_initializer")
+RegisterSpawnFunction(0xff42ff03, "load_cauldron_sucker")
+RegisterSpawnFunction(0xff42ff04, "load_fill_gauge")
 
 g_lamp = {
 	total_prob = 0,
@@ -265,11 +267,13 @@ function spawn_fish(x, y)
 	end
 end
 
-function load_bottle_stand_ent(x, y)
-	EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/bottle_stand.xml", x, y)
+--Temple Alchemy Station
+
+function load_bottle_filler(x, y)
+	EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/bottle_filler/bottle_stand.xml", x, y)
 end
 
-function load_potion_storare(x, y)
+function load_storage(x, y)
 	local offsets = {
 		{0, 0},
 		{11, 0},
@@ -284,7 +288,7 @@ function load_potion_storare(x, y)
 	}
 
 	for i, v in ipairs(offsets) do
-		local ent_path = "mods/purgatory/files/entities/buildings/temple_alchemy_station/potion_storage/slot_" .. tostring(i - 1) .. ".xml"
+		local ent_path = "mods/purgatory/files/entities/buildings/temple_alchemy_station/storage/slot_" .. tostring(i - 1) .. ".xml"
 		local storage_ent = EntityLoad(ent_path, x + v[1], y + v[2])
 
 		--local particle_ent_path = "mods/purgatory/files/debug_utilities/number_particles/small/" .. tostring(i-1) .. "_small.xml"
@@ -292,6 +296,16 @@ function load_potion_storare(x, y)
 	end
 end
 
-function load_potion_storare_initializer(x, y)
-	EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/potion_storage_initalizer.xml", x, y)
+function load_storage_initializer(x, y)
+	EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/storage_initalizer.xml", x, y)
+end
+
+function load_cauldron_sucker(x, y)
+	EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/bottle_filler/cauldron_sucker.xml", x, y)
+end
+
+function load_fill_gauge(x, y)
+	local fill_gauge_ent = EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/bottle_filler/fill_gauge.xml", x, y)
+	local x, y = EntityGetTransform(fill_gauge_ent)
+	EntitySetTransform(fill_gauge_ent, x + 0.5, y + 0.5)
 end

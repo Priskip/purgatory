@@ -19,7 +19,7 @@
 	requires_oxygen="0"
 	temperature_of_fire="100"  >
 	<Graphics
-		texture_file="mods/purgatory/files/materials_gfx/beans.png"
+		texture_file="mods/purgatory/files/materials_gfx/ceaseless_void.png"
 		color="888BFF81" >
     </Graphics>
   </CellData>

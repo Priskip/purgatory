@@ -4,10 +4,6 @@ dofile("data/scripts/gun/gun_actions.lua")
 --List of what spells to generate in the tower.
 tower_spells = {
     {
-        name = "CHAINSAW",
-        weight = 10
-    },
-    {
         name = "HEAL_BULLET",
         weight = 5
     },
@@ -17,39 +13,39 @@ tower_spells = {
     },
     {
         name = "LEVITATION_FIELD",
-        weight = 3
+        weight = 6
     },
     {
         name = "BOMB_DETONATOR",
-        weight = 5
+        weight = 10
     },
     {
         name = "PROJECTILE_TRANSMUTATION_FIELD",
-        weight = 3
+        weight = 6
     },
     {
         name = "VACUUM_ENTITIES",
-        weight = 3
+        weight = 6
     },
     {
         name = "VACUUM_LIQUID",
-        weight = 3
+        weight = 6
     },
     {
         name = "VACUUM_POWDER",
-        weight = 3
+        weight = 6
     },
     {
         name = "LONG_DISTANCE_CAST",
-        weight = 5
+        weight = 10
     },
     {
         name = "TELEPORT_CAST",
-        weight = 5
+        weight = 10
     },
     {
         name = "SUPER_TELEPORT_CAST",
-        weight = 5
+        weight = 10
     },
     {
         name = "SUMMON_WANDGHOST",
@@ -64,72 +60,72 @@ tower_spells = {
         weight = 5
     },
     {
-        name = "MANA_REDUCE",
-        weight = 8
-    },
-    {
         name = "HITFX_CRITICAL_BLOOD",
-        weight = 8
+        weight = 16
     },
     {
         name = "HITFX_CRITICAL_OIL",
-        weight = 8
+        weight = 16
     },
     {
         name = "HITFX_CRITICAL_WATER",
-        weight = 8
+        weight = 16
     },
     {
         name = "DAMAGE",
-        weight = 10
+        weight = 20
     },
     {
         name = "HEAVY_SHOT",
-        weight = 10
+        weight = 20
     },
     {
         name = "LIFETIME_DOWN",
-        weight = 10
+        weight = 20
     },
     {
         name = "LIFETIME",
-        weight = 10
+        weight = 20
     },
     {
         name = "CURSE_WITHER_ELECTRICITY",
-        weight = 3
+        weight = 6
     },
     {
         name = "CURSE_WITHER_MELEE",
-        weight = 3
+        weight = 6
     },
     {
         name = "CURSE_WITHER_EXPLOSION",
-        weight = 3
+        weight = 6
     },
     {
         name = "CURSE_WITHER_PROJECTILE",
-        weight = 3
+        weight = 6
     },
     {
         name = "MATERIAL_BLOOD",
-        weight = 5
+        weight = 10
     },
     {
         name = "MATERIAL_OIL",
-        weight = 5
+        weight = 10
     },
     {
         name = "MATERIAL_WATER",
-        weight = 5
+        weight = 10
     },
     {
         name = "LIGHT_BULLET_TRIGGER_TIMER",
-        weight = 10
+        weight = 20
     },
     {
         name = "LIGHT_BULLET_TRIGGER_DEATH_TRIGGER",
-        weight = 10
+        weight = 20
+    },
+    {
+        name = "LIGHT_BULLET_TIMER_DEATH_TRIGGER",
+        weight = 20
     },
     {
         name = "WORLD_EATER",
@@ -137,19 +133,27 @@ tower_spells = {
     },
     {
         name = "VACUUM_GOLD",
-        weight = 2
+        weight = 4
     },
     {
         name = "GOLD_MULTIPLIER",
-        weight = 3
+        weight = 6
     },
     {
         name = "OMEGA_PROPANE_TANK",
-        weight = 1
+        weight = 2
     },
     {
         name = "RECOIL_DAMPER",
-        weight = 5
+        weight = 10
+    },
+    {
+        name = "BLACKHOLE_SHOT",
+        weight = 8
+    },
+    {
+        name = "SUMMON_HAMIS",
+        weight = 7
     }
 }
 

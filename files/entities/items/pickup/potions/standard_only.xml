@@ -1,0 +1,8 @@
+<Entity>
+	<Base file="data/entities/items/pickup/potion.xml" />
+	
+    <VariableStorageComponent
+    name="material_list_type"
+    value_string="standard"
+    ></VariableStorageComponent>
+</Entity>

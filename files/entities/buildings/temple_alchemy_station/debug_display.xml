@@ -1,0 +1,38 @@
+<Entity tags="teleportable_NOT,temple_alchemy_station" name="debug_display">
+
+    <LuaComponent
+		_enabled="1"
+		script_source_file="mods/purgatory/files/scripts/buildings/temple_alchemy_station/debug_display.lua"
+		execute_every_n_frame="1"
+		></LuaComponent>
+
+        <ParticleEmitterComponent 
+		emitted_material_name="magic_liquid_protection_all"
+		gravity.y="-19"
+		x_vel_min="-5"
+		x_vel_max="5"
+		y_vel_min="0"
+		y_vel_max="50"
+		x_pos_offset_min="-6"
+		x_pos_offset_max="6"
+		y_pos_offset_min="-20"
+		y_pos_offset_max="1"
+		friction="1"
+		count_min="1"
+		count_max="4"
+		lifetime_min="2"
+		lifetime_max="20"
+		create_real_particles="0"
+		render_on_grid="1"
+		airflow_force="0.3"
+		airflow_time="0.01"
+		airflow_scale="0.02"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="16"
+		fade_based_on_lifetime="1"
+		is_emitting="1"
+		>
+	</ParticleEmitterComponent>
+
+</Entity>

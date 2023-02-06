@@ -42,9 +42,9 @@ end
 --Gnerates a custom deck for the 4 starting wands
 --See deck_types.lua for what it can generate
 
-function generate_deck(tier, shuffle, deck_size, black_listed_projectiles, black_listed_modifiers, trigger_spells, x, y)
+function generate_deck(tier, shuffle, deck_size, black_listed_projectiles, black_listed_modifiers, trigger_spells, x, y, color)
     --Seed Randomness
-    SetRandomSeed(x, y)
+    SetRandomSeed(x + GameGetFrameNum(), y)
 
     --debug print("WAND GEN - Tier: " .. tostring(tier) .. " Shuffle: " .. tostring(shuffle) .. " Deck Size: " .. tostring(deck_size))
 
@@ -52,6 +52,13 @@ function generate_deck(tier, shuffle, deck_size, black_listed_projectiles, black
     if deck_size > 7 then
         deck_size = 7
     end
+
+    --Undersize Deck Handling
+    if deck_size < 1 then
+        deck_size = 1
+    end
+
+    print(color .. " " .. tostring(tier) .. " " ..  tostring(deck_size) .. " " .. tostring(shuffle))
 
     --Get Deck Options
     local deck_options = {}

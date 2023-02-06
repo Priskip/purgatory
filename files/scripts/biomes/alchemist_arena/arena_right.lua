@@ -39,11 +39,11 @@ function init( x, y, w, h )
 end
 
 function spawn_regular_potions(x, y)
-    EntityLoad("mods/purgatory/files/entities/items/pickup/potion_regular_material.xml", x, y)
+    EntityLoad("mods/purgatory/files/entities/items/pickup/potions/standard_only.xml", x, y)
 end
 
 function spawn_magical_potions(x, y)
-    EntityLoad("mods/purgatory/files/entities/items/pickup/potion_magical_material.xml", x, y)
+    EntityLoad("mods/purgatory/files/entities/items/pickup/potions/magical_only.xml", x, y)
 end
 
 function spawn_sack(x, y)

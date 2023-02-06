@@ -1,0 +1,68 @@
+In Purgatory, I've rewritten some of the base game files to allow for more exact control over certain aspects. This file here provides some information on some of the functions I've extended.
+Hopefully none of the changes here will conflict with the way other mods interact with the vanilla game. If stuff does break, let me know! -Priskip
+
+
+
+
+For specifying EXACT types of materials in potions and Powder Sacks
+
+Vanilla Method
+In vanilla, Nolla will use assign a variable storage component to the potion/sack entity that the initialization script will take into account.
+The initialization script will always put in 1000 units of the specified material into the potion/sack.
+
+For Powder Sacks:
+<VariableStorageComponent
+  name="powder_stash_material"
+  value_string=""
+  ></VariableStorageComponent>
+
+For Potions
+<VariableStorageComponent
+  name="potion_material"
+  value_string=""
+  ></VariableStorageComponent>
+  
+Purgatory Methods
+
+In Purgatory, I keep the check for the vanilla way of adding specific materials to a potion/sack. 
+However, I also add some more tools to be able to control the exact amounts of materials that get put into a potion/sack.
+
+
+Tool #1 - Standard & Magical Only Potions/Sacks
+Those who've dealved into the game code will know that the game uses a standard materials list and magical materials list for potions/sacks.
+Adding the following variable storage component will make it so the game spawns a material from only the standard list or the magical list.
+
+<VariableStorageComponent
+  name="material_list_type"
+  value_string="standard" or "magical"
+  ></VariableStorageComponent>
+
+Tool #2 - Exact material amounts
+If you want to specify an exact amount of material for the potion/sack, use the following variable storage component.
+
+<VariableStorageComponent
+  name="material_string"
+  value_string=""
+  value_int="0"
+  ></VariableStorageComponent>
+
+The material string is a string comprised of material string ids, numbers, commas, and dashes to specify the type and amount of materials.
+Commas are used to seperate the amount of material from the material string id.
+Dashes are used to seperate entries of materials in the string.
+
+For example, if you wanted to add 855 pixels of blood and 82 pixels of concentrated mana into a potion, construct the material_string as follows.
+material_string = "blood,855-magic_liquid_mana_regeneration,82" 
+
+The value_int in this component specifies whether the game will add percentage based amounts or flat value amounts of material to the potion/sack.
+value_int = "0" is for flat values
+value_int = "1" is for percentages
+
+If percentages is enabled, the material_string above would insert 855% blood and 82% concentrated mana into the flask. Talk about being under pressure!
+
+Tool #3 - Ignore special time and date potions
+A couple of IRL holidays can affect the potion pool in Noita. Add the following variable storage component to potion/sack to make it so those won't affect the flask you generate.
+
+<VariableStorageComponent
+  name="ignore_holidays"
+  value_bool="1"
+  ></VariableStorageComponent>

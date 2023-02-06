@@ -1,0 +1,10 @@
+<Entity tags="teleportable_NOT,temple_alchemy_station" name="temple_alchemy_potion_storage">
+
+    <Base file="mods/purgatory/files/entities/buildings/temple_alchemy_station/storage/slot_base.xml"></Base>
+    
+    <VariableStorageComponent
+        name="slot_number"
+        value_int="4"
+        ></VariableStorageComponent>
+
+</Entity>

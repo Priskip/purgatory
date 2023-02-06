@@ -1,0 +1,13 @@
+<Entity tags="teleportable_NOT,temple_alchemy_station" name="temple_alchemy_fill_gauge">
+
+    <!-- Note Priskip: I'm only going to assign this component when needed to avoid calling it excessively -->
+    <!--
+    <LuaComponent
+        _enabled="0"
+        script_source_file="mods/purgatory/files/scripts/buildings/temple_alchemy_station/bottle_filler/fill_gauge_update.lua"
+        execute_every_n_frame="60"
+        execute_on_added="1"
+        ></LuaComponent>
+    -->
+    
+</Entity>

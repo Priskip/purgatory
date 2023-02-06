@@ -1,43 +1,17 @@
 <Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,polymorphable_NOT,necrobot_NOT,glue_NOT">
 
-  <LuaComponent
-    _enabled="1"
-    script_damage_about_to_be_received="mods/purgatory/files/scripts/test.lua"
+    <LuaComponent
+    script_source_file="mods/purgatory/files/scripts/test.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    remove_after_executed="1"
+
     ></LuaComponent>
 
-  <LuaComponent
-    _enabled="1"
+    <LuaComponent
     script_source_file="mods/purgatory/files/scripts/test2.lua"
     execute_every_n_frame="1"
+    execute_on_added="1"
     ></LuaComponent>
-
-  <DamageModelComponent
-    hp="500"
-    max_hp="500"
-    air_needed="0"
-    falling_damages="0"
-    fire_damage_amount="0.2"
-    fire_probability_of_ignition="0"
-    blood_material="blood"
-    is_on_fire="0"
-    materials_damage="1"
-    materials_how_much_damage=""
-    materials_that_damage=""
-    ragdoll_filenames_file=""
-    ragdoll_material="steel"
-    ragdoll_offset_y="-6"
-    ragdollify_child_entity_sprites="1"
-    blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_oil_$[1-3].xml"
-    blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_oil_$[1-3].xml"
-    ></DamageModelComponent>
-
-  <HitboxComponent
-    _tags="hitbox_default"
-    aabb_min_x="-18"
-    aabb_max_x="18"
-    aabb_min_y="-18"
-    aabb_max_y="18"
-    damage_multiplier="1.0"
-    ></HitboxComponent>
 
 </Entity>

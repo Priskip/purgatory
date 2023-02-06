@@ -198,7 +198,10 @@ gun_actions_order = {
     "EXPLOSION_REMOVE",
     "EXPLOSION_TINY",
     "LASER_EMITTER_WIDER",
-    "MANA_REDUCE",
+    --"MANA_REDUCE", --Removed
+    "ADD_MANA_SMALL", --Modded
+    "ADD_MANA_MEDIUM", --Modded
+    "ADD_MANA_LARGE", --Modded
     "BLOOD_MAGIC",
     "MONEY_MAGIC",
     "BLOOD_TO_POWER",

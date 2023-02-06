@@ -55,6 +55,7 @@ Streamers who played during mod's beta
     - Wcasey
     - Liberatetheforks
     - Nymphspyre
+    - Letaali
 
 Libraries Used:
 Zatherz' XML parser library: https://github.com/zatherz/luanxml

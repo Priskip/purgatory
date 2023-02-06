@@ -1,114 +1,140 @@
-<Entity
-	name="$projectile_default"
-	tags="test_projectile"
-	>
-
-	<Base file="data/entities/base_projectile.xml">
-		<VelocityComponent
-			gravity_y="0"
-			air_friction="7"
-			mass="0.05"
-			></VelocityComponent>
-	</Base>
+<Entity tags="teleportable_NOT,projectile">
 
 	<ProjectileComponent
 		_enabled="1"
-		lob_min="0.8"
-		lob_max="1.0"
-		speed_min="40"
-		speed_max="40"
-		die_on_low_velocity="0"
+		lob_min="0.0"
+		lob_max="0.0"
+		speed_min="60000"
+		speed_max="60000"
+		friction="0"
+		bounce_always="1"
+		bounces_left="10"
+		bounce_energy="1"
+		direction_random_rad="0.00"
 		on_death_explode="0"
 		on_death_gfx_leave_sprite="0"
 		on_lifetime_out_explode="0"
-		explosion_dont_damage_shooter="1"
-		damage="0.8"
-		on_collision_die="0"
-		lifetime="5"
-		knockback_force="1.3"
-		></ProjectileComponent>
-
-	<SpriteComponent
-		_enabled="1"
-		alpha="1"
-		image_file="data/projectiles_gfx/orb_blue.xml"
-		next_rect_animation=""
-		offset_x="6"
-		offset_y="6"
-		rect_animation="spawn"
-		emissive="1"
-		additive="1"
-		update_transform_rotation="0"
-		></SpriteComponent>
+		on_collision_die="1"
+		lifetime="600"
+		damage="1"
+		velocity_sets_scale="1"
+		lifetime_randomness="0"
+		knockback_force="0"
+		>
+	</ProjectileComponent>
 
 	<ParticleEmitterComponent
-		emitted_material_name="spark_blue"
+		emitted_material_name="spark_purple"
+		count_min="20"
+		count_max="20"
 		offset.x="0"
 		offset.y="0"
-		gravity.y="0.10"
-		x_pos_offset_min="-1"
-		y_pos_offset_min="-1"
-		x_pos_offset_max="1"
-		y_pos_offset_max="1"
-		x_vel_min="-4"
-		x_vel_max="4"
-		y_vel_min="-4"
-		y_vel_max="4"
-		count_min="1"
-		count_max="5"
-		lifetime_min="0.6"
-		lifetime_max="0.8"
-		render_on_grid="1"
-		airflow_force="0.1"
-		airflow_time="0.101"
-		airflow_scale="2.01"
-		fade_based_on_lifetime="1"
+		lifetime_min="0.02"
+		lifetime_max="0.02"
 		create_real_particles="0"
 		emit_cosmetic_particles="1"
-		emission_interval_min_frames="0"
+		emission_interval_min_frames="1"
 		emission_interval_max_frames="1"
+		is_trail="1"
 		is_emitting="1"
-		></ParticleEmitterComponent>
+		>
+	</ParticleEmitterComponent>
 
-	<LightComponent
-		_enabled="1"
-		radius="150"
-		r="30"
-		g="30"
-		b="90"
-		></LightComponent>
+	<ParticleEmitterComponent
+		emitted_material_name="spark_purple"
+		count_min="20"
+		count_max="20"
+		offset.x="0"
+		offset.y="0"
+		lifetime_min="0.02"
+		lifetime_max="0.02"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		is_trail="1"
+		is_emitting="1"
+		>
+	</ParticleEmitterComponent>
+
+	<ParticleEmitterComponent
+		emitted_material_name="spark_purple"
+		count_min="20"
+		count_max="20"
+		offset.x="0"
+		offset.y="0"
+		lifetime_min="0.02"
+		lifetime_max="0.02"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		is_trail="1"
+		is_emitting="1"
+		>
+	</ParticleEmitterComponent>
+
+	<ParticleEmitterComponent
+		emitted_material_name="spark_purple"
+		count_min="20"
+		count_max="20"
+		offset.x="0"
+		offset.y="0"
+		lifetime_min="0.02"
+		lifetime_max="0.02"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		is_trail="1"
+		is_emitting="1"
+		>
+	</ParticleEmitterComponent>
+
+	<ParticleEmitterComponent
+		emitted_material_name="spark_purple"
+		count_min="20"
+		count_max="20"
+		offset.x="0"
+		offset.y="0"
+		lifetime_min="0.02"
+		lifetime_max="0.02"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		is_trail="1"
+		is_emitting="1"
+		>
+	</ParticleEmitterComponent>
+
+	<!-- Base Projectile -->
+	<VelocityComponent
+		mass="0.0"
+		affect_physics_bodies="1"
+		gravity_x="0"
+		gravity_y="0"
+		air_friction="0"
+		>
+	</VelocityComponent>
 
 	<AudioComponent
 		file="data/audio/Desktop/projectiles.bank"
-		event_root="projectiles/orb_b"
-		></AudioComponent>
+		audio_physics_material="projectile"
+		event_root="projectiles/hit"
+		>
+	</AudioComponent>
 
-	<LaserEmitterComponent is_emitting="0">
-		<laser
-			audio_enabled="0"
-			damage_to_entities="0.00"
-			max_cell_durability_to_destroy="0"
-			damage_to_cells="0"
-			root_entity_is_responsible_for_damage="1"
-			max_length="160"
-			beam_radius="1.5"
-			hit_particle_chance="0"
-			beam_particle_chance="100"
-			beam_particle_type="spark_red"
-			></laser>
-	</LaserEmitterComponent>
+	<AudioComponent
+		file="data/audio/Desktop/projectiles.bank"
+		event_root="player_projectiles/bullet_light"
+		>
+	</AudioComponent>
 
-	<LuaComponent
-		script_source_file="data/scripts/projectiles/laser_emitter_start.lua"
-		execute_every_n_frame="2"
-		remove_after_executed="1"
-		></LuaComponent>
-
-	<LuaComponent
-		_enabled="1"
-		execute_on_added="1"
-		remove_after_executed="1"
-		script_source_file="mods/purgatory/files/scripts/projectiles/test_projectile.lua"
-		></LuaComponent>
+	<VariableStorageComponent
+		name="projectile_file"
+		value_string="mods/purgatory/files/entities/misc/test_projectile.xml"
+		>
+	</VariableStorageComponent>
 
 </Entity>

@@ -26,4 +26,17 @@ function init(entity_id)
     end
 
     AddMaterialInventoryMaterial(entity_id, potion_material, 1000)
+
+    --Make description reflect barrel size.
+	EntityAddComponent2(
+		entity_id,
+		"LuaComponent",
+		{
+			_tags="enabled_in_hand,enabled_in_world,enabled_in_inventory",
+			execute_on_added = false,
+			execute_every_n_frame = 5,
+			remove_after_executed = true,
+			script_source_file = "mods/purgatory/files/scripts/items/barrel_size_displayer.lua"
+		}
+	)
 end

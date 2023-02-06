@@ -1,6 +1,6 @@
 <MagicNumbers
-  DESIGN_PLAYER_START_POS_X="250"
-  DESIGN_PLAYER_START_POS_Y="8350"
+  DESIGN_PLAYER_START_POS_X="742"
+  DESIGN_PLAYER_START_POS_Y="-670"
   BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
   DAMAGE_BLOOD_AMOUNT_MIN="5"
   DAMAGE_BLOOD_AMOUNT_MAX="10"
@@ -32,5 +32,8 @@
 
     Underground Hole
     250 8350
+
+    Hm2
+    -915 5480
 
   -->

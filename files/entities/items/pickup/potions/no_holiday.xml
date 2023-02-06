@@ -1,0 +1,9 @@
+<Entity>
+    <Base file="data/entities/items/pickup/potion.xml" />
+
+    <VariableStorageComponent
+        name="ignore_holidays"
+        value_bool="1"
+        ></VariableStorageComponent>
+
+</Entity>

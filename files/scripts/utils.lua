@@ -415,18 +415,6 @@ function get_r_and_phi(x1, y1, x2, y2)
     return r, phi
 end
 
---Returns true or false if a table has a value
-function is_in_table(table, value)
-    local output = false
-    for i, v in ipairs(table) do
-        if v == value then
-            output = true
-            break
-        end
-    end
-    return output
-end
-
 --Split a string separated by a specific character into a table
 function split_string_on_char_into_table(string, char)
     local list = {}
@@ -457,4 +445,48 @@ function EntityApplyPolarTransform(entity_id, r, phi)
     local x, y = EntityGetTransform(entity_id)
 
     EntitySetTransform(entity_id, x + dx, y + dy)
+end
+
+--Return the first index with the given value (or nil if not found).
+function find_element_in_table(array, value)
+    for i, v in ipairs(array) do
+        if v == value then
+            return i
+        end
+    end
+    return nil
+end
+
+--Returns true or false if a table has a value
+function is_in_table(table, value)
+    local output = false
+    for i, v in ipairs(table) do
+        if v == value then
+            output = true
+            break
+        end
+    end
+    return output
+end
+
+--Returns a list of entities with name specified with a radius of x and y
+--tag is optional - if provided, will only search entities in area with said tag
+function get_entity_in_radius_with_name(x, y, radius, name, tag)
+    local entities = {}
+    local entities_with_name = {}
+
+    if tag == nil then
+        entities = EntityGetInRadius(x, y, radius)
+    else
+        entities = EntityGetInRadiusWithTag(x, y, radius, tag)
+    end
+
+    for i, v in ipairs(entities) do
+        local ent_name = EntityGetName(v)
+        if ent_name == name then
+            table.insert(entities_with_name, 1, v)
+        end
+    end
+
+    return entities_with_name
 end

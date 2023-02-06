@@ -21,7 +21,8 @@ function remove_spell(spell_name)
 	end
 end
 
-remove_spell("LASER_LUMINOUS_DRILL")
+remove_spell("LASER_LUMINOUS_DRILL") --Replacing with spell called "LUMINOUS_DRILL_TIMER" to match trigger naming conventions
+remove_spell("MANA_REDUCE") -- Removing to replace with other mana increasing spells
 
 --Function for modifying existing spells
 function modify_existing_spell(spell_id, parameter_to_modify, new_value)
@@ -398,7 +399,6 @@ spells_to_add = {
 			add_projectile("data/entities/projectiles/deck/light_bullet.xml")
 		end,
 	},
-	
 
 	{
 		id = "TEST_SPELL",
@@ -412,12 +412,12 @@ spells_to_add = {
 		price = 420,
 		mana = 0,
 		action 		= function()
-			add_projectile("mods/purgatory/files/entities/animals/boss_robot/activation_bolt.xml")
+			add_projectile("mods/purgatory/files/entities/misc/test_projectile.xml")
 			--c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/test.xml,"
-			draw_actions( 1, true )
+			--draw_actions( 1, true )
 		end,
 	},
-]]
+]]	
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
 		name = "$action_light_bullet_death_trigger",
@@ -1304,6 +1304,59 @@ spells_to_add = {
 			c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/remove_gravity.xml,"
 			draw_actions(1, true)
 		end
+	},
+	{
+		id = "ADD_MANA_SMALL",
+		name = "$action_add_mana_small",
+		description = "$actiondesc_add_mana_small",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_small.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type = ACTION_TYPE_MODIFIER,
+		spawn_level = "1,2,3,4", -- ADD_MANA_SMALL
+		spawn_probability = "0.8,0.8,0.3,0.1", -- ADD_MANA_SMALL
+		price = 250,
+		mana = -10,
+		custom_xml_file = "data/entities/misc/custom_cards/mana_reduce.xml",
+		action = function()
+			c.fire_rate_wait = c.fire_rate_wait + 5
+			draw_actions(1, true)
+		end
+	},
+	{
+		id = "ADD_MANA_MEDIUM",
+		name = "$action_add_mana_medium",
+		description = "$actiondesc_add_mana_medium",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_medium.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type = ACTION_TYPE_MODIFIER,
+		spawn_level = "1,2,3,4,5,6", -- ADD_MANA_MEDIUM
+		spawn_probability = "0.1,0.3,0.8,0.8,0.3,0.1", -- ADD_MANA_MEDIUM
+		price = 350,
+		mana = -20,
+		custom_xml_file = "data/entities/misc/custom_cards/mana_reduce.xml",
+		action = function()
+			c.fire_rate_wait = c.fire_rate_wait + 10
+			current_reload_time = current_reload_time + 2
+			draw_actions(1, true)
+		end
+	},
+	{
+		id = "ADD_MANA_LARGE",
+		name = "$action_add_mana_large",
+		description = "$actiondesc_add_mana_large",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_large.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type = ACTION_TYPE_MODIFIER,
+		spawn_level = "3,4,5,6", -- ADD_MANA_LARGE
+		spawn_probability = "0.2,0.4,0.8,0.8", -- ADD_MANA_LARGE
+		price = 450,
+		mana = -30,
+		custom_xml_file = "data/entities/misc/custom_cards/mana_reduce.xml",
+		action = function()
+			c.fire_rate_wait = c.fire_rate_wait + 15
+			current_reload_time = current_reload_time + 5
+			draw_actions(1, true)
+		end
 	}
 }
 
@@ -1336,3 +1389,25 @@ end
 
 --set list
 actions = new_spell_list
+
+--[[
+	Spell Template
+	{
+		id          = "",
+		name 		= "$action_",
+		description = "$actiondesc_",
+		sprite 		= "",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type 		= ACTION_TYPE_,
+		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
+		spawn_probability                 = "1,1,1,1,1,1,1,1", -- SPELL
+		price = 0,
+		mana = 0,
+		action 		= function()
+		end,
+	},
+
+
+			spawn_level                       = "1,2,3,4,5,6", -- MANA_REDUCE
+		spawn_probability                 = "1,1,1,1,1,1", -- MANA_REDUCE
+]]
