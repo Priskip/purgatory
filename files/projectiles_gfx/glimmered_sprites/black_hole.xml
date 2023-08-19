@@ -1,0 +1,137 @@
+<Sprite
+    filename="mods/purgatory/files/projectiles_gfx/glimmered_sprites/black_hole.png"
+    offset_x="12"
+    offset_y="12"
+    default_animation="standard"
+    >
+
+    <RectAnimation
+        name="standard"
+        pos_x="0"
+        pos_y="0"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="red"
+        pos_x="0"
+        pos_y="24"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="orange"
+        pos_x="0"
+        pos_y="48"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="yellow"
+        pos_x="0"
+        pos_y="72"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="green"
+        pos_x="0"
+        pos_y="96"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="blue"
+        pos_x="0"
+        pos_y="120"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+    
+    <RectAnimation
+        name="purple"
+        pos_x="0"
+        pos_y="144"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="white"
+        pos_x="0"
+        pos_y="168"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="black"
+        pos_x="0"
+        pos_y="192"
+        frame_count="10"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+
+    <RectAnimation
+        name="rainbow"
+        pos_x="0"
+        pos_y="216"
+        frame_count="30"
+        frame_width="24"
+        frame_height="24"
+        frame_wait="0.09"
+        frames_per_row="10"
+        loop="1"
+        >
+    </RectAnimation>
+</Sprite>

@@ -76,7 +76,7 @@ function init_boss()
 				ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "drill", 0.25)
 				ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "projectile", 0.2)
 				ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "fire", 0)
-				ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "ice", 0)
+				--ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "ice", 0) --Purgatory: Given ice immunity at 0 orbs.
 				ComponentObjectSetValue2(damagemodel_comp, "damage_multipliers", "electricity", 0)
 			end
 			if( orbcount >= 4 ) then

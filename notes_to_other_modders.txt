@@ -1,9 +1,7 @@
 In Purgatory, I've rewritten some of the base game files to allow for more exact control over certain aspects. This file here provides some information on some of the functions I've extended.
 Hopefully none of the changes here will conflict with the way other mods interact with the vanilla game. If stuff does break, let me know! -Priskip
 
-
-
-
+----------------------------------------------------------------------------------------------------
 For specifying EXACT types of materials in potions and Powder Sacks
 
 Vanilla Method
@@ -66,3 +64,16 @@ A couple of IRL holidays can affect the potion pool in Noita. Add the following 
   name="ignore_holidays"
   value_bool="1"
   ></VariableStorageComponent>
+----------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------------
+Starting Wand Generation
+
+Purgatory features its own custom deck generation for the four starting wands.
+One feature of this custom generation is to build trigger style wands.
+I've coded it in such a way that the starting wand generation should automatically detect and utilize your modded spells.
+However, I have a feeling that if you add a custom parameter to the spell cast state thingy (c.) that my generation may break.
+If your mod bricks my mod, let me know and I'll try to fix things! -Priskip
+----------------------------------------------------------------------------------------------------

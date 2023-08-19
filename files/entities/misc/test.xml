@@ -1,17 +1,10 @@
-<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,polymorphable_NOT,necrobot_NOT,glue_NOT">
+<Entity>
 
-    <LuaComponent
-    script_source_file="mods/purgatory/files/scripts/test.lua"
-    execute_every_n_frame="1"
-    execute_on_added="1"
-    remove_after_executed="1"
-
-    ></LuaComponent>
-
-    <LuaComponent
-    script_source_file="mods/purgatory/files/scripts/test2.lua"
-    execute_every_n_frame="1"
-    execute_on_added="1"
-    ></LuaComponent>
+  <SpriteComponent
+    image_file="mods/purgatory/files/entities/misc/test_sprite.xml"
+    offset_x="0"
+    offset_y="0"
+    >
+  </SpriteComponent>
 
 </Entity>

@@ -24,22 +24,21 @@
       >
       <config_explosion
         never_cache="0"
-        damage="17"
         camera_shake="100"
         explosion_radius="500"
         explosion_sprite="data/particles/explosion_032.xml"
         explosion_sprite_lifetime="20"
-        create_cell_probability="40"
+        create_cell_probability="60"
         create_cell_material="blood_cold_vapour"
         hole_destroy_liquid="0"
         load_this_entity="data/entities/particles/particle_explosion/main_bluesmoke.xml"
         hole_enabled="1"
         ray_energy="9700000"
-        damage="20"
+        damage="100"
         particle_effect="1"
         damage_mortals="1"
-        physics_explosion_power.min="5.5"
-        physics_explosion_power.max="7.5"
+        physics_explosion_power.min="13.5"
+        physics_explosion_power.max="17.5"
         physics_throw_enabled="1"
         shake_vegetation="1"
         sparks_count_min="15"
@@ -51,6 +50,7 @@
         delay.min="1"
         delay.max="4"
         explosion_delay_id="1"
+        max_durability_to_destroy="12"
         audio_event_name="explosions/propane_tank">
       </config_explosion>
     </ProjectileComponent>

@@ -13,10 +13,10 @@
   -->
 
   <Entity name="inventory_quick">
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_wand_blue.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_wand_red.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_wand_yellow.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_wand_green.xml" /></Entity>
+      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/blue.xml" /></Entity>
+      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/red.xml" /></Entity>
+      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/yellow.xml" /></Entity>
+      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/green.xml" /></Entity>
       <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_regular.xml" /></Entity>
       <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_magical.xml" /></Entity>
   </Entity>

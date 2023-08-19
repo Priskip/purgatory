@@ -1,0 +1,190 @@
+<Entity
+    name="$projectile_default"
+    tags="projectile_player,projectile,test"
+    >
+
+    <!-- Particals-->
+    <ParticleEmitterComponent 
+		emitted_material_name="spark_red"
+		gravity.y="0.0"
+		lifetime_min="1"
+		lifetime_max="1"
+		count_min="4"
+		count_max="4"
+		render_on_grid="1"
+		fade_based_on_lifetime="1"
+		area_circle_radius.min="0"
+		area_circle_radius.max="0"
+		cosmetic_force_create="0"
+		airflow_force="0.251"
+		airflow_time="1.01"
+		airflow_scale="0.05"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		emit_cosmetic_particles="1"
+		image_animation_file="mods/purgatory/files/particles/image_emitters/vacuum_blood_center.png"
+		image_animation_speed="7"
+		image_animation_loop="1"
+		image_animation_raytrace_from_center="1"
+		is_emitting="1" >
+	</ParticleEmitterComponent>
+
+    <ParticleEmitterComponent
+        _enabled="1"
+        emitted_material_name="spark_red"
+        airflow_force="0.5"
+        airflow_scale="0.1"
+        airflow_time="0.1"
+        area_circle_radius.max="42"
+        area_circle_radius.min="42"
+        cosmetic_force_create="0"
+        count_max="50" 
+        count_min="15" 
+        emission_interval_max_frames="1"
+        emission_interval_min_frames="1"
+        emit_cosmetic_particles="1"
+        fade_based_on_lifetime="1"
+        gravity.x="0"
+        gravity.y="0"
+        is_emitting="1"
+        lifetime_max="2"
+        lifetime_min="1"
+        render_on_grid="1"
+        velocity_always_away_from_center="-25" 
+        >
+    </ParticleEmitterComponent>
+
+    <ParticleEmitterComponent 
+		_tags="enabled_in_world,enabled_in_hand"
+		emitted_material_name="spark_red"
+		fade_based_on_lifetime="1"
+		x_pos_offset_min="0"
+		x_pos_offset_max="0"
+		y_pos_offset_min="0"
+		y_pos_offset_max="0"
+		x_vel_min="-80"
+		x_vel_max="80"
+		y_vel_min="-80"
+		y_vel_max="80"
+		area_circle_radius.min="35"
+		area_circle_radius.max="35"
+		velocity_always_away_from_center="-10"
+        gravity.x="0"
+		gravity.y="0"
+		friction="0.5"
+		airflow_force="0.9"
+		airflow_time="0.101"
+		airflow_scale="0.81"
+		count_min="5"
+		count_max="10"
+		lifetime_min="0.1"
+		lifetime_max="0.8"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		draw_as_long="1"
+		collide_with_grid="0"
+		render_on_grid="1"
+		emission_interval_min_frames="1"
+		emission_interval_max_frames="1"
+		attractor_force="16"
+		render_ultrabright="1"
+		is_emitting="1" >
+	</ParticleEmitterComponent>
+
+    <!-- Projectile Definition -->
+    <VelocityComponent
+        gravity_y="0"
+        mass="0.07"
+        >
+    </VelocityComponent>
+
+    <ProjectileComponent
+        _enabled="1"
+        penetrate_entities="1"
+        collide_with_world="0"
+        on_death_explode="1"
+        on_death_gfx_leave_sprite="0"
+        on_lifetime_out_explode="1"
+        explosion_dont_damage_shooter="1"
+        on_collision_die="0"
+        on_collision_remove_projectile="0"
+        on_collision_spawn_entity="0"
+        lifetime="300"
+        speed_min="0"
+        speed_max="0"
+        damage="0.0"
+        muzzle_flash_file=""
+        blood_count_multiplier="0"
+        shoot_light_flash_radius="0"
+        play_damage_sounds="0"
+        damage_every_x_frames="15"
+        >
+        <config_explosion
+            never_cache="1"
+            damage="0.0"
+            camera_shake="0"
+            explosion_radius="1"
+            explosion_sprite="data/particles/blast_out.xml"
+            explosion_sprite_emissive="1"
+            explosion_sprite_additive="1"
+            explosion_sprite_lifetime="0"
+            physics_throw_enabled="0"
+            sparks_enabled="0"
+            particle_effect="0"
+            hole_enabled="0"
+            stains_enabled="0"
+            >
+        </config_explosion>
+    </ProjectileComponent>
+
+    <!-- Audio -->
+    <AudioComponent
+        file="data/audio/Desktop/projectiles.bank"
+        event_root="player_projectiles/field"
+        set_latest_event_position="1"
+        >
+    </AudioComponent>
+
+    <AudioLoopComponent
+        file="data/audio/Desktop/projectiles.bank"
+        event_name="player_projectiles/field/loop"
+        auto_play="1"
+        >
+    </AudioLoopComponent>
+
+    <!-- Material Inventory and Sucker -->
+    <MaterialInventoryComponent
+        drop_as_item="0"
+        on_death_spill="0"
+        >
+    </MaterialInventoryComponent>
+
+    <MaterialSuckerComponent
+        num_cells_sucked_per_frame="100"
+        randomized_position.min_x="-42"
+        randomized_position.max_x="42"
+        randomized_position.min_y="-42"
+        randomized_position.max_y="42"
+        material_type="0"
+        suck_tag="[vampire_food]"
+        barrel_size="10000"
+        >
+    </MaterialSuckerComponent>
+
+    <!-- Lua Logic -->
+    <LuaComponent
+        execute_on_removed="1"
+        execute_every_n_frame="-1"
+        script_source_file="mods/purgatory/files/scripts/projectiles/vacuum_blood.lua"
+        remove_after_executed="0"
+        >
+    </LuaComponent>
+
+    <!-- For larpa -->
+    <VariableStorageComponent
+		name="projectile_file"
+		value_string="mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml"
+		>
+	</VariableStorageComponent>
+
+</Entity>

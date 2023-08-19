@@ -2,7 +2,7 @@
 	name="Purgatory"
 	description="Damnation be apon thee."
 	ui_newgame_name="Purgatory"
-	ui_newgame_description="Damnation be apon thee. Beta Build 06 Feb 2023"
+	ui_newgame_description="Damnation be apon thee. Dev Build 19/8/23. Make sure to be on Noita Beta Branch"
 	ui_newgame_gfx_banner_bg="mods/purgatory/files/menu_banners/menu_banner_background.png"
 	ui_newgame_gfx_banner_fg="mods/purgatory/files/menu_banners/menu_banner_overlay.png"
 	request_no_api_restrictions="0" 

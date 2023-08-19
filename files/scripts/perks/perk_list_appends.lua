@@ -42,6 +42,9 @@ modify_existing_perk(
 	"VAMPIRISM",
 	"func",
 	function(entity_perk_item, entity_who_picked, item_name)
+		local x, y = EntityGetTransform(entity_who_picked)
+		CreateItemActionEntity("VACUUM_BLOOD", x, y)
+
 		add_halo_level(entity_who_picked, -1)
 	end
 )
@@ -740,7 +743,7 @@ perks_to_add = {
 				end
 			end
 		end
-	},
+	}
 	--[[
 	{
 		id = "STRONGER_BOTTLES",

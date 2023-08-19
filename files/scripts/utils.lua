@@ -215,46 +215,6 @@ function get_random_within_range(target)
     return Random(minval, maxval)
 end
 
---Counts the number of times "DEATH_TRIGGER", "TIMER", and "TRIGGER" appear in a string
-function count_trigger_types(spell_id)
-    local triggers, timers, death_triggers = 0, 0, 0
-    local cond = true
-
-    while cond do
-        local i, j = string.find(spell_id, "DEATH_TRIGGER")
-        if i == nil then
-            cond = false
-        else
-            spell_id = string.gsub(spell_id, "DEATH_TRIGGER", "", 1)
-            death_triggers = death_triggers + 1
-        end
-    end
-
-    cond = true
-    while cond do
-        local i, j = string.find(spell_id, "TRIGGER")
-        if i == nil then
-            cond = false
-        else
-            spell_id = string.gsub(spell_id, "TRIGGER", "", 1)
-            triggers = triggers + 1
-        end
-    end
-
-    cond = true
-    while cond do
-        local i, j = string.find(spell_id, "TIMER")
-        if i == nil then
-            cond = false
-        else
-            spell_id = string.gsub(spell_id, "TIMER", "", 1)
-            timers = timers + 1
-        end
-    end
-
-    return triggers, timers, death_triggers
-end
-
 --Counts the number of times the string "seeker" appears in the string "target"
 function find_amount_of_strings_in_string(target, seeker)
     local cond = true
@@ -274,7 +234,6 @@ function find_amount_of_strings_in_string(target, seeker)
 end
 
 --Round number to nearest int
-
 function round_to_int(num)
     return math.floor(num + 0.5)
 end
@@ -294,7 +253,7 @@ function variable_storage_get_value(entity_id, type, name)
         type = "value_float"
     else
         type = nil
-        print('Purgatory: variable_storage_get_value(entity_id, type, name) incorrect type given. Must be either "STRING", "INT", "BOOL", or "FLOAT"')
+        --print('Purgatory: variable_storage_get_value(entity_id, type, name) incorrect type given. Must be either "STRING", "INT", "BOOL", or "FLOAT"')
     end
 
     if (var_stor_comps ~= nil) then
@@ -305,7 +264,7 @@ function variable_storage_get_value(entity_id, type, name)
             end
         end
     else
-        print("Purgatory: variable_storage_get_value(entity_id, type, name) Entity has no variable storage components")
+        --print("Purgatory: variable_storage_get_value(entity_id, type, name) Entity has no variable storage components")
     end
 
     return value
@@ -324,7 +283,7 @@ function variable_storage_set_value(entity_id, type, name, value)
         type = "value_float"
     else
         type = nil
-        print('Purgatory: variable_storage_set_value(entity_id, type, name) incorrect type given. Must be either "STRING", "INT", "BOOL", or "FLOAT"')
+        --print('Purgatory: variable_storage_set_value(entity_id, type, name) incorrect type given. Must be either "STRING", "INT", "BOOL", or "FLOAT"')
         return nil
     end
 
@@ -336,7 +295,7 @@ function variable_storage_set_value(entity_id, type, name, value)
             end
         end
     else
-        print("Purgatory: variable_storage_set_value(entity_id, type, name) Entity has no variable storage components")
+        --print("Purgatory: variable_storage_set_value(entity_id, type, name) Entity has no variable storage components")
     end
 end
 
@@ -353,7 +312,7 @@ function variable_storage_has_var_stor_comp_with_name(entity_id, name)
             end
         end
     else
-        print("Purgatory: variable_storage_has_component_with_name(entity_id, name) Entity has no variable storage components")
+        --print("Purgatory: variable_storage_has_component_with_name(entity_id, name) Entity has no variable storage components")
     end
 
     return output
@@ -489,4 +448,13 @@ function get_entity_in_radius_with_name(x, y, radius, name, tag)
     end
 
     return entities_with_name
+end
+
+--Sticks two tables together
+function concatenate_tables(t1, t2)
+    local conc_table = t1
+    for i, v in ipairs(t2) do
+        conc_table[#conc_table + 1] = v
+    end
+    return conc_table
 end

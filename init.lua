@@ -4,9 +4,9 @@
 dofile_once("mods/purgatory/files/scripts/utils.lua")
 dofile_once("mods/purgatory/files/translations/translations_utils.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_list_appends.lua")
+dofile_once("mods/purgatory/files/scripts/biomes/biome_helpers.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_spawn_purgatory.lua") --temp
 dofile_once("mods/purgatory/files/materials/add_void_recipes.lua") --makes recipes for endless void
-dofile_once("mods/purgatory/files/scripts/gun/initialize_starting_wands.lua") --temp
 dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua") --for debugging
 
 --Load Mod Settings
@@ -22,6 +22,7 @@ append_translations("mods/purgatory/files/translations/common.csv") --Adds all t
 --Hacking Nolla's systems (I don't get it but it works)
 get_content = ModTextFileGetContent
 set_content = ModTextFileSetContent
+mod_lua_file_append = ModLuaFileAppend
 
 --Append Files
 ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua") --For adding custom trigger types
@@ -51,9 +52,10 @@ if seed_to_set ~= 0 then
 end
 
 function OnModPreInit()
-    --Change Biomes Data (Calling it this way to hopefully avoid mod restart glitches)
-    ModTextFileSetContent("data/biome/_biomes_all.xml", ModTextFileGetContent("mods/purgatory/files/biome/_biomes_all.xml")) --Overwrites the biome data with purgatory's scenes
+    --Change Biomes Data
+    AddBiomes("mods/purgatory/files/biome/biomes_to_add.xml")
     ModTextFileSetContent("data/biome/_pixel_scenes.xml", ModTextFileGetContent("mods/purgatory/files/biome/_pixel_scenes.xml")) --Overwrites the pixel scenes with purgatory's pixel scenes
+    --TO DO: Since I overhauled the biomes to injection instead of outright replacement, I should do the same with the pixel scenes
 
     --Remove Edit Wands Everywhere if playing the no wand editting challenge run.
     if start_with_edit == false then
@@ -86,6 +88,11 @@ function OnModPreInit()
 
         if element.attr.name == "smoke" then
             element.attr.tags = "[gas],[smoke]" --Adding colored smokes and want to have all smokes have a smoke tag
+        end
+
+        if element.attr.name == "blood" then
+            element.attr.tags = "[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common],[food],[vampire_food]"
+        --adding a tag to blood for the vampirism field
         end
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
@@ -167,7 +174,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB"
+                "BOMB",
             }
 
             for i, v in ipairs(spells_to_give_player) do
@@ -222,7 +229,7 @@ function OnWorldInitialized() -- This is called once the game world is initializ
     set_biome_to_purgatory("data/biome/vault_frozen.xml", 16, 0.25, ascension_level)
     set_biome_to_purgatory("data/biome/wandcave.xml", 16, 0.5, ascension_level)
 
-    --tower
+    --tower [TODO: Mess about with this]
     for i = 2, 10, 1 do
         local biome_name = "data/biome/tower/solid_wall_tower_" .. tostring(i) .. ".xml"
         set_biome_to_purgatory(biome_name, 25, 0.2, ascension_level)
@@ -230,7 +237,30 @@ function OnWorldInitialized() -- This is called once the game world is initializ
 end
 
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
+    if debug_mode then
+        local id = 1
+        local function new_id()
+            id = id + 1
+            return id
+        end
+        gui = gui or GuiCreate()
+        GuiStartFrame(gui)
 
+        local player_id = EntityGetWithTag("player_unit")[1]
+        local x, y = EntityGetTransform(player_id)
+
+        if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
+            --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
+            EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+        end
+
+    --[[
+        EntityIngestMaterial( entity:int, material_type:number, amount:number ) 
+        [Has the same effects that would occur if 'entity' eats 'amount' number of cells of 'material_type' from the game world. 
+        Use this instead of directly modifying IngestionComponent values, if possible. Might not work with non-player entities. 
+        Use CellFactory_GetType() to convert a material name to material type.]
+    ]]
+    end
 end
 
 function OnWorldPostUpdate() -- This is called every time the game has finished updating the world

@@ -22,6 +22,7 @@ function remove_spell(spell_name)
 end
 
 remove_spell("LASER_LUMINOUS_DRILL") --Replacing with spell called "LUMINOUS_DRILL_TIMER" to match trigger naming conventions
+remove_spell("LIGHT_BULLET_TRIGGER_2") --Replacing with spell called "LIGHT_BULLET_TRIGGER_TRIGGER" to match trigger naming conventions
 remove_spell("MANA_REDUCE") -- Removing to replace with other mana increasing spells
 
 --Function for modifying existing spells
@@ -218,17 +219,6 @@ modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "custom_xml_file", "mods/purgat
 --balance changes
 modify_existing_spell("LIGHT_BULLET", "mana", 10)
 modify_existing_spell("LIGHT_BULLET_TRIGGER", "mana", 20)
-modify_existing_spell("LIGHT_BULLET_TRIGGER_TRIGGER", "mana", 25)
-modify_existing_spell(
-	"LIGHT_BULLET_TRIGGER_TRIGGER",
-	"action",
-	function()
-		c.fire_rate_wait = c.fire_rate_wait + 4
-		c.screenshake = c.screenshake + 1
-		c.damage_critical_chance = c.damage_critical_chance + 5
-		add_projectile_trigger_and_trigger("data/entities/projectiles/deck/light_bullet_blue.xml", 1)
-	end
-)
 modify_existing_spell("BULLET_TRIGGER", "mana", 25) --magic arrow
 modify_existing_spell("BULLET_TIMER", "mana", 20)
 modify_existing_spell("HEAVY_BULLET", "mana", 25) --magic bolt
@@ -399,7 +389,7 @@ spells_to_add = {
 			add_projectile("data/entities/projectiles/deck/light_bullet.xml")
 		end,
 	},
-
+]]
 	{
 		id = "TEST_SPELL",
 		name = "$action_test_spell",
@@ -417,7 +407,7 @@ spells_to_add = {
 			--draw_actions( 1, true )
 		end,
 	},
-]]	
+
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
 		name = "$action_light_bullet_death_trigger",
@@ -492,6 +482,25 @@ spells_to_add = {
 			c.fire_rate_wait = c.fire_rate_wait + 5
 			c.screenshake = c.screenshake + 0.5
 			c.damage_critical_chance = c.damage_critical_chance + 5
+		end
+	},
+	{
+		id = "LIGHT_BULLET_TRIGGER_TRIGGER",
+		name = "$action_light_bullet_trigger_trigger",
+		description = "$actiondesc_light_bullet_trigger_trigger",
+		sprite = "data/ui_gfx/gun_actions/light_bullet_trigger_2.png",
+		related_projectiles = {"data/entities/projectiles/deck/light_bullet_blue.xml"},
+		type = ACTION_TYPE_PROJECTILE,
+		spawn_level = "0,1,2,4,5,6,10",
+		spawn_probability = "0,0,0,0,0,0,0.25",
+		price = 250,
+		mana = 20,
+		--max_uses = 100,
+		action = function()
+			c.fire_rate_wait = c.fire_rate_wait + 4
+			c.screenshake = c.screenshake + 1
+			c.damage_critical_chance = c.damage_critical_chance + 5
+			add_projectile_trigger_and_trigger("data/entities/projectiles/deck/light_bullet_blue.xml", 1)
 		end
 	},
 	{
@@ -776,6 +785,7 @@ spells_to_add = {
 		mana = 100,
 		max_uses = 5,
 		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/giga_propane_tank.xml", --used for bombs materilized
+		related_projectiles = {"mods/purgatory/files/entities/projectiles/giga_propane_tank.xml"},
 		action = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/giga_propane_tank.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 150
@@ -795,6 +805,7 @@ spells_to_add = {
 		mana = 500,
 		max_uses = 1,
 		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/omega_propane_tank.xml", --used for bombs materilized
+		related_projectiles = {"mods/purgatory/files/entities/projectiles/omega_propane_tank.xml"},
 		action = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/omega_propane_tank.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 300
@@ -1357,7 +1368,45 @@ spells_to_add = {
 			current_reload_time = current_reload_time + 5
 			draw_actions(1, true)
 		end
-	}
+	},
+	{
+		id          = "VACUUM_BLOOD",
+		name 		= "$action_vacuum_blood",
+		description = "$actiondesc_vacuum_blood",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/vacuum_blood.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
+		spawn_probability                 = "0,0,0,0,0,0,0,0", -- SPELL
+		price = 500,
+		mana = 50,
+		max_uses = 5;
+		action 		= function()
+			add_projectile("mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
+		end,
+	},
+	{
+		id          = "DEATH_CROSS_BIGGER",
+		name 		= "$action_death_cross_bigger",
+		description = "$actiondesc_death_cross_bigger",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/death_cross_bigger.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles	= {"mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level       = "5,6,10", -- DEATH_CROSS_BIGGER
+		spawn_probability = "0.1,0.4,0.2", -- DEATH_CROSS_BIGGER
+		price = 600,
+		mana = 450,
+		max_uses = 3,
+		custom_xml_file = "data/entities/misc/custom_cards/death_cross.xml",
+		action 		= function()
+			add_projectile("mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 120
+			current_reload_time = current_reload_time + 60
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
+		end, 
+	},
 }
 
 --Add Spells
@@ -1411,3 +1460,5 @@ actions = new_spell_list
 			spawn_level                       = "1,2,3,4,5,6", -- MANA_REDUCE
 		spawn_probability                 = "1,1,1,1,1,1", -- MANA_REDUCE
 ]]
+
+

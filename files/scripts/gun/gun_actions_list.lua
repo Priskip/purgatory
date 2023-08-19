@@ -4,7 +4,7 @@ gun_actions_order = {
     "LIGHT_BULLET_TRIGGER",
     "LIGHT_BULLET_TIMER",
     "LIGHT_BULLET_DEATH_TRIGGER", --Modded
-    "LIGHT_BULLET_TRIGGER_2", --Modified
+    "LIGHT_BULLET_TRIGGER_TRIGGER", --Modified? Modded
     "LIGHT_BULLET_TIMER_TIMER", --Modded
     "LIGHT_BULLET_DEATH_TRIGGER_DEATH_TRIGGER", --Modded
     "LIGHT_BULLET_TRIGGER_TIMER", --Modded
@@ -20,9 +20,11 @@ gun_actions_order = {
     "SLOW_BULLET",
     "SLOW_BULLET_TRIGGER",
     "SLOW_BULLET_TIMER",
+    "HOOK",
     "BLACK_HOLE",
     "BLACK_HOLE_DEATH_TRIGGER",
     "BLACK_HOLE_BIG",
+    "WHITE_HOLE_BIG",
     "BLACK_HOLE_GIGA",
     "TENTACLE_PORTAL",
     "SPITTER",
@@ -58,6 +60,7 @@ gun_actions_order = {
     "MINE_DEATH_TRIGGER",
     "PIPE_BOMB",
     "PIPE_BOMB_DEATH_TRIGGER",
+    "FISH",
     "EXPLODING_DEER",
     "EXPLODING_DUCKS",
     "WORM_SHOT",
@@ -124,6 +127,7 @@ gun_actions_order = {
     "SOILBALL",
     "DEATH_CROSS",
     "DEATH_CROSS_BIG",
+    "DEATH_CROSS_BIGGER", --Modded
     "INFESTATION",
     "WALL_HORIZONTAL",
     "WALL_VERTICAL",
@@ -135,6 +139,7 @@ gun_actions_order = {
     "LONG_DISTANCE_CAST",
     "TELEPORT_CAST",
     "SUPER_TELEPORT_CAST",
+    "CASTER_CAST",
     "MIST_RADIOACTIVE",
     "MIST_ALCOHOL",
     "MIST_SLIME",
@@ -222,9 +227,12 @@ gun_actions_order = {
     "ORBIT_SHOT",
     "SPIRALING_SHOT",
     "PHASING_ARC",
+    "TRUE_ORBIT",
     "BOUNCE",
     "REMOVE_BOUNCE",
     "HOMING",
+    "ANTI_HOMING",
+    "HOMING_WAND",
     "HOMING_SHORT",
     "HOMING_ROTATE",
     "HOMING_SHOOTER",
@@ -244,6 +252,7 @@ gun_actions_order = {
     "BLACKHOLE_SHOT", --Modded
     "SPELLS_TO_POWER",
     "ESSENCE_TO_POWER",
+    "ZERO_DAMAGE",
     "HEAVY_SHOT",
     "LIGHT_SHOT",
     "KNOCKBACK",
@@ -286,10 +295,12 @@ gun_actions_order = {
     "VACUUM_LIQUID",
     "VACUUM_ENTITIES",
     "VACUUM_GOLD", --Modded
+    "VACUUM_BLOOD", --Modded
     "SEA_LAVA",
     "SEA_ALCOHOL",
     "SEA_OIL",
     "SEA_WATER",
+    "SEA_SWAMP",
     "SEA_ACID",
     "SEA_ACID_GAS",
     "CLOUD_WATER",
@@ -319,6 +330,9 @@ gun_actions_order = {
     "BOUNCE_LASER",
     "BOUNCE_LASER_EMITTER",
     "BOUNCE_LARPA",
+    "BOUNCE_SMALL_EXPLOSION",
+    "BOUNCE_LIGHTNING",
+    "BOUNCE_HOLE",
     "FIREBALL_RAY",
     "LIGHTNING_RAY",
     "TENTACLE_RAY",

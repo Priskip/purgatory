@@ -29,8 +29,10 @@ if ( #projectiles > 0 ) then
 			end
 			
 			SetRandomSeed(px,py)
-			local num = Random(1,5)
+			local num = Random(1,101)
 			if num == 1 then
+				shoot_projectile_from_projectile( projectile_id, "mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml", px, py, vel_x, vel_y )
+			elseif num > 1 and num <= 20 then
 				shoot_projectile_from_projectile( projectile_id, "data/entities/projectiles/deck/death_cross_big.xml", px, py, vel_x, vel_y )
 			else
 				shoot_projectile_from_projectile( projectile_id, "data/entities/projectiles/deck/death_cross.xml", px, py, vel_x, vel_y )

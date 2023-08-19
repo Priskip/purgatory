@@ -1,0 +1,139 @@
+<Biomes_To_Add>
+
+    <!-- TEST BIOME-->
+    <Biome
+        biome_filename="mods/purgatory/files/biome/potion_stand_test.xml"
+        height_index="0"
+        color="ffaaaaaa"
+        >
+    </Biome>
+
+    <!-- Test Biome -->
+    <Biome
+        biome_filename="mods/purgatory/files/biome/wang_tile_testing.xml"
+        height_index="0"
+        color="ffffffff"
+        >
+    </Biome>
+
+    <!-- Test Biome -->
+    <Biome
+        biome_filename="mods/purgatory/files/biome/test_biome.xml"
+        height_index="0"
+        color="ff000000"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/tower/tower_entrance.xml"
+        height_index="10"
+        color="ff3d3e36"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/essenceroom_fire.xml"
+        height_index="10"
+        color="ff157cb3"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/fish_giga.xml"
+        height_index="10"
+        color="ff1f3b66"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/maggotspot.xml"
+        height_index="10"
+        color="ff1f3b68"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/pyramid_boss.xml"
+        height_index="10"
+        color="ff1f3b70"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/hiisi_forge.xml"
+        height_index="10"
+        color="ff0036ff"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/pitboss_arena_1.xml"
+        height_index="10"
+        color="ff590a1a"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/pitboss_arena_2.xml"
+        height_index="10"
+        color="ff590a1b"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/pitboss_arena_3.xml"
+        height_index="10"
+        color="ff590a1c"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/pitboss_arena_4.xml"
+        height_index="10"
+        color="ff590a1d"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/alchemist_arena_left.xml"
+        height_index="10"
+        color="ffbaabaa"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/alchemist_arena_middle.xml"
+        height_index="10"
+        color="ffbaabab"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/minibosses/alchemist_arena_right.xml"
+        height_index="10"
+        color="ffbaabac"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/avarice_diamond.xml"
+        height_index="10"
+        color="ff567CB5"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/skully_game.xml"
+        height_index="10"
+        color="ffad5013"
+        >
+    </Biome>
+
+    <Biome
+        biome_filename="mods/purgatory/files/biome/jungle_gourds.xml"
+        height_index="10"
+        color="ff18aaaa"
+        >
+    </Biome>
+
+</Biomes_To_Add>

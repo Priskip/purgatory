@@ -302,3 +302,43 @@ if (#tablets > 0) then
 		end
 	end
 end
+
+-- fish rain
+if( GlobalsGetValue("MISC_FISH_RAIN") ~= "1" ) then
+	local animals = EntityGetInRadiusWithTag( x, y, 128, "helpless_animal" )
+
+	if ( #animals > 0 ) then
+
+	 -- for i,animal in ipairs(animals) do
+		-- if EntityGetFirstComponent( animal, "AdvancedFishAIComponent" ) == nil then
+		local collected = false
+		local players = EntityGetWithTag( "player_unit" )
+		if ( #players > 0 ) then
+			local player_id = players[1]
+			local px, py = EntityGetTransform( player_id )
+
+			for i,fish in ipairs(animals) do
+				if( EntityGetFirstComponent( fish, "AdvancedFishAIComponent" ) ~= nil ) then
+					local fx, fy = EntityGetTransform( fish )
+					local distance = math.abs( x - fx ) + math.abs( y - fy )
+				
+					if ( distance < 64 ) then
+						if( collected == false ) then
+							local eid = EntityLoad("data/entities/misc/fish_rain.xml", px, py)
+							EntityAddChild( player_id, eid )
+							EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", fx, fy)
+						end
+						collected = true
+						EntityKill( fish )
+					end
+				end
+			end
+		end
+		
+		if collected then
+			GamePrintImportant( "$log_altar_magic_worm", "" )
+			GlobalsSetValue("MISC_FISH_RAIN", "1" )			
+			AddFlagPersistent( "misc_fish_rain" )
+		end
+	end
+end

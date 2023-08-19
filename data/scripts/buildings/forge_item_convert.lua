@@ -27,6 +27,34 @@ end
 -- convert items
 local converted = false
 
+for _,id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 70, "leukaluu")) do
+	-- make sure item is not carried in inventory or wand
+	if EntityGetRootEntity(id) == id then
+
+		-- look for kantele...
+		local e_kanteles = EntityGetInRadiusWithTag( pos_x, pos_y, 70, "kantele" )
+		if ( #e_kanteles > 0 ) then 
+			local kantele = e_kanteles[1] 
+
+			local x,y = EntityGetTransform(id)
+			EntityLoad("data/entities/projectiles/explosion.xml", x, y - 10)
+			EntityLoad("data/entities/items/leukaluu_kantele.xml", x, y - 5)
+			EntityLoad("data/entities/particles/image_emitters/magical_symbol.xml", x, y - 5)
+
+			EntityKill(id)
+			EntityKill( kantele )
+			converted = true
+		else
+			local x,y = EntityGetTransform(id)
+			EntityLoad("data/entities/projectiles/explosion.xml", x, y - 10)
+			CreateItemActionEntity( "FISH", x, y)
+			AddFlagPersistent( "card_unlocked_fish" )
+			EntityKill(id)
+			converted = true
+		end
+	end
+end
+
 for _, id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 70, "card_summon_portal_broken")) do
 	-- make sure item is not carried in inventory or wand
 	if EntityGetRootEntity(id) == id then

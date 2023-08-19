@@ -1,7 +1,4 @@
 dofile_once("mods/purgatory/files/scripts/utils.lua")
-dofile_once("mods/purgatory/files/scripts/gun/initialize_starting_wands.lua")
+dofile_once("mods/purgatory/files/scripts/gun/starting_guns/initialize_starting_guns.lua")
 
-local player_id = getPlayerEntity()
-
---Initialize Starting Wands
-initialize_starting_wands(player_id)
+initialize_starting_guns(getPlayerEntity())
