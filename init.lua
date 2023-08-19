@@ -129,6 +129,7 @@ function OnPlayerSpawned(player_entity)
                 local physics_hit = tonumber(ComponentObjectGetValue(damagemodel, "damage_multipliers", "physics_hit"))
                 local radioactive = tonumber(ComponentObjectGetValue(damagemodel, "damage_multipliers", "radioactive"))
                 local poison = tonumber(ComponentObjectGetValue(damagemodel, "damage_multipliers", "poison"))
+                local holy = tonumber(ComponentObjectGetValue(damagemodel, "damage_multipliers", "holy"))
 
                 melee = melee * (3 + ascension_scale * ascension_level)
                 projectile = projectile * (2 + ascension_scale * ascension_level)
@@ -140,6 +141,7 @@ function OnPlayerSpawned(player_entity)
                 ice = ice * (2 + ascension_scale * ascension_level)
                 radioactive = radioactive * (2 + ascension_scale * ascension_level)
                 poison = poison * (3 + ascension_scale * ascension_level)
+                holy = holy * (3 + ascension_scale * ascension_level)
 
                 ComponentObjectSetValue(damagemodel, "damage_multipliers", "melee", tostring(melee))
                 ComponentObjectSetValue(damagemodel, "damage_multipliers", "projectile", tostring(projectile))
@@ -153,6 +155,7 @@ function OnPlayerSpawned(player_entity)
                 ComponentObjectSetValue(damagemodel, "damage_multipliers", "physics_hit", tostring(physics_hit))
                 ComponentObjectSetValue(damagemodel, "damage_multipliers", "radioactive", tostring(radioactive))
                 ComponentObjectSetValue(damagemodel, "damage_multipliers", "poison", tostring(poison))
+                ComponentObjectSetValue(damagemodel, "damage_multipliers", "holy", tostring(holy))
             end
         end
 
