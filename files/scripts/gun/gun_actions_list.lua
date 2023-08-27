@@ -64,6 +64,7 @@ gun_actions_order = {
     "EXPLODING_DEER",
     "EXPLODING_DUCKS",
     "WORM_SHOT",
+    "RAT_CANNON", --Modded
     "BOMB_DETONATOR",
     "LASER",
     "MEGALASER",
@@ -193,6 +194,13 @@ gun_actions_order = {
     "CROSS_SHAPE", --Modded
     "CIRCLE_SHAPE",
     "PENTAGRAM_SHAPE",
+    "I_SHOT",
+    "Y_SHOT",
+    "T_SHOT",
+    "W_SHOT",
+    "QUAD_SHOT",
+    "PENTA_SHOT",
+    "HEXA_SHOT",
     "SPREAD_REDUCE",
     "HEAVY_SPREAD",
     "RECHARGE",

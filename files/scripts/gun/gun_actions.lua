@@ -389,7 +389,7 @@ spells_to_add = {
 			add_projectile("data/entities/projectiles/deck/light_bullet.xml")
 		end,
 	},
-]]
+
 	{
 		id = "TEST_SPELL",
 		name = "$action_test_spell",
@@ -407,7 +407,7 @@ spells_to_add = {
 			--draw_actions( 1, true )
 		end,
 	},
-
+]]
 	{
 		id = "LIGHT_BULLET_DEATH_TRIGGER",
 		name = "$action_light_bullet_death_trigger",
@@ -1375,6 +1375,7 @@ spells_to_add = {
 		description = "$actiondesc_vacuum_blood",
 		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/vacuum_blood.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml"},
 		type 		= ACTION_TYPE_STATIC_PROJECTILE,
 		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
 		spawn_probability                 = "0,0,0,0,0,0,0,0", -- SPELL
@@ -1406,6 +1407,23 @@ spells_to_add = {
 			current_reload_time = current_reload_time + 60
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
 		end, 
+	},
+	{
+		id          = "RAT_CANNON",
+		name 		= "$action_rat_cannon",
+		description = "$actiondesc_rat_cannon",
+		spawn_requires_flag = "card_unlocked_exploding_deer",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/rat_cannon.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
+		spawn_probability                 = "0,0,0,0,0.1,0.1,0.1,0", -- SPELL
+		price = 500,
+		mana = 100,
+		action 		= function()
+			add_projectile("mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml")
+		end,
 	},
 }
 

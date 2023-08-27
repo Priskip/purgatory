@@ -10,6 +10,7 @@ RegisterSpawnFunction(0xffff0002, "spawn_goal_2")
 RegisterSpawnFunction(0xffff0003, "spawn_goal_3")
 RegisterSpawnFunction(0xffff0004, "spawn_goal_4")
 RegisterSpawnFunction(0xffff0005, "spawn_foul_line")
+RegisterSpawnFunction(0xffff0006, "spawn_lantern")
 
 function init(x, y, w, h)
     local material_file = "mods/purgatory/files/biome_impl/skully_game/material.png"
@@ -86,6 +87,10 @@ function spawn_foul_line(x, y)
     EntityLoad("mods/purgatory/files/entities/buildings/skully_game/foul_line.xml", x, y)
     --EntityLoad("mods/purgatory/files/entities/particles/skully_game/foul_line_white.xml", x+35, y+5) too visually overpowering
     EntityLoad("mods/purgatory/files/entities/particles/skully_game/foul_line_black.xml", x+35, y+5)
+end
+
+function spawn_lantern(x, y)
+    EntityLoad("mods/purgatory/files/entities/props/physics/skully_lantern_01.xml", x, y)
 end
 
 --Wang gen systems (don't care about them) bite me

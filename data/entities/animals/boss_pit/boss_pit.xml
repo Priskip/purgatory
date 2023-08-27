@@ -2,7 +2,7 @@
 
 	<!-- Custom Boss HP Bar -->
 	<LuaComponent
-        script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar.lua"
+        script_source_file="mods/purgatory/files/test/test_script.lua"
         execute_every_n_frame="1"
         ></LuaComponent>
 

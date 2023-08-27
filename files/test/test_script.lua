@@ -96,6 +96,32 @@ if player_in_radius then
     boss_health_text.pos_y = bar_outline.pos_y + bar_outline.size_y / 2 - boss_health_text.size_y / 2
 
     GuiText(gui, boss_health_text.pos_x + bar_offset, boss_health_text.pos_y, boss_health_text.text)
+
+
+    --test stuff
+    local damage_model = EntityGetComponent(entity_id, "DamageModelComponent")[1]
+
+    local damage_types = {
+        "melee",
+        "projectile",
+        "explosion",
+        "electricity",
+        "fire",
+        "drill",
+        "slice",
+        "ice",
+        "healing",
+        "physics_hit",
+        "radioactive",
+        "poison",
+        "overeating",
+        "curse",
+        "holy"
+    }
+    for i, v in ipairs(damage_types) do
+        local multiplier = tonumber(ComponentObjectGetValue(damage_model, "damage_multipliers", v))
+        GuiText(gui, 10, 40+10*i, v .. ": " .. tostring(multiplier))
+    end
 end
 --[[
 
