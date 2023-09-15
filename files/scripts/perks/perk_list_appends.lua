@@ -253,7 +253,7 @@ modify_existing_perk(
 
 				local delta_deck_cap = old_deck_capacity - deck_capacity2
 
-				--NOTE PRISKIP: https://www.desmos.com/calculator/wfjvqa6mcy For visualising this new mana function
+				--NOTE PRISKIP: https://www.desmos.com/calculator/wfjvqa6mcy For visualizing this new mana function
 				local mana_to_add = round_to_nearest_int(900 * ((math.exp(0.8 * delta_deck_cap)) / (math.exp(0.8 * delta_deck_cap) + 100)) + 100)
 
 				mana_max = mana_max + mana_to_add + Random(-50, 50)
@@ -263,7 +263,7 @@ modify_existing_perk(
 				ComponentSetValue2(comp, "mana_charge_speed", mana_charge_speed)
 				ComponentObjectSetValue(comp, "gun_config", "deck_capacity", deck_capacity2 + always_casts)
 
-				--Do not allow spells/cast to excede capacity
+				--Do not allow spells/cast to exceed capacity
 				if spells_per_cast > deck_capacity2 then
 					ComponentObjectSetValue(comp, "gun_config", "actions_per_round", math.floor(deck_capacity2))
 				end
@@ -368,6 +368,11 @@ perks_to_add = {
 			end
 		end
 	},
+
+	--[[
+	--Note Priskip 07 - 9 - 23
+	--These don't affect things much - so remove for now and maybe find some other way to integrate them.
+	
 	{
 		id = "LOW_GRAVITY",
 		ui_name = "$perk_low_gravity",
@@ -452,6 +457,8 @@ perks_to_add = {
 			end
 		end
 	},
+	]]
+	
 	{
 		id = "MAP_LEVEL_2",
 		ui_name = "$perk_map_lvl_2",

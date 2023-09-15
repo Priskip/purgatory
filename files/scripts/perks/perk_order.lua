@@ -9,8 +9,8 @@ perk_order = {
     "HOVER_BOOST",
 
     "HASTE", --Modded
-    "LOW_GRAVITY", --Modded
-    "HIGH_GRAVITY", --Modded
+    --"LOW_GRAVITY", --Modded
+    --"HIGH_GRAVITY", --Modded
 
     "STRONG_KICK",
     "TELEKINESIS",

@@ -22,6 +22,7 @@ Upcoming Build
     - Changed framework that I use for adding new biomes so that it doesn't directly overwrite _biomes_all since Nolla is adding new stuff again. ^-^
     - Tweaked the biome map
     - Made flasks work with the reactions
+    - Removed High and Low Grav from perk pool because they don't affect things much
 
 Beta Build 06 Feb 2023
     - Holy Mountain's Alchemy Station now works with powder sacks

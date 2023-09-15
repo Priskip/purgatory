@@ -254,7 +254,12 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
 
         if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
             --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
-            EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+            --EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+
+            local entity_id = EntityGetInRadiusWithTag(x, y, 50, "item_perk")[1] --or however you get your ent id
+            local item_comp = EntityGetFirstComponent(entity_id, "ItemComponent")
+            ComponentSetValue2(item_comp, "ui_description", "$your_UI_description_here")
+            
         end
 
     --[[
