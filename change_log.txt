@@ -21,12 +21,14 @@ Upcoming Build
     - Made flasks work with the reactions
     - Removed High and Low Grav from perk pool because they don't affect things much
     - Updated Ylialkemisti's flasks to be inline with hiisi alkemisti's.
+    - Fixed Gold Vacuum not giving you gold while in the Noita beta branch.
 
     - New Spells:
         - Blood Vacuum [Static Projectile]
         - Rottakanuuna [Projectile] (Thank you reversevere!)
         - Omega Death Cross [Projectile]
         - Full Mana Indicator [Passive]
+        - Slow Shot [Modifier]
 
 Beta Build 06 Feb 2023
     - Holy Mountain's Alchemy Station now works with powder sacks

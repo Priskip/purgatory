@@ -43,7 +43,16 @@ else
     local gold_amount = 0
     if (mat_inv_comp ~= nil) then
         count_per_material_type = ComponentGetValue2(mat_inv_comp, "count_per_material_type")
-        gold_amount = count_per_material_type[125] --gold is stored in the 125 slot of this data type (I believe this type is defined in engine - I don't have documnetation on it)
+
+        for i, v in ipairs(count_per_material_type) do
+            if CellFactory_GetName(i - 1) == "gold" then
+                gold_amount = v
+            end
+        end
+
+        --gold_amount = count_per_material_type[125]
+        --Note Priskip 18/10/23: this broke when Nolla added more material types into the beta.
+        --That's what happens when you hard code an array index for the cell factory ids. :/
     end
 
     --Add it to player's Wallet
