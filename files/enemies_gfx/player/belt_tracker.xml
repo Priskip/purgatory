@@ -1,0 +1,6 @@
+<Entity>
+    
+    <InheritTransformComponent parent_hotspot_tag="belt_root">
+    </InheritTransformComponent>
+
+</Entity>

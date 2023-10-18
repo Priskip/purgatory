@@ -1,6 +1,6 @@
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="-2468"
-  DESIGN_PLAYER_START_POS_Y="8524"
+  DESIGN_PLAYER_START_POS_Y="8500"
   BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
   DAMAGE_BLOOD_AMOUNT_MIN="5"
   DAMAGE_BLOOD_AMOUNT_MAX="10"
@@ -20,6 +20,10 @@
   VIRTUAL_RESOLUTION_X="427" 214
   VIRTUAL_RESOLUTION_Y="242" 121
   ></MagicNumbers>
+
+  for underground test facility
+  DESIGN_PLAYER_START_POS_X="-2468"
+  DESIGN_PLAYER_START_POS_Y="8500"
   -->
 
 

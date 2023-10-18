@@ -26,11 +26,10 @@
 	<!-- assign electric immunity manually with lua comp because apparently game effect components crash here -->
 	<LuaComponent
 		_tags="enabled_in_hand,not_enabled_in_wand"
-		script_source_file="mods/purgatory/files/entities/misc/custom_cards/lightning.lua"
+		script_source_file="mods/purgatory/files/scripts/entities/custom_cards/lightning.lua"
 		execute_every_n_frame="60"
 		>
 	</LuaComponent>
-
 	<!-- more particles -->
 	<ParticleEmitterComponent 
 		_tags="enabled_in_hand,not_enabled_in_wand"

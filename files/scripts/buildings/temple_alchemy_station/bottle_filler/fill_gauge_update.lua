@@ -14,7 +14,7 @@ placed_bottle.id = EntityGetAllChildren(bottle_stand.id)[1] --should only have 1
 
 if placed_bottle.id ~= nil then
     --Read contents of the potion
-    placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = read_potion_inventory(placed_bottle.id)
+    placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = ReadPotionInventory(placed_bottle.id)
 
     --Clear Particle Emitters
     filler_gauge.particle_emitter_comps = EntityGetComponent(filler_gauge.id, "ParticleEmitterComponent")
@@ -37,8 +37,8 @@ if placed_bottle.id ~= nil then
         end
 
         --For normalizing brightness. 
-        --WARNING: get_gfx_glows_of_materials(materials) is a performance intensive function that calls the entire material.xml table. Call this function sparingly.
-        local gfx_glows = get_gfx_glows_of_materials(materials)
+        --WARNING: GetGFXGlowsOfMaterials(materials) is a performance intensive function that calls the entire material.xml table. Call this function sparingly.
+        local gfx_glows = GetGFXGlowsOfMaterials(materials)
 
         --This makes it so the particles don't go outside the bar if the player inserts an over-filled potion from the hiisi alchemist
         local pos = 0

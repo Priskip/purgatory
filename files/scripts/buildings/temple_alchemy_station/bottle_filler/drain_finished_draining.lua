@@ -22,14 +22,14 @@ end
 --If there's a bottle/sack on the stand
 if placed_bottle.id ~= nil then
     --Get amount of space left in the bottle
-    placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = read_potion_inventory(placed_bottle.id)
+    placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = ReadPotionInventory(placed_bottle.id)
     placed_bottle.room_available = placed_bottle.barrel_size - placed_bottle.amount_filled
 
     if placed_bottle.room_available > 0 then
         --Look to see if the Cauldron Sucker has the material needed in its inventory
         local cauldron_sucker = {}
         cauldron_sucker.id = get_entity_in_radius_with_name(drain.x, drain.y, 500, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1]
-        cauldron_sucker.amount_of_requested_material = get_amount_of_material_in_inventory(cauldron_sucker.id, drain.material)
+        cauldron_sucker.amount_of_requested_material = GetAmountOfMaterialInInventory(cauldron_sucker.id, drain.material)
 
         if cauldron_sucker.amount_of_requested_material >= drain.amount then
             --Cauldron Sucker has the material needed to fullfill the drain.
@@ -41,10 +41,10 @@ if placed_bottle.id ~= nil then
 
             if (placed_bottle.potion_or_sack == "potion" and drain.mode == 0) or (placed_bottle.potion_or_sack == "powder_stash" and drain.mode == 1) then
                 --Remove contents from Cauldron Sucker
-                actually_add_material_inventory_material(cauldron_sucker.id, drain.material, -amount_to_drain)
+                ActuallyAddMaterialInventoryMaterial(cauldron_sucker.id, drain.material, -amount_to_drain)
 
                 --Add contents to placed potion/sack
-                actually_add_material_inventory_material(placed_bottle.id, drain.material, amount_to_drain)
+                ActuallyAddMaterialInventoryMaterial(placed_bottle.id, drain.material, amount_to_drain)
             end
         end
     end

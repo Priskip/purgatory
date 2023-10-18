@@ -89,10 +89,9 @@
 		burnable="0"
 		density="10"
 		cell_type="solid"
-		wang_color="d5e5ae"
+		wang_color="ffd5e5ae"
 		generates_smoke="0"
 		on_fire="0"
-		requires_oxygen="1"
 		temperature_of_fire="10"
 		solid_restitution="0"
 		gfx_glow="6"
@@ -256,6 +255,52 @@
 			fire_colors_index="2"
 			>
 		</Graphics>
+	</CellData>
+
+	<!--Debug Materials -->
+	<CellData
+	name="glass_clear_static"
+	ui_name="$mat_glass_static"
+	tags="[static],[alchemy],[solid],[earth]"
+	burnable="0"
+	density="10"
+	cell_type="liquid"
+	wang_color="ffa16066"
+	generates_smoke="0"
+	liquid_gravity="0.5"
+	liquid_sand="1"
+	liquid_static="1"
+	on_fire="0"
+	requires_oxygen="1"
+	temperature_of_fire="10"
+	solid_restitution="0"
+	gfx_glow="6"
+	hp="30000" 
+	platform_type="1"
+	>
+    <Graphics
+	texture_file="mods/purgatory/files/materials_gfx/glass_clear.png"
+	color="ffa16066" >
+    </Graphics>
+  </CellData>
+
+	<!-- Gate Boss -->
+	<!-- tags="[box2d],[matter_eater_ignore_list],[indestructible],[sunbaby_ignore_list]" -->
+	<CellData
+		name="gate_boss_a"
+		ui_name="$mat_gate_boss_a"
+		tags="[box2d],[solid]"
+		wang_color="ff11220a"
+		cell_type="solid"
+		platform_type="1"
+		density="8"
+		hp="200000"
+		durability="12"
+		audio_physics_material_event="rock"
+		audio_physics_material_wall="rock"
+		audio_physics_material_solid="rock"
+		show_in_creative_mode="1"
+		>
 	</CellData>
 
 	<!-- New Alchemy Stuff -->

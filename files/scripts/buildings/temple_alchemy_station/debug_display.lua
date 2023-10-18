@@ -145,7 +145,7 @@ if not GameIsInventoryOpen() then
         end
 
         --Material Inventory
-        cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = read_material_inventory(cauldron_sucker.id)
+        cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = ReadMaterialInventory(cauldron_sucker.id)
         new_y_value() --update a y value to have a blank space
         GuiText(gui, x_val, new_y_value(), "Material Inventory: ")
 
@@ -182,7 +182,7 @@ if not GameIsInventoryOpen() then
     GuiText(gui, x_val, set_y_value(40), "Placed Bottle")
     if placed_bottle.id ~= nil then
         --Read cauldron sucker material inventory contents.
-        placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = read_potion_inventory(placed_bottle.id)
+        placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = ReadPotionInventory(placed_bottle.id)
 
         GuiText(gui, x_val, new_y_value(), "Amount Filled: " .. tostring(placed_bottle.amount_filled))
         GuiText(gui, x_val, new_y_value(), "Barrel Size: " .. tostring(placed_bottle.barrel_size))

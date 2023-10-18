@@ -17,7 +17,7 @@ if placed_bottle.id ~= nil then
 end
 
 --Read material inventory contents.
-cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = read_material_inventory(cauldron_sucker.id)
+cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = ReadMaterialInventory(cauldron_sucker.id)
 
 --Enables/Disables the material sucker component on the cauldron sucker depending on whether a flask/sack is present on the filling stand.
 --Also sets the type of material the sucker component will suck.
@@ -36,7 +36,7 @@ else
     if not is_enabled then
         EntitySetComponentIsEnabled(cauldron_sucker.id, cauldron_sucker.material_sucker_component, true)
 
-        local potion_or_sack = potion_or_sack(placed_bottle.id)
+        local potion_or_sack = IsPotionOrSack(placed_bottle.id)
         if potion_or_sack == "potion" and cauldron_sucker.inventory_string == "" then
             ComponentSetValue2(cauldron_sucker.material_sucker_component, "material_type", 0) --Sets the type of materials to suck to liquids
         elseif potion_or_sack == "powder_stash" and cauldron_sucker.inventory_string == "" then

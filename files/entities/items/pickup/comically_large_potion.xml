@@ -124,8 +124,8 @@
       damage_mortals="1" 
       physics_explosion_power.max="5" 
       shake_vegetation="1" 
-      sparks_count_min="10" 
-      sparks_count_max="20" 
+      sparks_count_min="40" 
+      sparks_count_max="80" 
       sparks_enabled="1" 
 	  spark_material="glass"
       stains_enabled="1" 
@@ -157,6 +157,7 @@
     ui_sprite="mods/purgatory/files/ui_gfx/items/comically_large_potion.png"
     ui_description="$item_description_comically_large_potion"
     preferred_inventory="QUICK"
+    item_pickup_radius="19.0"
   ></ItemComponent>
 
   <AbilityComponent

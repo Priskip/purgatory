@@ -177,7 +177,9 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB"
+                "BOMB",
+                --"SUMMON_HOLLOW_EGG"
+                --"RELOAD_BEEP"
             }
 
             for i, v in ipairs(spells_to_give_player) do
@@ -256,9 +258,7 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
             --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
             --EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
 
-            local entity_id = EntityGetInRadiusWithTag(x, y, 50, "item_perk")[1] --or however you get your ent id
-            local item_comp = EntityGetFirstComponent(entity_id, "ItemComponent")
-            ComponentSetValue2(item_comp, "ui_description", "$your_UI_description_here")
+            EntityLoad("data/entities/animals/boss_gate/gate_monster_a.xml", 0, y - 100)
             
         end
 

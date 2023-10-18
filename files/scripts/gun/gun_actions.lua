@@ -1425,6 +1425,47 @@ spells_to_add = {
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml")
 		end,
 	},
+	{
+		id          = "RELOAD_BEEP",
+		name 		= "$action_reload_beep",
+		description = "$actiondesc_reload_beep",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/reload_beep.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type 		= ACTION_TYPE_PASSIVE,
+		spawn_level                       = "0,1,2", -- RELOAD_BEEP
+		spawn_probability                 = "1,0.6,0.5", -- RELOAD_BEEP
+		price = 100,
+		mana = 0,
+		--max_uses = 50,
+		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/reload_beep.xml",
+		action 		= function()
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "SLOW_SHOT",
+		name 		= "$action_slow_shot",
+		description = "$actiondesc_slow_shot",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/slow_shot.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "1,2,3", -- SLOW_SHOT
+		spawn_probability                 = "1,0.5,0.5", -- SLOW_SHOT
+		price = 100,
+		mana = 0,
+		action 		= function()
+			c.speed_multiplier = c.speed_multiplier * 0.5
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 50
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+
+			draw_actions(1, true)
+		end,
+	},
 }
 
 --Add Spells

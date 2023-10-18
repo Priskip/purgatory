@@ -1,18 +1,18 @@
 <Sprite 
 default_animation="spawn" 
-filename="mods/purgatory/notes/pilfer.png">
+filename="mods/purgatory/files/debug_utilities/sprites/x_marker.png">
 
   <RectAnimation
     name="spawn"
     pos_x="0"
     pos_y="0"
-    offset_x="17.5"
-    offset_y="16"
-    frame_width="35"
-    frame_height="32"
-    has_offset="1"
-    frame_count="4"
-    frames_per_row="4"
+    offset_x="0"
+    offset_y="0"
+    frame_width="19"
+    frame_height="19"
+    has_offset="0"
+    frame_count="1"
+    frames_per_row="1"
     loop="1"
     shrink_by_one_pixel="0"
     frame_wait="0.1"

@@ -1,27 +1,33 @@
-<Entity 
+<Entity
   name="DEBUG_NAME:player"
-  tags="mortal,human,hittable,peasant,prey,player_unit,teleportable" >
-  
-  <Base file="data/entities/player_base.xml" include_children="1" /> 
+  tags="mortal,human,hittable,peasant,prey,player_unit,teleportable"
+  >
 
-  <!--
-   <Entity name="inventory_quick">
-      <Entity><Base file="data/entities/items/starting_wand_rng.xml" /></Entity>
-      <Entity><Base file="data/entities/items/starting_bomb_wand_rng.xml" /></Entity>
-      <Entity><Base file="data/entities/items/pickup/potion_starting.xml" /></Entity>
-  </Entity>
-  -->
+  <Base
+    file="data/entities/player_base.xml"
+    include_children="1">
+  </Base>
+
+  <!-- <Entity name="lantern">  
+    <Base file="mods/purgatory/files/enemies_gfx/player/lantern_ent.xml">
+    </Base>  
+  </Entity> 
+
+  <Entity name="purgatory_belt_tracker">  
+    <Base file="mods/purgatory/files/enemies_gfx/player/belt_tracker.xml">
+    </Base>  
+  </Entity>  -->
+
 
   <Entity name="inventory_quick">
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/blue.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/red.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/yellow.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/green.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_regular.xml" /></Entity>
-      <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_magical.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/blue.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/red.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/yellow.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/green.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_regular.xml" /></Entity>
+    <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_magical.xml" /></Entity>
   </Entity>
 
-
-  <Entity name="inventory_full"/>
+  <Entity name="inventory_full" />
 
 </Entity>

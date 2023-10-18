@@ -9,7 +9,7 @@ cauldron_sucker.material_sucker_component = EntityGetFirstComponentIncludingDisa
 cauldron_sucker.mode = ComponentGetValue2(cauldron_sucker.material_sucker_component, "material_type") -- 0 = liquids, 1 = sands
 
 --Read cauldron sucker material inventory contents.
-cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = read_material_inventory(cauldron_sucker.id)
+cauldron_sucker.inventory_string, cauldron_sucker.amount_filled = ReadMaterialInventory(cauldron_sucker.id)
 
 --If cauldron material contents is not empty, process material string into list of materials for adding to the queue
 cauldron_sucker.materials = {}

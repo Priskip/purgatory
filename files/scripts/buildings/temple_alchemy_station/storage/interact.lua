@@ -26,10 +26,11 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
         if is_holding_potion or is_holding_sack then
             --Read contents
             local stored_potion = {}
-            stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = read_potion_inventory(player.active_item_id)
+            stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = ReadPotionInventory(player.active_item_id)
 
             --Make new potion
-            stored_potion.id = create_stored_potion_entity(stored_potion.inventory_string, stored_potion.barrel_size, stored_potion.potion_or_sack, storage_ent.x, storage_ent.y)
+            --stored_potion.id = CreateStoredPotionEntityFromItemID(player.active_item_id)
+            stored_potion.id = CreateStoredPotionEntity(stored_potion.inventory_string, stored_potion.barrel_size, stored_potion.potion_or_sack, storage_ent.x, storage_ent.y)
 
             --Add as child for easy finding later
             EntityAddChild(storage_ent.id, stored_potion.id)
@@ -41,7 +42,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             variable_storage_set_value(storage_ent.id, "STRING", "mode", "pick_up")
 
             --Set Ent Name
-            local potion_display_name = get_display_text_from_material_string(stored_potion.inventory_string)
+            local potion_display_name = GetDisplayTextFromMaterialString(stored_potion.inventory_string)
             local percent_filled = string.gsub(string.format("%2.0f", 100 * (stored_potion.amount_filled / stored_potion.barrel_size)), "%s+", "")
             local display_text =
                 GameTextGetTranslatedOrNot("$storage_display_part_1") ..
@@ -65,10 +66,10 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             --Read contents
             local stored_potion = {}
             stored_potion.id = EntityGetAllChildren(storage_ent.id)[1] --should only have 1 child ent - if not, this is bad
-            stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = read_potion_inventory(stored_potion.id)
+            stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = ReadPotionInventory(stored_potion.id)
 
             --Make new potion and have player pick it up
-            local new_potion = create_pickup_potion_entity(stored_potion.inventory_string, stored_potion.barrel_size, stored_potion.potion_or_sack, storage_ent.x, storage_ent.y)
+            local new_potion = CreatePickupPotionEntity(stored_potion.inventory_string, stored_potion.barrel_size, stored_potion.potion_or_sack, storage_ent.x, storage_ent.y)
 
             --Kill old Potion
             EntityKill(stored_potion.id)

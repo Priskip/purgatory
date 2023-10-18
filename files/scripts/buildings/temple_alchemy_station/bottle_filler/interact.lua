@@ -29,10 +29,11 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
         if is_holding_potion or is_holding_sack then
             --Read contents
             local placed_bottle = {}
-            placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = read_potion_inventory(player.active_item_id)
+            placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = ReadPotionInventory(player.active_item_id)
 
             --Make new potion
-            placed_bottle.id = create_stored_potion_entity(placed_bottle.inventory_string, placed_bottle.barrel_size, placed_bottle.potion_or_sack, bottle_stand.x, bottle_stand.y)
+            --placed_bottle.id = CreateStoredPotionEntityFromItemID(player.active_item_id)
+            placed_bottle.id = CreateStoredPotionEntity(placed_bottle.inventory_string, placed_bottle.barrel_size, placed_bottle.potion_or_sack, bottle_stand.x, bottle_stand.y)
 
             --Add as child for easy finding later
             EntityAddChild(bottle_stand.id, placed_bottle.id)
@@ -85,10 +86,10 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             --Read contents
             local placed_bottle = {}
             placed_bottle.id = EntityGetAllChildren(bottle_stand.id)[1] --should only have 1 child ent - if not, this is bad
-            placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = read_potion_inventory(placed_bottle.id)
+            placed_bottle.inventory_string, placed_bottle.amount_filled, placed_bottle.barrel_size, placed_bottle.potion_or_sack = ReadPotionInventory(placed_bottle.id)
 
             --Make new potion and have player pick it up
-            local new_potion = create_pickup_potion_entity(placed_bottle.inventory_string, placed_bottle.barrel_size, placed_bottle.potion_or_sack, bottle_stand.x, bottle_stand.y)
+            local new_potion = CreatePickupPotionEntity(placed_bottle.inventory_string, placed_bottle.barrel_size, placed_bottle.potion_or_sack, bottle_stand.x, bottle_stand.y)
 
             --Kill old Potion
             EntityKill(placed_bottle.id)

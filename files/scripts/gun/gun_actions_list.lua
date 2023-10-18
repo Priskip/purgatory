@@ -47,6 +47,7 @@ gun_actions_order = {
     "POLLEN_DEATH_TRIGGER", --Modded
     "POLLEN_BALL", --Modded
     "LANCE",
+    "LANCE_HOLY",
     "ROCKET",
     "ROCKET_TIER_2",
     "ROCKET_TIER_3",
@@ -267,6 +268,7 @@ gun_actions_order = {
     "RECOIL",
     "RECOIL_DAMPER",
     "SPEED",
+    "SLOW_SHOT", --Modded
     "ACCELERATING_SHOT",
     "DECELERATING_SHOT",
     "EXPLOSIVE_PROJECTILE",
@@ -381,6 +383,7 @@ gun_actions_order = {
     "PERSONAL_PLASMA_BEAM", --Modded
     "ENERGY_SHIELD",
     "ENERGY_SHIELD_SECTOR",
+    "RELOAD_BEEP", --Modded
     "ENERGY_SHIELD_SHOT",
     "TINY_GHOST",
     "OCARINA_A",

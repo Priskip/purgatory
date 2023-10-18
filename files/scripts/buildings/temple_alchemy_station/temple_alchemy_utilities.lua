@@ -1,14 +1,14 @@
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/scripts/utils.lua")
 
-function read_potion_inventory(potion_entity_id)
+function ReadPotionInventory(potion_entity_id)
     --[[
     Description:
     Reads the materials stored in the MaterialInventoryComponent of the provided entity.
     Returns those materials and amounts in a string sorted from most numerous material to least numerous material. See Return Type for inventory_string below
 
     Usage:
-    inventory_string, amount_filled, barrel_size, potion_or_sack = read_potion_inventory(potion_entity_id)
+    inventory_string, amount_filled, barrel_size, potion_or_sack = ReadPotionInventory(potion_entity_id)
     
     Input Types:
     potion_entity_id = [num] Numeric entity id of the potion entity you want to read the contents of
@@ -41,7 +41,7 @@ function read_potion_inventory(potion_entity_id)
     --Read inventory if potion or sack was provided
     if not (is_potion or is_sack) then
         --Error case
-        print("Error! [temple_alchemy_utilities.lua] read_potion_inventory(potion_entity_id) - Entity given is not a potion nor powder stash.")
+        print("Error! [temple_alchemy_utilities.lua] ReadPotionInventory(potion_entity_id) - Entity given is not a potion nor powder stash.")
         inventory_string = nil
         amount_filled = nil
         barrel_size = nil
@@ -99,14 +99,16 @@ function read_potion_inventory(potion_entity_id)
     return inventory_string, amount_filled, barrel_size, potion_or_sack
 end
 
-function create_stored_potion_entity(material_inventory_string, barrel_size, potion_or_sack, x, y)
+
+
+function CreateStoredPotionEntity(material_inventory_string, barrel_size, potion_or_sack, x, y)
     --[[
     Description:
     Creates a storage potion/powder sack at x, y.
     Stored potions/powder sacks are only sprites and cannot physically interact with the world. 
 
     Usage:
-    stored_potion_entity = create_stored_potion_entity(material_inventory_string, potion_or_sack)
+    stored_potion_entity = CreateStoredPotionEntity(material_inventory_string, potion_or_sack)
     
     Input Types:
     material_inventory_string = [string]
@@ -127,7 +129,7 @@ function create_stored_potion_entity(material_inventory_string, barrel_size, pot
     local is_error = false
 
     if potion_or_sack ~= "potion" and potion_or_sack ~= "powder_stash" then
-        print('Error! [temple_alchemy_utilities.lua] create_stored_potion_entity(material_inventory_string, potion_or_sack) - Incorrect "potion_or_sack" value given.')
+        print('Error! [temple_alchemy_utilities.lua] CreateStoredPotionEntity(material_inventory_string, potion_or_sack) - Incorrect "potion_or_sack" value given.')
         is_error = true
     end
 
@@ -149,12 +151,75 @@ function create_stored_potion_entity(material_inventory_string, barrel_size, pot
         --Set Barrel Size
         local material_sucker_comp = EntityGetFirstComponentIncludingDisabled(new_potion_ent, "MaterialSuckerComponent")
         ComponentSetValue2(material_sucker_comp, "barrel_size", barrel_size)
+
+
     end
 
     return new_potion_ent
 end
 
-function create_pickup_potion_entity(material_inventory_string, barrel_size, potion_or_sack, x, y)
+function CreateStoredPotionEntityFromItemID(item_id, x, y)
+    --[[
+    Description:
+    Creates a storage potion/powder sack at x, y.
+    Stored potions/powder sacks are only sprites and cannot physically interact with the world. 
+    
+    Usage:
+    stored_potion_entity = CreateStoredPotionEntityFromItemID(item_id, x, y)
+
+    Input Types:
+    item_id = [num] ID number of the potion/sack entity
+    x = [num] X coordinate for the newly summoned entity
+    y = [num] Y coordinate for the newly summoned entity
+
+    Return Types:
+    stored_potion_entity = [num] Numeric ID of the newly created stored potion entity
+    ]]
+
+    
+
+    local new_potion_ent = nil
+    local is_error = false
+
+    --Read contents
+    local inventory_string, amount_filled, barrel_size, potion_or_sack = ReadPotionInventory(item_id)
+
+    if potion_or_sack ~= "potion" and potion_or_sack ~= "powder_stash" then
+        print('Error! [temple_alchemy_utilities.lua] CreateStoredPotionEntityFromItemID(item_id, x, y) - item_id is not a potion nor sack!')
+        is_error = true
+    end
+
+    if not is_error then
+        --Summon new potion entity.
+        new_potion_ent = EntityLoad("mods/purgatory/files/entities/buildings/temple_alchemy_station/stored_ents/" .. potion_or_sack .. ".xml", x, y)
+
+        --Add materials to potion
+        if inventory_string ~= "" then
+            --Potion is not empty, must add materials to it
+            local material_inventory = split_string_on_char_into_table(inventory_string, "-")
+
+            for i, v in ipairs(material_inventory) do
+                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                AddMaterialInventoryMaterial(new_potion_ent, mat_and_amt[1], mat_and_amt[2])
+            end
+        end
+
+        --Set Barrel Size
+        local material_sucker_comp = EntityGetFirstComponentIncludingDisabled(new_potion_ent, "MaterialSuckerComponent")
+        ComponentSetValue2(material_sucker_comp, "barrel_size", barrel_size)
+
+        --Set Sprites for the potion
+        local old_sprite_comp = EntityGetFirstComponentIncludingDisabled(item_id, "SpriteComponent")
+        local new_sprite_comp = EntityGetFirstComponentIncludingDisabled(new_potion_ent, "SpriteComponent")
+        ComponentSetValue2(new_sprite_comp, "image_file", ComponentGetValue2(old_sprite_comp, "image_file"))
+
+        print(tostring(old_sprite_comp))
+        print(tostring(new_sprite_comp))
+    end
+    return new_potion_ent
+end
+
+function CreatePickupPotionEntity(material_inventory_string, barrel_size, potion_or_sack, x, y)
     --[[
     Description:
     Creates a potion/powder sack at x, y that the player forcfully picks up
@@ -181,7 +246,7 @@ function create_pickup_potion_entity(material_inventory_string, barrel_size, pot
     local is_error = false
 
     if potion_or_sack ~= "potion" and potion_or_sack ~= "powder_stash" then
-        print('Error! [temple_alchemy_utilities.lua] create_stored_potion_entity(material_inventory_string, potion_or_sack) - Incorrect "potion_or_sack" value given.')
+        print('Error! [temple_alchemy_utilities.lua] CreateStoredPotionEntity(material_inventory_string, potion_or_sack) - Incorrect "potion_or_sack" value given.')
         is_error = true
     end
 
@@ -241,13 +306,13 @@ function create_pickup_potion_entity(material_inventory_string, barrel_size, pot
     return new_potion_ent
 end
 
-function get_display_text_from_material_string(material_inventory_string)
+function GetDisplayTextFromMaterialString(material_inventory_string)
     --[[
     Description:
     Generates the nice looking display information from a material inventory string
 
     Usage:
-    display_string = get_display_text_from_material_string(material_inventory_string)
+    display_string = GetDisplayTextFromMaterialString(material_inventory_string)
     
     Input and Return Examples
     
@@ -286,13 +351,13 @@ function get_display_text_from_material_string(material_inventory_string)
     return display_string
 end
 
-function get_gfx_glows_of_materials(material_list)
+function GetGFXGlowsOfMaterials(material_list)
     --[[
     Description:
     Returns a list of gfx_glow values for the materials specified in the input list
 
     Usage:
-    gfx_glow_list = get_gfx_glows_of_materials(material_list)
+    gfx_glow_list = GetGFXGlowsOfMaterials(material_list)
     
     Input Types:
     material_list = [table] of material id strings
@@ -329,16 +394,16 @@ function get_gfx_glows_of_materials(material_list)
     return gfx_glow_list
 end
 
-function read_material_inventory(entity_id)
+function ReadMaterialInventory(entity_id)
     --[[
     Description:
     Reads the materials stored in the MaterialInventoryComponent of the provided entity.
     Returns those materials and amounts in a string sorted from most numerous material to least numerous material. See Return Type for inventory_string below.
-    This function is different than "read_potion_inventory(potion_entity_id)" in the fact that it does not care if the entity provided is a potion or sack.
+    This function is different than "ReadPotionInventory(potion_entity_id)" in the fact that it does not care if the entity provided is a potion or sack.
     This function is primarilly used in "mods/purgatory/files/scripts/buildings/temple_alchemy_station/bottle_filler/cauldron_sucker_logic.lua"
 
     Usage:
-    inventory_string, amount_filled = read_material_inventory(entity_id)
+    inventory_string, amount_filled = ReadMaterialInventory(entity_id)
     
     Input Types:
     entity_id = [num] Numeric entity id of the potion entity you want to read the contents of
@@ -399,13 +464,13 @@ function read_material_inventory(entity_id)
     return inventory_string, amount_filled
 end
 
-function potion_or_sack(entity_id)
+function IsPotionOrSack(entity_id)
     --[[
     Description:
-    Light weight function (compared to read_potion_inventory(potion_entity_id)) that just returns whether or not the provided entity is a potion or a sack
+    Light weight function (compared to ReadPotionInventory(potion_entity_id)) that just returns whether or not the provided entity is a potion or a sack
 
     Usage:
-    potion_or_sack = potion_or_sack(entity_id)
+    potion_or_sack = IsPotionOrSack(entity_id)
     
     Input Types:
     entity_id = [num] Numeric entity id
@@ -432,12 +497,12 @@ function potion_or_sack(entity_id)
     return potion_or_sack
 end
 
-function get_amount_of_material_in_inventory(entity_id, material_name)
+function GetAmountOfMaterialInInventory(entity_id, material_name)
     --[[
     Description: Returns the amount of material in the material inventory component of the specified entity
 
     Usage:
-    count = get_amount_of_material_in_inventory(entity_id, material_name)
+    count = GetAmountOfMaterialInInventory(entity_id, material_name)
 
     Input Types:
     entity_id = [num] id of the entity that has the material inventory component that you wish to add material to
@@ -461,7 +526,7 @@ function get_amount_of_material_in_inventory(entity_id, material_name)
     return amount
 end
 
-function actually_add_material_inventory_material(entity_id, material_name, count)
+function ActuallyAddMaterialInventoryMaterial(entity_id, material_name, count)
     --[[
     Description: This function actually add/subtracts materials from a material inventory component because
                     the api function AddMaterialInventoryMaterial( entity_id:int, material_name:string, count:int )

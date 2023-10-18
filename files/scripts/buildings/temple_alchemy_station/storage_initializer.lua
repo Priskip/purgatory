@@ -44,8 +44,8 @@ if #storage_slots ~= 0 then
 
             --Make potion to store
             local slot_x, slot_y = EntityGetTransform(slot_id)
-            stored_potion_id = create_stored_potion_entity(inventory_string, tonumber(header[2]), header[1], slot_x, slot_y)
-            local _inv_string, amount_filled, _barrel_size, _potion_or_sack = read_potion_inventory(stored_potion_id) --not the cleanest way of getting the amount filled
+            stored_potion_id = CreateStoredPotionEntity(inventory_string, tonumber(header[2]), header[1], slot_x, slot_y)
+            local _inv_string, amount_filled, _barrel_size, _potion_or_sack = ReadPotionInventory(stored_potion_id) --not the cleanest way of getting the amount filled
 
             --Add as child for easy finding later
             EntityAddChild(slot_id, stored_potion_id)
@@ -54,7 +54,7 @@ if #storage_slots ~= 0 then
             variable_storage_set_value(slot_id, "STRING", "mode", "pick_up")
 
             --Set Ent Name
-            local potion_display_name = get_display_text_from_material_string(inventory_string)
+            local potion_display_name = GetDisplayTextFromMaterialString(inventory_string)
             local percent_filled = string.gsub(string.format("%2.0f", 100 * (amount_filled / tonumber(header[2]))), "%s+", "")
             local display_text =
                 GameTextGetTranslatedOrNot("$storage_display_part_1") ..

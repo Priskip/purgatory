@@ -37,10 +37,10 @@ function collision_trigger(colliding_entity)
     if storage_ent.mode == "pick_up" then
         local stored_potion = {}
         stored_potion.id = EntityGetAllChildren(storage_ent.id)[1] --should only have 1 child ent - if not, this is bad
-        stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = read_potion_inventory(stored_potion.id)
+        stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = ReadPotionInventory(stored_potion.id)
         
         if #get_held_items() < 4 then
-            local potion_display_name = get_display_text_from_material_string(stored_potion.inventory_string)
+            local potion_display_name = GetDisplayTextFromMaterialString(stored_potion.inventory_string)
             local percent_filled = string.gsub(string.format("%2.0f", 100 * (stored_potion.amount_filled / stored_potion.barrel_size)), "%s+", "")
             local display_text =
                 GameTextGetTranslatedOrNot("$bottle_filler_pickup_part_1") ..

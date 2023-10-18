@@ -9,12 +9,9 @@ Upcoming Build
         - 
     - Reverted change to chainsaw's lifetime because Nolla fixed the sound bug! (Thank you Nolla!)
     - Made Kolmi immune to ice at 0 orb (in vanilla he gets it at 3 orb)
-    - New Spell: Blood Vacuum
-    - New Spell: Rottakanuuna (Thank you reversevere!)
     - Made friendly hamis's a bit more aggressive towards enemies
     - Omega Propane was a bit lack-luster for how expensive it was... That's been fixed.
     - Forgot the related_projectiles for giga and omega propane - that's been fixed.
-    - New Spell: Omega Death Cross
     - Updated item_spawnlists.lua to reflect the changes Nolla has done
     - Updated chest_random.lua to reflect the changes Nolla has done
     - Spells to Death Crosses and Runestone of Death Crosses got a bit deadlier.
@@ -23,6 +20,13 @@ Upcoming Build
     - Tweaked the biome map
     - Made flasks work with the reactions
     - Removed High and Low Grav from perk pool because they don't affect things much
+    - Updated Ylialkemisti's flasks to be inline with hiisi alkemisti's.
+
+    - New Spells:
+        - Blood Vacuum [Static Projectile]
+        - Rottakanuuna [Projectile] (Thank you reversevere!)
+        - Omega Death Cross [Projectile]
+        - Full Mana Indicator [Passive]
 
 Beta Build 06 Feb 2023
     - Holy Mountain's Alchemy Station now works with powder sacks

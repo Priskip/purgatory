@@ -1,0 +1,51 @@
+<Entity>
+
+    <SpriteComponent
+        _enabled="1"
+        alpha="1"
+        image_file="mods/purgatory/files/enemies_gfx/player/lantern_gfx.xml"
+        next_rect_animation=""
+        offset_x="4.5"
+        offset_y="3.1"
+        rect_animation="default"
+        z_index="0.58"
+        has_special_scale="1"
+        special_scale_x="0.5"
+        special_scale_y="0.5"
+        ></SpriteComponent>
+
+    <SpriteComponent
+        _enabled="1"
+        alpha="1"
+        image_file="mods/purgatory/files/enemies_gfx/player/lantern_flame_gfx.xml"
+        next_rect_animation=""
+        offset_x="4.5"
+        offset_y="3.1"
+        rect_animation="default"
+        z_index="0.58"
+        has_special_scale="1"
+        special_scale_x="0.5"
+        special_scale_y="0.5"
+        ></SpriteComponent>
+
+    <VariableStorageComponent
+        name="x_offset"
+        value_float="0.0"
+        >
+    </VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="y_offset"
+        value_float="0.0"
+        >
+    </VariableStorageComponent>
+
+    <LuaComponent
+        script_source_file="mods/purgatory/files/enemies_gfx/player/logic.lua"
+        execute_every_n_frame="1"
+        ></LuaComponent>
+
+    <!--note
+    priskip: z_index: smaller number = closer to screen, bigger number = deeper into screen -->
+
+</Entity>
