@@ -36,7 +36,7 @@ Alternatively you can get there from clicking on "Open mods folder" button in No
 - Spatial Awareness Art
 - Alchemist Arena Art
 
-**Letaali & Mycon**    
+**Letaali,  Mycon, & Tervi**    
 - Finnish translation help
 
 **Twitch Chat** 
@@ -67,7 +67,7 @@ Alternatively you can get there from clicking on "Open mods folder" button in No
 ### Libraries Used:
 **Zatherz' XML parser library:** https://github.com/zatherz/luanxml  
 **Prediction Algorithm for LC and AP by Neff#6398:** https://neffc.github.io/narg/  
-
+**Rochet2's String Compression:** https://github.com/Rochet2/lualzw
 
 ### WARNING!
 ***USING "MOD RESTART" WILL BREAK PURGATORY***

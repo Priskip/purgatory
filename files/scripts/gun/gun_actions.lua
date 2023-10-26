@@ -293,7 +293,7 @@ modify_existing_spell(
 		shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
 	end
 )
-
+modify_existing_spell("GLITTER_BOMB", "mana", 10) --glitter bomb
 modify_existing_spell("FREEZING_GAZE", "mana", 30) --freezing gaze
 modify_existing_spell("GLOWING_BOLT", "mana", 45) --pinpoint of light
 modify_existing_spell(
@@ -1450,7 +1450,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3", -- SLOW_SHOT
-		spawn_probability                 = "1,0.5,0.5", -- SLOW_SHOT
+		spawn_probability                 = "0.6,0.3,0.3", -- SLOW_SHOT
 		price = 100,
 		mana = 0,
 		action 		= function()

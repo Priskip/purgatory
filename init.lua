@@ -51,6 +51,10 @@ if seed_to_set ~= 0 then
     ModMagicNumbersFileAdd("mods/purgatory/files/set_seed.xml")
 end
 
+--Update Enemy List
+local enemylist = dofile_once("mods/purgatory/files/enemy_list_modifications.lua")
+enemylist.UpdateEnemyList()
+
 function OnModPreInit()
     --Change Biomes Data
     AddBiomes("mods/purgatory/files/biome/biomes_to_add.xml")
@@ -242,33 +246,29 @@ function OnWorldInitialized() -- This is called once the game world is initializ
 end
 
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
-    if debug_mode then
-        local id = 1
-        local function new_id()
-            id = id + 1
-            return id
-        end
-        gui = gui or GuiCreate()
-        GuiStartFrame(gui)
 
-        local player_id = EntityGetWithTag("player_unit")[1]
-        local x, y = EntityGetTransform(player_id)
+    -- if debug_mode then
+    --     local id = 1
+    --     local function new_id()
+    --         id = id + 1
+    --         return id
+    --     end
+    --     gui = gui or GuiCreate()
+    --     GuiStartFrame(gui)
 
-        if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
-            --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
-            --EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+    --     local player_id = EntityGetWithTag("player_unit")[1]
+    --     local x, y = EntityGetTransform(player_id)
 
-            EntityLoad("data/entities/animals/boss_gate/gate_monster_a.xml", 0, y - 100)
+--     if GuiImageButton(gui, new_id(), 100, 0, "Button", "mocommonds/purgatory/files/ui_gfx/debug/button_1.png") then
+    --         --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
+    --         --EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+
+    --         local damage_model_comp = EntityGetFirstComponentIncludingDisabled(player_id, "DamageModelComponent")
+    --         ComponentSetValue2(damage_model_comp, "hp", -1)
             
-        end
+    --     end
+    -- end
 
-    --[[
-        EntityIngestMaterial( entity:int, material_type:number, amount:number ) 
-        [Has the same effects that would occur if 'entity' eats 'amount' number of cells of 'material_type' from the game world. 
-        Use this instead of directly modifying IngestionComponent values, if possible. Might not work with non-player entities. 
-        Use CellFactory_GetType() to convert a material name to material type.]
-    ]]
-    end
 end
 
 function OnWorldPostUpdate() -- This is called every time the game has finished updating the world

@@ -4,8 +4,8 @@
 
 	<TeleportComponent
 		_tags="enabled_by_liquid"
-		target.x="8588"
-		target.y="-16950" 
+		target.x="8594"
+		target.y="-16262" 
 	></TeleportComponent>
 
 	<HitboxComponent 

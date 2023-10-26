@@ -8,7 +8,7 @@ function collision_trigger()
 	--local ctc_id = EntityGetFirstComponentIncludingDisabled(entity_id, "CollisionTriggerComponent")
 	--ComponentSetValue2(ctc_id, "radius", "2048")
 
-	EntityLoad( "mods/purgatory/files/entities/animals/boss_dragons/fire_dragon.xml", pos_x, pos_y )
+	EntityLoad( "mods/purgatory/files/entities/animals/boss_dragons/boss_dragon_fire.xml", pos_x, pos_y )
 	EntityLoad( "mods/purgatory/files/entities/particles/boss_dragons/fire_dragon_spawn.xml", pos_x, pos_y )
 
 	EntityLoad( "mods/purgatory/files/entities/animals/boss_dragons/ice_dragon_spawner.xml", pos_x - 40, pos_y + 40)
