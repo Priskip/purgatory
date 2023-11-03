@@ -54,13 +54,20 @@
   <LuaComponent 
     script_death="data/scripts/items/potion_glass_break.lua" 
   ></LuaComponent>
+
+  <LuaComponent
+    _tags="enabled_in_hand"
+    _enabled="0"
+    script_source_file="mods/purgatory/files/scripts/items/comically_large_potion_custom_sprayer.lua"
+  ></LuaComponent>
   
+  <!-- Note Priskip (2/11/23): If we set this to throw a bunch of nothing, it does indeed throw a bunch of nothing!-->
   <PotionComponent
     _tags="enabled_in_hand,enabled_in_world"
     spray_velocity_coeff="150"
     spray_velocity_normalized_min="1.5"
     throw_bunch="1"
-    throw_how_many="50"
+    throw_how_many="0"
   ></PotionComponent>
 
   <MaterialSuckerComponent 

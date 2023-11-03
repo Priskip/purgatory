@@ -1381,7 +1381,6 @@ spells_to_add = {
 		spawn_probability                 = "0,0,0,0,0,0,0,0", -- SPELL
 		price = 500,
 		mana = 50,
-		max_uses = 5;
 		action 		= function()
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 10
