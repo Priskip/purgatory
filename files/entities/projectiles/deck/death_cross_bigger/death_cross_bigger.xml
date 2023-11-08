@@ -184,7 +184,7 @@
 
   <VariableStorageComponent
     name="stored_damage_by_type"
-    value_string="ice=0,electricity=0,radioactive=0,slice=0,curse=0,overeating=0,projectile=0,healing=0,physics_hit=0,explosion=0,poison=0,melee=0,drill=0,fire=0.0"
+    value_string="ice=0,electricity=0,radioactive=0,slice=0,curse=0,overeating=0,projectile=0,healing=0,physics_hit=0,explosion=0,poison=0,melee=0,drill=0,fire=0.0,holy=0.0"
     ></VariableStorageComponent>
 
   <LuaComponent

@@ -24,6 +24,7 @@ Upcoming Build
     - Fixed Gold Vacuum not giving you gold while in the Noita beta branch.
     - Added Purgatory's new(?) enemies to progress screen.
     - Fixed Leviathan's Portal Room's top right portal not taking you directly to Essense of Air.
+    - Fixed some secrets being off by a few pixels on the spatial awareness maps
 
     - New Spells:
         - Blood Vacuum [Static Projectile]

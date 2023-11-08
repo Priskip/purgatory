@@ -99,8 +99,6 @@ function ReadPotionInventory(potion_entity_id)
     return inventory_string, amount_filled, barrel_size, potion_or_sack
 end
 
-
-
 function CreateStoredPotionEntity(material_inventory_string, barrel_size, potion_or_sack, x, y)
     --[[
     Description:
