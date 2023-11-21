@@ -44,3 +44,4 @@ function init(x, y, w, h)
 		true
 	)
 end
+

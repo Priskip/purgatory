@@ -185,8 +185,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "BOMB",
-                "DEATH_CROSS_BIGGER",
-                "LANCE_HOLY"
+                "REMOVE_HOMING"
             }
 
             for i, v in ipairs(spells_to_give_player) do

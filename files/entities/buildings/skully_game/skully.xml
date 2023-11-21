@@ -1,4 +1,4 @@
-<Entity name="unknown" tags="football">
+<Entity name="skully_kicking_skull" tags="football">
     <Base file="data/entities/base_item_physics2.xml">
         <PhysicsImageShapeComponent
             image_file="data/props_gfx/skull_01.png"

@@ -1,0 +1,14 @@
+<Entity name="skully_kicking_bone_small" >
+	<Base file="data/entities/base_item_physics2.xml" >
+		<PhysicsImageShapeComponent 
+			image_file="data/props_gfx/bone_01.png"
+			material="bone_box2d"
+			>
+		</PhysicsImageShapeComponent>
+
+		<PhysicsBody2Component
+            kill_entity_after_initialized="0"
+            >
+        </PhysicsBody2Component>
+	</Base>
+</Entity>

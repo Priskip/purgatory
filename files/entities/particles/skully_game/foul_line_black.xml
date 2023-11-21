@@ -1,4 +1,4 @@
-<Entity tags="foul_line">
+<Entity name="skully_kicking_foul_line_black">
 
   	<ParticleEmitterComponent 
 		emitted_material_name="spark_black"
@@ -32,4 +32,3 @@
 	</LifetimeComponent>
 
 </Entity>
-

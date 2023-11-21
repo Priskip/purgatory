@@ -249,6 +249,7 @@ gun_actions_order = {
     "HOMING_ACCELERATING",
     "HOMING_CURSOR",
     "HOMING_AREA",
+    --"REMOVE HOMING" --Not implemented for now
     "PIERCING_SHOT",
     "CLIPPING_SHOT",
     "GOLD_MULTIPLIER", --Modded

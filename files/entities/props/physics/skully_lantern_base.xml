@@ -1,0 +1,36 @@
+<Entity>
+
+    <ParticleEmitterComponent
+        _enabled="1"
+        _tags="enabled_in_world,enabled_in_hand,fire"
+        emitted_material_name="fire"
+        offset.x="2"
+        offset.y="-2"
+        x_pos_offset_max="2.5"
+        x_pos_offset_min="-2.5"
+        y_pos_offset_max="10.5"
+        y_pos_offset_min="6.5"
+        x_vel_max="2"
+        x_vel_min="-2"
+        y_vel_max="-10"
+        y_vel_min="-20"
+        count_max="5"
+        count_min="5"
+        lifetime_max="0.8"
+        lifetime_min="0.7"
+        create_real_particles="0"
+        emit_cosmetic_particles="1"
+        emission_interval_max_frames="6"
+        emission_interval_min_frames="2"
+        fire_cells_dont_ignite_damagemodel="1"
+        >
+
+    </ParticleEmitterComponent>
+
+    <LuaComponent
+        script_physics_body_modified="mods/purgatory/files/scripts/entities/skully_game/reset.lua"
+        execute_times="1"
+        >
+    </LuaComponent>
+
+</Entity>

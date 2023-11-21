@@ -1,4 +1,4 @@
-<Entity tags="foul_line">
+<Entity name="skully_kicking_foul_line">
     <CollisionTriggerComponent
 	  _enabled="1"
       width="147"

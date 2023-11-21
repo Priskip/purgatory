@@ -35,8 +35,9 @@ function drop_loot(x, y, level)
 
         if num == 1 then
             --random potion
-            LoadPixelScene( "data/biome_impl/wand_altar_vault.png", "data/biome_impl/wand_altar_vault_visual.png", x-10, y-35, "", true )
-            EntityLoad("data/entities/items/pickup/potion.xml", x, y-32)
+            LoadPixelScene("data/biome_impl/wand_altar_vault.png", "data/biome_impl/wand_altar_vault_visual.png", x - 10,
+                y - 35, "", true)
+            EntityLoad("data/entities/items/pickup/potion.xml", x, y - 32)
         elseif num == 2 then
             -- Tier 2 wand
             EntityLoad("data/entities/items/wand_level_02_better.xml", x, y)
@@ -53,7 +54,8 @@ function drop_loot(x, y, level)
         elseif num == 3 then
             --1000 Gold
             for i = 1, 5 do
-                chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
+                chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10),
+                    y - 4 + Random(-10, 5), remove_gold_timer)
             end
         end
     elseif level == 3 then
@@ -63,16 +65,23 @@ function drop_loot(x, y, level)
             perk_spawn_random(x, y, false)
         elseif num > 15 and num <= 40 then
             --2500 gold
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_1000.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_1000.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_50.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
-            chest_load_gold_entity("data/entities/items/pickup/goldnugget_50.xml", x + Random(-10, 10), y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_1000.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_1000.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_200.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_50.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
+            chest_load_gold_entity("data/entities/items/pickup/goldnugget_50.xml", x + Random(-10, 10),
+                y - 4 + Random(-10, 5), remove_gold_timer)
         elseif num > 40 and num <= 70 then
             -- healthium potion
-            LoadPixelScene( "data/biome_impl/wand_altar_vault.png", "data/biome_impl/wand_altar_vault_visual.png", x-10, y-35, "", true )
-            spawn_potion_with_mat_type(x, y-32, "magic_liquid_hp_regeneration", 1000)
+            LoadPixelScene("data/biome_impl/wand_altar_vault.png", "data/biome_impl/wand_altar_vault_visual.png", x - 10,
+                y - 35, "", true)
+            spawn_potion_with_mat_type(x, y - 32, "magic_liquid_hp_regeneration", 1000)
         elseif num > 70 and num <= 100 then
             --tier 4 no shuf
             EntityLoad("data/entities/items/wand_unshuffle_04.xml", x, y)
@@ -108,15 +117,25 @@ function collision_trigger(colliding_entity)
     --Particles! Yay!
     EntityLoad("mods/purgatory/files/entities/particles/skully_game/reward.xml", x, y - 4)
 
-    --Kill all goals
-    local goals = EntityGetInRadiusWithTag(x, y, 250, "goal")
-    for i, goal in ipairs(goals) do
-        EntityKill(goal)
-    end
+    --Kill all goals and foul lines
+    local all_entities_in_range = EntityGetInRadius(x, y, 500)
+    local ent_names_to_kill = {
+        "skully_kicking_goal",
+        "skully_kicking_foul_line",
+        "skully_kicking_foul_line_black",
+        "skully_kicking_skull",
+        "skully_kicking_bone_small",
+        "skully_kicking_bone_large",
+        "skully_kicking_respawn_point",
+        "skully_kicking_lantern"
+    }
 
-    --Kill Foul Line
-    local foul_lines = EntityGetInRadiusWithTag(x, y, 250, "foul_line")
-    for i, foul_line in ipairs(foul_lines) do
-        EntityKill(foul_line)
+    for _, ent in ipairs(all_entities_in_range) do
+        local name = EntityGetName(ent)
+        for _, ent_name_to_kill in ipairs(ent_names_to_kill) do
+            if name == ent_name_to_kill then
+                EntityKill(ent)
+            end
+        end
     end
 end

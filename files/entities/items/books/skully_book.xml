@@ -1,4 +1,4 @@
-<Entity tags="scroll">
+<Entity name="skully_kicking_book" tags="scroll">
 	<Base file="data/entities/items/books/base_book.xml">
 		<BookComponent
 			_enabled="0"

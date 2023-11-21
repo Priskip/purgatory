@@ -402,9 +402,10 @@ spells_to_add = {
 		price = 420,
 		mana = 0,
 		action 		= function()
-			add_projectile("mods/purgatory/files/entities/misc/test_projectile.xml")
+			--add_projectile("mods/purgatory/files/entities/misc/test_projectile.xml")
 			--c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/test.xml,"
-			--draw_actions( 1, true )
+			draw_actions( 1, true )
+			c.muted = true
 		end,
 	},
 ]]
@@ -1465,6 +1466,31 @@ spells_to_add = {
 			draw_actions(1, true)
 		end,
 	},
+	--[[
+		--Note Priskip: 20 Nov 2023: Omega sawblade uses a custom lua script to define the logic of how that spell returns to shooter.
+		--If I were wanted to remove homing from that, I'd need to add a special case in for those types of spells.
+		--I could go through all of the game's files and tag each lua component that mimics a homing component and then have this spell disbale those components.
+		--However, I don't want to add any more custom tags than what is absolutely needed.
+		--Thus I'm comnmenting this spell out for now.
+	{
+		id          = "REMOVE_HOMING",
+		name 		= "$action_remove_homing",
+		description = "$actiondesc_remove_homing",
+		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/remove_homing.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_extra_entities = { "mods/purgatory/files/entities/misc/remove_homing.xml," },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "1,2,3,4,5,6", -- REMOVE_HOMING
+		spawn_probability                 = "0.05,0.2,0.2,0.2,0.2,0.2", -- REMOVE_HOMING
+		price = 220,
+		mana = 5,
+		--max_uses = 100,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/remove_homing.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	]]
 }
 
 --Add Spells

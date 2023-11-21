@@ -1,4 +1,4 @@
-<Entity tags="goal">
+<Entity name="skully_kicking_goal">
 
 	<CollisionTriggerComponent
 		_enabled="1"
