@@ -25,6 +25,7 @@ Upcoming Build
     - Added Purgatory's new(?) enemies to progress screen.
     - Fixed Leviathan's Portal Room's top right portal not taking you directly to Essense of Air.
     - Fixed some secrets being off by a few pixels on the spatial awareness maps
+    - Added a reset system for Skully Kicking. You now get 3 extra tries unless you trip the foul line.
 
     - New Spells:
         - Blood Vacuum [Static Projectile]

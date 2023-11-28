@@ -184,8 +184,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB",
-                "REMOVE_HOMING"
+                "BOMB"
             }
 
             for i, v in ipairs(spells_to_give_player) do
@@ -286,24 +285,22 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
 
 
         if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
-            --EntityIngestMaterial(player_id, CellFactory_GetType("blood"), 500)
-            --EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
-
-            -- local damage_model_comp = EntityGetFirstComponentIncludingDisabled(player_id, "DamageModelComponent")
-            -- ComponentSetValue2(damage_model_comp, "hp", -1)
-
-            -- for dy = 0, 9 do
-            --     for dx = 0, 9 do
-            --         GameCreateParticle("rock_static_cursed", x + dx + 20, y + dy + 20, 1, 0, 0, false)
-            --     end
-            -- end
-
-            EntityLoad("mods/purgatory/files/entities/misc/test_potions/test_potion_1.xml", x + 10, y)
-            EntityLoad("mods/purgatory/files/entities/misc/test_potions/test_potion_2.xml", x + 20, y)
-            EntityLoad("mods/purgatory/files/entities/misc/test_potions/test_potion_3.xml", x + 30, y)
-
-            EntityLoad("mods/purgatory/files/entities/items/pickup/comically_large_potion.xml", x, y - 20)
+            EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
         end
+
+        if GuiImageButton(gui, new_id(), 200, 0, "Button 2", "mods/purgatory/files/ui_gfx/debug/button_2.png") then
+            local all_entities_in_range = EntityGetInRadius(x, y, 200)
+            for _, ent in ipairs(all_entities_in_range) do
+                local name = EntityGetName(ent)
+                if name == "test_book" then
+                    EntityConvertToMaterial(ent, "plasma_fading")
+                    EntityKill(ent)
+                    GamePrint("Found Test Book and killed it")
+                    break
+                end
+            end
+        end
+
     end
 end
 
