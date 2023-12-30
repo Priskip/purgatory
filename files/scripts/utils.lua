@@ -99,6 +99,11 @@ function in_range(num, lower, upper)
     end
 end
 
+--returns if an x,y pair is in the range of 2 other x,y pairs
+function in_range_2d(x_test, y_test, x1, y1, x2, y2)
+    return in_range(x_test, x1, x2) and in_range(y_test, y1, y2)
+end
+
 -- returns currently active wand id, or returns -1 if it is not a wand
 function get_held_wand_id()
     local i2c_id = EntityGetFirstComponentIncludingDisabled(getPlayerEntity(), "Inventory2Component")
@@ -457,4 +462,34 @@ function concatenate_tables(t1, t2)
         conc_table[#conc_table + 1] = v
     end
     return conc_table
+end
+
+--Returns either "m+kb" or "ctrl" depending on what the user is using and what the value of ModSettingGet("purgatory.input_device") is.
+function getDisplayType()
+    local draw_type = ModSettingGet("purgatory.input_device")
+    DETECTED_INPUT_TYPE = DETECTED_INPUT_TYPE or "nothing detected"
+
+    if draw_type == "auto" then
+        if DETECTED_INPUT_TYPE ~= "m_kb" then
+            for i = 1, 7 do
+                if InputIsMouseButtonJustDown(i) then
+                    DETECTED_INPUT_TYPE = "m_kb"
+                    break
+                end
+            end
+        end
+
+        if DETECTED_INPUT_TYPE ~= "ctrl" then
+            for i = 1, 56 do
+                if InputIsJoystickButtonJustDown(0, i) then
+                    DETECTED_INPUT_TYPE = "ctrl"
+                    break
+                end
+            end
+        end
+
+        return DETECTED_INPUT_TYPE
+    else
+        return draw_type
+    end
 end

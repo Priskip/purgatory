@@ -26,6 +26,10 @@ Upcoming Build
     - Fixed Leviathan's Portal Room's top right portal not taking you directly to Essense of Air.
     - Fixed some secrets being off by a few pixels on the spatial awareness maps
     - Added a reset system for Skully Kicking. You now get 3 extra tries unless you trip the foul line.
+    - Made enemy perk icons appear in front of physical terrain.
+    - Reverted the increase of helpless animals on the lake island since Nolla added something there.
+    - Nolla added a new heart, so I added him in as well.
+    - Sauvan Ydin is more powerful. (WIP still)
 
     - New Spells:
         - Blood Vacuum [Static Projectile]

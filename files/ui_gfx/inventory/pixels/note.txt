@@ -1,0 +1,5 @@
+If Nolla were to add the following functions, I wouldn't have to have these here.
+
+GuiDrawPixel(gui:obj, id:int, x:number, y:number, r:byte, g:byte, b:byte, a:byte)
+GuiDrawLine(gui:obj, id:int, x1:number, y1:number, x2:number, y2:number, r:byte, g:byte, b:byte, a:byte)
+GuiDrawRectangle(gui:obj, id:int, x1:number, y1:number, x2:number, y2:number, r:byte, g:byte, b:byte, a:byte)

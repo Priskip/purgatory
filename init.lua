@@ -283,24 +283,22 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
         -- GuiText(gui, 10, 50, mouse_output)
         -- GuiText(gui, 10, 60, controller_output)
 
+        -- if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
+        --     EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
+        -- end
 
-        if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
-            EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
-        end
-
-        if GuiImageButton(gui, new_id(), 200, 0, "Button 2", "mods/purgatory/files/ui_gfx/debug/button_2.png") then
-            local all_entities_in_range = EntityGetInRadius(x, y, 200)
-            for _, ent in ipairs(all_entities_in_range) do
-                local name = EntityGetName(ent)
-                if name == "test_book" then
-                    EntityConvertToMaterial(ent, "plasma_fading")
-                    EntityKill(ent)
-                    GamePrint("Found Test Book and killed it")
-                    break
-                end
-            end
-        end
-
+        -- if GuiImageButton(gui, new_id(), 200, 0, "Button 2", "mods/purgatory/files/ui_gfx/debug/button_2.png") then
+        --     local all_entities_in_range = EntityGetInRadius(x, y, 200)
+        --     for _, ent in ipairs(all_entities_in_range) do
+        --         local name = EntityGetName(ent)
+        --         if name == "test_book" then
+        --             EntityConvertToMaterial(ent, "plasma_fading")
+        --             EntityKill(ent)
+        --             GamePrint("Found Test Book and killed it")
+        --             break
+        --         end
+        --     end
+        -- end
     end
 end
 

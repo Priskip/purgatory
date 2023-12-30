@@ -4,6 +4,7 @@ dofile_once("data/scripts/director_helpers.lua")
 dofile_once("data/scripts/biome_scripts.lua")
 
 RegisterSpawnFunction(0xffffeedd, "init")
+RegisterSpawnFunction(0xffeb0000, "spawn_wandstone")
 
 function spawn_small_enemies(x, y)
 end
@@ -45,3 +46,6 @@ function init(x, y, w, h)
 	)
 end
 
+function spawn_wandstone(x, y)
+	EntityLoad("data/entities/items/pickup/wandstone.xml", x, y)
+end

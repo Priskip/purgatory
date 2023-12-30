@@ -10,7 +10,7 @@ function AddBiomes(xml_file_location)
     local biome_to_add_xml = nxml.parse(biomes_to_add)
     
     for child in biome_to_add_xml:each_child() do
-        print(child.attr.biome_filename)
+        --print(child.attr.biome_filename)
         biomes_list_xml:add_child(child)
     end
 

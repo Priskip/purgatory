@@ -47,6 +47,15 @@ mod_settings = {
 				scope = MOD_SETTING_SCOPE_NEW_GAME
 			},
 			{
+				id = "input_device",
+				ui_name = "Input Device",
+				ui_description = "Changes what type of mod gui functions will be drawn.\n\nIf set to \"Auto Detect\", the game will look at your inputs and figure out what you're using.\n\nIf set to \"Mouse & Keyboard\" or \"Controller\", Purgatory will lock its \ndraw calls for custom gui objects to only the input device selected.",
+				value_default = "auto_detect",
+				values = { {"auto","Auto Detect"}, {"m_kb","Mouse & Keyboard"}, {"ctrl", "Controller"} },
+				scope = MOD_SETTING_SCOPE_RUNTIME,
+				change_fn = mod_setting_change_callback, -- Called when the user interact with the settings widget.
+			},
+			{
 				category_id = "reset_progress_sub_folder",
 				ui_name = "Reset Purgatory Persistant Flags",
 				ui_description = "Contains settings that will allow you to remove Purgatory persistant flags. To use, enable the reset setting, start a new run, then disable the setting and start 2nd new run.",
@@ -84,7 +93,7 @@ mod_settings = {
 						ui_description = "This actually sets the seed.",
 						value_default = 0,
 						value_min = 0,
-						value_max = 4294967295,
+						value_max = 2147483647,
 						scope = MOD_SETTING_SCOPE_NEW_GAME,
 						hidden = true
 					},
@@ -95,7 +104,7 @@ mod_settings = {
 						not_setting = true,
 						ui_fn = function(mod_id, gui, in_main_menu, im_id, setting)
 							local input_seed = ModSettingGetNextValue("purgatory.seed_changer")
-							local biggest_seed_possible = 4294967295
+							local biggest_seed_possible = 2147483647
 							local seed_to_set = 0
 							local too_big = false
 							local is_secret_seed = false
