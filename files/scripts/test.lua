@@ -1,34 +1,10 @@
 dofile_once("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
-
-local ent_id = GetUpdatedEntityID()
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 
-local members = {
-    "image_file",
-    "ui_is_parent",
-    "is_text_sprite",
-    "offset_x",
-    "offset_y",
-    "alpha",
-    "visible",
-    "emissive",
-    "additive",
-    "fog_of_war_hole",
-    "smooth_filtering",
-    "rect_animation",
-    "next_rect_animation",
-    "text",
-    "z_index",
-    "update_transform",
-    "update_transform_rotation",
-    "kill_entity_after_finished",
-    "has_special_scale",
-    "special_scale_x",
-    "special_scale_y",
-    "never_ragdollify_on_death"
-}
+function death(damage_type_bit_field, damage_message, entity_thats_responsible, drop_items)
+    local entity_id = GetUpdatedEntityID()
+    local x, y = EntityGetTransform(entity_id)
 
-for i, v in ipairs(members) do
-    
+    GamePrint("Entity: \"" .. tostring(entity_id) .. "\" has died.")
 end

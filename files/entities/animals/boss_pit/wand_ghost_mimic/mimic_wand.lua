@@ -1,6 +1,6 @@
 dofile("data/scripts/lib/utilities.lua")
 dofile("data/scripts/gun/procedural/gun_action_utils.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 --Start
 local entity_id = GetUpdatedEntityID()

@@ -1,5 +1,5 @@
 dofile_once("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 function damage_received(damage, desc, entity_who_caused, is_fatal)
     if desc == "$damage_healing" then

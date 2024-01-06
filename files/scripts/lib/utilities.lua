@@ -3,13 +3,6 @@ dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/perks/perk.lua")
 dofile_once("data/scripts/perks/perk_list.lua")
 
---Returns a random number in a list without using Nolla's randomness functions
---Only use in situations where the world seed isn't available yet
-function getRandominListwithoutWorldSeed(a_list)
-    local num = math.random(1, #a_list)
-    return a_list[num]
-end
-
 -- Returns player
 function getPlayerEntity()
     local players = EntityGetWithTag("player_unit")
@@ -17,20 +10,6 @@ function getPlayerEntity()
         return
     end
     return players[1]
-end
-
---Returns if player is dead or not (bool)
-function isPlayerDead()
-    local is_dead
-    local players = EntityGetWithTag("player_unit")
-
-    if #players == 0 then
-        is_dead = true
-    else
-        is_dead = false
-    end
-
-    return is_dead
 end
 
 -- Returns player's x,y

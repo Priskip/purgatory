@@ -30,6 +30,9 @@ Upcoming Build
     - Reverted the increase of helpless animals on the lake island since Nolla added something there.
     - Nolla added a new heart, so I added him in as well.
     - Sauvan Ydin is more powerful. (WIP still)
+    - Did some refactoring of older code
+    - Removed some unused stuff
+    - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something
 
     - New Spells:
         - Blood Vacuum [Static Projectile]

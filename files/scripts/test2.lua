@@ -1,5 +1,5 @@
 dofile_once("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 local id = 1
 local function new_id()

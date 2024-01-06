@@ -1,5 +1,5 @@
 dofile_once("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/entities/animals/boss_pit/clear_projectiles.lua")
 
 function damage_received(damage)

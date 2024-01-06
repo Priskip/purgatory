@@ -1,20 +1,24 @@
 dofile("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/perks/perk_order.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 --                                --
 -- -- HELPER FUNCTIONS SECTION -- --
 --                                --
 
-function round_to_nearest_int(num)
-	return math.floor(num + 0.5)
+local function getPerkPosition(id)
+	local position = nil
+
+	for i, v in ipairs(perk_list) do
+		if v.id == id then
+			position = i
+			break
+		end
+	end
+
+	return position
 end
 
---                            --
--- -- MODIFY PERKS SECTION -- --
---                            --
-
---Function for modifying existing perks
-function modify_existing_perk(perk_id, parameter_to_modify, new_value)
+local function modify_existing_perk(perk_id, parameter_to_modify, new_value)
 	for i, perk in ipairs(perk_list) do
 		if perk.id == perk_id then
 			perk[parameter_to_modify] = new_value
@@ -23,14 +27,30 @@ function modify_existing_perk(perk_id, parameter_to_modify, new_value)
 	end
 end
 
---Modifying Existing Perks
-modify_existing_perk("PROTECTION_EXPLOSION", "remove_other_perks", {"EXPLODING_CORPSES"})
-modify_existing_perk("PROTECTION_FIRE", "remove_other_perks", {"BLEED_OIL"})
-modify_existing_perk("PROTECTION_MELEE", "remove_other_perks", {"CONTACT_DAMAGE"})
-modify_existing_perk("PROTECTION_RADIOACTIVITY", "remove_other_perks", {"BLEED_GAS"})
-modify_existing_perk("PROTECTION_ELECTRICITY", "remove_other_perks", {"ELECTRICITY"})
+local function remove_perk(perk_name)
+	local key_to_perk = nil
+	for key, perk in pairs(perk_list) do
+		if (perk.id == perk_name) then
+			key_to_perk = key
+		end
+	end
 
-modify_existing_perk("CONTACT_DAMAGE", "remove_other_perks", {"PROTECTION_MELEE"})
+	if (key_to_perk ~= nil) then
+		table.remove(perk_list, key_to_perk)
+	end
+end
+
+--                            --
+-- -- MODIFY PERKS SECTION -- --
+--                            --
+
+modify_existing_perk("PROTECTION_EXPLOSION", "remove_other_perks", { "EXPLODING_CORPSES" })
+modify_existing_perk("PROTECTION_FIRE", "remove_other_perks", { "BLEED_OIL" })
+modify_existing_perk("PROTECTION_MELEE", "remove_other_perks", { "CONTACT_DAMAGE" })
+modify_existing_perk("PROTECTION_RADIOACTIVITY", "remove_other_perks", { "BLEED_GAS" })
+modify_existing_perk("PROTECTION_ELECTRICITY", "remove_other_perks", { "ELECTRICITY" })
+
+modify_existing_perk("CONTACT_DAMAGE", "remove_other_perks", { "PROTECTION_MELEE" })
 
 modify_existing_perk("FREEZE_FIELD", "game_effect2", "PROTECTION_FREEZE")
 
@@ -50,7 +70,7 @@ modify_existing_perk(
 )
 
 modify_existing_perk("GLASS_CANNON", "ui_description", "$perkdesc_glass_cannon_new")
-modify_existing_perk("GLASS_CANNON", "remove_other_perks", {"EXTRA_HP", "HEARTS_MORE_EXTRA_HP", "HEART_STEALER"})
+modify_existing_perk("GLASS_CANNON", "remove_other_perks", { "EXTRA_HP", "HEARTS_MORE_EXTRA_HP", "HEART_STEALER" })
 modify_existing_perk(
 	"GLASS_CANNON",
 	"func",
@@ -132,7 +152,7 @@ modify_existing_perk(
 
 modify_existing_perk("CONTACT_DAMAGE", "ui_description", "$perkdesc_contact_damage_new")
 modify_existing_perk("CONTACT_DAMAGE", "game_effect", "PROTECTION_MELEE")
-modify_existing_perk("CONTACT_DAMAGE", "remove_other_perks", {"PROTECTION_MELEE"})
+modify_existing_perk("CONTACT_DAMAGE", "remove_other_perks", { "PROTECTION_MELEE" })
 
 modify_existing_perk("EXTRA_PERK", "stackable_maximum", 11)
 
@@ -195,11 +215,12 @@ modify_existing_perk(
 
 						if wand_name == "$item_wand_good_1" then
 							--If wand is Wand of Swiftness
-							cast_delay = round_to_nearest_int(cast_delay * 0.5 - 45)
-							reload_time = round_to_nearest_int(reload_time * 0.5 - 45)
+							cast_delay = round_to_int(cast_delay * 0.5 - 45)
+							reload_time = round_to_int(reload_time * 0.5 - 45)
 
 							--Calculate new mana charge speed
-							mana_charge_speed = mana_charge_speed + 2.5 * ((old_cast_delay - cast_delay) + (old_reload_time - reload_time))
+							mana_charge_speed = mana_charge_speed +
+								2.5 * ((old_cast_delay - cast_delay) + (old_reload_time - reload_time))
 						else
 							--If wand is not Wand of Swiftness
 							--Calculate new cast delay and recharge time
@@ -211,11 +232,12 @@ modify_existing_perk(
 								reload_time = 60 + Random(-5, 5) --Makes huge recharge time wands dramatically lower
 							end
 
-							cast_delay = round_to_nearest_int(cast_delay * 0.7 - 6.4)
-							reload_time = round_to_nearest_int(reload_time * 0.7 - 6.4)
+							cast_delay = round_to_int(cast_delay * 0.7 - 6.4)
+							reload_time = round_to_int(reload_time * 0.7 - 6.4)
 
 							--Calculate new mana charge speed
-							mana_charge_speed = mana_charge_speed + 1.5 * ((old_cast_delay - cast_delay) + (old_reload_time - reload_time))
+							mana_charge_speed = mana_charge_speed +
+								1.5 * ((old_cast_delay - cast_delay) + (old_reload_time - reload_time))
 						end
 						--Set Values
 						ComponentSetValue2(model, "mana_charge_speed", mana_charge_speed)
@@ -254,7 +276,8 @@ modify_existing_perk(
 				local delta_deck_cap = old_deck_capacity - deck_capacity2
 
 				--NOTE PRISKIP: https://www.desmos.com/calculator/wfjvqa6mcy For visualizing this new mana function
-				local mana_to_add = round_to_nearest_int(900 * ((math.exp(0.8 * delta_deck_cap)) / (math.exp(0.8 * delta_deck_cap) + 100)) + 100)
+				local mana_to_add = round_to_int(900 *
+					((math.exp(0.8 * delta_deck_cap)) / (math.exp(0.8 * delta_deck_cap) + 100)) + 100)
 
 				mana_max = mana_max + mana_to_add + Random(-50, 50)
 				mana_charge_speed = mana_charge_speed + mana_to_add + Random(-50, 50)
@@ -318,27 +341,38 @@ modify_existing_perk(
 	end
 )
 
+modify_existing_perk("RESPAWN", "func",
+	function(entity_perk_item, entity_who_picked, item_name)
+		add_halo_level(entity_who_picked, 1)
+
+		local children = EntityGetAllChildren(entity_who_picked)
+
+		for i, child in ipairs(children) do
+			local child_game_effect_component = EntityGetFirstComponentIncludingDisabled(child, "GameEffectComponent")
+			local effect_value = ComponentGetValue2(child_game_effect_component, "effect")
+
+			if effect_value == "RESPAWN" then
+				EntityAddComponent2(
+					child,
+					"LuaComponent",
+					{
+						execute_on_added = false,
+						script_source_file = "mods/purgatory/files/scripts/misc/remove_spent_extra_lives_from_UI.lua",
+						execute_every_n_frame = 60
+					}
+				)
+			end
+		end
+	end
+)
+
 --                            --
 -- -- REMOVE PERKS SECTION -- --
 --                            --
 
--- Remove Perks from perk_list
-function remove_perk(perk_name)
-	local key_to_perk = nil
-	for key, perk in pairs(perk_list) do
-		if (perk.id == perk_name) then
-			key_to_perk = key
-		end
-	end
-
-	if (key_to_perk ~= nil) then
-		table.remove(perk_list, key_to_perk)
-	end
-end
-
 remove_perk("INVISIBILITY")
-remove_perk("PERSONAL_LASER") --Changed to a passive spell
-remove_perk("MOVEMENT_FASTER") --Combined into HASTE
+remove_perk("PERSONAL_LASER")    --Changed to a passive spell
+remove_perk("MOVEMENT_FASTER")   --Combined into HASTE
 remove_perk("FASTER_LEVITATION") --Combined into HASTE
 
 --                         --
@@ -349,6 +383,7 @@ remove_perk("FASTER_LEVITATION") --Combined into HASTE
 perks_to_add = {
 	{
 		id = "HASTE",
+		include_after = "HOVER_BOOST",
 		ui_name = "$perk_faster_speed",
 		ui_description = "$perkdesc_faster_speed",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/faster_speed.png",
@@ -458,9 +493,10 @@ perks_to_add = {
 		end
 	},
 	]]
-	
+
 	{
 		id = "MAP_LEVEL_2",
+		include_after = "MAP",
 		ui_name = "$perk_map_lvl_2",
 		ui_description = "$perkdesc_map_lvl_2",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/map_lvl_2.png",
@@ -476,6 +512,7 @@ perks_to_add = {
 	},
 	{
 		id = "MAP_LEVEL_3",
+		include_after = "MAP_LEVEL_2",
 		ui_name = "$perk_map_lvl_3",
 		ui_description = "$perkdesc_map_lvl_3",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/map_lvl_3.png",
@@ -491,6 +528,7 @@ perks_to_add = {
 	},
 	{
 		id = "MAP_LEVEL_4",
+		include_after = "MAP_LEVEL_3",
 		ui_name = "$perk_map_lvl_4",
 		ui_description = "$perkdesc_map_lvl_4",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/map_lvl_4.png",
@@ -506,6 +544,7 @@ perks_to_add = {
 	},
 	{
 		id = "ROLL_AGAIN",
+		include_after = "GAMBLE",
 		ui_name = "$perk_roll_again",
 		ui_description = "$perkdesc_roll_again",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/roll_again.png",
@@ -518,16 +557,18 @@ perks_to_add = {
 	},
 	{
 		id = "PROTECTION_FREEZE",
+		include_after = "PROTECTION_ELECTRICITY",
 		ui_name = "$perk_protection_freeze",
 		ui_description = "$perkdesc_protection_freeze",
 		ui_icon = "data/ui_gfx/perk_icons/protection_freeze.png",
 		perk_icon = "data/items_gfx/perks/protection_freeze.png",
 		game_effect = "PROTECTION_FREEZE",
-		remove_other_perks = {"CRYO_BLOOD"},
+		remove_other_perks = { "CRYO_BLOOD" },
 		usable_by_enemies = true
 	},
 	{
 		id = "HEART_STEALER",
+		include_after = "VAMPIRISM",
 		ui_name = "$perk_heart_stealer",
 		ui_description = "$perkdesc_heart_stealer",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/heart_stealer.png",
@@ -551,6 +592,7 @@ perks_to_add = {
 	},
 	{
 		id = "CRYO_BLOOD",
+		include_after = "BLEED_GAS",
 		ui_name = "$perk_cryo_blood",
 		ui_description = "$perkdesc_cryo_blood",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/cryo_blood.png",
@@ -558,7 +600,7 @@ perks_to_add = {
 		stackable = STACKABLE_NO,
 		usable_by_enemies = true,
 		game_effect = "PROTECTION_FREEZE",
-		remove_other_perks = {"PROTECTION_FREEZE"},
+		remove_other_perks = { "PROTECTION_FREEZE" },
 		func = function(entity_perk_item, entity_who_picked, item_name)
 			--bleed freezing vapour
 			local damagemodels = EntityGetComponent(entity_who_picked, "DamageModelComponent")
@@ -567,8 +609,10 @@ perks_to_add = {
 					ComponentSetValue(damagemodel, "blood_material", "blood_cold_vapour")
 					ComponentSetValue(damagemodel, "blood_spray_material", "blood_cold_vapour")
 					ComponentSetValue(damagemodel, "blood_multiplier", "5.0")
-					ComponentSetValue(damagemodel, "blood_sprite_directional", "data/particles/bloodsplatters/bloodsplatter_directional_green_$[1-3].xml")
-					ComponentSetValue(damagemodel, "blood_sprite_large", "data/particles/bloodsplatters/bloodsplatter_green_$[1-3].xml")
+					ComponentSetValue(damagemodel, "blood_sprite_directional",
+						"data/particles/bloodsplatters/bloodsplatter_directional_green_$[1-3].xml")
+					ComponentSetValue(damagemodel, "blood_sprite_large",
+						"data/particles/bloodsplatters/bloodsplatter_green_$[1-3].xml")
 				end
 			end
 
@@ -611,6 +655,7 @@ perks_to_add = {
 	},
 	{
 		id = "EXTRA_POTION_AND_SACK_CAPACITY",
+		include_after = "EXTRA_SHOP_ITEM",
 		ui_name = "$perk_extra_potion_and_sack_capacity",
 		ui_description = "$perkdesc_extra_potion_and_sack_capacity",
 		ui_icon = "mods/purgatory/files/ui_gfx/perk_icons/extra_potion_and_sack_capacity.png",
@@ -636,7 +681,8 @@ perks_to_add = {
 
 			for i, item in ipairs(EntityGetAllChildren(inventory)) do
 				local ability_component = EntityGetFirstComponentIncludingDisabled(item, "AbilityComponent")
-				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item, "EndingMcGuffinComponent")
+				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item,
+					"EndingMcGuffinComponent")
 
 				if (not ability_component) or ending_mc_guffin_component or ComponentGetValue2(ability_component, "use_gun_script") == false then
 					table.insert(items, item)
@@ -702,7 +748,8 @@ perks_to_add = {
 
 			for i, item in ipairs(EntityGetAllChildren(inventory)) do
 				local ability_component = EntityGetFirstComponentIncludingDisabled(item, "AbilityComponent")
-				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item, "EndingMcGuffinComponent")
+				local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(item,
+					"EndingMcGuffinComponent")
 
 				if (not ability_component) or ending_mc_guffin_component or ComponentGetValue2(ability_component, "use_gun_script") == false then
 					table.insert(items, item)
@@ -769,33 +816,16 @@ perks_to_add = {
 
 --Add the Perks
 for i, perk in ipairs(perks_to_add) do
-	table.insert(perk_list, #perk_list + 1, perk)
-end
+	--For some weird reason if I don't include this check to see if the perk has been added,
+	--  it gets added twice.
+	if getPerkPosition(perk.id) == nil then
+		local pos = getPerkPosition(perk.include_after)
+		perk.include_after = nil
 
---                           --
--- -- ORDER PERKS SECTION -- --
---                           --
-
---Orders the perks according to mods/purgatory/files/scripts/perks/perk_order.lua
-local new_perk_list = {}
-
-for i, perk in ipairs(perk_order) do
-	for j, v in ipairs(perk_list) do
-		if v.id == perk then
-			new_perk_list[i] = v
-			table.remove(perk_list, j)
-			--print(perk)
-			break
+		if pos == nil then
+			pos = #perk_list
 		end
+
+		table.insert(perk_list, pos + 1, perk)
 	end
 end
-
---if other mods added perks
-if #perk_list > 0 then
-	for i, v in ipairs(perk_list) do
-		table.insert(new_perk_list, #new_perk_list + 1, v)
-	end
-end
-
---set list
-perk_list = new_perk_list

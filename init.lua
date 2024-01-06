@@ -1,12 +1,12 @@
 --Init file for Purgatory Game Mode
 
 --Load Files
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
+dofile_once("mods/purgatory/files/scripts/lib/gui_utilities.lua")
 dofile_once("mods/purgatory/files/translations/translations_utils.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_list_appends.lua")
 dofile_once("mods/purgatory/files/scripts/biomes/biome_helpers.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_spawn_purgatory.lua") --temp
-dofile_once("mods/purgatory/files/materials/add_void_recipes.lua")         --makes recipes for endless void
 dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua")            --for debugging
 
 --Load Mod Settings
@@ -26,8 +26,8 @@ mod_lua_file_append = ModLuaFileAppend
 
 --Append Files
 ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua")                         --For adding custom trigger types
-ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/purgatory/files/scripts/gun/gun_actions.lua")         --Custom Spells
-ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/purgatory/files/scripts/perks/perk_list_appends.lua") --Custom Perks
+ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/purgatory/files/scripts/gun/gun_actions.lua")         --Spells
+ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/purgatory/files/scripts/perks/perk_list_appends.lua") --Perks
 ModLuaFileAppend("data/scripts/director_helpers.lua", "mods/purgatory/files/director_helpers_appends.lua")       --Nightmare perks and wands to enemies
 ModLuaFileAppend("data/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua",
     "mods/purgatory/files/sampo_ending_appends.lua")                                                             --Special Sampo Endings for tree chieves
@@ -70,6 +70,7 @@ function OnModPreInit()
     end
 
     --Reset tree achieves if needed to do.
+    --TO DO: make this something that just gets done from the mod settings menu
     if reset_tree_achievements == true then
         RemoveFlagPersistent("purgatory_win")
         RemoveFlagPersistent("purgatory_win_no_edit_start")
@@ -104,8 +105,6 @@ function OnModPreInit()
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
 
-    --ceaseless void
-    add_ceaseless_void_recipes(true)
 end
 
 function OnModInit()
@@ -168,11 +167,10 @@ function OnPlayerSpawned(player_entity)
 
         --Give Player Edit Wands Everywhere
         if start_with_edit then
-            --addPerkToPlayer("ABILITY_ACTIONS_MATERIALIZED")
             addPerkToPlayer("EDIT_WANDS_EVERYWHERE")
         else
             GameAddFlagRun("purgatory_no_edit_run")
-            remove_perk("EDIT_WANDS_EVERYWHERE") --TODO Well this didn't work for some reason
+            remove_perk("EDIT_WANDS_EVERYWHERE") --TO DO: Well this didn't work for some reason
         end
 
         --Add Flag to not repeat damage multipliers
@@ -195,19 +193,12 @@ function OnPlayerSpawned(player_entity)
         --Add run flag for ascension level
         GameAddFlagRun("run_ascension_level_" .. tonumber(ascension_level))
 
-        --Give player a script component to remove used extra lives perks (execute every 10 seconds)
-        --TODO: Make this get assigned and removed with the perk
+        --Give player a script component to initialize the starting wands after they have loaded in
         local lua_comp = EntityAddComponent(player_entity, "LuaComponent")
         ComponentSetValue(lua_comp, "script_source_file",
-            "mods/purgatory/files/scripts/misc/remove_spent_extra_lives_from_UI.lua")
-        ComponentSetValue(lua_comp, "execute_every_n_frame", "600")
-
-        --Give player a script component to initialize the starting wands after they have loaded in
-        local lua_comp_2 = EntityAddComponent(player_entity, "LuaComponent")
-        ComponentSetValue(lua_comp_2, "script_source_file",
             "mods/purgatory/files/scripts/misc/initialize_starting_wands_delay.lua")
-        ComponentSetValue(lua_comp_2, "execute_every_n_frame", "60")
-        ComponentSetValue(lua_comp_2, "remove_after_executed", "1")
+        ComponentSetValue(lua_comp, "execute_every_n_frame", "60")
+        ComponentSetValue(lua_comp, "remove_after_executed", "1")
 
         if debug_mode then
             debug_mod_init(player_entity)
@@ -248,20 +239,18 @@ function OnWorldInitialized() -- This is called once the game world is initializ
     end
 end
 
-dofile_once("data/scripts/debug/keycodes.lua")
-
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
     if debug_mode then
-        local id = 1
-        local function new_id()
-            id = id + 1
-            return id
-        end
-        gui = gui or GuiCreate()
-        GuiStartFrame(gui)
+        -- local id = 1
+        -- local function new_id()
+        --     id = id + 1
+        --     return id
+        -- end
+        -- gui = gui or GuiCreate()
+        -- GuiStartFrame(gui)
 
-        local player_id = EntityGetWithTag("player_unit")[1]
-        local x, y = EntityGetTransform(player_id)
+        -- local player_id = EntityGetWithTag("player_unit")[1]
+        -- local x, y = EntityGetTransform(player_id)
 
 
         -- local mouse_output = "Mouse: "
@@ -303,4 +292,5 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
 end
 
 function OnWorldPostUpdate() -- This is called every time the game has finished updating the world
+    ResetGUIID()
 end

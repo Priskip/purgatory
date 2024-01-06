@@ -1,5 +1,5 @@
 dofile_once("data/scripts/lib/utilities.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 local entity_id = GetUpdatedEntityID()
 entity_id = EntityGetRootEntity(entity_id)

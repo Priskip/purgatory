@@ -2,7 +2,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/gun/gun_enums.lua")
 dofile_once("data/scripts/gun/gun_actions.lua")
 dofile_once("data/scripts/gun/procedural/gun_procedural.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/scripts/gun/starting_guns/deck_types.lua")
 dofile_once("mods/purgatory/files/scripts/gun/starting_guns/get_spell_types.lua")
 

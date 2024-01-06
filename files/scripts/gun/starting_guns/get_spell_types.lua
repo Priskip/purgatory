@@ -1,7 +1,7 @@
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/gun/gun_enums.lua")
 dofile_once("data/scripts/gun/gun_actions.lua")
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 local spell_lists = {triggers = {}, timers = {}, death_triggers = {}, draw_2s = {}, draw_3s = {}, draw_4s = {}}
 local bool_list = {false, false, false, false, false, false}

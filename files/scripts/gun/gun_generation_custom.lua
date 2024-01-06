@@ -1,4 +1,4 @@
-dofile_once("mods/purgatory/files/scripts/utils.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 dofile_once("data/scripts/gun/procedural/gun_procedural.lua")
 dofile_once("mods/purgatory/files/scripts/gun/gun_types.lua")
 
