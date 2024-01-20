@@ -30,9 +30,11 @@ Upcoming Build
     - Reverted the increase of helpless animals on the lake island since Nolla added something there.
     - Nolla added a new heart, so I added him in as well.
     - Sauvan Ydin is more powerful. (WIP still)
-    - Did some refactoring of older code
-    - Removed some unused stuff
-    - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something
+    - Did some refactoring of older code.
+    - Removed some unused stuff.
+    - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something.
+    - Fixed a bug where the starting wands could generate differntly if the player moved during game's initialization.
+    - Removed Sauvojen Tuntija's ability to crash the game upon entering his second phase.
 
     - New Spells:
         - Blood Vacuum [Static Projectile]
@@ -43,6 +45,15 @@ Upcoming Build
 
     - Balance Changes:
         - Glitter Bomb: mana 70 -> 10
+        - Sauvojen Tuntija
+            - Reduced Critical Damage Resistance 1.0 --> 0.8
+            - Fixed an oversight reduced damage taken to 10%.
+            - Wand of Healing and Shielding HP increased 1,000 --> 20,000
+            - Wand of Healing and Shielding projectile damage taken reduced 1.0 --> 0.75
+            - Fixed a bug where Sauvoje would not spawn copied player wands properly in 3rd phase.
+            - Copied player wands HP increased 6,250 --> 10,000
+            - Copied player wands projectile damage take reduced 1.0 --> 0.5
+
 
 Beta Build 06 Feb 2023
     - Holy Mountain's Alchemy Station now works with powder sacks

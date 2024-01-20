@@ -99,30 +99,43 @@ if player_in_radius then
 
 
     --test stuff
-    local damage_model = EntityGetComponent(entity_id, "DamageModelComponent")[1]
+    local hitbox_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "HitboxComponent")
+    local hitbox_damage_mult = ComponentGetValue2(hitbox_comp, "damage_multiplier")
+    GuiText(gui, 10, 50, "hitbox damage multiplier: " .. tostring(hitbox_damage_mult))
 
-    local damage_types = {
-        "melee",
-        "projectile",
-        "explosion",
-        "electricity",
-        "fire",
-        "drill",
-        "slice",
-        "ice",
-        "healing",
-        "physics_hit",
-        "radioactive",
-        "poison",
-        "overeating",
-        "curse",
-        "holy"
-    }
-    for i, v in ipairs(damage_types) do
-        local multiplier = tonumber(ComponentObjectGetValue(damage_model, "damage_multipliers", v))
-        GuiText(gui, 10, 40+10*i, v .. ": " .. tostring(multiplier))
-    end
+
+    -- local damage_model = EntityGetComponent(entity_id, "DamageModelComponent")[1]
+
+    -- local damage_types = {
+    --     "melee",
+    --     "projectile",
+    --     "explosion",
+    --     "electricity",
+    --     "fire",
+    --     "drill",
+    --     "slice",
+    --     "ice",
+    --     "healing",
+    --     "physics_hit",
+    --     "radioactive",
+    --     "poison",
+    --     "overeating",
+    --     "curse",
+    --     "holy"
+    -- }
+    -- local y = 40
+
+    -- for i, v in ipairs(damage_types) do
+    --     local multiplier = tonumber(ComponentObjectGetValue(damage_model, "damage_multipliers", v))
+    --     y = y + 10
+    --     GuiText(gui, 10, y, v .. ": " .. tostring(multiplier))
+    -- end
+
+    -- y = y + 10
+    -- local crit_resistance = ComponentGetValue2(damage_model, "critical_damage_resistance")
+    -- GuiText(gui, 10, y, "crit_resistance: " .. tostring(crit_resistance))
 end
+
 --[[
 
 --GuiSlider( gui:obj, id:int, x:number, y:number, text:string, value:number, value_min:number, value_max:number, value_default:number, value_display_multiplier:number, value_formatting:string, width:number ) -> new_value:number

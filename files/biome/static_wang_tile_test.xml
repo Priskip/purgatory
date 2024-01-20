@@ -1,0 +1,63 @@
+<Biome>
+    <Topology
+        name="$biome_coalmine_alt"
+        type="BIOME_WANG_TILE"
+        static_tile="1"
+        background_image="data/weather_gfx/background_coalmine.png"
+        background_edge_left="data/weather_gfx/edges/background_coalmine_left.png"
+        background_edge_right="data/weather_gfx/edges/background_coalmine_right.png"
+        background_edge_top="data/weather_gfx/edges/background_coalmine_top.png"
+        background_edge_bottom="data/weather_gfx/edges/background_coalmine_bottom.png"
+        background_edge_priority="10"
+        noise_biome_edges="0"
+        skip_edge_textures="0"
+        limit_background_image="0"
+        wang_template_file="mods/purgatory/files/wang_tiles/static/static_test.png"
+        lua_script="mods/purgatory/files/scripts/test.lua"
+        wang_map_width="0"
+        wang_map_height="0"
+        audio_ambience="wandcave"
+        >
+
+    </Topology>
+
+    <Materials name="testing">
+
+        <MaterialComponent
+            _enabled="1"
+            material_name="templerock_static"
+            material_index="11"
+            material_min="0.0"
+            material_max="3.6"
+
+            add_perlin="0"
+            add_perlin_scale_x="0.0"
+            add_perlin_scale_y="0.0"
+
+            is_rare="0"
+
+            limit_y="0"
+            limit_min_y="-1024"
+            limit_max_y="2048"
+
+            rare_use_perlin="0"
+            rare_use_fbm_perlin="false"
+            rare_use_polka="0"
+            rare_scale_x="0.0"
+            rare_scale_y="0.0"
+            rare_polka_radius_low="0.0"
+            rare_polka_radius_high="0.0"
+            rare_polka_is_boxed="0"
+            rare_polka_probability="0.0"
+            rare_required_min="0"
+            rare_required_max="0"
+            is_polygon="0"
+            
+            
+            
+            >
+        </MaterialComponent>
+
+    </Materials>
+
+</Biome>

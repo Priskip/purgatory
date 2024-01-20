@@ -22,8 +22,7 @@
 		</AnimalAIComponent>
 		
 		<DamageModelComponent 
-            hp="40"
-			max_hp="40"
+            hp="800"
             ragdoll_material="crystal"
 			ragdoll_filenames_file="" 
 			blood_material="plasma_fading"
@@ -32,7 +31,7 @@
 			>
 			<damage_multipliers
 				melee="1.0"
-				projectile="1.0"
+				projectile="0.75"
 				explosion="1.0"
 				electricity="0.1"
 				fire="0" >

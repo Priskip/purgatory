@@ -67,15 +67,16 @@ end
 -- Sets all stats on a gun
 function set_gun_stats(gun_id, gun)
     local ability_comp = EntityGetFirstComponentIncludingDisabled(gun_id, "AbilityComponent")
-    ComponentObjectSetValue2(ability_comp, "gun_config", "shuffle_deck_when_empty", num_to_bool(gun.shuffle_deck_when_empty)) --shuffle
-    ComponentObjectSetValue2(ability_comp, "gun_config", "actions_per_round", gun.actions_per_round) --spells per cast
-    ComponentObjectSetValue2(ability_comp, "gunaction_config", "fire_rate_wait", gun.fire_rate_wait) --cast delay
-    ComponentObjectSetValue2(ability_comp, "gun_config", "reload_time", gun.reload_time) --recharge time
-    ComponentSetValue2(ability_comp, "mana_max", gun.mana_max) --mana max
-    ComponentSetValue2(ability_comp, "mana", gun.mana_max) -- current mana
-    ComponentSetValue2(ability_comp, "mana_charge_speed", gun.mana_charge_speed) --mana charge speed
-    ComponentObjectSetValue2(ability_comp, "gun_config", "deck_capacity", gun.deck_capacity) --capacity
-    ComponentObjectSetValue2(ability_comp, "gunaction_config", "spread_degrees", gun.spread_degrees) --spread
+    ComponentObjectSetValue2(ability_comp, "gun_config", "shuffle_deck_when_empty",
+        num_to_bool(gun.shuffle_deck_when_empty))                                                        --shuffle
+    ComponentObjectSetValue2(ability_comp, "gun_config", "actions_per_round", gun.actions_per_round)     --spells per cast
+    ComponentObjectSetValue2(ability_comp, "gunaction_config", "fire_rate_wait", gun.fire_rate_wait)     --cast delay
+    ComponentObjectSetValue2(ability_comp, "gun_config", "reload_time", gun.reload_time)                 --recharge time
+    ComponentSetValue2(ability_comp, "mana_max", gun.mana_max)                                           --mana max
+    ComponentSetValue2(ability_comp, "mana", gun.mana_max)                                               -- current mana
+    ComponentSetValue2(ability_comp, "mana_charge_speed", gun.mana_charge_speed)                         --mana charge speed
+    ComponentObjectSetValue2(ability_comp, "gun_config", "deck_capacity", gun.deck_capacity)             --capacity
+    ComponentObjectSetValue2(ability_comp, "gunaction_config", "spread_degrees", gun.spread_degrees)     --spread
     ComponentObjectSetValue2(ability_comp, "gunaction_config", "speed_multiplier", gun.speed_multiplier) --speed
 end
 
@@ -140,7 +141,7 @@ function is_satisfactory_gun(gun)
     ⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠁⠀⠀⠈⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠸⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀⠀⢠⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠈⠛⠿⢷⣿⣶⣶⣶⣶⣶⣦⣤⣤⣤⣤⣤⣶⠾⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Ah yes. A satisfactory
-    
+
     ]]
     local is_satisfactory_gun = true
 
@@ -168,7 +169,8 @@ function is_satisfactory_gun(gun)
 end
 
 --Generates custom decks for the starting wands
-function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_empty, gun_capacity, trigger_spells, draw_2_spells, draw_3_spells, draw_4_spells, used_spells, all_trigger_spells)
+function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_empty, gun_capacity, trigger_spells,
+                       draw_2_spells, draw_3_spells, draw_4_spells, used_spells, all_trigger_spells)
     local deck = {}
     local deck_gen_type = nil
 
@@ -182,7 +184,8 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
     --Get available options for the deck depending on if it's shuffle or not
     if gun_shuffle_deck_when_empty == 1 then
         --Shuffle Deck
-        deck_gen_type = shuffle_decks[deck_size] --the math.min(cap, 7) ensures that we only generate decks with 7 spells in them
+        deck_gen_type = shuffle_decks
+            [deck_size] --the math.min(cap, 7) ensures that we only generate decks with 7 spells in them
     else
         --Non Shuffle Deck
         deck_gen_type = non_shuffle_decks[deck_size]
@@ -202,7 +205,8 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
             if v.same_projectiles == true then
                 --use same projectiles in generation
                 while not cond do
-                    spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier, ACTION_TYPE_PROJECTILE, 0)
+                    spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
+                        ACTION_TYPE_PROJECTILE, 0)
 
                     if is_in_table(used_spells.projectiles, spell_to_add) or is_in_table(all_trigger_spells, spell_to_add) then
                         --spell is in the list of already used spells or is a trigger spell itself, generate a new one by incrementing randomness_offset
@@ -234,7 +238,8 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     iter_count = 0
 
                     while not cond do
-                        spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier, ACTION_TYPE_PROJECTILE, 0)
+                        spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
+                            ACTION_TYPE_PROJECTILE, 0)
 
                         if is_in_table(used_spells.projectiles, spell_to_add) or is_in_table(all_trigger_spells, spell_to_add) then
                             --spell is in the list of already used spells or is a trigger spell itself, generate a new one by incrementing randomness_offset
@@ -268,7 +273,8 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                 local iter_count = 0
 
                 while not cond do
-                    spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier, ACTION_TYPE_MODIFIER, 0)
+                    spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
+                        ACTION_TYPE_MODIFIER, 0)
 
                     if is_in_table(used_spells.modifiers, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
@@ -436,123 +442,243 @@ end
 
 --Does the magic
 function initialize_starting_guns(player_id)
-    local player = {}
-    player.id = player_id
-    player.x, player.y = EntityGetTransform(player.id)
+    local debug_mode = ModSettingGet("purgatory.debug_mode")
 
-    --Get gun ids
-    local gun_ids = {} --blue = gun_ids[1], red = gun_ids[2], yellow = gun_ids[3], green = gun_ids[4]
-    local ents_near_player = EntityGetInRadius(player.x, player.y, 24)
-    for i, ent_id in ipairs(ents_near_player) do
-        local ability_comp = EntityGetFirstComponentIncludingDisabled(ent_id, "AbilityComponent")
-        if ability_comp ~= nil then
-            local ui_name = ComponentGetValue2(ability_comp, "ui_name")
+    if not debug_mode then
+        local player = {}
+        player.id = player_id
+        player.x = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_X")
+        player.y = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_Y")
 
-            if ui_name == "$item_starting_gun_blue" then
-                gun_ids[1] = ent_id
-            end
+        --Get gun ids
+        local gun_ids = {} --blue = gun_ids[1], red = gun_ids[2], yellow = gun_ids[3], green = gun_ids[4]
+        local ents_near_player = EntityGetInRadius(player.x, player.y, 24)
+        for i, ent_id in ipairs(ents_near_player) do
+            local ability_comp = EntityGetFirstComponentIncludingDisabled(ent_id, "AbilityComponent")
+            if ability_comp ~= nil then
+                local ui_name = ComponentGetValue2(ability_comp, "ui_name")
 
-            if ui_name == "$item_starting_gun_red" then
-                gun_ids[2] = ent_id
-            end
+                if ui_name == "$item_starting_gun_blue" then
+                    gun_ids[1] = ent_id
+                end
 
-            if ui_name == "$item_starting_gun_yellow" then
-                gun_ids[3] = ent_id
-            end
+                if ui_name == "$item_starting_gun_red" then
+                    gun_ids[2] = ent_id
+                end
 
-            if ui_name == "$item_starting_gun_green" then
-                gun_ids[4] = ent_id
+                if ui_name == "$item_starting_gun_yellow" then
+                    gun_ids[3] = ent_id
+                end
+
+                if ui_name == "$item_starting_gun_green" then
+                    gun_ids[4] = ent_id
+                end
             end
         end
-    end
 
-    --Distribute Tiers
-    local gun_tiers = {1, 1, 1, 1}
-    local costs, levels = {}, {}
-    local guns = {}
+        --Distribute Tiers
+        local gun_tiers = { 1, 1, 1, 1 }
+        local costs, levels = {}, {}
+        local guns = {}
 
-    for i = 1, 7 do
-        SetRandomSeed(player.x + 10 * i, player.y - 10 * i)
-        local num = Random(1, 100)
+        for i = 1, 7 do
+            SetRandomSeed(player.x + 10 * i, player.y - 10 * i)
+            local num = Random(1, 100)
 
-        if 1 <= num and num <= 10 then
-            gun_tiers[1] = math.min(gun_tiers[1] + 1, 4)
-        elseif 11 <= num and num <= 30 then
-            gun_tiers[2] = math.min(gun_tiers[2] + 1, 4)
-        elseif 31 <= num and num <= 60 then
-            gun_tiers[3] = math.min(gun_tiers[3] + 1, 4)
-        elseif 61 <= num and num <= 100 then
-            gun_tiers[4] = math.min(gun_tiers[4] + 1, 4)
+            if 1 <= num and num <= 10 then
+                gun_tiers[1] = math.min(gun_tiers[1] + 1, 4)
+            elseif 11 <= num and num <= 30 then
+                gun_tiers[2] = math.min(gun_tiers[2] + 1, 4)
+            elseif 31 <= num and num <= 60 then
+                gun_tiers[3] = math.min(gun_tiers[3] + 1, 4)
+            elseif 61 <= num and num <= 100 then
+                gun_tiers[4] = math.min(gun_tiers[4] + 1, 4)
+            end
+            --10%, 20%, 30%, 40% for the wands to get an additional tier
         end
-        --10%, 20%, 30%, 40% for the wands to get an additional tier
-    end
 
-    --Force one unshuffle
-    local force_unshuffles = {false, false, false, false}
-    force_unshuffles[Random(1, 4)] = true
+        --Force one unshuffle
+        local force_unshuffles = { false, false, false, false }
+        force_unshuffles[Random(1, 4)] = true
 
-    --Generate Guns
-    local randomness_offset = 0 --used to offset random functions so 2 of the same guns don't get generated
+        --Generate Guns
+        local randomness_offset = 0 --used to offset random functions so 2 of the same guns don't get generated
 
-    for i = 1, 4 do
-        local is_satisfactory = false
+        for i = 1, 4 do
+            local is_satisfactory = false
 
-        while not is_satisfactory do
-            randomness_offset = randomness_offset + 1
-            SetRandomSeed(player.x + randomness_offset, player.y - randomness_offset)
+            while not is_satisfactory do
+                randomness_offset = randomness_offset + 1
+                SetRandomSeed(player.x + randomness_offset, player.y - randomness_offset)
 
-            costs[i], levels[i] = tier_to_cost_and_level(gun_tiers[i])
-            guns[i] = get_gun_data(costs[i], levels[i], force_unshuffles[i])
+                costs[i], levels[i] = tier_to_cost_and_level(gun_tiers[i])
+                guns[i] = get_gun_data(costs[i], levels[i], force_unshuffles[i])
 
-            is_satisfactory = is_satisfactory_gun(guns[i])
+                is_satisfactory = is_satisfactory_gun(guns[i])
+            end
         end
-    end
 
-    --Cap Capacity
-    for i = 1, 4 do
-        guns[i].deck_capacity = round_to_int(guns[i].deck_capacity) --for some reason capacity is not generated as an interger value
-        guns[i].deck_capacity = math.min(guns[i].deck_capacity, 12)
-        guns[i].deck_capacity = math.max(guns[i].deck_capacity, 3)
-    end
+        --Cap Capacity
+        for i = 1, 4 do
+            guns[i].deck_capacity = round_to_int(guns[i].deck_capacity) --for some reason capacity is not generated as an interger value
+            guns[i].deck_capacity = math.min(guns[i].deck_capacity, 12)
+            guns[i].deck_capacity = math.max(guns[i].deck_capacity, 3)
+        end
 
-    --Set stats on guns
-    for i = 1, 4 do
-        set_gun_stats(gun_ids[i], guns[i])
-    end
+        --Set stats on guns
+        for i = 1, 4 do
+            set_gun_stats(gun_ids[i], guns[i])
+        end
 
-    --Get List of all available trigger spells
-    local spell_types = get_spell_types() -- ==> {triggers = {}, timers = {}, death_triggers = {}, draw_2s = {}, draw_3s = {}, draw_4s = {}}
-    local all_trigger_spells = concatenate_tables(concatenate_tables(spell_types.triggers, spell_types.timers), spell_types.death_triggers)
+        --Get List of all available trigger spells
+        local spell_types = get_spell_types() -- ==> {triggers = {}, timers = {}, death_triggers = {}, draw_2s = {}, draw_3s = {}, draw_4s = {}}
+        local all_trigger_spells = concatenate_tables(concatenate_tables(spell_types.triggers, spell_types.timers),
+            spell_types.death_triggers)
 
-    --Remove limited use triggers from list
-    local useable_trigger_spells = remove_limited_use_triggers(all_trigger_spells)
+        --Remove limited use triggers from list
+        local useable_trigger_spells = remove_limited_use_triggers(all_trigger_spells)
 
-    --Generate Decks and put them on guns
-    local decks = {}
-    local used_spells = {} --used for making it so deck generation doesn't repeat the same spells
-    used_spells.projectiles = {}
-    used_spells.modifiers = {}
-    used_spells.draw_2s = {}
-    used_spells.draw_3s = {}
-    used_spells.draw_4s = {}
-    used_spells.triggers = {}
+        --Generate Decks and put them on guns
+        local decks = {}
+        local used_spells = {} --used for making it so deck generation doesn't repeat the same spells
+        used_spells.projectiles = {}
+        used_spells.modifiers = {}
+        used_spells.draw_2s = {}
+        used_spells.draw_3s = {}
+        used_spells.draw_4s = {}
+        used_spells.triggers = {}
 
-    for i = 1, 4 do
-        decks[i], used_spells, randomness_offset =
-            generate_deck(
-            player.x,
-            player.y,
-            randomness_offset,
-            gun_tiers[i],
-            guns[i].shuffle_deck_when_empty,
-            guns[i].deck_capacity,
-            useable_trigger_spells,
-            spell_types.draw_2s,
-            spell_types.draw_3s,
-            spell_types.draw_4s,
-            used_spells,
-            all_trigger_spells
-        )
-        put_deck_on_gun(gun_ids[i], decks[i], guns[i])
+        for i = 1, 4 do
+            decks[i], used_spells, randomness_offset =
+                generate_deck(
+                    player.x,
+                    player.y,
+                    randomness_offset,
+                    gun_tiers[i],
+                    guns[i].shuffle_deck_when_empty,
+                    guns[i].deck_capacity,
+                    useable_trigger_spells,
+                    spell_types.draw_2s,
+                    spell_types.draw_3s,
+                    spell_types.draw_4s,
+                    used_spells,
+                    all_trigger_spells
+                )
+            put_deck_on_gun(gun_ids[i], decks[i], guns[i])
+        end
+    else --ELSE DEBUG MODE
+        local player = {}
+        player.id = player_id
+        player.x = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_X")
+        player.y = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_Y")
+
+        --Get gun ids
+        local gun_ids = {} --blue = gun_ids[1], red = gun_ids[2], yellow = gun_ids[3], green = gun_ids[4]
+        local ents_near_player = EntityGetInRadius(player.x, player.y, 24)
+        for i, ent_id in ipairs(ents_near_player) do
+            local ability_comp = EntityGetFirstComponentIncludingDisabled(ent_id, "AbilityComponent")
+            if ability_comp ~= nil then
+                local ui_name = ComponentGetValue2(ability_comp, "ui_name")
+
+                if ui_name == "$item_starting_gun_blue" then
+                    gun_ids[1] = ent_id
+                end
+
+                if ui_name == "$item_starting_gun_red" then
+                    gun_ids[2] = ent_id
+                end
+
+                if ui_name == "$item_starting_gun_yellow" then
+                    gun_ids[3] = ent_id
+                end
+
+                if ui_name == "$item_starting_gun_green" then
+                    gun_ids[4] = ent_id
+                end
+            end
+        end
+
+        local blue_gun = {}
+        blue_gun.shuffle_deck_when_empty = 0
+        blue_gun.actions_per_round = 1
+        blue_gun.fire_rate_wait = 10
+        blue_gun.reload_time = 30
+        blue_gun.mana_max = 1000
+        blue_gun.mana_charge_speed = 300
+        blue_gun.deck_capacity = 25
+        blue_gun.spread_degrees = 0
+        blue_gun.speed_multiplier = 1
+
+        local red_gun = {}
+        red_gun.shuffle_deck_when_empty = 0
+        red_gun.actions_per_round = 1
+        red_gun.fire_rate_wait = 5
+        red_gun.reload_time = 10
+        red_gun.mana_max = 1000
+        red_gun.mana_charge_speed = 300
+        red_gun.deck_capacity = 25
+        red_gun.spread_degrees = 0
+        red_gun.speed_multiplier = 1
+
+        local yellow_gun = {}
+        yellow_gun.shuffle_deck_when_empty = 0
+        yellow_gun.actions_per_round = 1
+        yellow_gun.fire_rate_wait = 10
+        yellow_gun.reload_time = 30
+        yellow_gun.mana_max = 1000
+        yellow_gun.mana_charge_speed = 300
+        yellow_gun.deck_capacity = 25
+        yellow_gun.spread_degrees = 0
+        yellow_gun.speed_multiplier = 1
+
+        local green_gun = {}
+        green_gun.shuffle_deck_when_empty = 0
+        green_gun.actions_per_round = 1
+        green_gun.fire_rate_wait = 10
+        green_gun.reload_time = 30
+        green_gun.mana_max = 1000
+        green_gun.mana_charge_speed = 300
+        green_gun.deck_capacity = 25
+        green_gun.spread_degrees = 0
+        green_gun.speed_multiplier = 1
+
+        set_gun_stats(gun_ids[1], blue_gun)
+        set_gun_stats(gun_ids[2], red_gun)
+        set_gun_stats(gun_ids[3], yellow_gun)
+        set_gun_stats(gun_ids[4], green_gun)
+
+        local blue_deck =
+        {
+            "SPEED",
+            "SPEED",
+            "SPEED",
+            "SPEED",
+            "MONEY_MAGIC",
+            "HITFX_CRITICAL_WATER",
+            "HEAVY_SHOT",
+            "BURST_2",
+            "LIGHT_BULLET",
+            "MATERIAL_WATER",
+        }
+
+        local red_deck =
+        {
+            "TELEPORT_PROJECTILE_SHORT"
+        }
+
+        local yellow_deck =
+        {
+
+        }
+
+        local green_deck =
+        {
+
+        }
+
+        put_deck_on_gun(gun_ids[1], blue_deck, blue_gun)
+        put_deck_on_gun(gun_ids[2], red_deck, red_gun)
+        put_deck_on_gun(gun_ids[3], yellow_deck, yellow_gun)
+        put_deck_on_gun(gun_ids[4], green_deck, green_gun)
     end
 end

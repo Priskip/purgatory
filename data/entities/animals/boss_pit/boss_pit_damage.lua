@@ -6,6 +6,10 @@ function damage_received(damage)
 	local entity_id = GetUpdatedEntityID()
 	local x, y = EntityGetTransform(GetUpdatedEntityID())
 
+	edit_component( entity_id, "HitboxComponent", function(comp,vars)
+		ComponentSetValue2( comp, "damage_multiplier", 0.05 )
+	end)
+
 	SetRandomSeed(x, y * GameGetFrameNum())
 
 	--Gets VariableStorageComponents "phase", "memory", "max_wands_allowed"
@@ -86,13 +90,31 @@ function damage_received(damage)
 		--Clear Projectiles in Area
 		clear_projectiles_in_radius(x, y, 200)
 
-		--Set Pitboss to invulnerable (by disabling his hitbox so you can't hit him with plasma like spells)
+		--Set Pitboss to invulnerable by disabling his hitbox so you can't hit him with plasma like spells
 		local hit_box_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "HitboxComponent")
 		EntitySetComponentIsEnabled(entity_id, hit_box_comp, false)
 
+		--Note Priskip (20/1/2014): Disabling path finding crashes the game now... *shrug*
+
 		--Disable path finding comp so he just sits there during his wand spawning animation
-		local path_finding_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "PathFindingComponent")
-		EntitySetComponentIsEnabled(entity_id, path_finding_comp, false)
+		-- local path_finding_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "PathFindingComponent")
+		-- EntitySetComponentIsEnabled(entity_id, path_finding_comp, false)
+
+		--Set his current position in var storage and lock him in place for a while
+		local ent_x, ent_y = EntityGetTransform(entity_id)
+		variable_storage_set_value(entity_id, "FLOAT", "rest_position_x", ent_x)
+		variable_storage_set_value(entity_id, "FLOAT", "rest_position_y", ent_y)
+		EntityAddComponent2(
+			entity_id,
+			"LuaComponent",
+			{
+				execute_on_added = true,
+				script_source_file = "mods/purgatory/files/entities/animals/boss_pit/lock_in_place.lua",
+				execute_every_n_frame = 1,
+				execute_times = 270
+			}
+		)
+
 
 		--Summon Minion Wands
 		EntityAddComponent2(
@@ -129,17 +151,17 @@ function damage_received(damage)
 			}
 		)
 
-		--Re-enable pathfinding after summoning wands
-		EntityAddComponent2(
-			entity_id,
-			"LuaComponent",
-			{
-				execute_on_added = false,
-				script_source_file = "mods/purgatory/files/entities/animals/boss_pit/reenable_pathfinding.lua",
-				execute_every_n_frame = 270,
-				remove_after_executed = true
-			}
-		)
+		-- --Re-enable pathfinding after summoning wands
+		-- EntityAddComponent2(
+		-- 	entity_id,
+		-- 	"LuaComponent",
+		-- 	{
+		-- 		execute_on_added = false,
+		-- 		script_source_file = "mods/purgatory/files/entities/animals/boss_pit/reenable_pathfinding.lua",
+		-- 		execute_every_n_frame = 270,
+		-- 		remove_after_executed = true
+		-- 	}
+		-- )
 
 		--Set Max Wands Allowed to 5
 		local var_stor_comps = EntityGetComponent(entity_id, "VariableStorageComponent")
@@ -243,6 +265,4 @@ function damage_received(damage)
 			end
 		end
 	end
-
-	
 end

@@ -147,19 +147,21 @@ if phase == 2 then
 	end
 	]]
 
-	--Phase 3
-	if phase == 3 then
-		--Summons duplicate of the player's wand
-		if (#p > 0 and p ~= "data/entities/projectiles/deck/heal_bullet.xml" and p ~= "mods/purgatory/files/entities/animals/boss_pit/wand_of_shielding/shield_shot_large.xml") then
-			local player_id = getPlayerEntity()
-			local player_x, player_y = EntityGetTransform(player_id)
+	
+end
 
-			local wand_ids = EntityGetInRadiusWithTag(player_x, player_y, 250, "wand_ghost_mimic")
+--Phase 3
+if phase == 3 then
+	--Summons duplicate of the player's wand
+	if (#proj > 0 and proj ~= "data/entities/projectiles/deck/heal_bullet.xml" and proj ~= "mods/purgatory/files/entities/animals/boss_pit/wand_of_shielding/shield_shot_large.xml") then
+		local player_id = getPlayerEntity()
+		local player_x, player_y = EntityGetTransform(player_id)
 
-			if #wand_ids < max_wands_allowed then
-				--Summon Wandghost with player's wand
-				EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 30)
-			end
+		local wand_ids = EntityGetInRadiusWithTag(player_x, player_y, 1000, "wand_ghost_mimic")
+
+		if #wand_ids < max_wands_allowed then
+			--Summon Wandghost with player's wand
+			EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 30)
 		end
 	end
 end

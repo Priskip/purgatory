@@ -170,7 +170,7 @@ function OnPlayerSpawned(player_entity)
             addPerkToPlayer("EDIT_WANDS_EVERYWHERE")
         else
             GameAddFlagRun("purgatory_no_edit_run")
-            remove_perk("EDIT_WANDS_EVERYWHERE") --TO DO: Well this didn't work for some reason
+            --remove_perk("EDIT_WANDS_EVERYWHERE") --TO DO: Well this didn't work for some reason
         end
 
         --Add Flag to not repeat damage multipliers
@@ -251,6 +251,12 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
 
         -- local player_id = EntityGetWithTag("player_unit")[1]
         -- local x, y = EntityGetTransform(player_id)
+
+        -- local start_x = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_X")
+        -- local start_y = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_Y")
+
+        -- GuiText(gui, 10, 50, tostring(start_x))
+        -- GuiText(gui, 10, 60, tostring(start_y))
 
 
         -- local mouse_output = "Mouse: "

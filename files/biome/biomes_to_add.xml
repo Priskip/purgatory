@@ -136,4 +136,11 @@
         >
     </Biome>
 
+    <Biome
+        biome_filename="mods/purgatory/files/biome/static_wang_tile_test.xml"
+        height_index="10"
+        color="ffbbbbbb"
+        >
+    </Biome>
+
 </Biomes_To_Add>

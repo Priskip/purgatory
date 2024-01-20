@@ -233,3 +233,16 @@ if SELECTION.held then
     GuiText(WANDSTONE_GUI, cursor_gui_x, cursor_gui_y, "Start = " .. string.format("%.2f", SELECTION.start_x) .. " " .. string.format("%.2f", SELECTION.start_y))
     GuiText(WANDSTONE_GUI, cursor_gui_x, cursor_gui_y + 10, "End = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
 end
+
+--testing
+GuiZSetForNextWidget(WANDSTONE_GUI, 0)
+GuiText(WANDSTONE_GUI, 300, 200, "GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
+GuiZSetForNextWidget(WANDSTONE_GUI, 1)
+GuiColorSetForNextWidget(WANDSTONE_GUI, 0, 0, 0, 1)
+GuiText(WANDSTONE_GUI, 301, 201, "GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
+
+GuiZSetForNextWidget(WANDSTONE_GUI, 0)
+GuiText(WANDSTONE_GUI, 300, 210, "Filters GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
+GuiZSetForNextWidget(WANDSTONE_GUI, 1)
+GuiColorSetForNextWidget(WANDSTONE_GUI, 0, 0, 0, 1)
+GuiText(WANDSTONE_GUI, 300, 211, "Filters GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))

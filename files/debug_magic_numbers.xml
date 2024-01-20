@@ -9,7 +9,7 @@
   VIRTUAL_RESOLUTION_Y="242"
   ></MagicNumbers>
 
-  <!--
+<!--
   <MagicNumbers
   DESIGN_PLAYER_START_POS_X="742"       -900 for holy mountain
   DESIGN_PLAYER_START_POS_Y="-670"      1890 for holy mountain
@@ -26,8 +26,7 @@
   DESIGN_PLAYER_START_POS_Y="8500"
   -->
 
-
-  <!-- 
+<!-- 
     Test Platform
     742 -670
 
@@ -40,4 +39,19 @@
     Hm2
     -915 5480
 
+  -->
+
+<!-- 
+      DESIGN_PLAYER_START_POS_X="-2468"
+  DESIGN_PLAYER_START_POS_Y="8500"
+  BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
+  DAMAGE_BLOOD_AMOUNT_MIN="5"
+  DAMAGE_BLOOD_AMOUNT_MAX="10"
+  RAGDOLL_BLOOD_MULTIPLIER="1"
+  VIRTUAL_RESOLUTION_X="1920"
+  VIRTUAL_RESOLUTION_Y="1080"
+
+    
+      VIRTUAL_RESOLUTION_X="427"
+      VIRTUAL_RESOLUTION_Y="242"
   -->
