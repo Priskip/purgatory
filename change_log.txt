@@ -35,6 +35,7 @@ Upcoming Build
     - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something.
     - Fixed a bug where the starting wands could generate differntly if the player moved during game's initialization.
     - Removed Sauvojen Tuntija's ability to crash the game upon entering his second phase.
+    - Sauvojen decided to crash the game in his 3rd phase instead after that ^ fix. So I fixed bonked him again.
 
     - New Spells:
         - Blood Vacuum [Static Projectile]
@@ -47,7 +48,7 @@ Upcoming Build
         - Glitter Bomb: mana 70 -> 10
         - Sauvojen Tuntija
             - Reduced Critical Damage Resistance 1.0 --> 0.8
-            - Fixed an oversight reduced damage taken to 10%.
+            - Fixed an oversight that reduced damage taken to 10%.
             - Wand of Healing and Shielding HP increased 1,000 --> 20,000
             - Wand of Healing and Shielding projectile damage taken reduced 1.0 --> 0.75
             - Fixed a bug where Sauvoje would not spawn copied player wands properly in 3rd phase.
