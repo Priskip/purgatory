@@ -28,221 +28,163 @@ local cursor_gui_y = round_to_int(screen_size_y * (((cursor_world_y - cam_y) + (
 GuiText(WANDSTONE_GUI, 10, 10,
     "GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
 
---MAIN MENU BUTTONS TO DRAW
-MAIN_MENU_BUTTONS = MAIN_MENU_BUTTONS or
-    {
-        {
-            id = "STORE_SPELLS",
-            gui_pos = { x = 20, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/store_spells.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "STORE_SPELLS")
-            end,
-            action_selected = function()
-                GamePrint("STORE_SPELLS")
-            end
-        },
-        {
-            id = "WITHDRAW_SPELLS",
-            gui_pos = { x = 48, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/withdraw_spells.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "WITHDRAW_SPELLS")
-            end,
-            action_selected = function()
-                GamePrint("WITHDRAW_SPELLS")
-            end
-        },
-        {
-            id = "SAVE_WAND",
-            gui_pos = { x = 76, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/save_wand.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "SAVE_WAND")
-            end,
-            action_selected = function()
-                GamePrint("SAVE_WAND")
-            end
-        },
-        {
-            id = "LOAD_WAND",
-            gui_pos = { x = 104, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/load_wand.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "LOAD_WAND")
-            end,
-            action_selected = function()
-                GamePrint("LOAD_WAND")
-            end
-        },
+--[[
+                         .
 
+					   .
+			 /^\     .
+		__   "V"
+	   /__\   I      O  o
+	  //..\\  I     .
+	  \].`[/  I
+	  /l\/j\  (]    .  O
+	 /. ~~ ,\/I          .
+	 \\L__j^\/I       o
+	  \/--v}  I     o   .
+	  |    |  I   _________
+	  |    |  I c(`       ')o
+	  |    l  I   \.     ,/
+	_/j  L l\_!  _//^---^\\_
+]]
 
-        {
-            id = "SAC_SPELLS",
-            gui_pos = { x = 160, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/sac_spells.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "SAC_SPELLS")
-            end,
-            action_selected = function()
-                GamePrint("SAC_SPELLS")
-            end
-        },
-        {
-            id = "SAC_WAND",
-            gui_pos = { x = 132, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/sac_wands.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "SAC_WAND")
-            end,
-            action_selected = function()
-                GamePrint("SAC_WAND")
-            end
-        },
-        {
-            id = "TOGGLE_SACRIFICE",
-            gui_pos = { x = 188, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/toggle_sacrifice.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "TOGGLE_SACRIFICE")
-            end,
-            action_selected = function()
-                GamePrint("TOGGLE_SACRIFICE")
-            end
-        },
-        {
-            id = "UPGRADE_MENU",
-            gui_pos = { x = 216, y = 41 },
-            background_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
-            foreground_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/upgrade_menu.png",
-            foreground_offset = { x = 1, y = 1 },
-            hovered_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_hovered.png",
-            selected_image = "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24_selected.png",
-            selected = false,
-            action_highlighted = function(x, y)
-                GuiZSetForNextWidget(WANDSTONE_GUI, -4)
-                GuiText(WANDSTONE_GUI, x, y, "UPGRADE_MENU")
-            end,
-            action_selected = function()
-                GamePrint("UPGRADE_MENU")
-            end
-        },
+--The fact that Lua does not have classes really annoys me.
 
-    }
+CONTAINERS = CONTAINERS or nil
 
---For each Button
-for i, button in ipairs(MAIN_MENU_BUTTONS) do
-    --Draw Background
+if CONTAINERS == nil then
+    CONTAINERS = {}
+
+    CONTAINERS[#CONTAINERS + 1] =
+        NewGUIContainer(
+            WANDSTONE_GUI,
+            "CONTAINER_1",
+            99,
+            99,
+            "SPELL",
+            "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
+            "data/ui_gfx/inventory/quick_inventory_box_hovered.png",
+            {
+                image = "data/ui_gfx/gun_actions/nuke.png",
+                key_id = "SPELL",
+                picked_up = false,
+                function_placed_in_matching_lock = function(old_container, new_container, key)
+                    GamePrint("MATCH")
+                    new_container.contents = key
+                    old_container.contents = nil
+                end,
+                function_placed_in_non_matching_lock = function(old_container, new_container, key)
+                    GamePrint("NOT MATCH")
+                end,
+                function_just_let_go = function(old_container, new_container, key)
+                    GamePrint("Just Let Go")
+                    old_container.contents = nil
+                    local player_x, player_y = getPlayerCoords()
+                    EntityLoad("data/entities/projectiles/deck/nuke.xml", player_x, player_y)
+                end,
+            }
+        )
+
+    CONTAINERS[#CONTAINERS + 1] =
+        NewGUIContainer(
+            WANDSTONE_GUI,
+            "CONTAINER_2",
+            149,
+            99,
+            "SPELL",
+            "mods/purgatory/files/ui_gfx/inventory/wandstone/inv_box_24.png",
+            "data/ui_gfx/inventory/quick_inventory_box_hovered.png"
+        )
+
+    CONTAINERS[#CONTAINERS + 1] =
+        NewGUIContainer(
+            WANDSTONE_GUI,
+            "CONTAINER_3",
+            199,
+            99,
+            "NOT_SPELL",
+            "data/ui_gfx/inventory/quick_inventory_box.png",
+            "data/ui_gfx/inventory/quick_inventory_box_hovered.png"
+        )
+end
+
+--For each container
+for _, container in ipairs(CONTAINERS) do
+    --Draw container background images
     GuiZSetForNextWidget(WANDSTONE_GUI, 0)
-    GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.background_image, 1, 1, 1, 0)
+    GuiImage(WANDSTONE_GUI, NewGUIID(), container.gui_pos.x, container.gui_pos.y, container.background_image, 1, 1, 1, 0)
 
-    --Draw Foreground
-    GuiZSetForNextWidget(WANDSTONE_GUI, -1)
-    GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x + button.foreground_offset.x,
-        button.gui_pos.y + button.foreground_offset.y, button.foreground_image, 1, 1, 1, 0)
+    --Calculate if we are hovering the container.
+    local is_highlighted = IsHovering(cursor_gui_x, cursor_gui_y, container.gui_pos.x, container.gui_pos.y,
+        container.size.x, container.size.y)
 
-    --Check to see if the button is selected. If it is, then draw the selected_image and perform its action_selected.
-    if button.selected then
-        GuiZSetForNextWidget(WANDSTONE_GUI, -2)
-        GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.selected_image, 1, 1, 1, 0)
-        button.action_selected()
+    --If we're hovering, draw hover image
+    if is_highlighted then
+        GuiZSetForNextWidget(WANDSTONE_GUI, 2)
+        GuiImage(WANDSTONE_GUI, NewGUIID(), container.gui_pos.x - container.hovered_image_offset.x,
+            container.gui_pos.y - container.hovered_image_offset.y, container.hovered_image, 1, 1, 1, 0)
     end
 
-    --Check if mouse is hovering on the button. If so, draw the hovering image.
-    local button_size_x, button_size_y = GuiGetImageDimensions(WANDSTONE_GUI, button.background_image, 1)
-    if in_range_2d(cursor_gui_x, cursor_gui_y, button.gui_pos.x, button.gui_pos.y, button.gui_pos.x + button_size_x, button.gui_pos.y + button_size_y) then
-        --Display Highlighting Image
-        GuiZSetForNextWidget(WANDSTONE_GUI, -3)
-        GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.hovered_image, 1, 1, 1, 0)
+    --If we have contents and are not dragging them
+    if container.contents ~= nil and container.contents.picked_up == false then
+        --Draw contents image
+        GuiZSetForNextWidget(WANDSTONE_GUI, -1)
+        GuiImage(WANDSTONE_GUI, NewGUIID(), container.gui_pos.x - container.contents.offset.x,
+            container.gui_pos.y - container.contents.offset.y, container.contents.image, 1, 1, 1, 0)
+    end
 
-        --Perform Highlighting Action
-        button.action_highlighted(cursor_gui_x, cursor_gui_y)
+    --If highlighted, and we have contents, and we have just clicked down,
+    --then select the contents and have them move
+    if is_highlighted and container.contents ~= nil and InputIsMouseButtonJustDown(1) then
+        container.contents.picked_up = true
+        container.contents.grab_offset = {}
+        container.contents.grab_offset.x = cursor_gui_x - (container.gui_pos.x - container.contents.offset.x)
+        container.contents.grab_offset.y = cursor_gui_y - (container.gui_pos.y - container.contents.offset.y)
+    end
 
-        --If we are hovering, then check to see if the mouse has been left clicked. If so, toggle button.selected
-        if InputIsMouseButtonJustDown(1) then
-            button.selected = not button.selected
+    --If we have picked_up the contents, then have them follow the mouse
+    if container.contents ~= nil and container.contents.picked_up == true then
+        GuiZSetForNextWidget(WANDSTONE_GUI, -1)
+        GuiImage(WANDSTONE_GUI, NewGUIID(), cursor_gui_x - container.contents.grab_offset.x,
+            cursor_gui_y - container.contents.grab_offset.y, container.contents.image, 1, 1, 1, 0)
+    end
+
+    --If we let go, then unselect the image and do the appropriate action
+    if container.contents ~= nil and container.contents.picked_up == true and InputIsMouseButtonJustUp(1) then
+        container.contents.picked_up = false
+        container.contents.grab_offset = nil
+
+        local hovering_index = nil
+        for i, v in ipairs(CONTAINERS) do
+            if IsHovering(cursor_gui_x, cursor_gui_y, v.gui_pos.x, v.gui_pos.y, v.size.x, v.size.y) then
+                hovering_index = i
+                break
+            end
+        end
+
+        if hovering_index ~= nil and CONTAINERS[hovering_index].id ~= container.id then
+            if container.contents.key_id == CONTAINERS[hovering_index].lock_id then
+                container.contents.function_placed_in_matching_lock(container, CONTAINERS[hovering_index],
+                    container.contents)
+            else
+                container.contents.function_placed_in_non_matching_lock(container, CONTAINERS[hovering_index],
+                    container.contents)
+            end
+        else
+            if not is_highlighted then
+            container.contents.function_just_let_go(container, CONTAINERS[hovering_index], container.contents)
+            end
+            --else we do nothing
         end
     end
 end
 
 
---Test selection drawing
-SELECTION = SELECTION or
-    {
-        start_x = 0,
-        start_y = 0,
-        held = false
-    }
 
-if InputIsKeyJustDown(29) then
-    SELECTION.held = true
-    SELECTION.start_x = cursor_gui_x
-    SELECTION.start_y = cursor_gui_y
-end
+--[[
+    Types of GUI objects to make:
+    [X] Simple Button
+    [X] 2 State Toggle Button
+    [ ] Multi State Toggle Button
+    [ ] Container Button -> Dragging -> Floating
 
-if InputIsKeyJustUp(29) then
-    SELECTION.held = false
-    SELECTION.start_x = 0
-    SELECTION.start_y = 0
-end
-
-if SELECTION.held then
-    DrawWandBox(WANDSTONE_GUI, SELECTION.start_x, SELECTION.start_y, cursor_gui_x, cursor_gui_y, "wand_selected")
-    GuiText(WANDSTONE_GUI, cursor_gui_x, cursor_gui_y, "Start = " .. string.format("%.2f", SELECTION.start_x) .. " " .. string.format("%.2f", SELECTION.start_y))
-    GuiText(WANDSTONE_GUI, cursor_gui_x, cursor_gui_y + 10, "End = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
-end
-
---testing
-GuiZSetForNextWidget(WANDSTONE_GUI, 0)
-GuiText(WANDSTONE_GUI, 300, 200, "GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
-GuiZSetForNextWidget(WANDSTONE_GUI, 1)
-GuiColorSetForNextWidget(WANDSTONE_GUI, 0, 0, 0, 1)
-GuiText(WANDSTONE_GUI, 301, 201, "GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
-
-GuiZSetForNextWidget(WANDSTONE_GUI, 0)
-GuiText(WANDSTONE_GUI, 300, 210, "Filters GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
-GuiZSetForNextWidget(WANDSTONE_GUI, 1)
-GuiColorSetForNextWidget(WANDSTONE_GUI, 0, 0, 0, 1)
-GuiText(WANDSTONE_GUI, 300, 211, "Filters GUI = " .. string.format("%.2f", cursor_gui_x) .. " " .. string.format("%.2f", cursor_gui_y))
+]]

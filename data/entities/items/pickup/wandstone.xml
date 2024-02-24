@@ -108,7 +108,7 @@
 	
 	<AbilityComponent
 		ui_name="$item_wandstone"
-		throw_as_item="1"
+		throw_as_item="0"
 		><gun_config
 			deck_capacity="0"
 		></gun_config>

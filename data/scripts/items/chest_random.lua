@@ -85,11 +85,14 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 				-- Bomb
 				-------------------------------------------------------------------
 				table.insert(entities, {"data/entities/projectiles/bomb_small.xml"})
-			else
+			elseif ukko_roll > 1 and ukko_roll < 25 then
 				-------------------------------------------------------------------
 				-- Ukko
 				-------------------------------------------------------------------
 				table.insert(entities, {"data/entities/animals/thundermage.xml"})
+			else
+				--Blame twitch chat for their great ideas.
+				table.insert(entities, {"data/entities/projectiles/deck/white_hole_big.xml"})
 			end
 			good_item_dropped = false
 			

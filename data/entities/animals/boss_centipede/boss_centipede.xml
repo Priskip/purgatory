@@ -6,7 +6,6 @@
 
 	<!-- art - main body -->
 
-
 	<SpriteComponent 
 		_tags="character"
 		image_file="data/entities/animals/boss_centipede/body.xml"
@@ -159,6 +158,7 @@
 			fire="0.1"
 			slice="1.0"
 			ice="0.0"
+			holy="0.2"
 			>
 		</damage_multipliers>
 	</DamageModelComponent>
@@ -265,5 +265,14 @@
 			>
 		</GameEffectComponent>
 	</Entity>
+
+	<!-- Health Bar Component-->
+	<!-- Note Priskip 24/2/24: Olli changed the health bars around in the beta branch, hence the need for this.-->
+	<HealthBarComponent
+		_enabled="0"
+		_tags="disabled_at_start"
+		gui_special_final_boss="1"
+		gui_max_distance_visible="1500"
+	></HealthBarComponent>
 
 </Entity>

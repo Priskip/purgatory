@@ -35,7 +35,9 @@ Upcoming Build
     - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something.
     - Fixed a bug where the starting wands could generate differntly if the player moved during game's initialization.
     - Removed Sauvojen Tuntija's ability to crash the game upon entering his second phase.
-    - Sauvojen decided to crash the game in his 3rd phase instead after that ^ fix. So I fixed bonked him again.
+    - Sauvojen decided to crash the game in his 3rd phase instead after that ^ fix. So I bonked him again.
+    - Chat wanted something funny out of a chest...
+    - Fixed Kolmisilmä not having a health bar in the beta branch
 
     - New Spells:
         - Blood Vacuum [Static Projectile]

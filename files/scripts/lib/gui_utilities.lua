@@ -11,8 +11,6 @@ function NewGUIID()
     return id
 end
 
-
-
 --Reset GUI ID back to 0.
 --Should only be done once per frame once everything has been processed.
 function ResetGUIID()
@@ -21,15 +19,11 @@ function ResetGUIID()
     --print("Called ResetGUIID() - PURGATORY_GUI_ID updated to " .. tostring(id))
 end
 
-
-
 --Prints the PURGATORY_GUI_ID to the console.
 function PrintGUIID()
     local id = tonumber(GlobalsGetValue("PURGATORY_GUI_ID", "0"))
     print("PURGATORY_GUI_ID = " .. tostring(id))
 end
-
-
 
 --Function to draw a rectangle outline like that of the vanilla inventory gui.
 function DrawWandBox(GUI, x1, y1, x2, y2, sprite_path)
@@ -70,17 +64,15 @@ function DrawWandBox(GUI, x1, y1, x2, y2, sprite_path)
     --If the side lengths are shorter than that, then we have special cases.
     --The size lengths in the if statements below are 0-indexed.
 
-    local has_full_side_x = (box_size_x >= 3)
-    local has_full_side_y = (box_size_y >= 3)
-    local has_fill_box = (box_size_x >= 2 and box_size_y >= 2)
-
     --Main Box
-    if has_fill_box then
+    if box_size_x >= 2 and box_size_y >= 2 then
+        --Background is big enough to have a fill color.
         GuiImage(GUI, NewGUIID(), x1 + 1, y1 + 1, image_background, 1, x2 - x1 - 1, y2 - y1 - 1)
     end
 
     --Horizontal outlines
-    if has_full_side_x then
+    if box_size_x >= 3 then
+        --A full side length can be drawn.
         --Corners
         GuiImage(GUI, NewGUIID(), x1, y1, image_corner, 1, 1)
         GuiImage(GUI, NewGUIID(), x2, y2, image_corner, 1, 1)
@@ -106,7 +98,8 @@ function DrawWandBox(GUI, x1, y1, x2, y2, sprite_path)
     end
 
     --Vertical outlines
-    if has_full_side_y then
+    if box_size_y >= 3 then
+        --A full side length can be drawn.
         --Corners
         GuiImage(GUI, NewGUIID(), x2, y1 + 1, image_corner, 1, 1)
         GuiImage(GUI, NewGUIID(), x1, y2 - 1, image_corner, 1, 1)
@@ -122,5 +115,49 @@ function DrawWandBox(GUI, x1, y1, x2, y2, sprite_path)
         GuiImage(GUI, NewGUIID(), x2, y2, image_corner, 1, 1)
     elseif box_size_y == 0 then
     end
+end
 
+--Draws text with the white on black shadow that Noita likes to do.
+function NoitaGUIText(GUI, x, y, text, z)
+    local z_index = z or 1
+    GuiZSetForNextWidget(GUI, z_index - 1)
+    GuiText(GUI, x, y, text)
+
+    GuiColorSetForNextWidget(GUI, 0, 0, 0, 1)
+    GuiZSetForNextWidget(GUI, z_index)
+    GuiText(GUI, x, y, text)
+end
+
+function IsHovering(cursor_x, cursor_y, gui_x, gui_y, gui_dx, gui_dy)
+    return cursor_x > gui_x and cursor_x < (gui_x + gui_dx) and cursor_y > gui_y and cursor_y < (gui_y + gui_dy)
+end
+
+--Returns a table of a newly created GUI Container object
+function NewGUIContainer(GUI, id, gui_pos_x, gui_pos_y, lock_id, background_image, hovered_image, contents)
+    local NewContainer = {}
+    NewContainer.id = id
+    NewContainer.gui_pos = {}
+    NewContainer.gui_pos.x = gui_pos_x
+    NewContainer.gui_pos.y = gui_pos_y
+    NewContainer.lock_id = lock_id
+    NewContainer.background_image = background_image
+    NewContainer.hovered_image = hovered_image
+    NewContainer.contents = contents
+
+    NewContainer.size = {}
+    NewContainer.size.x, NewContainer.size.y = GuiGetImageDimensions(GUI, NewContainer.background_image, 1)
+
+    NewContainer.hovered_image_offset = {}
+    NewContainer.hovered_image_offset.x, NewContainer.hovered_image_offset.y = GuiGetImageDimensions(GUI, NewContainer.hovered_image, 1)
+    NewContainer.hovered_image_offset.x = (NewContainer.hovered_image_offset.x - NewContainer.size.x) / 2
+    NewContainer.hovered_image_offset.y = (NewContainer.hovered_image_offset.y - NewContainer.size.y) / 2
+
+    if NewContainer.contents ~= nil and NewContainer.contents ~= {} then
+        NewContainer.contents.offset = {}
+        NewContainer.contents.offset.x , NewContainer.contents.offset.y = GuiGetImageDimensions(GUI, NewContainer.contents.image, 1)
+        NewContainer.contents.offset.x = (NewContainer.contents.offset.x - NewContainer.size.x) / 2
+        NewContainer.contents.offset.y = (NewContainer.contents.offset.y - NewContainer.size.y) / 2
+    end
+
+    return NewContainer
 end

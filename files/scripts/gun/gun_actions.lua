@@ -1,5 +1,6 @@
 dofile("data/scripts/lib/utilities.lua")
 dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
+dofile_once("mods/purgatory/files/scripts/lib/gun_utilities.lua")
 
 --Helper Functions
 local function getSpellPosition(id)
@@ -415,11 +416,116 @@ spells_to_add = {
 		spawn_probability = "0",
 		price = 420,
 		mana = 0,
-		action 		= function()
+		action 		= function( recursion_level, iteration )
 			--add_projectile("mods/purgatory/files/entities/misc/test_projectile.xml")
 			--c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/test.xml,"
+			
+			print("----- TEST SPELL -----")
+			
+			-- local data = {}
+			
+			-- local iter = iteration or 1
+			-- local iter_max = iteration or 1
+			
+			-- print("iter = " .. tostring(iter))
+
+			-- if ( #deck > 0 ) then
+			-- 	data = deck[iter] or nil
+			-- else
+			-- 	data = hand[1]
+			-- end
+
+			
+
+			--Procedure:
+			--Search hand to see if we find this spell
+			--If we can't then search for it in deck
+
+			-- local inventoryitem_id = nil
+
+			-- for i, v in ipairs(hand) do
+			-- 	if v.id == "TEST_SPELL" then
+			-- 		inventoryitem_id = v.inventoryitem_id
+			-- 		print("FOUND IN HAND")
+			-- 		break
+			-- 	end
+			-- end
+
+			-- if inventoryitem_id == nil then
+			-- 	for i, v in ipairs(deck) do
+			-- 		if v.id == "TEST_SPELL" then
+			-- 			inventoryitem_id = v.inventoryitem_id
+			-- 			print("FOUND IN DECK")
+			-- 			break
+			-- 		end
+			-- 	end
+			-- end
+
+			-- print("inventoryitem_id = " .. tostring(inventoryitem_id))
+
+			--Note Priskip 04/Feb/2024: this only ever returns the first spell of this type on a wand
+
+
+
+
+			local data = hand[1] --shouldn'table there always be something in if we get to this point?
+
+			-- print("DATA")
+			-- if data ~= nil then
+			-- 	print(tostring(data))
+
+			-- 	for k ,v in pairs(data) do
+			-- 		print( "\"" .. tostring(k) .. "\" = \"" .. tostring(v) .. "\"")
+			-- 	end
+
+			-- 	print("Parent = " .. tostring(EntityGetParent(data.inventoryitem_id))) --Well sadly this just returns 0 if you move the spell between wands
+			-- else
+			-- 	print("data == nil")
+			-- end
+
+			-- print("")
+			-- print("HAND")
+			-- if #hand > 0 then
+			-- 	for i,action in ipairs(hand) do
+			-- 		debug_print(action.name)
+			-- 	end
+			-- else
+			-- 	print("~nothing in hand~")
+			-- end
+
+			-- print("")
+			-- print("DECK")
+			-- if #deck > 0 then
+			-- 	for i,action in ipairs(deck) do
+			-- 		debug_print(action.name)
+			-- 	end
+			-- else
+			-- 	print("~nothing in deck~")
+			-- end
+
+			-- print("")
+			-- print("DISCARD")
+			-- if #discarded > 0 then
+			-- 	for i,action in ipairs(discarded) do
+			-- 		debug_print(action.name)
+			-- 	end
+			-- else
+			-- 	print("~nothing in discard~")
+			-- end
+
+			-- print("")
+			-- print("C")
+			-- if c ~= nil then
+			-- 	for k ,v in pairs(c) do
+			-- 		print( "\"" .. tostring(k) .. "\" = \"" .. tostring(v) .. "\"")
+			-- 	end
+			-- else
+			-- 	print("c == nil")
+			-- end
+
+			print("-----  END TEST SPELL -----")
+			
 			draw_actions( 1, true )
-			c.muted = true
 		end,
 	},
 ]]
@@ -899,10 +1005,33 @@ spells_to_add = {
 		price = 100,
 		mana = 0,
 		action = function(recursion_level, iteration)
+
+			--TODO: use GetUpdatedEntityID() and then figure out the logic for if that doesn't return the player
+
+			local max_mana = 10
+			local current_mana = 10
+			local players = EntityGetWithTag("player_unit")
+			local player = nil
+			if #players > 0 then
+				player = players[1]
+			end
+
+			if player ~= nil then
+				local i2c_id = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
+				if i2c_id ~= nil then
+					local wand_id = ComponentGetValue2(i2c_id, "mActiveItem")
+					local ac_id = EntityGetFirstComponentIncludingDisabled(wand_id, "AbilityComponent")
+					if ac_id ~= nil then
+						max_mana = ComponentGetValue2(ac_id, "mana_max")
+						current_mana = ComponentGetValue2(ac_id, "mana")
+					end
+				end
+			end
+
 			local endpoint = -1
 			local elsepoint = -1
-			local max_mana = get_held_wand_max_mana()
-			local current_mana = get_held_wand_current_mana()
+			-- local max_mana = get_held_wand_max_mana() --Note Priskip (04/Feb/2024): did the logic for this above so that the game wouldn't spit out errors on mod init.
+			-- local current_mana = get_held_wand_current_mana()
 			local manadiff = current_mana / max_mana
 			local doskip = false
 

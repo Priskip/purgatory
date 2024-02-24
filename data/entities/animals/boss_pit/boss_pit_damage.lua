@@ -94,7 +94,7 @@ function damage_received(damage)
 		local hit_box_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "HitboxComponent")
 		EntitySetComponentIsEnabled(entity_id, hit_box_comp, false)
 
-		--Note Priskip (20/1/2014): Disabling path finding crashes the game now... *shrug*
+		--Note Priskip (20/1/2024): Disabling path finding crashes the game now... *shrug*
 
 		--Disable path finding comp so he just sits there during his wand spawning animation
 		-- local path_finding_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "PathFindingComponent")

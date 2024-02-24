@@ -668,12 +668,19 @@ function initialize_starting_guns(player_id)
 
         local yellow_deck =
         {
-
+            --"TEST_SPELL"
         }
 
         local green_deck =
         {
-
+            "DIVIDE_2",
+            "DIVIDE_3",
+            "DIVIDE_4",
+            "DIVIDE_10",
+            "GAMMA",
+            "TAU",
+            "OMEGA",
+            "ZETA"
         }
 
         put_deck_on_gun(gun_ids[1], blue_deck, blue_gun)

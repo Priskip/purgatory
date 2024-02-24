@@ -830,6 +830,13 @@ async_loop(function()
 		wait(60 * 10)
 	else
 		did_wait = false
+		
+		-- Fixes the boss being in an unresponsive state. 
+		if phase == nil then
+			wait(10)
+			next_phase()
+		end
+
 		phase()
 		if did_wait == false then -- ensure the coroutine doesn't get stuck in an infinite loop if the states never wait
 		    boss_wait(1)
