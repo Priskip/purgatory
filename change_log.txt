@@ -1,30 +1,27 @@
 Change Log
 
 Upcoming Build
+    General:
     - Changed a bunch of stuff behind the scenes for the starting wand generation.
         - Starting wand generation should now be compatable with modded spells from mods other than Purgatory.
         - Lowered maxmimum tier of wand that you can start with to tier 4.
     - Did some work on the glimmer spells again.
         - Overwrote the vanilla entity definitions to avoid having to run the glimmer logic twice.
         - 
+    
     - Reverted change to chainsaw's lifetime because Nolla fixed the sound bug! (Thank you Nolla!).
     - Made Kolmi immune to ice at 0 orb (in vanilla he gets it at 3 orb).
     - Made friendly hamis's a bit more aggressive towards enemies.
-    - Omega Propane was a bit lack-luster for how expensive it was... That's been fixed.
-    - Forgot the related_projectiles for giga and omega propane - that's been fixed.
     - Updated item_spawnlists.lua to reflect the changes Nolla has done.
     - Updated chest_random.lua to reflect the changes Nolla has done.
     - Spells to Death Crosses and Runestone of Death Crosses got a bit deadlier.
-    - Added the funny thing to the chest loot table.
     - Changed framework that I use for adding new biomes so that it doesn't directly overwrite _biomes_all since Nolla is adding new stuff again. ^-^
+    - Added a funny thing to the chest loot table.
     - Tweaked the biome map.
     - Made flasks work with the reactions.
     - Removed High and Low Grav from perk pool because they don't affect things much.
     - Updated Ylialkemisti's flasks to be inline with hiisi alkemisti's.
-    - Fixed Gold Vacuum not giving you gold while in the Noita beta branch.
     - Added Purgatory's new(?) enemies to progress screen.
-    - Fixed Leviathan's Portal Room's top right portal not taking you directly to Essense of Air.
-    - Fixed some secrets being off by a few pixels on the spatial awareness maps
     - Added a reset system for Skully Kicking. You now get 3 extra tries unless you trip the foul line.
     - Made enemy perk icons appear in front of physical terrain.
     - Reverted the increase of helpless animals on the lake island since Nolla added something there.
@@ -33,30 +30,45 @@ Upcoming Build
     - Did some refactoring of older code.
     - Removed some unused stuff.
     - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something.
+    - Chat wanted something funny out of a chest...
+    - Omega Propane was a bit lack-luster for how expensive it was... That's been fixed.
+
+    Bug Fixes:
+    - Forgot the related_projectiles for giga and omega propane - that's been fixed.
+    - Fixed Leviathan's Portal Room's top right portal not taking you directly to Essense of Air.
+    - Fixed some secrets being off by a few pixels on the spatial awareness maps
+    - Fixed Gold Vacuum not giving you gold while in the Noita beta branch.
     - Fixed a bug where the starting wands could generate differntly if the player moved during game's initialization.
     - Removed Sauvojen Tuntija's ability to crash the game upon entering his second phase.
     - Sauvojen decided to crash the game in his 3rd phase instead after that ^ fix. So I bonked him again.
-    - Chat wanted something funny out of a chest...
     - Fixed Kolmisilmä not having a health bar in the beta branch
-
-    - New Spells:
+    - Fixed Kolmisilmän silmä's turrets having weird health bars in beta branch
+    
+    New Spells:
         - Blood Vacuum [Static Projectile]
         - Rottakanuuna [Projectile] (Thank you reversevere!)
         - Omega Death Cross [Projectile]
         - Full Mana Indicator [Passive]
         - Slow Shot [Modifier]
 
-    - Balance Changes:
+    Balance Changes:
         - Glitter Bomb: mana 70 -> 10
         - Sauvojen Tuntija
             - Reduced Critical Damage Resistance 1.0 --> 0.8
             - Fixed an oversight that reduced damage taken to 10%.
             - Wand of Healing and Shielding HP increased 1,000 --> 20,000
             - Wand of Healing and Shielding projectile damage taken reduced 1.0 --> 0.75
-            - Fixed a bug where Sauvoje would not spawn copied player wands properly in 3rd phase.
+            - Fixed a bug where Sauvojen would not spawn copied player wands properly in 3rd phase.
+            - Rate of spawning player wands set to 3 seconds or immediately if no wands are alive.
             - Copied player wands HP increased 6,250 --> 10,000
             - Copied player wands projectile damage take reduced 1.0 --> 0.5
-
+        -Kolmisilmän Silmä
+            - Updated damage model components
+                projectile      0.1 --> 0.05
+			    explosion       0.1 --> 0
+			    slice           0.8 --> 0.6
+			    drill           0   --> 0.5
+            - Updated the way I manipulate damage models based on the amount of alive turrets to include all damage types done to Kolmisilmän Silmä
 
 Beta Build 06 Feb 2023
     - Holy Mountain's Alchemy Station now works with powder sacks

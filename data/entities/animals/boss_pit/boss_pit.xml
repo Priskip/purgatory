@@ -68,6 +68,12 @@
 	</VariableStorageComponent>
 
 	<VariableStorageComponent
+		name="wand_ghost_spawn_cooldown"
+		value_int="300"
+		>
+	</VariableStorageComponent>
+
+	<VariableStorageComponent
 		name="memory"
 		value_string="data/entities/projectiles/enlightened_laser_darkbeam.xml"
 		>

@@ -5,6 +5,7 @@ dofile_once("data/scripts/biome_scripts.lua")
 
 RegisterSpawnFunction(0xffffeedd, "init")
 RegisterSpawnFunction(0xffeb0000, "spawn_wandstone")
+RegisterSpawnFunction(0xffe10000, "spawn_test_dummy")
 
 function spawn_small_enemies(x, y)
 end
@@ -48,4 +49,8 @@ end
 
 function spawn_wandstone(x, y)
 	EntityLoad("data/entities/items/pickup/wandstone.xml", x, y)
+end
+
+function spawn_test_dummy(x, y)
+	EntityLoad("mods/purgatory/files/test/test_dummy.xml", x, y)
 end

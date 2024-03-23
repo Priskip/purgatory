@@ -143,16 +143,19 @@
 		blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_oil_$[1-3].xml"
 		blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_oil_$[1-3].xml"
 		>
-		<!-- Mecha Kolmi's damage multipliers will update with the amount of turrets destroyed -->
+		<!-- 
+			Note Priskip 23/3/24: Damage Multipliers no longer get updated directly. 
+			Instead, HitboxComponent's damage_multiplier is updated based on the number of turrets alive 
+		-->
 		<damage_multipliers
-			electricity="0"
+			projectile="0.05"
 			explosion="0"
+			electricity="0.8"
+			slice="0.6"
+			drill="0.5"
 			fire="0"
-			melee="0"
 			overeating="0"
-			projectile="0"
-			slice="0"
-			></damage_multipliers>
+		></damage_multipliers>
 	</DamageModelComponent>
 
 	<GenomeDataComponent
@@ -352,11 +355,6 @@
 	<VariableStorageComponent
 		name="laser_angle"
 		value_float="0"
-		></VariableStorageComponent>
-
-	<VariableStorageComponent
-		name="alive_turrets"
-		value_int="8"
 		></VariableStorageComponent>
 
 	<LuaComponent

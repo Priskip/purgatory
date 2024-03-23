@@ -110,3 +110,39 @@ function SetGunStats(gun_id, gun_stats)
         end
     end
 end
+
+--[[
+    Description:
+    Returns two tables.
+    The first is a list of spell ids on the wand.
+    The second is a list of spell ids that are always casts on the wand.
+
+    Inputs:
+    wand_id = [int] : entity id of the wand you want to get the spells off of.
+
+    Return Types
+    spells =       {"", "", ... , ""} Table of Strings
+    always_casts = {"", "", ... , ""} Table of Strings
+]]
+
+function GetAllSpellsOnWand(wand_id)
+    local spells = {}
+    local always_casts = {}
+    local children = EntityGetAllChildren(wand_id)
+
+    for i, v in ipairs(children) do
+        local item_action_comp = EntityGetFirstComponentIncludingDisabled(v, "ItemActionComponent")
+        local spell_id = ComponentGetValue2(item_action_comp, "action_id")
+
+        local item_comp = EntityGetFirstComponentIncludingDisabled(v, "ItemComponent")
+        local is_always_cast = ComponentGetValue2(item_comp, "permanently_attached")
+
+        if is_always_cast then
+            always_casts[#always_casts + 1] = spell_id
+        else
+            spells[#spells + 1] = spell_id
+        end
+    end
+
+    return spells, always_casts
+end

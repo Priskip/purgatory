@@ -1,0 +1,41 @@
+<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT">
+
+    <DamageModelComponent
+        air_needed="0"
+        blood_material="sand"
+        drop_items_on_death="0"
+        falling_damages="0"
+        fire_damage_amount="0"
+        fire_probability_of_ignition="0"
+        critical_damage_resistance="0"
+        hp="1200"
+        blood_multiplier="0.01"
+        is_on_fire="0"
+        materials_create_messages="0"
+        materials_damage="0"
+        ui_force_report_damage="1"
+        ragdoll_filenames_file=""
+        ragdoll_material=""
+        >
+    </DamageModelComponent>
+
+    <HitboxComponent
+        _enabled="1"
+        damage_multiplier="1.0"
+        aabb_max_x="16"
+        aabb_max_y="16"
+        aabb_min_x="-16"
+        aabb_min_y="-16"
+        >
+    </HitboxComponent>
+
+    <SpriteComponent 
+        image_file="mods/purgatory/files/test/test_dummy_sprite.xml">
+    </SpriteComponent>
+
+    <LuaComponent
+        _enabled="1"
+        script_damage_about_to_be_received="mods/purgatory/files/test/test_dummy_about_to_be_hit.lua"
+    ></LuaComponent>
+
+</Entity>

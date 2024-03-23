@@ -186,7 +186,7 @@
     </Entity>
 
     <SpriteComponent
-        _tags="health_bar_back,ui"
+        _tags="health_bar_back,ui,no_hitbox" 
         _enabled="1"
         alpha="1"
         has_special_scale="1"
@@ -207,7 +207,7 @@
         ></SpriteComponent>
 
     <SpriteComponent
-        _tags="health_bar,ui"
+        _tags="health_bar,ui,no_hitbox" 
         _enabled="1"
         alpha="1"
         has_special_scale="1"
@@ -227,6 +227,9 @@
         z_index="-9000"
         ></SpriteComponent>
 
-    <HealthBarComponent></HealthBarComponent>
+        <HealthBarComponent
+		    gui="0"
+		    in_world="1">
+	    </HealthBarComponent>
 
 </Entity>

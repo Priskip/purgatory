@@ -1,4 +1,5 @@
 dofile_once("data/scripts/lib/utilities.lua")
+dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
 
 --Pit Boss ID and Position
 local entity_id = GetUpdatedEntityID()
@@ -9,10 +10,11 @@ SetRandomSeed(x, y * GameGetFrameNum())
 local players = EntityGetWithTag("player_unit")
 local player = players[1]
 
---Gets VariableStorageComponents "phase", "memory", "max_wands_allowed"
+--Gets VariableStorageComponents "phase", "memory", "max_wands_allowed", "wand_ghost_spawn_cooldown"
 local phase = 0
 local proj = ""
 local max_wands_allowed = 0
+local wand_ghost_spawn_cooldown = nil
 local comps = EntityGetComponent(entity_id, "VariableStorageComponent")
 if (comps ~= nil) then
 	for i, v in ipairs(comps) do
@@ -29,6 +31,8 @@ if (comps ~= nil) then
 			end
 		elseif (n == "max_wands_allowed") then
 			max_wands_allowed = ComponentGetValue2(v, "value_int")
+		elseif (n == "wand_ghost_spawn_cooldown") then
+			wand_ghost_spawn_cooldown = ComponentGetValue2(v, "value_int")
 		end
 	end
 end
@@ -43,7 +47,8 @@ if phase == 1 then
 			local vel_x = math.cos(angle) * 100
 			local vel_y = 0 - math.cos(angle) * 100
 
-			local spells = {"rocket", "rocket_tier_2", "rocket_tier_3", "grenade", "grenade_tier_2", "grenade_tier_3", "rubber_ball"}
+			local spells = { "rocket", "rocket_tier_2", "rocket_tier_3", "grenade", "grenade_tier_2", "grenade_tier_3",
+				"rubber_ball" }
 			local rnd = Random(1, #spells)
 			local path = "data/entities/projectiles/deck/" .. spells[rnd] .. ".xml"
 
@@ -146,22 +151,28 @@ if phase == 2 then
 		end
 	end
 	]]
-
-	
 end
 
 --Phase 3
 if phase == 3 then
 	--Summons duplicate of the player's wand
-	if (#proj > 0 and proj ~= "data/entities/projectiles/deck/heal_bullet.xml" and proj ~= "mods/purgatory/files/entities/animals/boss_pit/wand_of_shielding/shield_shot_large.xml") then
-		local player_id = getPlayerEntity()
-		local player_x, player_y = EntityGetTransform(player_id)
+	local wand_ids = EntityGetInRadiusWithTag(x, y, 1000, "wand_ghost_mimic")
 
-		local wand_ids = EntityGetInRadiusWithTag(player_x, player_y, 1000, "wand_ghost_mimic")
+	if #wand_ids == 0 then
+		--IMMEDIATELY SPAWN a Wandghost with player's wand- ignore cooldown
+		EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 10)
+	end
 
+	if wand_ghost_spawn_cooldown == 0 then
+		--Summon a wand if possible
 		if #wand_ids < max_wands_allowed then
 			--Summon Wandghost with player's wand
-			EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 30)
+			EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 10)
+			variable_storage_set_value(entity_id, "INT", "wand_ghost_spawn_cooldown", 300) --5 seconds
 		end
+	else
+		variable_storage_set_value(entity_id, "INT", "wand_ghost_spawn_cooldown", math.max(wand_ghost_spawn_cooldown - 1, 0))
 	end
+
+	--TODO: This gets weird if the player holds an enmpty wand. I'll fix that later.
 end

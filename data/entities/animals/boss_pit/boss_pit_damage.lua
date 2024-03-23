@@ -206,7 +206,7 @@ function damage_received(damage)
 	if phase == 2 and cur_hp <= max_hp / 4 then
 		--GamePrint("Begin Phase 3")
 
-		--Set VariableStorageComponent "phase" to 2
+		--Set VariableStorageComponent "phase" to 3
 		local components = EntityGetComponent(entity_id, "VariableStorageComponent")
 		if (components ~= nil) then
 			for i, v in ipairs(components) do
@@ -279,6 +279,12 @@ function damage_received(damage)
 					ComponentSetValue2(v, "value_int", 3)
 				end
 			end
+		end
+
+		--Update to have the logic script run every frame.
+		local logic_script = EntityGetFirstComponentIncludingDisabled(entity_id, "LuaComponent", "boss_pit_logic")
+		if logic_script ~= nil then
+			ComponentSetValue2(logic_script, "execute_every_n_frame", 1)
 		end
 	end
 end

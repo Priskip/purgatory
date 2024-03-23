@@ -2,7 +2,9 @@ dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/gun/gun_enums.lua")
 dofile_once("data/scripts/gun/gun_actions.lua")
 dofile_once("mods/purgatory/files/scripts/lib/utilities.lua")
+dofile_once("mods/purgatory/files/scripts/lib/gun_utilities.lua")
 dofile_once("mods/purgatory/files/scripts/lib/gui_utilities.lua")
+dofile_once("data/scripts/gun/procedural/gun_action_utils.lua")
 
 local wandstone_id = GetUpdatedEntityID()
 local player_id = getPlayerEntity()
@@ -175,6 +177,99 @@ for _, container in ipairs(CONTAINERS) do
             end
             --else we do nothing
         end
+    end
+end
+
+
+SIMPLE_BUTTONS = SIMPLE_BUTTONS or
+    {
+        {
+            id = "TEST_BUTTON_1",
+            gui_pos = { x = 20, y = 41 },
+            image = "mods/purgatory/files/ui_gfx/debug/button_1.png",
+            hovered_image = "mods/purgatory/files/ui_gfx/debug/button_2.png",
+            pressed_image = "mods/purgatory/files/ui_gfx/debug/button_3.png",
+            action_highlighted = function(x_pos, y_pos)
+                NoitaGUIText(WANDSTONE_GUI, x_pos, y_pos, "Disable InventoryGuiComponent")
+            end,
+            action_pressed = function(gui_x_pos, gui_y_pos)
+                -- local player = getPlayerEntity()
+				-- local inv_gui_comp = EntityGetFirstComponentIncludingDisabled(player, "InventoryGuiComponent")
+				-- EntitySetComponentIsEnabled(player, inv_gui_comp, false)
+				-- GamePrint("InventoryGuiComponent --> enabled = false")
+            end,
+
+        },
+        {
+            id = "TEST_BUTTON_2",
+            gui_pos = { x = 50, y = 41 },
+            image = "mods/purgatory/files/ui_gfx/debug/button_4.png",
+            hovered_image = "mods/purgatory/files/ui_gfx/debug/button_5.png",
+            pressed_image = "mods/purgatory/files/ui_gfx/debug/button_6.png",
+            action_highlighted = function(x_pos, y_pos)
+                NoitaGUIText(WANDSTONE_GUI, x_pos, y_pos, "Enable InventoryGuiComponent")
+            end,
+            action_pressed = function(x_pos, y_pos)
+                -- local player = getPlayerEntity()
+				-- local inv_gui_comp = EntityGetFirstComponentIncludingDisabled(player, "InventoryGuiComponent")
+				-- EntitySetComponentIsEnabled(player, inv_gui_comp, true)
+				-- GamePrint("InventoryGuiComponent --> enabled = true")
+
+                -- local held_wands = find_all_wands_held(player_id)
+                -- local spells, always_casts = GetAllSpellsOnWand(held_wands[1])
+
+                -- print("Spells")
+                -- for i, v in ipairs(spells) do
+                --     print(tostring(v))
+                -- end
+
+                -- print("always_casts")
+                -- for i, v in ipairs(always_casts) do
+                --     print(tostring(v))
+                -- end
+
+            end,
+
+        }
+    }
+	
+for _, button in ipairs(SIMPLE_BUTTONS) do
+    --Draw Button Images
+    GuiZSetForNextWidget(WANDSTONE_GUI, 0)
+    GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.image, 1, 1, 1, 0)
+
+    --Check if size has been defined
+    if button.button_size == nil then
+        button.button_size = {}
+        local button_size_x, button_size_y = GuiGetImageDimensions(WANDSTONE_GUI, button.image, 1)
+        button.button_size.x = button_size_x
+        button.button_size.y = button_size_y
+    end
+
+    local is_highlighted = cursor_gui_x > button.gui_pos.x and cursor_gui_x < button.gui_pos.x + button.button_size.x
+        and cursor_gui_y > button.gui_pos.y and cursor_gui_y < button.gui_pos.y + button.button_size.y
+
+    --Check if mouse is highlighting
+    if is_highlighted then
+        --Display Highlighted Image
+        GuiZSetForNextWidget(WANDSTONE_GUI, -1)
+        GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.hovered_image, 1, 1, 1, 0)
+
+        --Perform Highlighting Action
+        button.action_highlighted(cursor_gui_x, cursor_gui_y)
+    end
+
+    --If we are hovering, then check to see if the mouse has been left clicked. 
+    --If the mouse button has just been pressed down, then activate the button's function.
+    if is_highlighted and InputIsMouseButtonJustDown(1) then
+        button.action_pressed(cursor_gui_x, cursor_gui_y)
+    end
+
+    --If we are hovering, then check to see if the mouse has been left clicked. 
+    --If the mouse button is being pressed down, then draw button.pressed_image.
+    if is_highlighted and InputIsMouseButtonDown(1) then
+        GuiZSetForNextWidget(WANDSTONE_GUI, -2)
+        GuiImage(WANDSTONE_GUI, NewGUIID(), button.gui_pos.x, button.gui_pos.y, button.pressed_image, 1, 1, 1, 0)
     end
 end
 

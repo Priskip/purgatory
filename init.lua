@@ -8,6 +8,7 @@ dofile_once("mods/purgatory/files/scripts/perks/perk_list_appends.lua")
 dofile_once("mods/purgatory/files/scripts/biomes/biome_helpers.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_spawn_purgatory.lua") --temp
 dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua")            --for debugging
+dofile_once("mods/purgatory/files/scripts/lib/image_utilities.lua")
 
 --Load Mod Settings
 local ascension_level = ModSettingGet("purgatory.ascension_level")
@@ -105,69 +106,25 @@ function OnModPreInit()
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
 
+    --local id, w, h = ModImageMakeEditable("data/wang_tiles/excavationsite.png", 344, 440)
+
+    --Testing directly change the wang tile images with the new mod api functions.
+    -- local id, w, h = ModImageMakeEditable("data/wang_tiles/excavationsite.png", 344, 440)
+    -- -- local water_color = WangColorToImageColor("902F554C")
+    -- -- local midas_color = WangColorToImageColor("efefa101")
+
+    -- for y = 0, h-1 do
+    --     for x = 0, w-1 do
+    --         local color = ModImageGetPixel(id, x, y)
+    --        if color == WangColorToImageColor("FFFFFFFF") then
+    --         ModImageSetPixel( id, x, y, WangColorToImageColor("ffF3CD67"))
+    --        end
+    --     end
+    -- end
+
 end
 
 function OnModInit()
-    -- --Testing the new api functions
-    -- local result = ModImageDoesExist("mods/purgatory/files/ui_gfx/inventory/wandstone/load_wand.png")
-    -- print("result = \"" .. tostring(result) .. "\"")
-
-    -- local w, h = ModImageMakeReadWrite("mods/purgatory/files/ui_gfx/inventory/wandstone/load_wand.png", 0, 24, 24)
-    -- print("w = \"" .. tostring(w) .. "\"")
-    -- print("h = \"" .. tostring(h) .. "\"")
-
-    -- local pixel = ModImageGetPixel(0, 8, 13)
-    -- print("pixel = \"" .. tostring(pixel) .. "\"")
-
-
-    -- ModImageSetPixel( 0, 8, 13, 4278190335) --"FF0000FF"
-
-
-    --[[
-    ModImageMakeReadWrite( filename:string, slot:int, width:int, height:int ) -> w:int,h:int 
-    [
-        Makes an image file available for editing through ModImageGetPixel() and ModImageSetPixel().\n
-        Returns the dimensions of the editable image.\nThe image can be made available in one of eight slots, 
-        so eight images can be simultaneously accessed through ModImageSet/GetPixel. \n
-        If the image file with the name doesn't exist, an in-memory image of the given size will be created, filled with empty pixels (0x0), and added to the virtual filesystem. \n
-        If the memory allocation failed, 0 will be returned as 'w' and 'h'. \n
-        If an image with the given name has been previously created through ModImageMakeReadWrite, that data will be made available in the given slot. \n
-        The game will apply further processing to some images, so the final binary data might end up different. 
-        For example, R and B channels are sometimes swapped, and on some textures the colors will be extended by one pixel outside areas where A>0. \n
-        If game code has already loaded the image (for example this could be the case with some UI textures), the changes will probably not be applied. \n
-        This needs to be called again in each mod init phase, if editing an image during multiple phases (init.lua file scope, OnModPreInit(), OnModPostInit(), OnModPreInit() ). \n
-        The changes done using the ModImage* API will need to be done again on each game restart/new game. 
-        It's possible that some images will be cached over restarts, and changes will not be visible in the game until a full executable restart - 
-        you will have to figure out where that applies. \nAvailable only in init.lua during mod init. Allows access to data files and files from enabled mods. 
-        "mods/mod/data/file.png" and "data/file.png" point to the same file.]
-    
-    ModImageRead( filename:string, slot:int ) -> w:int,h:int 
-    [Makes an image available for reading through ModImageGetPixel(). \n
-    Returns the dimensions of the image. \n
-    The image can be made available in one of eight slots, so eight images can be simultaneously accessed. \n
-    If a previous call to ModImageMakeReadWrite hasn't been successfully made with the given filename, 0 will be returned as 'w' and 'h'. \n
-    The game will apply further processing to some images, so the final binary data might end up different. \n
-    Unlike most Mod* functions, this one is available everywhere.]
-    
-    ModImageGetPixel( slot:int, x:int, y:int ) -> uint 
-    [Returns the color of a pixel in AGBR format (0xAGBR). 'x' and 'y' are zero-based. \n
-    Use ModImageMakeReadWrite and ModImageRead to make the image accessible. \n
-    Unlike most Mod* functions, this one is available everywhere.]
-    
-    ModImageSetPixel( slot:int, x:int, y:int, color:uint ) 
-    [Sets the color of a pixel in AGBR format (0xAGBR). 'x' and 'y' are zero-based. \n
-    Call ModImageMakeReadWrite to set the edited image. 
-    Available only in init.lua during mod init.]
-    
-    ModImageWhoSetContent( filename:string ) -> string 
-    [Returns the id of the last mod that called ModImageMakeReadWrite with 'filename', or "". Unlike most Mod* functions, this one is available everywhere.]
-
-    ModImageDoesExist( filename:string ) -> bool 
-    [Returns true if a file or virtual image exists for the given filename. Unlike most Mod* functions, this one is available everywhere.]
-
-    ]]
-
-
 end
 
 function OnModPostInit()
@@ -242,7 +199,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB"
+                "BOMB",
             }
 
             for i, v in ipairs(spells_to_give_player) do
