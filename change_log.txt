@@ -32,6 +32,8 @@ Upcoming Build
     - Refactored how I did spell and perk injections so I don't have to update lists every time Nolla adds something.
     - Chat wanted something funny out of a chest...
     - Omega Propane was a bit lack-luster for how expensive it was... That's been fixed.
+    - Tiny did a bit of renovating.
+    - TODO: Update loot tables since Nolla changed them
 
     Bug Fixes:
     - Forgot the related_projectiles for giga and omega propane - that's been fixed.

@@ -1,0 +1,17 @@
+<Entity>
+    <StreamingKeepAliveComponent />
+
+    <HitboxComponent
+        aabb_min_x="-200"
+        aabb_min_y="-1"
+        aabb_max_x="200"
+        aabb_max_y="1"
+        >
+    </HitboxComponent>
+
+    <LifetimeComponent 
+        lifetime="10"
+        >
+    </LifetimeComponent>
+
+</Entity>

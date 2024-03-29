@@ -2,6 +2,6 @@
   BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map.lua" 
   DAMAGE_BLOOD_AMOUNT_MIN="5"
   DAMAGE_BLOOD_AMOUNT_MAX="10"
-  RAGDOLL_BLOOD_MULTIPLIER="1" 
+  RAGDOLL_BLOOD_MULTIPLIER="1"
   > 
 </MagicNumbers>
