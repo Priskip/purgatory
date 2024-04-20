@@ -168,10 +168,10 @@ if phase == 3 then
 		if #wand_ids < max_wands_allowed then
 			--Summon Wandghost with player's wand
 			EntityLoad("mods/purgatory/files/entities/animals/boss_pit/wand_ghost_mimic/wand_ghost_mimic.xml", x, y - 10)
-			variable_storage_set_value(entity_id, "INT", "wand_ghost_spawn_cooldown", 300) --5 seconds
+			variableStorageSetValue(entity_id, "INT", "wand_ghost_spawn_cooldown", 300) --5 seconds
 		end
 	else
-		variable_storage_set_value(entity_id, "INT", "wand_ghost_spawn_cooldown", math.max(wand_ghost_spawn_cooldown - 1, 0))
+		variableStorageSetValue(entity_id, "INT", "wand_ghost_spawn_cooldown", math.max(wand_ghost_spawn_cooldown - 1, 0))
 	end
 
 	--TODO: This gets weird if the player holds an enmpty wand. I'll fix that later.

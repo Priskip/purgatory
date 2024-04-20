@@ -17,12 +17,12 @@ function collision_trigger(colliding_entity)
     local holding_powder_stash = (EntityHasTag(player.active_item_id, "powder_stash"))
 
     local inv_full = false
-    if #get_held_items() == 4 then
+    if #getHeldItems() == 4 then
         inv_full = true
     end
 
     --Variable storage for what mode the bottle stand is in (either "place" or "pick_up")
-    storage_ent.mode = variable_storage_get_value(storage_ent.id, "STRING", "mode")
+    storage_ent.mode = variableStorageGetValue(storage_ent.id, "STRING", "mode")
 
     if storage_ent.mode == "place" then
         if holding_potion then
@@ -39,7 +39,7 @@ function collision_trigger(colliding_entity)
         stored_potion.id = EntityGetAllChildren(storage_ent.id)[1] --should only have 1 child ent - if not, this is bad
         stored_potion.inventory_string, stored_potion.amount_filled, stored_potion.barrel_size, stored_potion.potion_or_sack = ReadPotionInventory(stored_potion.id)
         
-        if #get_held_items() < 4 then
+        if #getHeldItems() < 4 then
             local potion_display_name = GetDisplayTextFromMaterialString(stored_potion.inventory_string)
             local percent_filled = string.gsub(string.format("%2.0f", 100 * (stored_potion.amount_filled / stored_potion.barrel_size)), "%s+", "")
             local display_text =

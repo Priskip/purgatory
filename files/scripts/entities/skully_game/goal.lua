@@ -81,7 +81,7 @@ function drop_loot(x, y, level)
             -- healthium potion
             LoadPixelScene("data/biome_impl/wand_altar_vault.png", "data/biome_impl/wand_altar_vault_visual.png", x - 10,
                 y - 35, "", true)
-            spawn_potion_with_mat_type(x, y - 32, "magic_liquid_hp_regeneration", 1000)
+            spawnPotionWithMaterialType(x, y - 32, "magic_liquid_hp_regeneration", 1000)
         elseif num > 70 and num <= 100 then
             --tier 4 no shuf
             EntityLoad("data/entities/items/wand_unshuffle_04.xml", x, y)

@@ -9,9 +9,9 @@ local parent = {}
 parent.id = EntityGetParent(entity.id)
 parent.x, parent.y = EntityGetTransform(parent.id)
 
-local delta_x = variable_storage_get_value(entity.id, "FLOAT", "delta_x")
-local delta_y = variable_storage_get_value(entity.id, "FLOAT", "delta_y")
-local scale = variable_storage_get_value(entity.id, "FLOAT", "scale")
+local delta_x = variableStorageGetValue(entity.id, "FLOAT", "delta_x")
+local delta_y = variableStorageGetValue(entity.id, "FLOAT", "delta_y")
+local scale = variableStorageGetValue(entity.id, "FLOAT", "scale")
 
 --GUI
 local id = 1
@@ -23,22 +23,22 @@ gui = gui or GuiCreate()
 GuiStartFrame(gui)
 
 if GuiButton(gui, new_id(), 40, 40, "-U-") then
-    variable_storage_set_value(entity.id, "FLOAT", "delta_y", delta_y - scale)
+    variableStorageSetValue(entity.id, "FLOAT", "delta_y", delta_y - scale)
     EntitySetTransform( parent.id, parent.x, parent.y - scale)
 end
 
 if GuiButton(gui, new_id(), 30, 50, "-L-") then
-    variable_storage_set_value(entity.id, "FLOAT", "delta_x", delta_x - scale)
+    variableStorageSetValue(entity.id, "FLOAT", "delta_x", delta_x - scale)
     EntitySetTransform( parent.id, parent.x - scale, parent.y)
 end
 
 if GuiButton(gui, new_id(), 50, 50, "-R-") then
-    variable_storage_set_value(entity.id, "FLOAT", "delta_x", delta_x + scale)
+    variableStorageSetValue(entity.id, "FLOAT", "delta_x", delta_x + scale)
     EntitySetTransform( parent.id, parent.x + scale, parent.y)
 end
 
 if GuiButton(gui, new_id(), 40, 60, "-D-") then
-    variable_storage_set_value(entity.id, "FLOAT", "delta_y", delta_y + scale)
+    variableStorageSetValue(entity.id, "FLOAT", "delta_y", delta_y + scale)
     EntitySetTransform( parent.id, parent.x, parent.y + scale)
 end
 
@@ -50,11 +50,11 @@ GuiText(gui, 75, 55, "Delta Y: " .. tostring(delta_y))
 GuiText(gui, 30, 80, "Scale: " .. tostring(scale))
 
 if GuiButton(gui, new_id(), 30, 90, "-0.1-") then
-    variable_storage_set_value(entity.id, "FLOAT", "scale", 0.1)
+    variableStorageSetValue(entity.id, "FLOAT", "scale", 0.1)
 end
 if GuiButton(gui, new_id(), 30, 100, "-1-") then
-    variable_storage_set_value(entity.id, "FLOAT", "scale", 1)
+    variableStorageSetValue(entity.id, "FLOAT", "scale", 1)
 end
 if GuiButton(gui, new_id(), 30, 110, "-10-") then
-    variable_storage_set_value(entity.id, "FLOAT", "scale", 10)
+    variableStorageSetValue(entity.id, "FLOAT", "scale", 10)
 end

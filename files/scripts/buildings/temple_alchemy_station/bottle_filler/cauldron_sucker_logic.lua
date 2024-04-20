@@ -9,7 +9,7 @@ cauldron_sucker.material_sucker_component = EntityGetFirstComponentIncludingDisa
 
 --Look to see if there is a placed potion on the bottle stand.
 local bottle_stand = {}
-bottle_stand.id = get_entity_in_radius_with_name(cauldron_sucker.x, cauldron_sucker.y, 50, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
+bottle_stand.id = getEntityInRadiusWithName(cauldron_sucker.x, cauldron_sucker.y, 50, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
 local placed_bottle = {}
 placed_bottle.id = EntityGetAllChildren(bottle_stand.id)
 if placed_bottle.id ~= nil then
@@ -51,9 +51,9 @@ end
 cauldron_sucker.materials = {}
 cauldron_sucker.amounts = {}
 if cauldron_sucker.inventory_string ~= "" then
-    local material_inventory = split_string_on_char_into_table(cauldron_sucker.inventory_string, "-")
+    local material_inventory = splitStringOnCharIntoTable(cauldron_sucker.inventory_string, "-")
     for i, v in ipairs(material_inventory) do
-        local mat_and_amt = split_string_on_char_into_table(v, ",")
+        local mat_and_amt = splitStringOnCharIntoTable(v, ",")
         cauldron_sucker.materials[i] = mat_and_amt[1]
         cauldron_sucker.amounts[i] = mat_and_amt[2]
     end
@@ -61,19 +61,19 @@ end
 
 --Get queue
 cauldron_sucker.queue = {}
-cauldron_sucker.queue.string = variable_storage_get_value(cauldron_sucker.id, "STRING", "queue")
+cauldron_sucker.queue.string = variableStorageGetValue(cauldron_sucker.id, "STRING", "queue")
 cauldron_sucker.queue.materials = {}
 if cauldron_sucker.queue.string ~= "" then
-    local material_inventory = split_string_on_char_into_table(cauldron_sucker.queue.string, "-")
+    local material_inventory = splitStringOnCharIntoTable(cauldron_sucker.queue.string, "-")
     for i, v in ipairs(material_inventory) do
-        local mat_and_amt = split_string_on_char_into_table(v, ",")
+        local mat_and_amt = splitStringOnCharIntoTable(v, ",")
         cauldron_sucker.queue.materials[i] = mat_and_amt[1]
     end
 end
 
 --Check materials of sucker and materials of queue and add any new materials in sucker to the queue
 for i, mat in ipairs(cauldron_sucker.materials) do
-    local is_in_queue = is_in_table(cauldron_sucker.queue.materials, mat)
+    local is_in_queue = isInTable(cauldron_sucker.queue.materials, mat)
     if not is_in_queue then
         --Add to the queue
         cauldron_sucker.queue.materials[#cauldron_sucker.queue.materials + 1] = mat
@@ -89,7 +89,7 @@ for i, mat in ipairs(cauldron_sucker.queue.materials) do
         new_queue_string = new_queue_string .. ","
     end
 end
-variable_storage_set_value(cauldron_sucker.id, "STRING", "queue", new_queue_string)
+variableStorageSetValue(cauldron_sucker.id, "STRING", "queue", new_queue_string)
 
 --Activate drain pushing logic if queue is not empty
 if cauldron_sucker.queue.string ~= "" then

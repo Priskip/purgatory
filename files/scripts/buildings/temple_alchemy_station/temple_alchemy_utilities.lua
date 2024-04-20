@@ -138,10 +138,10 @@ function CreateStoredPotionEntity(material_inventory_string, barrel_size, potion
         --Add materials to potion
         if material_inventory_string ~= "" then
             --Potion is not empty, must add materials to it
-            local material_inventory = split_string_on_char_into_table(material_inventory_string, "-")
+            local material_inventory = splitStringOnCharIntoTable(material_inventory_string, "-")
 
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 AddMaterialInventoryMaterial(new_potion_ent, mat_and_amt[1], mat_and_amt[2])
             end
         end
@@ -194,10 +194,10 @@ function CreateStoredPotionEntityFromItemID(item_id, x, y)
         --Add materials to potion
         if inventory_string ~= "" then
             --Potion is not empty, must add materials to it
-            local material_inventory = split_string_on_char_into_table(inventory_string, "-")
+            local material_inventory = splitStringOnCharIntoTable(inventory_string, "-")
 
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 AddMaterialInventoryMaterial(new_potion_ent, mat_and_amt[1], mat_and_amt[2])
             end
         end
@@ -265,10 +265,10 @@ function CreatePickupPotionEntity(material_inventory_string, barrel_size, potion
         --Add materials to potion
         if material_inventory_string ~= "" then
             --Potion is not empty, must add materials to it
-            local material_inventory = split_string_on_char_into_table(material_inventory_string, "-")
+            local material_inventory = splitStringOnCharIntoTable(material_inventory_string, "-")
 
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 AddMaterialInventoryMaterial(new_potion_ent, mat_and_amt[1], mat_and_amt[2])
             end
         end
@@ -333,16 +333,16 @@ function GetDisplayTextFromMaterialString(material_inventory_string)
         display_string = ""
 
         --Potion is not empty, must add materials to it
-        local material_inventory = split_string_on_char_into_table(material_inventory_string, "-")
+        local material_inventory = splitStringOnCharIntoTable(material_inventory_string, "-")
 
         for i, v in ipairs(material_inventory) do
             if i > 1 then
                 display_string = display_string .. "+"
             end
 
-            local mat_and_amt = split_string_on_char_into_table(v, ",")
+            local mat_and_amt = splitStringOnCharIntoTable(v, ",")
 
-            display_string = display_string .. first_letter_to_upper(GameTextGetTranslatedOrNot(CellFactory_GetUIName(CellFactory_GetType(mat_and_amt[1]))))
+            display_string = display_string .. firstLetterToUpper(GameTextGetTranslatedOrNot(CellFactory_GetUIName(CellFactory_GetType(mat_and_amt[1]))))
         end
     end
 
@@ -376,7 +376,7 @@ function GetGFXGlowsOfMaterials(material_list)
     local count = 0
 
     for element in xml:each_child() do
-        local index = find_element_in_table(material_list, element.attr.name)
+        local index = findElementInTable(material_list, element.attr.name)
 
         if index ~= nil then
             gfx_glow_list[index] = element.attr.gfx_glow or 0

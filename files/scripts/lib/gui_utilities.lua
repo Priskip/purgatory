@@ -28,10 +28,10 @@ end
 --Function to draw a rectangle outline like that of the vanilla inventory gui.
 function DrawWandBox(GUI, x1, y1, x2, y2, sprite_path)
     --Round the inputs to the nearest int
-    round_to_int(x1)
-    round_to_int(y1)
-    round_to_int(x2)
-    round_to_int(y2)
+    roundToInt(x1)
+    roundToInt(y1)
+    roundToInt(x2)
+    roundToInt(y2)
 
     --Check if x2 > x1 and y2 > y1.
     if x1 > x2 then

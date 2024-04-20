@@ -15,8 +15,8 @@ local v_res_y = MagicNumbersGetValue("VIRTUAL_RESOLUTION_Y")
 local v_res_offset_x = MagicNumbersGetValue("VIRTUAL_RESOLUTION_OFFSET_X")
 local v_res_offset_y = MagicNumbersGetValue("VIRTUAL_RESOLUTION_OFFSET_Y")
 
-local cursor_gui_x = round_to_int(screen_size_x * (((cursor_world_x - cam_x) + (v_res_x / 2 - v_res_offset_x)) / v_res_x))
-local cursor_gui_y = round_to_int(screen_size_y * (((cursor_world_y - cam_y) + (v_res_y / 2 + v_res_offset_y)) / v_res_y))
+local cursor_gui_x = roundToInt(screen_size_x * (((cursor_world_x - cam_x) + (v_res_x / 2 - v_res_offset_x)) / v_res_x))
+local cursor_gui_y = roundToInt(screen_size_y * (((cursor_world_y - cam_y) + (v_res_y / 2 + v_res_offset_y)) / v_res_y))
 
 GuiText(GUI, cursor_gui_x, cursor_gui_y,
     "World Pos: " .. string.format("%.2f", cursor_world_x) .. " " .. string.format("%.2f", cursor_world_y))

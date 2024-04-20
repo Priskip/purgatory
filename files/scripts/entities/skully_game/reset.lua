@@ -37,7 +37,7 @@ function physics_body_modified(is_destroyed)
 
         for i, name in ipairs(ents_to_find_and_reset) do
             --Is the entity to find alive?
-            local index = find_element_in_table(all_entities_in_range_names, name)
+            local index = findElementInTable(all_entities_in_range_names, name)
             local ent_to_kill = all_entities_in_range[index]
             --If we find the ent, kill it
             if index ~= nil then

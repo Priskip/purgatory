@@ -5,7 +5,7 @@ local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform(entity_id)
 
 local laser_comps = EntityGetComponent(entity_id, "LaserEmitterComponent")
-local state = variable_storage_get_value(entity_id, "INT", "state")
+local state = variableStorageGetValue(entity_id, "INT", "state")
 state = state + 1
 
 if state == 1 then
@@ -121,4 +121,4 @@ if state == 3 then
 end
 
 --Write new state value to storage
-variable_storage_set_value(entity_id, "INT", "state", state)
+variableStorageSetValue(entity_id, "INT", "state", state)

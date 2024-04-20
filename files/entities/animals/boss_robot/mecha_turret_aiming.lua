@@ -5,7 +5,7 @@ local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform(entity_id)
 
 local laser_comps = EntityGetComponent(entity_id, "LaserEmitterComponent")
-local state = variable_storage_get_value(entity_id, "INT", "state")
+local state = variableStorageGetValue(entity_id, "INT", "state")
 
 if state == 1 then
     if (laser_comps ~= nil) then

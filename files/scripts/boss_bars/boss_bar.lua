@@ -29,12 +29,12 @@ if player_in_radius then
     local max_hp = 25 * ComponentGetValue2(damage_model_comp, "max_hp")
     local current_hp = 25 * ComponentGetValue2(damage_model_comp, "hp") --Note Priskip: multiply hp numbers by 25 here because Nolla stores hp numbers at 1/25 size internally for some reason
 
-    local boss_bar_position = variable_storage_get_value(entity_id, "STRING", "boss_bar_position")
-    local boss_name = variable_storage_get_value(entity_id, "STRING", "boss_name")
-    bar_outline.image = variable_storage_get_value(entity_id, "STRING", "boss_bar_outline")
-    bar_filling.image = variable_storage_get_value(entity_id, "STRING", "boss_bar_fill")
+    local boss_bar_position = variableStorageGetValue(entity_id, "STRING", "boss_bar_position")
+    local boss_name = variableStorageGetValue(entity_id, "STRING", "boss_name")
+    bar_outline.image = variableStorageGetValue(entity_id, "STRING", "boss_bar_outline")
+    bar_filling.image = variableStorageGetValue(entity_id, "STRING", "boss_bar_fill")
 
-    local boss_name_vertical_offset = variable_storage_get_value(entity_id, "FLOAT", "boss_name_vertical_offset")
+    local boss_name_vertical_offset = variableStorageGetValue(entity_id, "FLOAT", "boss_name_vertical_offset")
 
     --Screen Size Dimensions
     local screen_size = {}

@@ -1,0 +1,29 @@
+TO DO:
+[ ] Make needed functions in gun_utilities.lua
+[X] Clean up utilities.lua and make functions match my modern naming conventions
+[ ] Clean up gui_utilities.lua
+[ ] Create definitions for my custom gui objects
+[ ] Need to see if Nolla moved anything in recent patches
+[ ] Make injection logic for pixel scene list instead overwriting the file
+[ ] Make injection logic for chest loot tables instead of overwriting the file
+[ ] Check item and potion spawn lists to see if Nolla has changed those
+[ ] Diminution Mist?
+
+
+TBH maybe it's worth looking into rewriting the core systems of Purgatory... 
+- Injections
+    - Biomes
+    - Pixel Scenes
+    - Gun Actions
+    - Perks
+    - Biome Modifiers
+    - Enemies
+    - Tree Achievements
+    - Materials
+
+- Loot Tables
+    - Potion
+    - Powder Sack
+    - Item Spawn
+    - Chest
+    - Great Chest

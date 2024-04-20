@@ -10,7 +10,7 @@ local is_holding_wands = true
 SetRandomSeed(x, y + GameGetFrameNum())
 
 --Get Wand Player is Holding
-local player_wand = get_held_wand_id()
+local player_wand = getHeldWandID()
 
 if player_wand == -1 then
     --GamePrint("Player is not holding a wand")

@@ -12,7 +12,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
     player.x, player.y = EntityGetTransform(player.id)
 
     --Variable storage for what mode the bottle stand is in (either "place" or "pick_up")
-    storage_ent.mode = variable_storage_get_value(storage_ent.id, "STRING", "mode")
+    storage_ent.mode = variableStorageGetValue(storage_ent.id, "STRING", "mode")
 
     if storage_ent.mode == "place" then
         --Find the item the player is holding
@@ -39,7 +39,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             EntityKill(player.active_item_id)
 
             --Update mode to "pick_up"
-            variable_storage_set_value(storage_ent.id, "STRING", "mode", "pick_up")
+            variableStorageSetValue(storage_ent.id, "STRING", "mode", "pick_up")
 
             --Set Ent Name
             local potion_display_name = GetDisplayTextFromMaterialString(stored_potion.inventory_string)
@@ -51,7 +51,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             ComponentSetValue2(storage_ent.ui_comp, "name", display_text)
 
             --Write potion contents to global storage
-            storage_ent.slot_number = variable_storage_get_value(storage_ent.id, "INT", "slot_number")
+            storage_ent.slot_number = variableStorageGetValue(storage_ent.id, "INT", "slot_number")
             GlobalsSetValue(
                 "TEMPLE_ALCHEMY_STORAGE_SLOT_" .. tostring(storage_ent.slot_number),
                 stored_potion.potion_or_sack .. "," .. stored_potion.barrel_size .. ";" .. stored_potion.inventory_string
@@ -62,7 +62,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
     end
 
     if storage_ent.mode == "pick_up" then
-        if #get_held_items() < 4 then
+        if #getHeldItems() < 4 then
             --Read contents
             local stored_potion = {}
             stored_potion.id = EntityGetAllChildren(storage_ent.id)[1] --should only have 1 child ent - if not, this is bad
@@ -77,14 +77,14 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             --Change Bottle Stand mode
             storage_ent.interact_comp = EntityGetFirstComponentIncludingDisabled(storage_ent.id, "InteractableComponent")
             ComponentSetValue2(storage_ent.interact_comp, "ui_text", "$bottle_filler_interact_placing")
-            variable_storage_set_value(storage_ent.id, "STRING", "mode", "place")
+            variableStorageSetValue(storage_ent.id, "STRING", "mode", "place")
 
             --Update Name
             storage_ent.ui_comp = EntityGetFirstComponentIncludingDisabled(storage_ent.id, "UIInfoComponent")
             ComponentSetValue2(storage_ent.ui_comp, "name", "$storage_empty")
 
             --Clear potion contents in global storage
-            storage_ent.slot_number = variable_storage_get_value(storage_ent.id, "INT", "slot_number")
+            storage_ent.slot_number = variableStorageGetValue(storage_ent.id, "INT", "slot_number")
             GlobalsSetValue("TEMPLE_ALCHEMY_STORAGE_SLOT_" .. tostring(storage_ent.slot_number), "empty")
         else
             --GamePrint("Please make an empty spot in your inventory.")

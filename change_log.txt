@@ -1,13 +1,18 @@
 Change Log
 
-Upcoming Build
+Beta Build 20 Apr 2024
+    I'm posting the purgatory developer branch to the main branch now that Nolla has pushed their beta branch to the main branch.
+    This isn't a full update, as I am still working on Mestarien Mestari and the Sauvan Ydin. These are still a work in progress in this patch.
+    Development on the mod has been slow recently due to me getting a full time job.
+    However, I have ordered myself a laptop. This will allow me to more freedom as to when and where I can work on the mod.
+    So hopefully I'll be able to spend some more time devloping.
+    For now, here's what's different from the last main branch update I've done!
+    -Priskip
+
     General:
     - Changed a bunch of stuff behind the scenes for the starting wand generation.
         - Starting wand generation should now be compatable with modded spells from mods other than Purgatory.
         - Lowered maxmimum tier of wand that you can start with to tier 4.
-    - Did some work on the glimmer spells again.
-        - Overwrote the vanilla entity definitions to avoid having to run the glimmer logic twice.
-        - 
     
     - Reverted change to chainsaw's lifetime because Nolla fixed the sound bug! (Thank you Nolla!).
     - Made Kolmi immune to ice at 0 orb (in vanilla he gets it at 3 orb).
@@ -33,7 +38,6 @@ Upcoming Build
     - Chat wanted something funny out of a chest...
     - Omega Propane was a bit lack-luster for how expensive it was... That's been fixed.
     - Tiny did a bit of renovating.
-    - TODO: Update loot tables since Nolla changed them
 
     Bug Fixes:
     - Forgot the related_projectiles for giga and omega propane - that's been fixed.

@@ -7,7 +7,7 @@ filler_gauge.id = GetUpdatedEntityID()
 filler_gauge.x, filler_gauge.y = EntityGetTransform(filler_gauge.id)
 
 local bottle_stand = {}
-bottle_stand.id = get_entity_in_radius_with_name(filler_gauge.x, filler_gauge.y, 50, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
+bottle_stand.id = getEntityInRadiusWithName(filler_gauge.x, filler_gauge.y, 50, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
 
 local placed_bottle = {}
 placed_bottle.id = EntityGetAllChildren(bottle_stand.id)[1] --should only have 1 child ent - if not, this is bad
@@ -29,9 +29,9 @@ if placed_bottle.id ~= nil then
     if placed_bottle.inventory_string ~= "" then
         local materials = {}
         local amounts = {}
-        local material_inventory = split_string_on_char_into_table(placed_bottle.inventory_string, "-")
+        local material_inventory = splitStringOnCharIntoTable(placed_bottle.inventory_string, "-")
         for i, v in ipairs(material_inventory) do
-            local mat_and_amt = split_string_on_char_into_table(v, ",")
+            local mat_and_amt = splitStringOnCharIntoTable(v, ",")
             materials[i] = mat_and_amt[1]
             amounts[i] = mat_and_amt[2]
         end

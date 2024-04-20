@@ -66,8 +66,6 @@ A couple of IRL holidays can affect the potion pool in Noita. Add the following 
   ></VariableStorageComponent>
 ----------------------------------------------------------------------------------------------------
 
-
-
 ----------------------------------------------------------------------------------------------------
 Starting Wand Generation
 
@@ -76,4 +74,18 @@ One feature of this custom generation is to build trigger style wands.
 I've coded it in such a way that the starting wand generation should automatically detect and utilize your modded spells.
 However, I have a feeling that if you add a custom parameter to the spell cast state thingy (c.) that my generation may break.
 If your mod bricks my mod, let me know and I'll try to fix things! -Priskip
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Function Naming Conventions
+
+I start all of my functions with a lower case letter and then camel case them for each new word.
+This is to distinguish them from Nolla's api functions that do camel case and start with an upper case letter.
+For example:
+
+One of my functions:
+addSpellToPlayerInventory(spell_id)
+
+One of Nolla's api functions:
+ComponentGetValue2(component_id, variable_name)
 ----------------------------------------------------------------------------------------------------

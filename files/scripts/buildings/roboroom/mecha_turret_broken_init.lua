@@ -10,7 +10,7 @@ function init(entity_id)
     center.id = EntityGetClosestWithTag(turret.x, turret.y, "roboroom_center")
     center.x, center.y = EntityGetTransform(center.id)
 
-    local r, phi = get_r_and_phi(turret.x, turret.y, center.x, center.y)
+    local r, phi = getRandPhi(turret.x, turret.y, center.x, center.y)
     turret.phi = phi + math.pi / 2
 
     EntitySetTransform(turret.id, turret.x, turret.y, turret.phi)

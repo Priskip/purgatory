@@ -6,7 +6,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
     local bottle_stand = {}
     bottle_stand.id = GetUpdatedEntityID()
     bottle_stand.x, bottle_stand.y = EntityGetTransform(bottle_stand.id)
-    bottle_stand.mode = variable_storage_get_value(bottle_stand.id, "STRING", "mode") --Variable storage for what mode the bottle stand is in (either "place" or "pick_up")
+    bottle_stand.mode = variableStorageGetValue(bottle_stand.id, "STRING", "mode") --Variable storage for what mode the bottle stand is in (either "place" or "pick_up")
 
     local player = {}
     player.id = getPlayerEntity()
@@ -42,10 +42,10 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             EntityKill(player.active_item_id)
 
             --Update mode to "pick_up"
-            variable_storage_set_value(bottle_stand.id, "STRING", "mode", "pick_up")
+            variableStorageSetValue(bottle_stand.id, "STRING", "mode", "pick_up")
 
             --Activate Fill Gauge
-            local filler_gauge_id = get_entity_in_radius_with_name(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
+            local filler_gauge_id = getEntityInRadiusWithName(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
             EntityAddComponent2(
                 filler_gauge_id,
                 "LuaComponent",
@@ -59,7 +59,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
 
             --Activate Cauldron Sucker
             local cauldron_sucker = {}
-            cauldron_sucker.id = get_entity_in_radius_with_name(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
+            cauldron_sucker.id = getEntityInRadiusWithName(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
             cauldron_sucker.lua_components = EntityGetComponentIncludingDisabled(cauldron_sucker.id, "LuaComponent")
 
             if cauldron_sucker.lua_components ~= nil then
@@ -82,7 +82,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
         --Create new potion/sack and force player to pick it up
         --Kill potion/sack on the bottle stand
 
-        if #get_held_items() < 4 then
+        if #getHeldItems() < 4 then
             --Read contents
             local placed_bottle = {}
             placed_bottle.id = EntityGetAllChildren(bottle_stand.id)[1] --should only have 1 child ent - if not, this is bad
@@ -95,11 +95,11 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
             EntityKill(placed_bottle.id)
 
             --Update mode to "place"
-            variable_storage_set_value(bottle_stand.id, "STRING", "mode", "place")
+            variableStorageSetValue(bottle_stand.id, "STRING", "mode", "place")
 
             --Clear Particle Emitters from fill gauge
             local filler_gauge = {}
-            filler_gauge.id = get_entity_in_radius_with_name(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
+            filler_gauge.id = getEntityInRadiusWithName(bottle_stand.x, bottle_stand.y, 50, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
             filler_gauge.particle_emitter_comps = EntityGetComponent(filler_gauge.id, "ParticleEmitterComponent")
 
             if filler_gauge.particle_emitter_comps ~= nil then

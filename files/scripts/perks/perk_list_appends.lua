@@ -215,8 +215,8 @@ modify_existing_perk(
 
 						if wand_name == "$item_wand_good_1" then
 							--If wand is Wand of Swiftness
-							cast_delay = round_to_int(cast_delay * 0.5 - 45)
-							reload_time = round_to_int(reload_time * 0.5 - 45)
+							cast_delay = roundToInt(cast_delay * 0.5 - 45)
+							reload_time = roundToInt(reload_time * 0.5 - 45)
 
 							--Calculate new mana charge speed
 							mana_charge_speed = mana_charge_speed +
@@ -232,8 +232,8 @@ modify_existing_perk(
 								reload_time = 60 + Random(-5, 5) --Makes huge recharge time wands dramatically lower
 							end
 
-							cast_delay = round_to_int(cast_delay * 0.7 - 6.4)
-							reload_time = round_to_int(reload_time * 0.7 - 6.4)
+							cast_delay = roundToInt(cast_delay * 0.7 - 6.4)
+							reload_time = roundToInt(reload_time * 0.7 - 6.4)
 
 							--Calculate new mana charge speed
 							mana_charge_speed = mana_charge_speed +
@@ -276,7 +276,7 @@ modify_existing_perk(
 				local delta_deck_cap = old_deck_capacity - deck_capacity2
 
 				--NOTE PRISKIP: https://www.desmos.com/calculator/wfjvqa6mcy For visualizing this new mana function
-				local mana_to_add = round_to_int(900 *
+				local mana_to_add = roundToInt(900 *
 					((math.exp(0.8 * delta_deck_cap)) / (math.exp(0.8 * delta_deck_cap) + 100)) + 100)
 
 				mana_max = mana_max + mana_to_add + Random(-50, 50)

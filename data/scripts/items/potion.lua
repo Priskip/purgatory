@@ -290,8 +290,8 @@ function init(entity_id)
 		local materials = {}
 		local amounts = {}
 
-		for i, v in ipairs(split_string_on_char_into_table(material_string.string, "-")) do
-			local mat_and_amounts = split_string_on_char_into_table(v, ",")
+		for i, v in ipairs(splitStringOnCharIntoTable(material_string.string, "-")) do
+			local mat_and_amounts = splitStringOnCharIntoTable(v, ",")
 			materials[i] = mat_and_amounts[1]
 			amounts[i] = mat_and_amounts[2]
 		end

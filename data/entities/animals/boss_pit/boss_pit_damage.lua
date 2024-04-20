@@ -102,8 +102,8 @@ function damage_received(damage)
 
 		--Set his current position in var storage and lock him in place for a while
 		local ent_x, ent_y = EntityGetTransform(entity_id)
-		variable_storage_set_value(entity_id, "FLOAT", "rest_position_x", ent_x)
-		variable_storage_set_value(entity_id, "FLOAT", "rest_position_y", ent_y)
+		variableStorageSetValue(entity_id, "FLOAT", "rest_position_x", ent_x)
+		variableStorageSetValue(entity_id, "FLOAT", "rest_position_y", ent_y)
 		EntityAddComponent2(
 			entity_id,
 			"LuaComponent",
@@ -230,8 +230,8 @@ function damage_received(damage)
 
 		--Set his current position in var storage and lock him in place for a while
 		local ent_x, ent_y = EntityGetTransform(entity_id)
-		variable_storage_set_value(entity_id, "FLOAT", "rest_position_x", ent_x)
-		variable_storage_set_value(entity_id, "FLOAT", "rest_position_y", ent_y)
+		variableStorageSetValue(entity_id, "FLOAT", "rest_position_x", ent_x)
+		variableStorageSetValue(entity_id, "FLOAT", "rest_position_y", ent_y)
 		EntityAddComponent2(
 			entity_id,
 			"LuaComponent",

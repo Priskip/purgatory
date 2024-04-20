@@ -9,11 +9,11 @@ turret.x, turret.y = EntityGetTransform(turret.id)
 center.id = EntityGetClosestWithTag(turret.x, turret.y, "roboroom_center")
 center.x, center.y = EntityGetTransform(center.id)
 
-local r, phi = get_r_and_phi(turret.x, turret.y, center.x, center.y)
+local r, phi = getRandPhi(turret.x, turret.y, center.x, center.y)
 turret.phi = phi + math.pi / 2
 
 EntitySetTransform(turret.id, turret.x, turret.y, turret.phi)
-EntityApplyPolarTransform(turret.id, 9.5, phi)
+entityApplyPolarTransform(turret.id, 9.5, phi)
 
 --HIT Boxes
 local aabb_min_x, aabb_max_x, aabb_min_y, aabb_max_y = 0, 0, 0, 0
@@ -82,6 +82,6 @@ local children = EntityGetAllChildren(turret.id)
 for i, child in ipairs(children) do
     if EntityHasTag(child, "mecha_turret_laser_spot") then
         EntitySetTransform(child, turret.x, turret.y)
-        EntityApplyPolarTransform(child, 9.5 + 7, phi)
+        entityApplyPolarTransform(child, 9.5 + 7, phi)
     end
 end

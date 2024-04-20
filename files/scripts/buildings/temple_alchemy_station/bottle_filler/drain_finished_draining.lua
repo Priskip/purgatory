@@ -6,13 +6,13 @@ dofile_once("mods/purgatory/files/scripts/buildings/temple_alchemy_station/templ
 local drain = {}
 drain.id = GetUpdatedEntityID()
 drain.x, drain.y = EntityGetTransform(drain.id)
-drain.material = variable_storage_get_value(drain.id, "STRING", "material_and_amount")
-drain.amount = variable_storage_get_value(drain.id, "INT", "material_and_amount")
-drain.mode = variable_storage_get_value(drain.id, "INT", "material_type")
+drain.material = variableStorageGetValue(drain.id, "STRING", "material_and_amount")
+drain.amount = variableStorageGetValue(drain.id, "INT", "material_and_amount")
+drain.mode = variableStorageGetValue(drain.id, "INT", "material_type")
 
 --Look to see if there is a placed potion on the bottle stand.
 local bottle_stand = {}
-bottle_stand.id = get_entity_in_radius_with_name(drain.x, drain.y, 500, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 bottle stand in area. If not, there's problems
+bottle_stand.id = getEntityInRadiusWithName(drain.x, drain.y, 500, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 bottle stand in area. If not, there's problems
 local placed_bottle = {}
 placed_bottle.id = EntityGetAllChildren(bottle_stand.id)
 if placed_bottle.id ~= nil then
@@ -28,7 +28,7 @@ if placed_bottle.id ~= nil then
     if placed_bottle.room_available > 0 then
         --Look to see if the Cauldron Sucker has the material needed in its inventory
         local cauldron_sucker = {}
-        cauldron_sucker.id = get_entity_in_radius_with_name(drain.x, drain.y, 500, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1]
+        cauldron_sucker.id = getEntityInRadiusWithName(drain.x, drain.y, 500, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1]
         cauldron_sucker.amount_of_requested_material = GetAmountOfMaterialInInventory(cauldron_sucker.id, drain.material)
 
         if cauldron_sucker.amount_of_requested_material >= drain.amount then
@@ -51,7 +51,7 @@ if placed_bottle.id ~= nil then
 end
 
 --Update filler gauge
-local filler_gauge_id = get_entity_in_radius_with_name(drain.x, drain.y, 500, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
+local filler_gauge_id = getEntityInRadiusWithName(drain.x, drain.y, 500, "temple_alchemy_fill_gauge", "temple_alchemy_station")[1] --Should only ever be 1 filler gauge in area. If not, there's problems
 
 EntityAddComponent2(
     filler_gauge_id,

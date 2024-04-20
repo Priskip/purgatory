@@ -6,7 +6,7 @@ boss.id = GetUpdatedEntityID()
 boss.x, boss.y = EntityGetTransform(boss.id)
 
 --Get Variables
-local state = variable_storage_get_value(boss.id, "INT", "state")
+local state = variableStorageGetValue(boss.id, "INT", "state")
 local lcomps = EntityGetComponent(boss.id, "LaserEmitterComponent")
 local dead_turrets = EntityGetInRadiusWithTag(boss.x, boss.y, 1000, "roboroom_mecha_turret_dead")
 local damage_model_comp = EntityGetFirstComponentIncludingDisabled(boss.id, "DamageModelComponent")
@@ -120,7 +120,7 @@ if state == 13 then
 end
 
 --Write new state value to storage
-variable_storage_set_value(boss.id, "INT", "state", state)
+variableStorageSetValue(boss.id, "INT", "state", state)
 
 --[[
 Vanilla Behaviour

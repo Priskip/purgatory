@@ -3,7 +3,6 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
 --[[
-    Description:
     Returns a table of a wand's stats.
     Only returns the characteristics of a wand like cast delay and mana regeneration.
     Does not return any information regarding spells on the wand.
@@ -12,7 +11,7 @@ dofile_once("data/scripts/lib/utilities.lua")
     gun_id = [int] : Entity ID of the wand. If the wand is in the player's inventory, use the child id of the wand and NOT the player's id.
 
     Return Types:
-    nil : If this happens, check game's console for a printed error.
+    nil : If this happens, check game's console for any printed error.
     table : Following table is returned if there are no errors.
     {
         shuffle =           [bool], --True = will be shuffle, false = no shuffle
@@ -27,7 +26,7 @@ dofile_once("data/scripts/lib/utilities.lua")
         speed =             [num] --Speed multiplier. This is a hidden stat on all wands. Normally it's 1 +/- 0.13. However, there can be some extreme outliers from 0.58 to 8.75.
     }
 ]]
-function GetGunStats(gun_id)
+function getGunStats(gun_id)
     local ability_comp = EntityGetFirstComponentIncludingDisabled(gun_id, "AbilityComponent")
     local stats = {}
 
@@ -49,7 +48,6 @@ function GetGunStats(gun_id)
 end
 
 --[[
-    Description:
     Sets a wand's stats to that given to it in a table.
     Only sets the characteristics of a wand like cast delay and mana regeneration.
     Does not set any spells on the wand.
@@ -74,7 +72,7 @@ end
     Return Types:
     none
 ]]
-function SetGunStats(gun_id, gun_stats)
+function setGunStats(gun_id, gun_stats)
     local ability_comp = EntityGetFirstComponentIncludingDisabled(gun_id, "AbilityComponent")
 
     if ability_comp ~= nil then
@@ -112,7 +110,6 @@ function SetGunStats(gun_id, gun_stats)
 end
 
 --[[
-    Description:
     Returns two tables.
     The first is a list of spell ids on the wand.
     The second is a list of spell ids that are always casts on the wand.
@@ -124,8 +121,7 @@ end
     spells =       {"", "", ... , ""} Table of Strings
     always_casts = {"", "", ... , ""} Table of Strings
 ]]
-
-function GetAllSpellsOnWand(wand_id)
+function getAllSpellsOnWand(wand_id)
     local spells = {}
     local always_casts = {}
     local children = EntityGetAllChildren(wand_id)
@@ -146,3 +142,27 @@ function GetAllSpellsOnWand(wand_id)
 
     return spells, always_casts
 end
+
+--[[
+    Gets the spell id (string) and entity id [int] of the action item in a wand's slot.
+    Returns nil if there is no spell in this slot.
+]]
+function getSpell(wand_id, spell_slot)
+end
+
+--[[
+    Functions that are still needed.
+    getSpell(wand_id, spell_slot)
+    getAlwaysCast(wand_id, always_cast_slot)
+    setSpell(wand_id, spell_slot, spell_id) --Set a spell in a slot - will overwrite an existing spell
+    injectSpell(wand_id, spell_slot, spell_id) --Sets a spell in a slot - will push an existing spell to later slots in the wand if capacity is there.
+    setAlwaysCast(wand_id, always_cast_slot, always_cast_id) 
+    injectAlwaysCast(wand_id, always_cast_slot, always_cast_id)
+    removeSpell(wand_id, spell_slot) --Removes a spell from the wand. Spell card disappears into the ether.
+    removeAlwaysCast(wand_id, spell_slot)
+    dropSpell(wand_id, spell_slot) --Makes a spell card come off the wand and drop as a physical item.
+    dropAlwaysCast(wand_id, always_cast_slot)
+    spellGetCharges(wand_id, spell_slot)
+    spellGetMaxCharges(wand_id, spell_slot)
+    spellSetCharges(wand_id, spell_slot, charges)
+]]

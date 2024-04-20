@@ -236,32 +236,32 @@ function OnMagicNumbersAndWorldSeedInitialized() -- this is the last point where
 end
 
 function OnWorldInitialized() -- This is called once the game world is initialized. Doesn't ensure any world chunks actually exist. Use OnPlayerSpawned to ensure the chunks around player have been loaded or created.
-    set_biome_to_purgatory("data/biome/clouds.xml", 15, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/coalmine.xml", 3, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/coalmine_alt.xml", 3, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/crypt.xml", 15, 0.3, ascension_level)
-    set_biome_to_purgatory("data/biome/desert.xml", 15, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/excavationsite.xml", 2, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/forest.xml", 15, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/fungicave.xml", 7, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/pyramid.xml", 7, 0.4, ascension_level)
-    set_biome_to_purgatory("data/biome/rainforest.xml", 9, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/rainforest_open.xml", 9, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/sandcave.xml", 10, 0.4, ascension_level)
-    set_biome_to_purgatory("data/biome/snowcastle.xml", 3.5, 0.5, ascension_level)
-    set_biome_to_purgatory("mods/purgatory/files/biome/hiisi_forge.xml", 3.5, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/snowcave.xml", 2, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/snowcave_tunnel.xml", 7.5, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/the_end.xml", 50, 0.1, ascension_level)
-    set_biome_to_purgatory("data/biome/the_sky.xml", 50, 0.1, ascension_level)
-    set_biome_to_purgatory("data/biome/vault.xml", 12.5, 0.5, ascension_level)
-    set_biome_to_purgatory("data/biome/vault_frozen.xml", 16, 0.25, ascension_level)
-    set_biome_to_purgatory("data/biome/wandcave.xml", 16, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/clouds.xml", 15, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/coalmine.xml", 3, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/coalmine_alt.xml", 3, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/crypt.xml", 15, 0.3, ascension_level)
+    setBiomeToPurgatory("data/biome/desert.xml", 15, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/excavationsite.xml", 2, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/forest.xml", 15, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/fungicave.xml", 7, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/pyramid.xml", 7, 0.4, ascension_level)
+    setBiomeToPurgatory("data/biome/rainforest.xml", 9, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/rainforest_open.xml", 9, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/sandcave.xml", 10, 0.4, ascension_level)
+    setBiomeToPurgatory("data/biome/snowcastle.xml", 3.5, 0.5, ascension_level)
+    setBiomeToPurgatory("mods/purgatory/files/biome/hiisi_forge.xml", 3.5, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/snowcave.xml", 2, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/snowcave_tunnel.xml", 7.5, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/the_end.xml", 50, 0.1, ascension_level)
+    setBiomeToPurgatory("data/biome/the_sky.xml", 50, 0.1, ascension_level)
+    setBiomeToPurgatory("data/biome/vault.xml", 12.5, 0.5, ascension_level)
+    setBiomeToPurgatory("data/biome/vault_frozen.xml", 16, 0.25, ascension_level)
+    setBiomeToPurgatory("data/biome/wandcave.xml", 16, 0.5, ascension_level)
 
     --tower [TODO: Mess about with this]
     for i = 2, 10, 1 do
         local biome_name = "data/biome/tower/solid_wall_tower_" .. tostring(i) .. ".xml"
-        set_biome_to_purgatory(biome_name, 25, 0.2, ascension_level)
+        setBiomeToPurgatory(biome_name, 25, 0.2, ascension_level)
     end
 end
 

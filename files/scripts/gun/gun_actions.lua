@@ -1030,8 +1030,8 @@ spells_to_add = {
 
 			local endpoint = -1
 			local elsepoint = -1
-			-- local max_mana = get_held_wand_max_mana() --Note Priskip (04/Feb/2024): did the logic for this above so that the game wouldn't spit out errors on mod init.
-			-- local current_mana = get_held_wand_current_mana()
+			-- local max_mana = getHeldWandMaxMana() --Note Priskip (04/Feb/2024): did the logic for this above so that the game wouldn't spit out errors on mod init.
+			-- local current_mana = getHeldWandCurrentMana()
 			local manadiff = current_mana / max_mana
 			local doskip = false
 

@@ -30,10 +30,10 @@ debug_display.id = GetUpdatedEntityID()
 debug_display.x, debug_display.y = EntityGetTransform(debug_display.id)
 
 local cauldron_sucker = {}
-cauldron_sucker.id = get_entity_in_radius_with_name(debug_display.x, debug_display.y, 200, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
+cauldron_sucker.id = getEntityInRadiusWithName(debug_display.x, debug_display.y, 200, "temple_alchemy_cauldron_sucker", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
 
 local bottle_stand = {}
-bottle_stand.id = get_entity_in_radius_with_name(debug_display.x, debug_display.y, 200, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
+bottle_stand.id = getEntityInRadiusWithName(debug_display.x, debug_display.y, 200, "temple_alchemy_bottle_stand", "temple_alchemy_station")[1] --Should only ever be 1 cauldron sucker in area. If not, there's problems
 
 local placed_bottle = {}
 placed_bottle.id = EntityGetAllChildren(bottle_stand.id)
@@ -94,13 +94,13 @@ if not GameIsInventoryOpen() then
         new_y_value() --update a y value to have a blank space
         GuiText(gui, x_val, new_y_value(), "Queue: ")
         cauldron_sucker.queue = {}
-        cauldron_sucker.queue.string = variable_storage_get_value(cauldron_sucker.id, "STRING", "queue")
+        cauldron_sucker.queue.string = variableStorageGetValue(cauldron_sucker.id, "STRING", "queue")
         cauldron_sucker.queue.materials = {}
         if cauldron_sucker.queue.string ~= "" then
             --queue has stuff in it
-            local material_inventory = split_string_on_char_into_table(cauldron_sucker.queue.string, "-")
+            local material_inventory = splitStringOnCharIntoTable(cauldron_sucker.queue.string, "-")
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 cauldron_sucker.queue.materials[i] = mat_and_amt[1]
             end
 
@@ -153,9 +153,9 @@ if not GameIsInventoryOpen() then
         cauldron_sucker.materials = {}
         cauldron_sucker.amounts = {}
         if cauldron_sucker.inventory_string ~= "" then
-            local material_inventory = split_string_on_char_into_table(cauldron_sucker.inventory_string, "-")
+            local material_inventory = splitStringOnCharIntoTable(cauldron_sucker.inventory_string, "-")
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 cauldron_sucker.materials[i] = mat_and_amt[1]
                 cauldron_sucker.amounts[i] = mat_and_amt[2]
             end
@@ -192,9 +192,9 @@ if not GameIsInventoryOpen() then
         placed_bottle.materials = {}
         placed_bottle.amounts = {}
         if placed_bottle.inventory_string ~= "" then
-            local material_inventory = split_string_on_char_into_table(placed_bottle.inventory_string, "-")
+            local material_inventory = splitStringOnCharIntoTable(placed_bottle.inventory_string, "-")
             for i, v in ipairs(material_inventory) do
-                local mat_and_amt = split_string_on_char_into_table(v, ",")
+                local mat_and_amt = splitStringOnCharIntoTable(v, ",")
                 placed_bottle.materials[i] = mat_and_amt[1]
                 placed_bottle.amounts[i] = mat_and_amt[2]
             end

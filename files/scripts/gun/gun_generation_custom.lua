@@ -86,8 +86,8 @@ function generate_gun_stats(level, mana_type, force_unshuffle, x, y)
     gun.reload_time = 50 - Random(0, 20)
 
     --Set Mana Max and Recharge values from within ranges given
-    gun.mana_max = get_random_within_range(gun.mana_max)
-    gun.mana_charge_speed = get_random_within_range(gun.mana_charge_speed)
+    gun.mana_max = getRandomWithinRange(gun.mana_max)
+    gun.mana_charge_speed = getRandomWithinRange(gun.mana_charge_speed)
 
     --Set Capacity from ranges given
     num = Random(1, 10000)

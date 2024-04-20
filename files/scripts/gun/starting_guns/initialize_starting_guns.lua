@@ -41,7 +41,7 @@ function remove_limited_use_triggers(trigger_spells)
     local new_list_of_trigger_spells = {}
 
     for i, spell in ipairs(actions) do
-        if is_in_table(trigger_spells, spell.id) then
+        if isInTable(trigger_spells, spell.id) then
             --spell is a trigger spell, see if it has limited uses
             if spell.max_uses == nil then
                 --spell is an unlimited use spell, add to table
@@ -179,7 +179,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
     SetRandomSeed(x + randomness_offset, y + randomness_offset)
 
     --Generate a deck that is about 2/3 the size of the gun's capacity
-    local deck_size = math.min(round_to_int(2 * gun_capacity / 3), 7)
+    local deck_size = math.min(roundToInt(2 * gun_capacity / 3), 7)
 
     --Get available options for the deck depending on if it's shuffle or not
     if gun_shuffle_deck_when_empty == 1 then
@@ -208,7 +208,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
                         ACTION_TYPE_PROJECTILE, 0)
 
-                    if is_in_table(used_spells.projectiles, spell_to_add) or is_in_table(all_trigger_spells, spell_to_add) then
+                    if isInTable(used_spells.projectiles, spell_to_add) or isInTable(all_trigger_spells, spell_to_add) then
                         --spell is in the list of already used spells or is a trigger spell itself, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -241,7 +241,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                         spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
                             ACTION_TYPE_PROJECTILE, 0)
 
-                        if is_in_table(used_spells.projectiles, spell_to_add) or is_in_table(all_trigger_spells, spell_to_add) then
+                        if isInTable(used_spells.projectiles, spell_to_add) or isInTable(all_trigger_spells, spell_to_add) then
                             --spell is in the list of already used spells or is a trigger spell itself, generate a new one by incrementing randomness_offset
                             randomness_offset = randomness_offset + 1
                             iter_count = iter_count + 1
@@ -276,7 +276,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     spell_to_add = GetRandomActionWithType(x + randomness_offset, y + randomness_offset, gun_tier,
                         ACTION_TYPE_MODIFIER, 0)
 
-                    if is_in_table(used_spells.modifiers, spell_to_add) then
+                    if isInTable(used_spells.modifiers, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -310,7 +310,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     SetRandomSeed(x + randomness_offset, y + randomness_offset)
                     spell_to_add = random_from_array(draw_2_spells)
 
-                    if is_in_table(used_spells.draw_2s, spell_to_add) then
+                    if isInTable(used_spells.draw_2s, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -344,7 +344,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     SetRandomSeed(x + randomness_offset, y + randomness_offset)
                     spell_to_add = random_from_array(draw_3_spells)
 
-                    if is_in_table(used_spells.draw_3s, spell_to_add) then
+                    if isInTable(used_spells.draw_3s, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -378,7 +378,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     SetRandomSeed(x + randomness_offset, y + randomness_offset)
                     spell_to_add = random_from_array(draw_4_spells)
 
-                    if is_in_table(used_spells.draw_4s, spell_to_add) then
+                    if isInTable(used_spells.draw_4s, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -413,7 +413,7 @@ function generate_deck(x, y, randomness_offset, gun_tier, gun_shuffle_deck_when_
                     SetRandomSeed(x + randomness_offset, y + randomness_offset)
                     spell_to_add = random_from_array(trigger_spells)
 
-                    if is_in_table(used_spells.triggers, spell_to_add) then
+                    if isInTable(used_spells.triggers, spell_to_add) then
                         --spell is in the list of already used spells, generate a new one by incrementing randomness_offset
                         randomness_offset = randomness_offset + 1
                         iter_count = iter_count + 1
@@ -520,7 +520,7 @@ function initialize_starting_guns(player_id)
 
         --Cap Capacity
         for i = 1, 4 do
-            guns[i].deck_capacity = round_to_int(guns[i].deck_capacity) --for some reason capacity is not generated as an interger value
+            guns[i].deck_capacity = roundToInt(guns[i].deck_capacity) --for some reason capacity is not generated as an interger value
             guns[i].deck_capacity = math.min(guns[i].deck_capacity, 12)
             guns[i].deck_capacity = math.max(guns[i].deck_capacity, 3)
         end
@@ -532,7 +532,7 @@ function initialize_starting_guns(player_id)
 
         --Get List of all available trigger spells
         local spell_types = get_spell_types() -- ==> {triggers = {}, timers = {}, death_triggers = {}, draw_2s = {}, draw_3s = {}, draw_4s = {}}
-        local all_trigger_spells = concatenate_tables(concatenate_tables(spell_types.triggers, spell_types.timers),
+        local all_trigger_spells = concatenateTables(concatenateTables(spell_types.triggers, spell_types.timers),
             spell_types.death_triggers)
 
         --Remove limited use triggers from list
