@@ -1,5 +1,6 @@
 dofile_once( "data/scripts/lib/coroutines.lua" )
 dofile_once( "data/scripts/lib/utilities.lua" )
+dofile_once( "mods/purgatory/files/scripts/lib/utilities.lua" )
 
 -- Description of overall boss behavior:
 -- Boss waits for player to pick up item.
@@ -46,13 +47,22 @@ function init_boss()
 		orbcount = GameGetOrbCountThisRun()
 		orbcount = orbcount + newgame_n
 
-		--Purgatory Mode
-		--Kolmi HP gets buffed by 11 orbs
-		--His abilities remain the same per orb count
-		local purgatory_orb_count = orbcount + 11
+		--Purgatory: Kolmi HP gets buffed by 11 orbs - His abilities remain the same per orb count
+		local purgatory_orb_count = orbcount + 11 --2,325,566,045,260,890,000,000,000 hp at 75
 
 		ComponentSetValue2(orbcount_comp, "value_int", orbcount) -- store orbcount for savegames
-		
+
+		--Purgatory: Enable custom boss hp bar.
+		local lua_components = EntityGetComponentIncludingDisabled(entity, "LuaComponent")
+		if lua_components ~= nil then
+			for i, comp in ipairs(lua_components) do
+				if ComponentGetValue2(comp, "script_source_file") == "mods/purgatory/files/scripts/boss_bars/boss_bar_kolmi.lua" then
+					EntitySetComponentIsEnabled(entity, comp, true)
+					break
+				end
+			end
+		end
+
 		-- Set boss HP based on orbs
 		local boss_hp = 46.0 + ( 2.0 ^ (purgatory_orb_count + 1.3) ) + (purgatory_orb_count*15.5)
 		local comp = EntityGetFirstComponent( entity, "DamageModelComponent" )
@@ -60,6 +70,20 @@ function init_boss()
 			ComponentSetValue( comp, "max_hp", tostring(boss_hp) )
 			ComponentSetValue( comp, "hp", tostring(boss_hp) )
 		end
+
+		--Purgatory: Set custom HP bar size based on length of health bar.
+		local hp_string = string.format("%.0f", tostring(25 * boss_hp))
+        local str_length = string.len(hp_string)
+		local outline_file = "mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/outline_" .. tostring(str_length) .. ".png"
+        if ModDoesFileExist(outline_file) then
+            variableStorageSetValue(entity, "STRING", "boss_bar_outline", outline_file)
+			GamePrint(outline_file)
+        end
+		local fill_file = "mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/fill_" .. tostring(str_length) .. ".png"
+        if ModDoesFileExist(outline_file) then
+            variableStorageSetValue(entity, "STRING", "boss_bar_fill", fill_file)
+			GamePrint(fill_file)
+        end
 
 		-- no orbs = weaker shield
 		if orbcount == 0 then

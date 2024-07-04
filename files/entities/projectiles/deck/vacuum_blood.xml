@@ -153,12 +153,6 @@
     </AudioLoopComponent>
 
     <!-- Material Inventory and Sucker -->
-    <MaterialInventoryComponent
-        drop_as_item="0"
-        on_death_spill="0"
-        >
-    </MaterialInventoryComponent>
-
     <MaterialSuckerComponent
         num_cells_sucked_per_frame="100"
         randomized_position.min_x="-42"
@@ -171,14 +165,39 @@
         >
     </MaterialSuckerComponent>
 
+	<MaterialInventoryComponent
+		drop_as_item="0"
+		on_death_spill="1"
+		>
+	</MaterialInventoryComponent>
+	
+	<DamageModelComponent 
+		hp="0.5"
+		materials_create_messages="1"
+		ragdoll_material="meat"
+		ragdoll_filenames_file="" 
+		blood_sprite_directional=""
+		blood_sprite_large=""
+		air_needed="0"
+		wait_for_kill_flag_on_death="1"
+		ui_report_damage="0"
+		>
+	</DamageModelComponent>
+
     <!-- Lua Logic -->
     <LuaComponent
-        execute_on_removed="1"
-        execute_every_n_frame="-1"
-        script_source_file="mods/purgatory/files/scripts/projectiles/vacuum_blood.lua"
-        remove_after_executed="0"
-        >
-    </LuaComponent>
+		_tags="vacuum_powder_helper"
+		script_source_file="mods/purgatory/files/scripts/projectiles/vacuum_blood.lua"
+		execute_every_n_frame="280"
+		>
+	</LuaComponent>
+	
+	<LuaComponent
+		script_source_file="data/scripts/projectiles/vacuum_powder_init.lua"
+		execute_every_n_frame="2"
+		remove_after_executed="1"
+		>
+	</LuaComponent>
 
     <!-- For larpa -->
     <VariableStorageComponent

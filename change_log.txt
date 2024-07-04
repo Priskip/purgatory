@@ -1,5 +1,10 @@
 Change Log
 
+Beta Build 04 July 2024
+    - Tweaked Sauvojen's HP art
+    - Custom boss bar for Kolmi (This took a lot of artwork because the bar needs to get bigger with the amount of hp he gets from orbs.)
+    - Blood Vacuum now spills excess blood back into the world.
+
 Beta Build 20 Apr 2024
     I'm posting the purgatory developer branch to the main branch now that Nolla has pushed their beta branch to the main branch.
     This isn't a full update, as I am still working on Mestarien Mestari and the Sauvan Ydin. These are still a work in progress in this patch.

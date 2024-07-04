@@ -28,6 +28,7 @@ if player_in_radius then
     local damage_model_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
     local max_hp = 25 * ComponentGetValue2(damage_model_comp, "max_hp")
     local current_hp = 25 * ComponentGetValue2(damage_model_comp, "hp") --Note Priskip: multiply hp numbers by 25 here because Nolla stores hp numbers at 1/25 size internally for some reason
+    if current_hp < 0 then current_hp = 0 end --Don't display negative numbers
 
     local boss_bar_position = variableStorageGetValue(entity_id, "STRING", "boss_bar_position")
     local boss_name = variableStorageGetValue(entity_id, "STRING", "boss_name")

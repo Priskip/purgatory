@@ -1,10 +1,9 @@
 <Entity>
 
-  <SpriteComponent
-    image_file="mods/purgatory/files/entities/misc/test_sprite.xml"
-    offset_x="0"
-    offset_y="0"
-    >
-  </SpriteComponent>
+  <LuaComponent
+      script_source_file="mods/purgatory/files/scripts/misc/test.lua"
+      execute_every_n_frame="1"
+      _enabled="1"
+  ></LuaComponent>
 
 </Entity>

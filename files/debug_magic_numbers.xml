@@ -1,6 +1,6 @@
 <MagicNumbers
-DESIGN_PLAYER_START_POS_X="-2468"
-DESIGN_PLAYER_START_POS_Y="8500"
+  DESIGN_PLAYER_START_POS_X="3400"
+  DESIGN_PLAYER_START_POS_Y="13000"
   BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
   DAMAGE_BLOOD_AMOUNT_MIN="5"
   DAMAGE_BLOOD_AMOUNT_MAX="10"
@@ -9,8 +9,8 @@ DESIGN_PLAYER_START_POS_Y="8500"
 
 <!--
   <MagicNumbers
-  DESIGN_PLAYER_START_POS_X="742"       -900 for holy mountain
-  DESIGN_PLAYER_START_POS_Y="-670"      1890 for holy mountain
+  DESIGN_PLAYER_START_POS_X="742"       -900 for holy mountain         3400 for kolmi
+  DESIGN_PLAYER_START_POS_Y="-670"      1890 for holy mountain        13000 for kolmi
   BIOME_MAP="mods/purgatory/files/scripts/biomes/biome_map_debug.lua"
   DAMAGE_BLOOD_AMOUNT_MIN="5"
   DAMAGE_BLOOD_AMOUNT_MAX="10"

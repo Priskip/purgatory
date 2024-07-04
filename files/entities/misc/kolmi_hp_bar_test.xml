@@ -1,0 +1,37 @@
+<Entity>
+
+    <LuaComponent
+        script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar_kolmi.lua"
+        execute_every_n_frame="1"
+        _enabled="1"
+    ></LuaComponent>
+
+    <VariableStorageComponent
+        name="boss_bar_outline"
+        value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/outline_6.png"
+    >
+    </VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="boss_bar_fill"
+        value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/fill_6.png"
+    >
+    </VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="boss_bar_position"
+        value_string="CENTER"
+    >
+    </VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="boss_name"
+        value_string="$animal_boss_centipede"
+    >
+    </VariableStorageComponent>
+
+    <DamageModelComponent
+        hp="48.462288826689836"
+    ></DamageModelComponent>
+
+</Entity>

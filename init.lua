@@ -7,7 +7,7 @@ dofile_once("mods/purgatory/files/translations/translations_utils.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_list_appends.lua")
 dofile_once("mods/purgatory/files/scripts/biomes/biome_helpers.lua")
 dofile_once("mods/purgatory/files/scripts/perks/perk_spawn_purgatory.lua") --temp
-dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua")            --for debugging
+dofile_once("mods/purgatory/files/scripts/debug_mode_init.lua") --for debugging
 dofile_once("mods/purgatory/files/scripts/lib/image_utilities.lua")
 
 --Load Mod Settings
@@ -26,17 +26,19 @@ set_content = ModTextFileSetContent
 mod_lua_file_append = ModLuaFileAppend
 
 --Append Files
-ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua")                         --For adding custom trigger types
-ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/purgatory/files/scripts/gun/gun_actions.lua")         --Spells
+ModLuaFileAppend("data/scripts/gun/gun.lua", "mods/purgatory/files/scripts/gun/gun.lua") --For adding custom trigger types
+ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/purgatory/files/scripts/gun/gun_actions.lua") --Spells
 ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/purgatory/files/scripts/perks/perk_list_appends.lua") --Perks
-ModLuaFileAppend("data/scripts/director_helpers.lua", "mods/purgatory/files/director_helpers_appends.lua")       --Nightmare perks and wands to enemies
-ModLuaFileAppend("data/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua",
-    "mods/purgatory/files/sampo_ending_appends.lua")                                                             --Special Sampo Endings for tree chieves
-ModMaterialsFileAdd("mods/purgatory/files/materials/materials_appends.xml")                                      --Adds materials
+ModLuaFileAppend("data/scripts/director_helpers.lua", "mods/purgatory/files/director_helpers_appends.lua") --Nightmare perks and wands to enemies
+ModLuaFileAppend(
+    "data/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua",
+    "mods/purgatory/files/sampo_ending_appends.lua"
+) --Special Sampo Endings for tree chieves
+ModMaterialsFileAdd("mods/purgatory/files/materials/materials_appends.xml") --Adds materials
 if not debug_mode then
-    ModMagicNumbersFileAdd("mods/purgatory/files/magic_numbers.xml")                                             --Sets the biome map
+    ModMagicNumbersFileAdd("mods/purgatory/files/magic_numbers.xml") --Sets the biome map
 else
-    ModMagicNumbersFileAdd("mods/purgatory/files/debug_magic_numbers.xml")                                       --Sets the biome map to debug mode
+    ModMagicNumbersFileAdd("mods/purgatory/files/debug_magic_numbers.xml") --Sets the biome map to debug mode
 end
 
 --Custom Seed Parameters
@@ -48,8 +50,8 @@ end
 
 --Set Custom Seed
 if seed_to_set ~= 0 then
-    local set_seed_xml = '<MagicNumbers WORLD_SEED="' ..
-        tostring(seed_to_set) .. '" _DEBUG_DONT_SAVE_MAGIC_NUMBERS="1"/>'
+    local set_seed_xml =
+        '<MagicNumbers WORLD_SEED="' .. tostring(seed_to_set) .. '" _DEBUG_DONT_SAVE_MAGIC_NUMBERS="1"/>'
     ModTextFileSetContent("mods/purgatory/files/set_seed.xml", set_seed_xml)
     ModMagicNumbersFileAdd("mods/purgatory/files/set_seed.xml")
 end
@@ -61,8 +63,10 @@ enemylist.UpdateEnemyList()
 function OnModPreInit()
     --Change Biomes Data
     AddBiomes("mods/purgatory/files/biome/biomes_to_add.xml")
-    ModTextFileSetContent("data/biome/_pixel_scenes.xml",
-        ModTextFileGetContent("mods/purgatory/files/biome/_pixel_scenes.xml")) --Overwrites the pixel scenes with purgatory's pixel scenes
+    ModTextFileSetContent(
+        "data/biome/_pixel_scenes.xml",
+        ModTextFileGetContent("mods/purgatory/files/biome/_pixel_scenes.xml")
+    ) --Overwrites the pixel scenes with purgatory's pixel scenes
     --TO DO: Since I overhauled the biomes to injection instead of outright replacement, I should do the same with the pixel scenes
 
     --Remove Edit Wands Everywhere if playing the no wand editting challenge run.
@@ -101,7 +105,7 @@ function OnModPreInit()
 
         if element.attr.name == "blood" then
             element.attr.tags = "[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common],[food],[vampire_food]"
-            --adding a tag to blood for the vampirism field
+        --adding a tag to blood for the vampirism field
         end
     end
     ModTextFileSetContent("data/materials.xml", tostring(xml))
@@ -121,7 +125,6 @@ function OnModPreInit()
     --        end
     --     end
     -- end
-
 end
 
 function OnModInit()
@@ -186,8 +189,8 @@ function OnPlayerSpawned(player_entity)
         if start_with_edit then
             addPerkToPlayer("EDIT_WANDS_EVERYWHERE")
         else
-            GameAddFlagRun("purgatory_no_edit_run")
             --remove_perk("EDIT_WANDS_EVERYWHERE") --TO DO: Well this didn't work for some reason
+            GameAddFlagRun("purgatory_no_edit_run")
         end
 
         --Add Flag to not repeat damage multipliers
@@ -199,7 +202,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB",
+                "BOMB"
             }
 
             for i, v in ipairs(spells_to_give_player) do
@@ -212,25 +215,28 @@ function OnPlayerSpawned(player_entity)
 
         --Give player a script component to initialize the starting wands after they have loaded in
         local lua_comp = EntityAddComponent(player_entity, "LuaComponent")
-        ComponentSetValue(lua_comp, "script_source_file",
-            "mods/purgatory/files/scripts/misc/initialize_starting_wands_delay.lua")
+        ComponentSetValue(
+            lua_comp,
+            "script_source_file",
+            "mods/purgatory/files/scripts/misc/initialize_starting_wands_delay.lua"
+        )
         ComponentSetValue(lua_comp, "execute_every_n_frame", "60")
         ComponentSetValue(lua_comp, "remove_after_executed", "1")
 
         -- EntityAddComponent(
         --     player_entity,
-		-- 		"LuaComponent",
-		-- 		{
-		-- 			script_source_file = "mods/purgatory/files/scripts/test.lua",
-		-- 			execute_every_n_frame = 1,
-		-- 		}
-		-- 	)
+        -- 		"LuaComponent",
+        -- 		{
+        -- 			script_source_file = "mods/purgatory/files/scripts/test.lua",
+        -- 			execute_every_n_frame = 1,
+        -- 		}
+        -- 	)
 
         if debug_mode then
             debug_mod_init(player_entity)
         end
-    end                                          --end if not purgatory_initiated
-end                                              -- function OnPlayerSpawned(player_entity)
+    end --end if not purgatory_initiated
+end -- function OnPlayerSpawned(player_entity)
 
 function OnMagicNumbersAndWorldSeedInitialized() -- this is the last point where the Mod* API is available. after this materials.xml will be loaded.
 end
@@ -267,59 +273,20 @@ end
 
 function OnWorldPreUpdate() -- This is called every time the game is about to start updating the world
     if debug_mode then
-        -- local id = 1
-        -- local function new_id()
-        --     id = id + 1
-        --     return id
-        -- end
-        -- gui = gui or GuiCreate()
-        -- GuiStartFrame(gui)
+        local id = 1
+        local function new_id()
+            id = id + 1
+            return id
+        end
+        gui = gui or GuiCreate()
+        GuiStartFrame(gui)
 
-        -- local player_id = EntityGetWithTag("player_unit")[1]
-        -- local x, y = EntityGetTransform(player_id)
+        local player_id = EntityGetWithTag("player_unit")[1]
+        local x, y = EntityGetTransform(player_id)
 
-        -- local start_x = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_X")
-        -- local start_y = MagicNumbersGetValue("DESIGN_PLAYER_START_POS_Y")
-
-        -- GuiText(gui, 10, 50, tostring(start_x))
-        -- GuiText(gui, 10, 60, tostring(start_y))
-
-
-        -- local mouse_output = "Mouse: "
-        -- for i = 1, 7 do
-        --     if InputIsMouseButtonDown(i) then
-        --         mouse_output = mouse_output .. tostring(i) .. " "
-        --     end
-        -- end
-
-        -- GuiText(gui, 10, 50, mouse_output)
-
-        -- local controller_output = "Controller: "
-        -- for i = 1, 56 do
-        --     if InputIsJoystickButtonDown(0, i) then
-        --         controller_output = controller_output .. tostring(i) .. " "
-        --     end
-        -- end
-
-        -- GuiText(gui, 10, 50, mouse_output)
-        -- GuiText(gui, 10, 60, controller_output)
-
-        -- if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
-        --     EntityLoad("mods/purgatory/files/test/test_entity.xml", x, y - 30)
-        -- end
-
-        -- if GuiImageButton(gui, new_id(), 200, 0, "Button 2", "mods/purgatory/files/ui_gfx/debug/button_2.png") then
-        --     local all_entities_in_range = EntityGetInRadius(x, y, 200)
-        --     for _, ent in ipairs(all_entities_in_range) do
-        --         local name = EntityGetName(ent)
-        --         if name == "test_book" then
-        --             EntityConvertToMaterial(ent, "plasma_fading")
-        --             EntityKill(ent)
-        --             GamePrint("Found Test Book and killed it")
-        --             break
-        --         end
-        --     end
-        -- end
+        if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
+            EntityLoad("mods/purgatory/files/entities/misc/test.xml", x, y - 20)
+        end
     end
 end
 

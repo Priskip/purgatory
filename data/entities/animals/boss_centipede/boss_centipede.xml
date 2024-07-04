@@ -268,11 +268,45 @@
 
 	<!-- Health Bar Component-->
 	<!-- Note Priskip 24/2/24: Olli changed the health bars around in the beta branch, hence the need for this.-->
-	<HealthBarComponent
+	<!-- Note Priskip 8/6/24: Updated this to a BossHealthBarComponent-->
+	 <!-- Note Priskip 8/6/24: Removed BossHealthBarComponent in favor of custom purgatory hp bar.-->
+	<!-- <BossHealthBarComponent
 		_enabled="0"
 		_tags="disabled_at_start"
 		gui_special_final_boss="1"
 		gui_max_distance_visible="1500"
-	></HealthBarComponent>
+	></BossHealthBarComponent> -->
+
+	<!-- Custom Boss HP Bar -->
+	<LuaComponent
+        script_source_file="mods/purgatory/files/scripts/boss_bars/boss_bar_kolmi.lua"
+        execute_every_n_frame="1"
+		_enabled="0"
+        ></LuaComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_outline"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/outline_6.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_fill"
+		value_string="mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/fill_6.png"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_bar_position"
+		value_string="CENTER"
+		>
+	</VariableStorageComponent>
+
+    <VariableStorageComponent
+		name="boss_name"
+		value_string="$animal_boss_centipede"
+		>
+	</VariableStorageComponent>
+	<!-- /Custom Boss HP Bar -->
 
 </Entity>

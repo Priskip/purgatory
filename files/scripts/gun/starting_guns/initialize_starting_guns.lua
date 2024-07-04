@@ -653,6 +653,7 @@ function initialize_starting_guns(player_id)
             "SPEED",
             "SPEED",
             "SPEED",
+            "LAVA_TO_BLOOD",
             "MONEY_MAGIC",
             "HITFX_CRITICAL_WATER",
             "HEAVY_SHOT",
@@ -668,19 +669,21 @@ function initialize_starting_guns(player_id)
 
         local yellow_deck =
         {
-            --"TEST_SPELL"
+            "BLOOD_MAGIC",
+
         }
 
         local green_deck =
         {
-            "DIVIDE_2",
+            "VACUUM_BLOOD",
+            --[[ "DIVIDE_2",
             "DIVIDE_3",
             "DIVIDE_4",
             "DIVIDE_10",
             "GAMMA",
             "TAU",
             "OMEGA",
-            "ZETA"
+            "ZETA" ]]
         }
 
         put_deck_on_gun(gun_ids[1], blue_deck, blue_gun)
