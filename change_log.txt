@@ -1,5 +1,11 @@
 Change Log
 
+Beta Build 03 August 2024
+    - Cleaned up some developer text that I had left floating around in the last patch.
+    - Hiisi Base Anvil side biome now inherits the biome modifier of main hiisi base.
+    - New Spell: Acid Mist
+    - An empty potion now spawns in the first slot of the holy mountain's alchemy station.
+
 Beta Build 04 July 2024
     - Tweaked Sauvojen's HP art
     - Custom boss bar for Kolmi (This took a lot of artwork because the bar needs to get bigger with the amount of hp he gets from orbs.)

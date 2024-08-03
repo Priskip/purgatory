@@ -7,7 +7,7 @@
 	</VelocityComponent> 
 		
 	<ParticleEmitterComponent 
-		emitted_material_name="cloud_blood_cold_vapour"
+		emitted_material_name="cloud_acid"
 		offset.x="0"
 		offset.y="0"
 		x_pos_offset_min="0"
@@ -79,7 +79,7 @@
 
     <LuaComponent
 		_tags="material_damage_helper"
-		script_source_file="mods/purgatory/files/scripts/projectiles/mist_freezing.lua"
+		script_source_file="mods/purgatory/files/scripts/projectiles/mist_acid.lua"
 		execute_every_n_frame="25"
 		>
 	</LuaComponent>

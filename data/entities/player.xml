@@ -26,6 +26,7 @@
     <Entity><Base file="mods/purgatory/files/entities/items/starting_guns/green.xml" /></Entity>
     <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_regular.xml" /></Entity>
     <Entity><Base file="mods/purgatory/files/entities/items/pickup/potion_starting_magical.xml" /></Entity>
+
   </Entity>
 
   <Entity name="inventory_full" />

@@ -77,12 +77,12 @@ function init_boss()
 		local outline_file = "mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/outline_" .. tostring(str_length) .. ".png"
         if ModDoesFileExist(outline_file) then
             variableStorageSetValue(entity, "STRING", "boss_bar_outline", outline_file)
-			GamePrint(outline_file)
+			--GamePrint(outline_file)
         end
 		local fill_file = "mods/purgatory/files/ui_gfx/boss_bars/boss_centipede/fill_" .. tostring(str_length) .. ".png"
         if ModDoesFileExist(outline_file) then
             variableStorageSetValue(entity, "STRING", "boss_bar_fill", fill_file)
-			GamePrint(fill_file)
+			--GamePrint(fill_file)
         end
 
 		-- no orbs = weaker shield

@@ -1292,9 +1292,50 @@ function get_modifier_mappings()
 		set_modifier_if_has_none("lake_statue", "MOIST")
 	end
 
-
-
 	return result
+end
+
+--NOTE PRISKIP 03/08/2024: This is to add purgatory biomes to the injections
+--This is a bit of a hacky way to do this. If I need to add more custom biomes and modifiers, I should rewrite this.
+function apply_modifier_from_data_to_biome_filename(biome_filename, modifier)
+	if rnd == nil then
+		rnd = random_create(347893, 90734)
+	end
+
+	-- ignores?
+	local ok = true
+	if modifier.does_not_apply_to_biome ~= nil then
+		for _, skip_biome in ipairs(modifier.does_not_apply_to_biome) do
+			if skip_biome == biome_name then
+				ok = false
+				break
+			end
+		end
+	end
+
+	if modifier.apply_only_to_biome ~= nil then
+		ok = false
+		for _, required_biome in ipairs(modifier.apply_only_to_biome) do
+			if required_biome == biome_name then
+				ok = true
+				break
+			end
+		end
+	end
+
+	if modifier.requires_flag ~= nil then
+		if (HasFlagPersistent(modifier.requires_flag) == false) then
+			ok = false
+		end
+	end
+
+	-- apply
+	if ok then
+		modifier.action(biome_name, biome_filename)
+		BiomeSetValue(biome_filename, "mModifierUIDescription", modifier.ui_description)
+		BiomeSetValue(biome_filename, "mModifierUIDecorationFile", modifier.ui_decoration_file or "")
+		table.insert(biomes_with_modifier, biome_name)
+	end
 end
 
 function init_biome_modifiers()
@@ -1303,6 +1344,11 @@ function init_biome_modifiers()
 	for biome_name, modifier in pairs(mappings) do
 		if modifier ~= nil then
 			apply_modifier_from_data(biome_name, modifier)
+		end
+
+		--Hiisi base anvil biome inheritance
+		if biome_name == "snowcastle" and modifier ~= nil then
+			apply_modifier_from_data_to_biome_filename("mods/purgatory/files/biome/hiisi_forge.xml", modifier)
 		end
 	end
 end

@@ -649,17 +649,9 @@ function initialize_starting_guns(player_id)
 
         local blue_deck =
         {
-            "SPEED",
-            "SPEED",
-            "SPEED",
-            "SPEED",
-            "LAVA_TO_BLOOD",
-            "MONEY_MAGIC",
-            "HITFX_CRITICAL_WATER",
-            "HEAVY_SHOT",
-            "BURST_2",
-            "LIGHT_BULLET",
-            "MATERIAL_WATER",
+            "LIGHT_BULLET_TIMER",
+            "MIST_ACID"
+
         }
 
         local red_deck =
@@ -669,13 +661,13 @@ function initialize_starting_guns(player_id)
 
         local yellow_deck =
         {
-            "BLOOD_MAGIC",
+            "TELEPORT_PROJECTILE_CLOSER",
 
         }
 
         local green_deck =
         {
-            "VACUUM_BLOOD",
+            "",
             --[[ "DIVIDE_2",
             "DIVIDE_3",
             "DIVIDE_4",

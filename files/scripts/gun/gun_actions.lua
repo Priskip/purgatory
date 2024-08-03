@@ -36,7 +36,7 @@ function remove_spell(spell_name)
 end
 
 remove_spell("LIGHT_BULLET_TRIGGER_2") --Replacing with spell called "LIGHT_BULLET_TRIGGER_TRIGGER" to match trigger naming conventions
-remove_spell("MANA_REDUCE") -- Removing to replace with other mana increasing spells
+remove_spell("MANA_REDUCE")            -- Removing to replace with other mana increasing spells
 
 --Function for modifying existing spells
 function modify_existing_spell(spell_id, parameter_to_modify, new_value)
@@ -55,13 +55,16 @@ modify_existing_spell("MATTER_EATER", "max_uses", 20)
 modify_existing_spell("MATTER_EATER", "mana", 50)
 modify_existing_spell("MATTER_EATER", "never_unlimited", false)
 
-modify_existing_spell("BLACK_HOLE_DEATH_TRIGGER", "sprite", "mods/purgatory/files/ui_gfx/gun_actions/black_hole_death_trigger.png")
+modify_existing_spell("BLACK_HOLE_DEATH_TRIGGER", "sprite",
+	"mods/purgatory/files/ui_gfx/gun_actions/black_hole_death_trigger.png")
 modify_existing_spell("BLACK_HOLE_DEATH_TRIGGER", "name", "$action_black_hole_death_trigger_new")
 
-modify_existing_spell("MINE_DEATH_TRIGGER", "sprite", "mods/purgatory/files/ui_gfx/gun_actions/mine_with_death_trigger.png")
+modify_existing_spell("MINE_DEATH_TRIGGER", "sprite",
+	"mods/purgatory/files/ui_gfx/gun_actions/mine_with_death_trigger.png")
 modify_existing_spell("MINE_DEATH_TRIGGER", "name", "$action_mine_death_trigger_new")
 
-modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "sprite", "mods/purgatory/files/ui_gfx/gun_actions/pipe_bomb_with_death_trigger.png")
+modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "sprite",
+	"mods/purgatory/files/ui_gfx/gun_actions/pipe_bomb_with_death_trigger.png")
 modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "name", "$action_pipe_bomb_death_trigger_new")
 
 modify_existing_spell("SUMMON_HOLLOW_EGG", "sprite", "mods/purgatory/files/ui_gfx/gun_actions/hollow_egg.png")
@@ -157,7 +160,8 @@ modify_existing_spell(
 	"HOMING",
 	"action",
 	function()
-		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/homing.xml,data/entities/particles/tinyspark_white.xml,"
+		c.extra_entities = c.extra_entities ..
+		"mods/purgatory/files/entities/misc/homing_spells/homing.xml,data/entities/particles/tinyspark_white.xml,"
 		draw_actions(1, true)
 	end
 )
@@ -166,7 +170,8 @@ modify_existing_spell(
 	"HOMING_SHORT",
 	"action",
 	function()
-		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/homing_short.xml,data/entities/particles/tinyspark_white_weak.xml,"
+		c.extra_entities = c.extra_entities ..
+		"mods/purgatory/files/entities/misc/homing_spells/homing_short.xml,data/entities/particles/tinyspark_white_weak.xml,"
 		draw_actions(1, true)
 	end
 )
@@ -175,7 +180,8 @@ modify_existing_spell(
 	"HOMING_ROTATE",
 	"action",
 	function()
-		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/homing_rotate.xml,data/entities/particles/tinyspark_white_weak.xml,"
+		c.extra_entities = c.extra_entities ..
+		"mods/purgatory/files/entities/misc/homing_spells/homing_rotate.xml,data/entities/particles/tinyspark_white_weak.xml,"
 		draw_actions(1, true)
 	end
 )
@@ -184,7 +190,8 @@ modify_existing_spell(
 	"HOMING_ACCELERATING",
 	"action",
 	function()
-		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/homing_accelerating.xml,data/entities/particles/tinyspark_white_small.xml,"
+		c.extra_entities = c.extra_entities ..
+		"mods/purgatory/files/entities/misc/homing_spells/homing_accelerating.xml,data/entities/particles/tinyspark_white_small.xml,"
 		draw_actions(1, true)
 	end
 )
@@ -193,7 +200,8 @@ modify_existing_spell(
 	"HOMING_AREA",
 	"action",
 	function()
-		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/homing_area.xml,data/entities/particles/tinyspark_white.xml,"
+		c.extra_entities = c.extra_entities ..
+		"mods/purgatory/files/entities/misc/homing_spells/homing_area.xml,data/entities/particles/tinyspark_white.xml,"
 		c.fire_rate_wait = c.fire_rate_wait + 8
 		c.spread_degrees = c.spread_degrees + 6
 		c.speed_multiplier = c.speed_multiplier * 0.75
@@ -213,38 +221,49 @@ modify_existing_spell("CHAOS_POLYMORPH_FIELD", "name", "$action_chaos_polymorph_
 modify_existing_spell("CHAOS_POLYMORPH_FIELD", "description", "$actiondesc_chaos_polymorph_field_new")
 
 --new bombs materialized stuff
-modify_existing_spell("MINE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/mine.xml") --unstable crystal
-modify_existing_spell("MINE_DEATH_TRIGGER", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/mine_death_trigger.xml") --unstable crystal death trigger
-modify_existing_spell("LIGHTNING", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/lightning.xml") --lightning
-modify_existing_spell("GRENADE_LARGE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_large.xml") --dropper bolt
-modify_existing_spell("BALL_LIGHTNING", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/ball_lightning.xml") --ball_lightning
-modify_existing_spell("THUNDERBALL", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/thunderball.xml") --thundercharge
-modify_existing_spell("METEOR", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/meteor.xml") --meteor
-modify_existing_spell("GRENADE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade.xml") --firebolt
-modify_existing_spell("GRENADE_ANTI", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_anti.xml") --odd firebolt
-modify_existing_spell("GRENADE_TRIGGER", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_trigger.xml") --firebolt w trigger
-modify_existing_spell("GRENADE_TIER_2", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_tier_2.xml") --firebolt large (green)
-modify_existing_spell("GRENADE_TIER_3", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade_tier_3.xml") --firebolt giant (purple)
-modify_existing_spell("ROCKET", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket.xml") --magic missile
-modify_existing_spell("ROCKET_TIER_2", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket_tier_2.xml") --magic missile (green)
-modify_existing_spell("ROCKET_TIER_3", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket_tier_3.xml") --magic missile (purple)
-modify_existing_spell("PIPE_BOMB", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/pipe_bomb.xml") --dormant crystal
-modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/pipe_bomb_death_trigger.xml") --dormant crystal death trigger
+modify_existing_spell("MINE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/mine.xml")                                       --unstable crystal
+modify_existing_spell("MINE_DEATH_TRIGGER", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/mine_death_trigger.xml")                                                                      --unstable crystal death trigger
+modify_existing_spell("LIGHTNING", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/lightning.xml")                             --lightning
+modify_existing_spell("GRENADE_LARGE", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/grenade_large.xml")                                                                           --dropper bolt
+modify_existing_spell("BALL_LIGHTNING", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/ball_lightning.xml")                                                                          --ball_lightning
+modify_existing_spell("THUNDERBALL", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/thunderball.xml")                         --thundercharge
+modify_existing_spell("METEOR", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/meteor.xml")                                   --meteor
+modify_existing_spell("GRENADE", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/grenade.xml")                                 --firebolt
+modify_existing_spell("GRENADE_ANTI", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/grenade_anti.xml")                                                                            --odd firebolt
+modify_existing_spell("GRENADE_TRIGGER", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/grenade_trigger.xml")                                                                         --firebolt w trigger
+modify_existing_spell("GRENADE_TIER_2", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/grenade_tier_2.xml")                                                                          --firebolt large (green)
+modify_existing_spell("GRENADE_TIER_3", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/grenade_tier_3.xml")                                                                          --firebolt giant (purple)
+modify_existing_spell("ROCKET", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/rocket.xml")                                   --magic missile
+modify_existing_spell("ROCKET_TIER_2", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/rocket_tier_2.xml")                                                                           --magic missile (green)
+modify_existing_spell("ROCKET_TIER_3", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/rocket_tier_3.xml")                                                                           --magic missile (purple)
+modify_existing_spell("PIPE_BOMB", "custom_xml_file", "mods/purgatory/files/entities/misc/custom_cards/pipe_bomb.xml")                             --dormant crystal
+modify_existing_spell("PIPE_BOMB_DEATH_TRIGGER", "custom_xml_file",
+	"mods/purgatory/files/entities/misc/custom_cards/pipe_bomb_death_trigger.xml")                                                                 --dormant crystal death trigger
 
 --balance changes
 modify_existing_spell("LIGHT_BULLET", "mana", 10)
 modify_existing_spell("LIGHT_BULLET_TRIGGER", "mana", 20)
 modify_existing_spell("BULLET_TRIGGER", "mana", 25) --magic arrow
 modify_existing_spell("BULLET_TIMER", "mana", 20)
-modify_existing_spell("HEAVY_BULLET", "mana", 25) --magic bolt
+modify_existing_spell("HEAVY_BULLET", "mana", 25)   --magic bolt
 modify_existing_spell("HEAVY_BULLET_TRIGGER", "mana", 30)
 modify_existing_spell("HEAVY_BULLET_TIMER", "mana", 25)
-modify_existing_spell("SLOW_BULLET_TRIGGER", "mana", 35) --energy orb
+modify_existing_spell("SLOW_BULLET_TRIGGER", "mana", 35)                                                                              --energy orb
 modify_existing_spell("SLOW_BULLET_TIMER", "mana", 30)
-modify_existing_spell("SPITTER_TIMER", "mana", 5) --spitter bolt
-modify_existing_spell("SPITTER_TIER_2", "mana", 15) --large spitter bolt
+modify_existing_spell("SPITTER_TIMER", "mana", 5)                                                                                     --spitter bolt
+modify_existing_spell("SPITTER_TIER_2", "mana", 15)                                                                                   --large spitter bolt
 modify_existing_spell("SPITTER_TIER_2_TIMER", "mana", 15)
-modify_existing_spell("SPITTER_TIER_3", "related_projectiles", {"mods/purgatory/files/entities/projectiles/deck/spitter_tier_3.xml"}) --giant spittle bolt
+modify_existing_spell("SPITTER_TIER_3", "related_projectiles",
+	{ "mods/purgatory/files/entities/projectiles/deck/spitter_tier_3.xml" })                                                          --giant spittle bolt
 modify_existing_spell(
 	"SPITTER_TIER_3",
 	"action",
@@ -257,7 +276,8 @@ modify_existing_spell(
 	end
 )
 modify_existing_spell("SPITTER_TIER_3", "mana", 20)
-modify_existing_spell("SPITTER_TIER_3_TIMER", "related_projectiles", {"mods/purgatory/files/entities/projectiles/deck/spitter_tier_3.xml"}) --giant spittle bolt
+modify_existing_spell("SPITTER_TIER_3_TIMER", "related_projectiles",
+	{ "mods/purgatory/files/entities/projectiles/deck/spitter_tier_3.xml" })                                                                --giant spittle bolt
 modify_existing_spell(
 	"SPITTER_TIER_3_TIMER",
 	"action",
@@ -272,17 +292,17 @@ modify_existing_spell(
 )
 modify_existing_spell("SPITTER_TIER_3_TIMER", "mana", 20)
 modify_existing_spell("BUBBLESHOT_TRIGGER", "mana", 10) --bubble spark
-modify_existing_spell("BOUNCY_ORB", "mana", 15) --energy sphere
+modify_existing_spell("BOUNCY_ORB", "mana", 15)         --energy sphere
 modify_existing_spell("BOUNCY_ORB_TIMER", "mana", 15)
-modify_existing_spell("RUBBER_BALL", "mana", 1) --bouncing burst
-modify_existing_spell("ARROW", "mana", 5) --arrow
-modify_existing_spell("POLLEN", "mana", 10) --pollen
-modify_existing_spell("LANCE", "mana", 20) --glowing lance
-modify_existing_spell("LASER", "mana", 25) --concentrated light
-modify_existing_spell("MEGALASER", "mana", 50) --intense concentrated light
-modify_existing_spell("CHAIN_BOLT", "mana", 20) --chainbolt
-modify_existing_spell("FIREBALL", "mana", 30) --fireball
-modify_existing_spell("FLAMETHROWER", "mana", 5) --flamethrower
+modify_existing_spell("RUBBER_BALL", "mana", 1)         --bouncing burst
+modify_existing_spell("ARROW", "mana", 5)               --arrow
+modify_existing_spell("POLLEN", "mana", 10)             --pollen
+modify_existing_spell("LANCE", "mana", 20)              --glowing lance
+modify_existing_spell("LASER", "mana", 25)              --concentrated light
+modify_existing_spell("MEGALASER", "mana", 50)          --intense concentrated light
+modify_existing_spell("CHAIN_BOLT", "mana", 20)         --chainbolt
+modify_existing_spell("FIREBALL", "mana", 30)           --fireball
+modify_existing_spell("FLAMETHROWER", "mana", 5)        --flamethrower
 modify_existing_spell("FLAMETHROWER", "max_uses", -1)
 modify_existing_spell(
 	"FLAMETHROWER",
@@ -294,10 +314,11 @@ modify_existing_spell(
 		c.fire_rate_wait = c.fire_rate_wait - 15
 	end
 )
-modify_existing_spell("ICEBALL", "mana", 35) --iceball
+modify_existing_spell("ICEBALL", "mana", 35)   --iceball
 modify_existing_spell("DARKFLAME", "mana", 50) --path of dark flame
-modify_existing_spell("MISSILE", "mana", 50) --summon missile
-modify_existing_spell("MISSILE", "related_projectiles", {"mods/purgatory/files/entities/projectiles/deck/rocket_player.xml"})
+modify_existing_spell("MISSILE", "mana", 50)   --summon missile
+modify_existing_spell("MISSILE", "related_projectiles",
+	{ "mods/purgatory/files/entities/projectiles/deck/rocket_player.xml" })
 modify_existing_spell(
 	"MISSILE",
 	"action",
@@ -308,9 +329,9 @@ modify_existing_spell(
 		shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
 	end
 )
-modify_existing_spell("GLITTER_BOMB", "mana", 10) --glitter bomb
+modify_existing_spell("GLITTER_BOMB", "mana", 10)  --glitter bomb
 modify_existing_spell("FREEZING_GAZE", "mana", 30) --freezing gaze
-modify_existing_spell("GLOWING_BOLT", "mana", 45) --pinpoint of light
+modify_existing_spell("GLOWING_BOLT", "mana", 45)  --pinpoint of light
 modify_existing_spell(
 	"GLOWING_BOLT",
 	"action",
@@ -321,7 +342,8 @@ modify_existing_spell(
 	end
 )
 modify_existing_spell("EXPANDING_ORB", "mana", 45) --expanding orb
-modify_existing_spell("EXPANDING_ORB", "related_projectiles", {"mods/purgatory/files/entities/projectiles/deck/orb_expanding.xml"})
+modify_existing_spell("EXPANDING_ORB", "related_projectiles",
+	{ "mods/purgatory/files/entities/projectiles/deck/orb_expanding.xml" })
 modify_existing_spell(
 	"EXPANDING_ORB",
 	"action",
@@ -331,18 +353,18 @@ modify_existing_spell(
 		shot_effects.recoil_knockback = 20.0
 	end
 )
-modify_existing_spell("DEATH_CROSS", "mana", 30) --death cross
-modify_existing_spell("DEATH_CROSS_BIG", "mana", 80) --giga death cross
+modify_existing_spell("DEATH_CROSS", "mana", 30)            --death cross
+modify_existing_spell("DEATH_CROSS_BIG", "mana", 80)        --giga death cross
 modify_existing_spell("PURPLE_EXPLOSION_FIELD", "mana", 50) --glittering field
-modify_existing_spell("MIST_RADIOACTIVE", "mana", 25) --toxic mist
-modify_existing_spell("MIST_ALCOHOL", "mana", 15) --mist of spirits
-modify_existing_spell("MIST_SLIME", "mana", 30) --slime mist
-modify_existing_spell("MIST_BLOOD", "mana", 30) --blood mist
-modify_existing_spell("FIREWORK", "mana", 35) --fireworks
-modify_existing_spell("RECHARGE", "mana", 8) --reduce recharge time
-modify_existing_spell("LIFETIME", "mana", 20) --increase lifetime
-modify_existing_spell("PHASING_ARC", "mana", 10) --phasing
-modify_existing_spell("CLIPPING_SHOT", "mana", 30) --drilling
+modify_existing_spell("MIST_RADIOACTIVE", "mana", 25)       --toxic mist
+modify_existing_spell("MIST_ALCOHOL", "mana", 15)           --mist of spirits
+modify_existing_spell("MIST_SLIME", "mana", 30)             --slime mist
+modify_existing_spell("MIST_BLOOD", "mana", 30)             --blood mist
+modify_existing_spell("FIREWORK", "mana", 35)               --fireworks
+modify_existing_spell("RECHARGE", "mana", 8)                --reduce recharge time
+modify_existing_spell("LIFETIME", "mana", 20)               --increase lifetime
+modify_existing_spell("PHASING_ARC", "mana", 10)            --phasing
+modify_existing_spell("CLIPPING_SHOT", "mana", 30)          --drilling
 modify_existing_spell(
 	"CLIPPING_SHOT",
 	"action",
@@ -353,27 +375,27 @@ modify_existing_spell(
 		draw_actions(1, true)
 	end
 )
-modify_existing_spell("AREA_DAMAGE", "mana", 15) --damage field
-modify_existing_spell("HITFX_TOXIC_CHARM", "mana", 5) --charm on toxic sludge
-modify_existing_spell("HITFX_EXPLOSION_SLIME_GIGA", "mana", 40) --giant explosion on slimy
+modify_existing_spell("AREA_DAMAGE", "mana", 15)                  --damage field
+modify_existing_spell("HITFX_TOXIC_CHARM", "mana", 5)             --charm on toxic sludge
+modify_existing_spell("HITFX_EXPLOSION_SLIME_GIGA", "mana", 40)   --giant explosion on slimy
 modify_existing_spell("HITFX_EXPLOSION_ALCOHOL_GIGA", "mana", 40) --giant explosion on drunk
-modify_existing_spell("BOUNCE_LARPA", "mana", 50) --larpa bounce
-modify_existing_spell("FIREBALL_RAY", "mana", 20) --fireball thrower
-modify_existing_spell("LIGHTNING_RAY", "mana", 20) --lightning thrower
-modify_existing_spell("TENTACLE_RAY", "mana", 20) --tentacler
-modify_existing_spell("LASER_EMITTER_RAY", "mana", 20) --plasma beam thrower
-modify_existing_spell("FIREBALL_RAY_LINE", "mana", 25) --two way fireball thrower
-modify_existing_spell("ORBIT_DISCS", "mana", 40) --sawblade orbit
-modify_existing_spell("ORBIT_LARPA", "mana", 75) --orbit larpa
-modify_existing_spell("CHAIN_SHOT", "mana", 35) --chain spell
-modify_existing_spell("LARPA_CHAOS", "mana", 60) --chaos larpa
-modify_existing_spell("LARPA_DOWNWARDS", "mana", 70) --dowwards larpa
-modify_existing_spell("LARPA_UPWARDS", "mana", 70) --upwards larpa
-modify_existing_spell("LARPA_CHAOS_2", "mana", 75) --copy trail
-modify_existing_spell("LARPA_DEATH", "mana", 50) --larpa explosion
+modify_existing_spell("BOUNCE_LARPA", "mana", 50)                 --larpa bounce
+modify_existing_spell("FIREBALL_RAY", "mana", 20)                 --fireball thrower
+modify_existing_spell("LIGHTNING_RAY", "mana", 20)                --lightning thrower
+modify_existing_spell("TENTACLE_RAY", "mana", 20)                 --tentacler
+modify_existing_spell("LASER_EMITTER_RAY", "mana", 20)            --plasma beam thrower
+modify_existing_spell("FIREBALL_RAY_LINE", "mana", 25)            --two way fireball thrower
+modify_existing_spell("ORBIT_DISCS", "mana", 40)                  --sawblade orbit
+modify_existing_spell("ORBIT_LARPA", "mana", 75)                  --orbit larpa
+modify_existing_spell("CHAIN_SHOT", "mana", 35)                   --chain spell
+modify_existing_spell("LARPA_CHAOS", "mana", 60)                  --chaos larpa
+modify_existing_spell("LARPA_DOWNWARDS", "mana", 70)              --dowwards larpa
+modify_existing_spell("LARPA_UPWARDS", "mana", 70)                --upwards larpa
+modify_existing_spell("LARPA_CHAOS_2", "mana", 75)                --copy trail
+modify_existing_spell("LARPA_DEATH", "mana", 50)                  --larpa explosion
 
 --Bug Fixes in vanilla spells
-modify_existing_spell("VACUUM_ENTITIES", "related_projectiles", {"data/entities/projectiles/deck/vacuum_entities.xml"})
+modify_existing_spell("VACUUM_ENTITIES", "related_projectiles", { "data/entities/projectiles/deck/vacuum_entities.xml" })
 
 --ADD NEW SPELLS
 spells_to_add = {
@@ -536,7 +558,7 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_death_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/light_bullet.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/light_bullet.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,3",
 		spawn_probability = "0.75,0.3,0.3,0.3",
@@ -555,7 +577,7 @@ spells_to_add = {
 		name = "$action_light_bullet_trigger_trigger",
 		description = "$actiondesc_light_bullet_trigger_trigger",
 		sprite = "data/ui_gfx/gun_actions/light_bullet_trigger_2.png",
-		related_projectiles = {"data/entities/projectiles/deck/light_bullet_blue.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/light_bullet_blue.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
@@ -576,7 +598,7 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_timer_timer",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_timer_timer.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/light_bullet_blue.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/light_bullet_blue.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
@@ -596,7 +618,7 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_death_trigger_death_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_death_trigger_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/light_bullet_blue.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/light_bullet_blue.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
@@ -616,14 +638,15 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_trigger_timer",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_trigger_timer.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
 		price = 140,
 		mana = 20,
 		action = function()
-			add_projectile_trigger_and_timer("mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1, 10)
+			add_projectile_trigger_and_timer("mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1,
+				10)
 			c.fire_rate_wait = c.fire_rate_wait + 5
 			c.screenshake = c.screenshake + 0.5
 			c.damage_critical_chance = c.damage_critical_chance + 5
@@ -636,14 +659,15 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_trigger_death_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_trigger_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
 		price = 140,
 		mana = 20,
 		action = function()
-			add_projectile_trigger_and_death_trigger("mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1)
+			add_projectile_trigger_and_death_trigger(
+			"mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1)
 			c.fire_rate_wait = c.fire_rate_wait + 5
 			c.screenshake = c.screenshake + 0.5
 			c.damage_critical_chance = c.damage_critical_chance + 5
@@ -656,14 +680,15 @@ spells_to_add = {
 		description = "$actiondesc_light_bullet_timer_death_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/light_bullet_timer_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/light_bullet.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/light_bullet.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0.25",
 		price = 140,
 		mana = 20,
 		action = function()
-			add_projectile_timer_and_death_trigger("mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1, 10)
+			add_projectile_timer_and_death_trigger(
+			"mods/purgatory/files/entities/projectiles/deck/light_bullet_orange.xml", 1, 10)
 			c.fire_rate_wait = c.fire_rate_wait + 5
 			c.screenshake = c.screenshake + 0.5
 			c.damage_critical_chance = c.damage_critical_chance + 5
@@ -676,7 +701,7 @@ spells_to_add = {
 		description = "$actiondesc_world_eater",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/world_eater.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/animals/worm_big.xml"},
+		related_projectiles = { "data/entities/animals/worm_big.xml" },
 		type = ACTION_TYPE_STATIC_PROJECTILE,
 		spawn_level = "0,1,2,4,5,6,10",
 		spawn_probability = "0,0,0,0,0,0,0",
@@ -735,7 +760,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		spawn_requires_flag = "purgatory_alchemist_spells",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "1,2,3,4", -- WATER_TRAIL
+		spawn_level = "1,2,3,4",          -- WATER_TRAIL
 		spawn_probability = "0.1,0.2,0.2,0.25", -- WATER_TRAIL
 		price = 160,
 		mana = 50,
@@ -802,7 +827,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MATERIAL,
 		spawn_requires_flag = "purgatory_alchemist_spells",
-		spawn_level = "2,3,4,5,6", -- MATERIAL_GUNPOWDER_EXPLOSIVE
+		spawn_level = "2,3,4,5,6",           -- MATERIAL_GUNPOWDER_EXPLOSIVE
 		spawn_probability = "0.4,0.4,0.4,0.4,0.4", -- MATERIAL_GUNPOWDER_EXPLOSIVE
 		price = 100,
 		mana = 0,
@@ -810,7 +835,8 @@ spells_to_add = {
 		action = function()
 			add_projectile("data/entities/projectiles/deck/material_lava.xml")
 			c.fire_rate_wait = c.fire_rate_wait - 25
-			current_reload_time = current_reload_time - ACTION_DRAW_RELOAD_TIME_INCREASE - 30 -- this is a hack to get the cement reload time back to 0
+			current_reload_time = current_reload_time - ACTION_DRAW_RELOAD_TIME_INCREASE -
+			30                                                                       -- this is a hack to get the cement reload time back to 0
 		end
 	},
 	{
@@ -822,7 +848,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MATERIAL,
 		spawn_requires_flag = "purgatory_alchemist_spells",
-		spawn_level = "2,3,4,5,6", -- MATERIAL_GUNPOWDER_EXPLOSIVE
+		spawn_level = "2,3,4,5,6",           -- MATERIAL_GUNPOWDER_EXPLOSIVE
 		spawn_probability = "0.4,0.4,0.4,0.4,0.4", -- MATERIAL_GUNPOWDER_EXPLOSIVE
 		price = 100,
 		mana = 0,
@@ -842,7 +868,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MATERIAL,
 		spawn_requires_flag = "purgatory_alchemist_spells",
-		spawn_level = "2,3,4,5,6", -- MATERIAL_DIRT
+		spawn_level = "2,3,4,5,6",           -- MATERIAL_DIRT
 		spawn_probability = "0.4,0.4,0.4,0.4,0.4", -- MATERIAL_DIRT
 		price = 100,
 		mana = 0,
@@ -861,7 +887,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/personal_plasma_beam.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_PASSIVE,
-		spawn_level = "1,2,3,4,5,6", -- ENERGY_SHIELD
+		spawn_level = "1,2,3,4,5,6",              -- ENERGY_SHIELD
 		spawn_probability = "0.05,0.6,0.6,0.6,0.6,0.6", -- ENERGY_SHIELD
 		price = 220,
 		mana = 0,
@@ -879,9 +905,9 @@ spells_to_add = {
 		description = "$actiondesc_vacuum_gold",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/gold_vacuum.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/vacuum_powder.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/vacuum_powder.xml" },
 		type = ACTION_TYPE_STATIC_PROJECTILE,
-		spawn_level = "2,3,5,6", -- VACUUM_GOLD
+		spawn_level = "2,3,5,6",       -- VACUUM_GOLD
 		spawn_probability = "0.3,1,0.3,0.3", -- VACUUM_GOLD
 		price = 150,
 		mana = 80,
@@ -899,7 +925,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/gold_multiplier.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "2,3,4", -- GOLD_MULTIPLIER
+		spawn_level = "2,3,4",       -- GOLD_MULTIPLIER
 		spawn_probability = "0.3,0.3,0.3", -- GOLD_MULTIPLIER
 		price = 60,
 		mana = 100,
@@ -918,13 +944,13 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/giga_propane_tank.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_PROJECTILE,
-		spawn_level = "0,1,2,3,4,5,6,10", -- PROPANE_TANK
+		spawn_level = "0,1,2,3,4,5,6,10",          -- PROPANE_TANK
 		spawn_probability = "0,0,0,0.5,0.7,0.8,0.9,0.2", -- PROPANE_TANK
 		price = 300,
 		mana = 100,
 		max_uses = 5,
 		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/giga_propane_tank.xml", --used for bombs materilized
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/giga_propane_tank.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/giga_propane_tank.xml" },
 		action = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/giga_propane_tank.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 150
@@ -939,13 +965,13 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/omega_propane_tank.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_PROJECTILE,
-		spawn_level = "0,1,2,3,4,5,6,10", -- PROPANE_TANK
+		spawn_level = "0,1,2,3,4,5,6,10",          -- PROPANE_TANK
 		spawn_probability = "0,0,0,0.0,0.0,0.0,0.0,0.1", -- PROPANE_TANK
 		price = 300,
 		mana = 500,
 		max_uses = 1,
 		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/omega_propane_tank.xml", --used for bombs materilized
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/omega_propane_tank.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/omega_propane_tank.xml" },
 		action = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/omega_propane_tank.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 300
@@ -960,9 +986,9 @@ spells_to_add = {
 		description = "$actiondesc_summon_hamis",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/summon_hamis.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/summon_hamis.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/summon_hamis.xml" },
 		type = ACTION_TYPE_UTILITY,
-		spawn_level = "0,1,2", -- SUMMON_HAMIS
+		spawn_level = "0,1,2",       -- SUMMON_HAMIS
 		spawn_probability = "0.6,0.6,0.6", -- SUMMON_HAMIS
 		price = 200,
 		mana = 10,
@@ -980,7 +1006,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/cross_shape.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_DRAW_MANY,
-		spawn_level = "2,3,4,5,6", -- CROSS_SHAPE
+		spawn_level = "2,3,4,5,6",           -- CROSS_SHAPE
 		spawn_probability = "0.4,0.3,0.3,0.3,0.3", -- CROSS_SHAPE
 		price = 120,
 		mana = 2,
@@ -1005,7 +1031,6 @@ spells_to_add = {
 		price = 100,
 		mana = 0,
 		action = function(recursion_level, iteration)
-
 			--TODO: use GetUpdatedEntityID() and then figure out the logic for if that doesn't return the player
 
 			local max_mana = 10
@@ -1109,7 +1134,7 @@ spells_to_add = {
 		description = "$actiondesc_enlightened_laser_darkbeam",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/enlightened_laser_darkbeam.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/enlightened_laser_darkbeam.xml"},
+		related_projectiles = { "data/entities/projectiles/enlightened_laser_darkbeam.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		price = 280,
 		mana = 60,
@@ -1129,7 +1154,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		spawn_requires_flag = "card_unlocked_alchemy",
 		type = ACTION_TYPE_UTILITY,
-		spawn_level = "6,10", -- ALL_PROPANE
+		spawn_level = "6,10",  -- ALL_PROPANE
 		spawn_probability = "0.1,1", -- ALL_PROPANE
 		price = 600,
 		mana = 100,
@@ -1150,7 +1175,7 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		spawn_requires_flag = "card_unlocked_alchemy",
 		type = ACTION_TYPE_UTILITY,
-		spawn_level = "6,10", -- ALL_DUCKS
+		spawn_level = "6,10",  -- ALL_DUCKS
 		spawn_probability = "0.1,1", -- ALL_DUCKS
 		price = 600,
 		mana = 100,
@@ -1171,7 +1196,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/omega_nuke.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_PROJECTILE,
-		spawn_level = "10", -- OMEGA_NUKE
+		spawn_level = "10",   -- OMEGA_NUKE
 		spawn_probability = "0.05", -- OMEGA_NUKE
 		price = 1600,
 		mana = 1000,
@@ -1206,16 +1231,18 @@ spells_to_add = {
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MATERIAL,
 		spawn_requires_flag = "purgatory_alchemist_spells",
-		spawn_level = "2,3,4,5,6", -- MATERIAL_URINE
+		spawn_level = "2,3,4,5,6",           -- MATERIAL_URINE
 		spawn_probability = "0.4,0.4,0.4,0.4,0.4", -- MATERIAL_URINE
 		price = 100,
 		mana = 0,
 		sound_loop_tag = "sound_spray",
 		action = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/material_urine.xml")
-			c.game_effect_entities = c.game_effect_entities .. "mods/purgatory/files/entities/misc/effect_apply_piss.xml,"
+			c.game_effect_entities = c.game_effect_entities ..
+			"mods/purgatory/files/entities/misc/effect_apply_piss.xml,"
 			c.fire_rate_wait = c.fire_rate_wait - 15
-			current_reload_time = current_reload_time - ACTION_DRAW_RELOAD_TIME_INCREASE - 10 -- this is a hack to get the cement reload time back to 0
+			current_reload_time = current_reload_time - ACTION_DRAW_RELOAD_TIME_INCREASE -
+			10                                                                       -- this is a hack to get the cement reload time back to 0
 		end
 	},
 	{
@@ -1226,14 +1253,15 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/colour_white.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "2,3,4", -- COLOUR_RANDOM
+		spawn_level = "2,3,4",       -- COLOUR_RANDOM
 		spawn_probability = "0.1,0.1,0.1", -- COLOUR_RANDOM
 		spawn_requires_flag = "card_unlocked_paint",
 		price = 40,
 		mana = 0,
 		--max_uses = 100,
 		action = function()
-			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_white.xml,"
+			c.extra_entities = c.extra_entities ..
+			"data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_white.xml,"
 			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if (c.screenshake < 0) then
@@ -1250,14 +1278,15 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/colour_black.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "2,3,4", -- COLOUR_RANDOM
+		spawn_level = "2,3,4",       -- COLOUR_RANDOM
 		spawn_probability = "0.1,0.1,0.1", -- COLOUR_RANDOM
 		spawn_requires_flag = "card_unlocked_paint",
 		price = 40,
 		mana = 0,
 		--max_uses = 100,
 		action = function()
-			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_black.xml,"
+			c.extra_entities = c.extra_entities ..
+			"data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_black.xml,"
 			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if (c.screenshake < 0) then
@@ -1274,14 +1303,15 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/colour_random.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "2,3,4", -- COLOUR_RANDOM
+		spawn_level = "2,3,4",       -- COLOUR_RANDOM
 		spawn_probability = "0.1,0.1,0.1", -- COLOUR_RANDOM
 		spawn_requires_flag = "card_unlocked_paint",
 		price = 40,
 		mana = 0,
 		--max_uses = 100,
 		action = function()
-			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_random.xml,"
+			c.extra_entities = c.extra_entities ..
+			"data/entities/particles/tinyspark_red.xml,mods/purgatory/files/entities/misc/colour_random.xml,"
 			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if (c.screenshake < 0) then
@@ -1316,7 +1346,7 @@ spells_to_add = {
 		description = "$actiondesc_cloud_polymorph",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/cloud_polymorph.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/cloud_polymorph.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/cloud_polymorph.xml" },
 		type = ACTION_TYPE_STATIC_PROJECTILE,
 		spawn_level = "0,1,2,3,4,5",
 		spawn_probability = "0.1,0.1,0.1,0.1,0.1,0.1",
@@ -1335,7 +1365,7 @@ spells_to_add = {
 		description = "$actiondesc_mist_freezing",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mist_freezing.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/mist_freezing.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/mist_freezing.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "1,2,3,4",
 		spawn_probability = "0.4,0.4,0.4,0.4",
@@ -1348,13 +1378,32 @@ spells_to_add = {
 		end
 	},
 	{
+		id = "MIST_ACID",
+		include_after = "MIST_FREEZING",
+		name = "$action_mist_acid",
+		description = "$actiondesc_mist_acid",
+		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mist_acid.png",
+		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/mist_acid.xml" },
+		type = ACTION_TYPE_PROJECTILE,
+		spawn_level = "1,2,3,4",
+		spawn_probability = "0.4,0.4,0.4,0.4",
+		price = 160,
+		mana = 80,
+		max_uses = 15,
+		action = function()
+			add_projectile("mods/purgatory/files/entities/projectiles/deck/mist_acid.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
+		end
+	},
+	{
 		id = "POLLEN_DEATH_TRIGGER",
 		include_after = "POLLEN",
 		name = "$action_pollen_death_trigger",
 		description = "$actiondesc_pollen_death_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/pollen_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/pollen.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/pollen.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "0,1,3,4",
 		spawn_probability = "0.6,1,1,0.8",
@@ -1374,7 +1423,7 @@ spells_to_add = {
 		description = "$actiondesc_sosig",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/sosig.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/sausage.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/sausage.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "10",
 		spawn_probability = "0.0",
@@ -1392,7 +1441,7 @@ spells_to_add = {
 		description = "$actiondesc_unstable_polymorph_field",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/unstable_polymorph_field.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/unstable_polymorph_field.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/unstable_polymorph_field.xml" },
 		type = ACTION_TYPE_STATIC_PROJECTILE,
 		spawn_level = "1,2,3,4,5,6",
 		spawn_probability = "0.3,0.3,0.4,0.6,0.3,0.3",
@@ -1411,7 +1460,7 @@ spells_to_add = {
 		description = "$actiondesc_pollen_ball",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/pollen_ball.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/pollen_ball.xml"},
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/pollen_ball.xml" },
 		type = ACTION_TYPE_PROJECTILE,
 		spawn_level = "4,5",
 		spawn_probability = "0.2,0.3",
@@ -1428,9 +1477,9 @@ spells_to_add = {
 		description = "$actiondesc_bubbleshot_trigger",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/bubbleshot_death_trigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"data/entities/projectiles/deck/bubbleshot.xml"},
+		related_projectiles = { "data/entities/projectiles/deck/bubbleshot.xml" },
 		type = ACTION_TYPE_PROJECTILE,
-		spawn_level = "1,2,3", -- BUBBLESHOT
+		spawn_level = "1,2,3",       -- BUBBLESHOT
 		spawn_probability = "0.6,0.6,0.2", -- BUBBLESHOT
 		price = 120,
 		mana = 10,
@@ -1449,9 +1498,9 @@ spells_to_add = {
 		description = "$actiondesc_blackhole_shot",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/blackhole_shot.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_extra_entities = {"mods/purgatory/files/entities/misc/blackhole_shot.xml"},
+		related_extra_entities = { "mods/purgatory/files/entities/misc/blackhole_shot.xml" },
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "6,10", -- BLACKHOLE_SHOT
+		spawn_level = "6,10",    -- BLACKHOLE_SHOT
 		spawn_probability = "0.2,0.2", -- BLACKHOLE_SHOT
 		price = 300,
 		mana = 100,
@@ -1468,9 +1517,9 @@ spells_to_add = {
 		description = "$actiondesc_remove_gravity",
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/remove_gravity.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_extra_entities = {"mods/purgatory/files/entities/misc/remove_gravity.xml"},
+		related_extra_entities = { "mods/purgatory/files/entities/misc/remove_gravity.xml" },
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "2,3,4", -- REMOVE_GRAVITY
+		spawn_level = "2,3,4",        -- REMOVE_GRAVITY
 		spawn_probability = "0.2,0.25,0.1", -- REMOVE_GRAVITY
 		price = 300,
 		mana = 2,
@@ -1487,7 +1536,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_small.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "1,2,3,4", -- ADD_MANA_SMALL
+		spawn_level = "1,2,3,4",         -- ADD_MANA_SMALL
 		spawn_probability = "0.8,0.8,0.3,0.1", -- ADD_MANA_SMALL
 		price = 250,
 		mana = -10,
@@ -1505,7 +1554,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_medium.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "1,2,3,4,5,6", -- ADD_MANA_MEDIUM
+		spawn_level = "1,2,3,4,5,6",             -- ADD_MANA_MEDIUM
 		spawn_probability = "0.1,0.3,0.8,0.8,0.3,0.1", -- ADD_MANA_MEDIUM
 		price = 350,
 		mana = -20,
@@ -1524,7 +1573,7 @@ spells_to_add = {
 		sprite = "mods/purgatory/files/ui_gfx/gun_actions/mana_large.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
 		type = ACTION_TYPE_MODIFIER,
-		spawn_level = "3,4,5,6", -- ADD_MANA_LARGE
+		spawn_level = "3,4,5,6",         -- ADD_MANA_LARGE
 		spawn_probability = "0.2,0.4,0.8,0.8", -- ADD_MANA_LARGE
 		price = 450,
 		mana = -30,
@@ -1536,101 +1585,101 @@ spells_to_add = {
 		end
 	},
 	{
-		id          = "VACUUM_BLOOD",
-		include_after = "VACUUM_GOLD",
-		name 		= "$action_vacuum_blood",
-		description = "$actiondesc_vacuum_blood",
-		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/vacuum_blood.png",
+		id                  = "VACUUM_BLOOD",
+		include_after       = "VACUUM_GOLD",
+		name                = "$action_vacuum_blood",
+		description         = "$actiondesc_vacuum_blood",
+		sprite              = "mods/purgatory/files/ui_gfx/gun_actions/vacuum_blood.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml"},
-		type 		= ACTION_TYPE_STATIC_PROJECTILE,
-		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
-		spawn_probability                 = "0,0,0,0,0,0,0,0", -- SPELL
-		price = 500,
-		mana = 50,
-		action 		= function()
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml" },
+		type                = ACTION_TYPE_STATIC_PROJECTILE,
+		spawn_level         = "0,1,2,3,4,5,6,10",         -- SPELL
+		spawn_probability   = "0,0,0,0,0,0,0,0",          -- SPELL
+		price               = 500,
+		mana                = 50,
+		action              = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/vacuum_blood.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 10
 		end,
 	},
 	{
-		id          = "DEATH_CROSS_BIGGER",
-		include_after = "DEATH_CROSS_BIG",
-		name 		= "$action_death_cross_bigger",
-		description = "$actiondesc_death_cross_bigger",
-		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/death_cross_bigger.png",
+		id                  = "DEATH_CROSS_BIGGER",
+		include_after       = "DEATH_CROSS_BIG",
+		name                = "$action_death_cross_bigger",
+		description         = "$actiondesc_death_cross_bigger",
+		sprite              = "mods/purgatory/files/ui_gfx/gun_actions/death_cross_bigger.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles	= {"mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml"},
-		type 		= ACTION_TYPE_PROJECTILE,
-		spawn_level       = "5,6,10", -- DEATH_CROSS_BIGGER
-		spawn_probability = "0.1,0.4,0.2", -- DEATH_CROSS_BIGGER
-		price = 600,
-		mana = 450,
-		max_uses = 3,
-		custom_xml_file = "data/entities/misc/custom_cards/death_cross.xml",
-		action 		= function()
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml" },
+		type                = ACTION_TYPE_PROJECTILE,
+		spawn_level         = "5,6,10", -- DEATH_CROSS_BIGGER
+		spawn_probability   = "0.1,0.4,0.2", -- DEATH_CROSS_BIGGER
+		price               = 600,
+		mana                = 450,
+		max_uses            = 3,
+		custom_xml_file     = "data/entities/misc/custom_cards/death_cross.xml",
+		action              = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/death_cross_bigger/death_cross_bigger.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 120
 			current_reload_time = current_reload_time + 60
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
-		end, 
+		end,
 	},
 	{
-		id          = "RAT_CANNON",
-		include_after = "WORM_SHOT",
-		name 		= "$action_rat_cannon",
-		description = "$actiondesc_rat_cannon",
+		id                  = "RAT_CANNON",
+		include_after       = "WORM_SHOT",
+		name                = "$action_rat_cannon",
+		description         = "$actiondesc_rat_cannon",
 		spawn_requires_flag = "card_unlocked_exploding_deer",
-		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/rat_cannon.png",
+		sprite              = "mods/purgatory/files/ui_gfx/gun_actions/rat_cannon.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		related_projectiles = {"mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml"},
-		type 		= ACTION_TYPE_PROJECTILE,
-		spawn_level                       = "0,1,2,3,4,5,6,10", -- SPELL
-		spawn_probability                 = "0,0,0,0,0.1,0.1,0.1,0", -- SPELL
-		price = 500,
-		mana = 100,
-		max_uses = 10,
-		action 		= function()
+		related_projectiles = { "mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml" },
+		type                = ACTION_TYPE_PROJECTILE,
+		spawn_level         = "0,1,2,3,4,5,6,10",              -- SPELL
+		spawn_probability   = "0,0,0,0,0.1,0.1,0.1,0",         -- SPELL
+		price               = 500,
+		mana                = 100,
+		max_uses            = 10,
+		action              = function()
 			add_projectile("mods/purgatory/files/entities/projectiles/deck/rat_cannon.xml")
 		end,
 	},
 	{
-		id          = "RELOAD_BEEP",
-		include_after = "ENERGY_SHIELD_SECTOR",
-		name 		= "$action_reload_beep",
-		description = "$actiondesc_reload_beep",
-		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/reload_beep.png",
+		id                  = "RELOAD_BEEP",
+		include_after       = "ENERGY_SHIELD_SECTOR",
+		name                = "$action_reload_beep",
+		description         = "$actiondesc_reload_beep",
+		sprite              = "mods/purgatory/files/ui_gfx/gun_actions/reload_beep.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		type 		= ACTION_TYPE_PASSIVE,
-		spawn_level                       = "0,1,2", -- RELOAD_BEEP
-		spawn_probability                 = "1,0.6,0.5", -- RELOAD_BEEP
-		price = 100,
-		mana = 0,
+		type                = ACTION_TYPE_PASSIVE,
+		spawn_level         = "0,1,2",             -- RELOAD_BEEP
+		spawn_probability   = "1,0.6,0.5",         -- RELOAD_BEEP
+		price               = 100,
+		mana                = 0,
 		--max_uses = 50,
-		custom_xml_file = "mods/purgatory/files/entities/misc/custom_cards/reload_beep.xml",
-		action 		= function()
-			draw_actions( 1, true )
+		custom_xml_file     = "mods/purgatory/files/entities/misc/custom_cards/reload_beep.xml",
+		action              = function()
+			draw_actions(1, true)
 		end,
 	},
 	{
-		id          = "SLOW_SHOT",
-		include_after = "SPEED",
-		name 		= "$action_slow_shot",
-		description = "$actiondesc_slow_shot",
-		sprite 		= "mods/purgatory/files/ui_gfx/gun_actions/slow_shot.png",
+		id                  = "SLOW_SHOT",
+		include_after       = "SPEED",
+		name                = "$action_slow_shot",
+		description         = "$actiondesc_slow_shot",
+		sprite              = "mods/purgatory/files/ui_gfx/gun_actions/slow_shot.png",
 		sprite_unidentified = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
-		type 		= ACTION_TYPE_MODIFIER,
-		spawn_level                       = "1,2,3", -- SLOW_SHOT
-		spawn_probability                 = "0.6,0.3,0.3", -- SLOW_SHOT
-		price = 100,
-		mana = 0,
-		action 		= function()
+		type                = ACTION_TYPE_MODIFIER,
+		spawn_level         = "1,2,3",               -- SLOW_SHOT
+		spawn_probability   = "0.6,0.3,0.3",         -- SLOW_SHOT
+		price               = 100,
+		mana                = 0,
+		action              = function()
 			c.speed_multiplier = c.speed_multiplier * 0.5
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 50
-			
-			if ( c.speed_multiplier >= 20 ) then
-				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
-			elseif ( c.speed_multiplier < 0 ) then
+
+			if (c.speed_multiplier >= 20) then
+				c.speed_multiplier = math.min(c.speed_multiplier, 20)
+			elseif (c.speed_multiplier < 0) then
 				c.speed_multiplier = 0
 			end
 
@@ -1662,11 +1711,31 @@ spells_to_add = {
 		end,
 	},
 	]]
+
+	--NOTE PRISKIP 03/08/2024: This will be coming eventually. I just need to finish it.
+	-- {
+	-- 	id                     = "GOLD_COLLECTOR",
+	-- 	include_after          = "GOLD_MULTIPLIER",
+	-- 	name                   = "$action_gold_collector",
+	-- 	description            = "$actiondesc_gold_collector",
+	-- 	sprite                 = "mods/purgatory/files/ui_gfx/gun_actions/gold_collector.png",
+	-- 	sprite_unidentified    = "mods/purgatory/files/ui_gfx/gun_actions/unidentified.png",
+	-- 	related_extra_entities = { "data/entities/misc/homing_area.xml" },
+	-- 	type                   = ACTION_TYPE_MODIFIER,
+	-- 	spawn_level            = "0,1,2,3,4,5,6,10",      -- SPELL
+	-- 	spawn_probability      = "0,0,0,0,0,0,0,0",       -- SPELL
+	-- 	price                  = 300,
+	-- 	mana                   = 0,
+	-- 	action                 = function()
+	-- 		c.extra_entities = c.extra_entities .. "mods/purgatory/files/entities/misc/homing_spells/gold_collector.xml,"
+	-- 		draw_actions(1, true)
+	-- 	end,
+	-- },
 }
 
 --Add Spells
 for i, spell in ipairs(spells_to_add) do
-	--For some weird reason if I don't include this check to see if 
+	--For some weird reason if I don't include this check to see if
 	--  the spell has been added, it gets added twice.
 	if getSpellPosition(spell.id) == nil then
 		local pos = getSpellPosition(spell.include_after)
@@ -1684,6 +1753,7 @@ end
 	Spell Template
 	{
 		id          = "",
+		include_after = "SPEED",
 		name 		= "$action_",
 		description = "$actiondesc_",
 		sprite 		= "",
@@ -1701,5 +1771,3 @@ end
 			spawn_level                       = "1,2,3,4,5,6", -- MANA_REDUCE
 		spawn_probability                 = "1,1,1,1,1,1", -- MANA_REDUCE
 ]]
-
-

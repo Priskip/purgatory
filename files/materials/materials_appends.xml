@@ -7,11 +7,11 @@
 		ui_name="$mat_spark_invis"
 		wang_color="ffFFFFAD"
 		gfx_glow="0"
-		>
+	>
 		<Graphics
 			color="00ffffff"
 			fire_colors_index="0"
-			></Graphics>
+		></Graphics>
 	</CellDataChild>
 
 	<CellDataChild
@@ -21,12 +21,12 @@
 		ui_name="$mat_spark_black"
 		wang_color="ffFEFFFF"
 		gfx_glow="90"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/black_glimmer.png"
 			color="80FFA2CD"
 			fire_colors_index="2"
-			></Graphics>
+		></Graphics>
 		<ParticleEffect
 			vel.y="2.86"
 			vel_random.min_x="-6"
@@ -37,7 +37,7 @@
 			probability="0.6"
 			count.min="0"
 			count.max="1"
-			></ParticleEffect>
+		></ParticleEffect>
 
 	</CellDataChild>
 
@@ -49,7 +49,7 @@
 		gfx_glow_color="0xFF00FF00"
 		wang_color="fffd2daf"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics color="ff70FF4F"></Graphics>
 	</CellDataChild>
 
@@ -68,7 +68,7 @@
 		liquid_gravity="0.2"
 		liquid_sand="1"
 		on_fire="1"
-		>
+	>
 		<Graphics color="ffFFAB00"></Graphics>
 	</CellDataChild>
 
@@ -79,7 +79,55 @@
 		ui_name="$mat_cloud_blood_cold_vapour"
 		wang_color="7f5C98CE"
 		lifetime="50"
-		></CellDataChild>
+	></CellDataChild>
+
+	<!-- acid mist -->
+	<CellData
+	name="cloud_acid"
+	ui_name="$mat_acid_cloud"
+  	tags="[liquid],[acid],[impure],[liquid_common],[chaotic_transmutation]"
+	burnable="0"
+	density="2.9"
+	cell_type="liquid"
+	wang_color="4B00ff13"
+	generates_smoke="0"
+	liquid_gravity="0.6"
+	liquid_sand="0"
+	on_fire="0"
+	gfx_glow="160"
+	requires_oxygen="1"
+	temperature_of_fire="10" 
+	cold_freezes_to_material="ice_acid_static"
+	show_in_creative_mode="1"
+	lifetime="20"
+	>
+	    <Graphics
+			color="4B00ed32" >
+    	</Graphics>
+		<ParticleEffect
+			vel.y="-17.14"
+			vel_random.min_x="-11.71"
+			vel_random.max_x="11.71"
+			vel_random.min_y="-17.18"
+			vel_random.max_y="-4.8"
+			lifetime.min="0.6"
+			lifetime.max="1.2"
+			gravity.y="0"
+			render_on_grid="1"
+			airflow_force="0.8314"
+			airflow_scale="0.1371"
+			friction="0.0001"
+			probability="0.04"
+			count.min="0"
+			count.max="1"
+		>
+		</ParticleEffect>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="POISONED" amount="0.3" />
+			</Ingestion>
+		</StatusEffects>
+  </CellData>
 
 	<!-- Hardened Glass for HM cauldrons -->
 	<CellData
@@ -99,11 +147,11 @@
 		platform_type="1"
 		durability="20"
 		solid_static_type="1"
-		>
+	>
 		<Graphics
 			texture_file="data/materials_gfx/glass.png"
 			color="d5e5ae"
-			></Graphics>
+		></Graphics>
 	</CellData>
 
 	<!-- Colored Smokes -->
@@ -123,12 +171,12 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_red.png"
 			color="7fAAAAB1"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
@@ -148,12 +196,12 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_orange.png"
 			color="7fAAAAB2"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
@@ -173,12 +221,12 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_yellow.png"
 			color="7fAAAAB3"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
@@ -198,12 +246,12 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_green.png"
 			color="7fAAAAB4"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
@@ -223,12 +271,12 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_blue.png"
 			color="7fAAAAB5"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
@@ -248,41 +296,42 @@
 		requires_oxygen="0"
 		temperature_of_fire="60"
 		show_in_creative_mode="1"
-		>
+	>
 		<Graphics
 			texture_file="mods/purgatory/files/materials_gfx/colored_smokes/smoke_purple.png"
 			color="7fAAAAB6"
 			fire_colors_index="2"
-			>
+		>
 		</Graphics>
 	</CellData>
 
-	<!--Debug Materials -->
+	<!--Debug
+	Materials -->
 	<CellData
-	name="glass_clear_static"
-	ui_name="$mat_glass_static"
-	tags="[static],[alchemy],[solid],[earth]"
-	burnable="0"
-	density="10"
-	cell_type="liquid"
-	wang_color="ffa16066"
-	generates_smoke="0"
-	liquid_gravity="0.5"
-	liquid_sand="1"
-	liquid_static="1"
-	on_fire="0"
-	requires_oxygen="1"
-	temperature_of_fire="10"
-	solid_restitution="0"
-	gfx_glow="6"
-	hp="30000" 
-	platform_type="1"
+		name="glass_clear_static"
+		ui_name="$mat_glass_static"
+		tags="[static],[alchemy],[solid],[earth]"
+		burnable="0"
+		density="10"
+		cell_type="liquid"
+		wang_color="ffa16066"
+		generates_smoke="0"
+		liquid_gravity="0.5"
+		liquid_sand="1"
+		liquid_static="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		solid_restitution="0"
+		gfx_glow="6"
+		hp="30000"
+		platform_type="1"
 	>
-    <Graphics
-	texture_file="mods/purgatory/files/materials_gfx/glass_clear.png"
-	color="ffa16066" >
-    </Graphics>
-  </CellData>
+		<Graphics
+			texture_file="mods/purgatory/files/materials_gfx/glass_clear.png"
+			color="ffa16066">
+		</Graphics>
+	</CellData>
 
 	<!-- Gate Boss -->
 	<!-- tags="[box2d],[matter_eater_ignore_list],[indestructible],[sunbaby_ignore_list]" -->
@@ -300,7 +349,7 @@
 		audio_physics_material_wall="rock"
 		audio_physics_material_solid="rock"
 		show_in_creative_mode="1"
-		>
+	>
 	</CellData>
 
 	<!-- New Alchemy Stuff -->
@@ -313,7 +362,7 @@
 		output_cell2="smoke_green"
 		output_cell3="magic_liquid_hp_regeneration"
 		blob_radius2="20"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="15"
@@ -321,7 +370,7 @@
 		input_cell2="alcohol"
 		output_cell1="magic_liquid_unstable_polymorph"
 		output_cell2="magic_liquid_unstable_polymorph"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="15"
@@ -329,7 +378,7 @@
 		input_cell2="slime"
 		output_cell1="magic_liquid_polymorph"
 		output_cell2="magic_liquid_polymorph"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="50"
@@ -337,7 +386,7 @@
 		input_cell2="silver"
 		output_cell1="magic_liquid_invisibility"
 		output_cell2="magic_liquid_invisibility"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="50"
@@ -345,7 +394,7 @@
 		input_cell2="fungisoil"
 		output_cell1="fungi_green"
 		output_cell2="fungi_green"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="100"
@@ -355,7 +404,7 @@
 		output_cell1="smoke_red"
 		output_cell2="magic_liquid_berserk"
 		output_cell3="smoke"
-		></Reaction>
+	></Reaction>
 
 	<Reaction
 		probability="50"
@@ -363,7 +412,7 @@
 		input_cell2="honey"
 		output_cell1="magic_liquid_worm_attractor"
 		output_cell2="poison"
-		></Reaction>
+	></Reaction>
 
 </Materials>
 

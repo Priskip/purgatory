@@ -202,7 +202,7 @@ function OnPlayerSpawned(player_entity)
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
                 "LIGHT_BULLET",
-                "BOMB"
+                "BOMB",
             }
 
             for i, v in ipairs(spells_to_give_player) do
@@ -235,6 +235,10 @@ function OnPlayerSpawned(player_entity)
         if debug_mode then
             debug_mod_init(player_entity)
         end
+
+        --Add empty potion to first slot of alchemy station
+        GlobalsSetValue("TEMPLE_ALCHEMY_STORAGE_SLOT_0", "potion,1000;")
+        
     end --end if not purgatory_initiated
 end -- function OnPlayerSpawned(player_entity)
 
@@ -285,7 +289,13 @@ function OnWorldPreUpdate() -- This is called every time the game is about to st
         local x, y = EntityGetTransform(player_id)
 
         if GuiImageButton(gui, new_id(), 100, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_1.png") then
-            EntityLoad("mods/purgatory/files/entities/misc/test.xml", x, y - 20)
+            --EntitySetTransform(player_id, 1974, 4560) -- anvil
+            EntitySetTransform(player_id, -915, 1390) --alchemy station #1
+        end
+
+        if GuiImageButton(gui, new_id(), 200, 0, "Button", "mods/purgatory/files/ui_gfx/debug/button_2.png") then
+            --EntitySetTransform(player_id, 1974, 4560) -- anvil
+            EntitySetTransform(player_id, -915, 3950) --alchemy station #1
         end
     end
 end

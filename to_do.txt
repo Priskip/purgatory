@@ -1,4 +1,34 @@
-TO DO:
+TO DO (03/08/2024):
+[X] Enable potion mixing in starting flasks - I had already fixed this bug. The person who reported it must have been playing on an older version.
+[X] Clear up developer text when picking up the sampo
+[X] Clear up developer text on vampire field when healing to full
+[X] Make hiisi base anvil biome inherit hiisi base biome modifier
+[X] Acid Mist
+[X] Comment out unfinished gold spells
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLD TO DO LIST (MAY NOT BE UP TO DATE)
+
 [ ] Make needed functions in gun_utilities.lua
 [X] Clean up utilities.lua and make functions match my modern naming conventions
 [ ] Clean up gui_utilities.lua
@@ -8,7 +38,7 @@ TO DO:
 [ ] Make injection logic for chest loot tables instead of overwriting the file
 [ ] Check item and potion spawn lists to see if Nolla has changed those
 [ ] Diminution Mist?
-
+[ ] Add logic to alchemy station for hiisi alkemisti flasks to retain their shape
 
 TBH maybe it's worth looking into rewriting the core systems of Purgatory... 
 - Injections

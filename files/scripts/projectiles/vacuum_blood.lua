@@ -55,11 +55,11 @@ if whoshot ~= nil then
                     if (amount_in_vacuum >= amount_for_full_heal) then
                         EntityIngestMaterial(whoshot, CellFactory_GetType(material), amount_for_full_heal)       --makes caster eat the blood
                         AddMaterialInventoryMaterial(entity_id, material, amount_in_vacuum - amount_for_full_heal) --removes material from the field's inventory comp
-                        GamePrint("True")
+                        --GamePrint("True")
                     else
                         EntityIngestMaterial(whoshot, CellFactory_GetType(material), amount_in_vacuum)       --makes player eat the blood
                         AddMaterialInventoryMaterial(entity_id, material, 0) --removes material from the field's inventory comp
-                        GamePrint("False")
+                        --GamePrint("False")
                     end
                     
                     --Note Priskip 04/07/2024: If Nolla added more materials to the game that vampirism works with,
